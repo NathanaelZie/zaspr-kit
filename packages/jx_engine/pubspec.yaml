@@ -1,0 +1,23 @@
+name: jx_engine
+description: Orchestration du moteur de compilation pour JX CSS.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.10.7
+
+dependencies:
+  jx_core:
+    path: ../jx_core
+  jx_generator:
+    path: ../jx_generator
+  jx_parser:
+    path: ../jx_parser
+  jx_rules:
+    path: ../jx_rules
+  jx_theme:
+    path: ../jx_theme
+
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.25.6

@@ -1,0 +1,25 @@
+name: jx_css
+
+packages:
+  - packages/**
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
+
+scripts:
+  analyze:
+    run: melos exec -- "dart analyze ."
+    description: Exécute `dart analyze` sur l'ensemble des packages.
+
+  test:
+    run: melos exec --dir-exists="test" -- "dart test"
+    description: Exécute `dart test` sur l'ensemble des packages disposant de tests.
+
+  format:
+    run: melos exec -- "dart format --output=none --set-exit-if-changed ."
+    description: Vérifie le formatage du code dans tous les packages.
+
+  format:fix:
+    run: melos exec -- "dart format ."
+    description: Corrige le formatage du code dans tous les packages.
