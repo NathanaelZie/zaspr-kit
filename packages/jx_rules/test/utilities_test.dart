@@ -166,6 +166,18 @@ void main() {
       expect(css('ws:pre'), {'white-space': 'pre'});
       expect(() => css('ff:comic'), throwsRule);
     });
+
+    test('largeur de police et contour', () {
+      expect(css('fst:expanded'), {'font-stretch': '125%'});
+      expect(css('fst:[112%]'), {'font-stretch': '112%'});
+      expect(css('ol:2'), {'outline': '2px solid'});
+      expect(css('ol:none'), {'outline': 'none'});
+      expect(css('olc:blue'), {'outline-color': '#3b82f6'});
+      expect(css('olo:4'), {'outline-offset': '4px'});
+      expect(css('olo:-2'), {'outline-offset': '-2px'});
+      expect(css('bgs:cover'), {'background-size': 'cover'});
+      expect(css('bgs:[16px_16px]'), {'background-size': '16px 16px'});
+    });
   });
 
   group('Sizing', () {

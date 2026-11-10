@@ -128,6 +128,13 @@ const List<JxRuleContract> jxColorRules = [
     fallback: _hexColorFallback,
     propertySelector: _backgroundImageSelector,
   ),
+  JxValueRule(
+    'background-size',
+    properties: {
+      'bgs': ['background-size'],
+    },
+    keywords: {'auto': 'auto', 'cover': 'cover', 'contain': 'contain'},
+  ),
 ];
 
 // ---------------------------------------------------------------------------
@@ -242,6 +249,48 @@ const List<JxRuleContract> jxTypographyRules = [
       'pre-line': 'pre-line',
     },
     allowArbitrary: false,
+  ),
+  JxValueRule(
+    'font-stretch',
+    properties: {
+      'fst': ['font-stretch'],
+    },
+    keywords: {
+      'condensed': '75%',
+      'semi-condensed': '87.5%',
+      'normal': '100%',
+      'semi-expanded': '112.5%',
+      'expanded': '125%',
+    },
+  ),
+  // Contour (focus clavier visible, encadrés) : `ol:2` => `outline: 2px solid`.
+  JxValueRule(
+    'outline',
+    properties: {
+      'ol': ['outline'],
+    },
+    keywords: {
+      'none': 'none',
+      '1': '1px solid',
+      '2': '2px solid',
+      '4': '4px solid',
+    },
+  ),
+  JxValueRule(
+    'outline-color',
+    properties: {
+      'olc': ['outline-color'],
+    },
+    themeCategory: JxThemeCategory.colors,
+    fallback: _hexColorFallback,
+  ),
+  JxValueRule(
+    'outline-offset',
+    properties: {
+      'olo': ['outline-offset'],
+    },
+    keywords: {'0': '0px', '1': '1px', '2': '2px', '4': '4px', '8': '8px'},
+    allowNegative: true,
   ),
 ];
 
