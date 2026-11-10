@@ -169,3 +169,4 @@ sequenceDiagram
 ### ADR 05 : Pas d'implémentation prématurée des utilitaires CSS
 - **Contexte** : La mission 01 porte sur l'initialisation de l'architecture, du monorepo et des contrats.
 - **Décision** : Fournir l'ossature, les modèles, le registre et le parseur de base, sans implémenter prématurément le catalogue exhaustif des utilitaires CSS (qui fera l'objet des missions suivantes).
+

@@ -15,5 +15,7 @@ dependencies:
     path: ../jx_theme
 
 dev_dependencies:
+  jx_parser:
+    path: ../jx_parser
   lints: ^6.0.0
   test: ^1.25.6

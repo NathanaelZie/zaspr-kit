@@ -81,7 +81,7 @@ final class JxGenerator implements JxGeneratorContract {
     required String nl,
   }) {
     final innerIndent = options.minify ? '' : '$indent${options.indent}';
-    buffer.write('$indent${rule.selector}$space{$nl');
+    buffer.write('$indent${rule.fullSelector}$space{$nl');
 
     for (final dec in rule.declarations) {
       final important = dec.isImportant ? '$space!important' : '';

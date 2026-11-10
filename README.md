@@ -122,3 +122,4 @@ melos run format:fix
 - **Méthodes et variables** : `camelCase` (ex. `resolveToken`, `generateRootVariables`).
 - **Constantes** : `camelCase` ou `SCREAMING_SNAKE_CASE` selon les recommandations officielles Dart.
 - **Classes CSS générées** : Syntaxe propriétaire JX avec modificateurs séparés par `:`, support des valeurs arbitraires et modificateur `!`.
+

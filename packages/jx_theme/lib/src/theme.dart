@@ -1,7 +1,7 @@
 import 'package:jx_core/jx_core.dart';
 
+import 'default_tokens.dart';
 import 'theme_data.dart';
-import 'token_value.dart';
 
 /// Implémentation standard du contrat de thème JX CSS.
 final class JxTheme implements JxThemeContract {
@@ -17,31 +17,13 @@ final class JxTheme implements JxThemeContract {
   JxTheme({required this.name, this.prefix = 'jx', JxThemeData? data})
     : data = data ?? JxThemeData();
 
-  /// Crée un thème minimal par défaut pour initialiser le framework.
+  /// Crée le thème par défaut du framework (palette, espacements,
+  /// breakpoints, typographie, rayons, bordures et opacités).
   factory JxTheme.defaultTheme() {
-    final themeData = JxThemeData();
-    // Tokens de base génériques
-    themeData.setToken(
-      const JxTokenValue(
-        category: 'colors',
-        key: 'transparent',
-        value: 'transparent',
-      ),
+    return JxTheme(
+      name: 'default',
+      data: JxThemeData.fromMap(JxDefaultTokens.all),
     );
-    themeData.setToken(
-      const JxTokenValue(
-        category: 'colors',
-        key: 'current',
-        value: 'currentColor',
-      ),
-    );
-    themeData.setToken(
-      const JxTokenValue(category: 'spacing', key: '0', value: '0px'),
-    );
-    themeData.setToken(
-      const JxTokenValue(category: 'spacing', key: '1', value: '0.25rem'),
-    );
-    return JxTheme(name: 'default', data: themeData);
   }
 
   @override
