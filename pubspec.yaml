@@ -1,0 +1,11 @@
+name: zaspr_kit
+description: Monorepo workspace for the ZASPR CSS framework.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.10.7
+
+dev_dependencies:
+  lints: ^6.0.0
+  melos: ^8.10.1

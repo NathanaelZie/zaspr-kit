@@ -1,0 +1,21 @@
+name: jx_cli
+description: Interface en ligne de commande pour JX CSS.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.10.7
+
+dependencies:
+  args: ^2.5.0
+  jx_core:
+    path: ../jx_core
+  jx_engine:
+    path: ../jx_engine
+
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.25.6
+
+executables:
+  jx: jx
