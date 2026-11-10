@@ -14,9 +14,7 @@ void main() {
       const rules = [
         JxCssRule(
           selector: '.c-red',
-          declarations: [
-            JxCssDeclaration(property: 'color', value: '#ff0000'),
-          ],
+          declarations: [JxCssDeclaration(property: 'color', value: '#ff0000')],
         ),
       ];
 
@@ -27,15 +25,11 @@ void main() {
     });
 
     test('supporte la minification', () {
-      const generator = JxGenerator(
-        options: JxGeneratorOptions(minify: true),
-      );
+      const generator = JxGenerator(options: JxGeneratorOptions(minify: true));
       const rules = [
         JxCssRule(
           selector: '.c-red',
-          declarations: [
-            JxCssDeclaration(property: 'color', value: '#ff0000'),
-          ],
+          declarations: [JxCssDeclaration(property: 'color', value: '#ff0000')],
         ),
       ];
 
@@ -44,22 +38,16 @@ void main() {
     });
 
     test('regroupe les règles sous media query', () {
-      const generator = JxGenerator(
-        options: JxGeneratorOptions(minify: true),
-      );
+      const generator = JxGenerator(options: JxGeneratorOptions(minify: true));
       const rules = [
         JxCssRule(
           selector: '.c-red',
-          declarations: [
-            JxCssDeclaration(property: 'color', value: '#ff0000'),
-          ],
+          declarations: [JxCssDeclaration(property: 'color', value: '#ff0000')],
         ),
         JxCssRule(
           selector: '.md\\:c-blue',
           mediaQuery: '@media (min-width: 768px)',
-          declarations: [
-            JxCssDeclaration(property: 'color', value: '#0000ff'),
-          ],
+          declarations: [JxCssDeclaration(property: 'color', value: '#0000ff')],
         ),
       ];
 
@@ -73,10 +61,7 @@ void main() {
 
     test('génère un bloc :root pour les variables CSS', () {
       const generator = JxGenerator();
-      final vars = {
-        '--jx-colors-primary': '#2563eb',
-        '--jx-spacing-4': '1rem',
-      };
+      final vars = {'--jx-colors-primary': '#2563eb', '--jx-spacing-4': '1rem'};
 
       final rootBlock = generator.generateRootVariables(vars);
       expect(rootBlock, contains(':root {'));

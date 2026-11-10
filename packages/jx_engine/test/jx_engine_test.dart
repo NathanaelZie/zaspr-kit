@@ -34,19 +34,22 @@ void main() {
       expect(result.unmatchedTokens, isEmpty);
     });
 
-    test('orchestre l\'analyse, la correspondance de règles et la génération', () {
-      final config = JxEngineConfig();
-      config.registry.register(const _TestFlexRule());
+    test(
+      'orchestre l\'analyse, la correspondance de règles et la génération',
+      () {
+        final config = JxEngineConfig();
+        config.registry.register(const _TestFlexRule());
 
-      final engine = JxEngine(config: config);
-      final result = engine.compile('flex non_matching');
+        final engine = JxEngine(config: config);
+        final result = engine.compile('flex non_matching');
 
-      expect(result.ruleCount, equals(1));
-      expect(result.matchedTokens.length, equals(1));
-      expect(result.matchedTokens.first.identifier, equals('flex'));
-      expect(result.unmatchedTokens, equals(['non_matching']));
-      expect(result.css, contains('.flex {'));
-      expect(result.css, contains('display: flex;'));
-    });
+        expect(result.ruleCount, equals(1));
+        expect(result.matchedTokens.length, equals(1));
+        expect(result.matchedTokens.first.identifier, equals('flex'));
+        expect(result.unmatchedTokens, equals(['non_matching']));
+        expect(result.css, contains('.flex {'));
+        expect(result.css, contains('display: flex;'));
+      },
+    );
   });
 }

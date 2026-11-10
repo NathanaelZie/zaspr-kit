@@ -1,11 +1,42 @@
 name: zaspr_kit
-description: Monorepo workspace for the ZASPR CSS framework.
+description: Monorepo workspace for the ZASPR Kit framework.
 version: 0.1.0
 publish_to: none
 
 environment:
   sdk: ^3.10.7
 
+workspace:
+  - packages/jx_cli
+  - packages/jx_core
+  - packages/jx_engine
+  - packages/jx_generator
+  - packages/jx_parser
+  - packages/jx_rules
+  - packages/jx_theme
+
 dev_dependencies:
   lints: ^6.0.0
   melos: ^8.10.1
+
+melos:
+  command:
+    bootstrap:
+      usePubspecOverrides: true
+
+  scripts:
+    analyze:
+      run: melos exec -- "dart analyze ."
+      description: Exécute `dart analyze` sur l'ensemble des packages.
+
+    test:
+      run: melos exec --dir-exists="test" -- "dart test"
+      description: Exécute `dart test` sur l'ensemble des packages disposant de tests.
+
+    format:
+      run: melos exec -- "dart format --output=none --set-exit-if-changed ."
+      description: Vérifie le formatage du code dans tous les packages.
+
+    format:fix:
+      run: melos exec -- "dart format ."
+      description: Corrige le formatage du code dans tous les packages.

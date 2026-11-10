@@ -6,6 +6,8 @@ publish_to: none
 environment:
   sdk: ^3.10.7
 
+resolution: workspace
+
 dependencies:
   args: ^2.5.0
   jx_core:

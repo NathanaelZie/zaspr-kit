@@ -6,6 +6,8 @@ publish_to: none
 environment:
   sdk: ^3.10.7
 
+resolution: workspace
+
 dependencies:
   jx_core:
     path: ../jx_core

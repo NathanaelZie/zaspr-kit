@@ -6,8 +6,5 @@ final class JxGeneratorOptions {
   /// Indentation utilisée en mode non-minifié (ex. 2 espaces).
   final String indent;
 
-  const JxGeneratorOptions({
-    this.minify = false,
-    this.indent = '  ',
-  });
+  const JxGeneratorOptions({this.minify = false, this.indent = '  '});
 }
