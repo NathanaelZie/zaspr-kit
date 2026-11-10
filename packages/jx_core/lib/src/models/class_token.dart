@@ -6,7 +6,10 @@ final class JxClassToken {
   /// Identifiant ou racine de l'utilitaire (ex. `c`, `m`, `p`, `flex`).
   final String identifier;
 
-  /// Valeur associée à l'utilitaire, si applicable (ex. `primary`, `4`, `#ff0000`).
+  /// Valeur associée à l'utilitaire, si applicable (ex. `primary`, `4`, `[#ff0000]`).
+  ///
+  /// Pour une valeur négative (`m:-4` ou `-m:4`), la valeur est stockée sans
+  /// le signe (`4`) et [isNegative] vaut `true`.
   final String? value;
 
   /// Liste des variantes/modificateurs (ex. `['hover']`, `['md', 'focus']`).
@@ -15,12 +18,16 @@ final class JxClassToken {
   /// Indique si la classe est marquée comme importante via un symbole dédié.
   final bool isImportant;
 
+  /// Indique si la valeur est négative (ex. `m:-4`, `-m:4`).
+  final bool isNegative;
+
   const JxClassToken({
     required this.raw,
     required this.identifier,
     this.value,
     this.variants = const [],
     this.isImportant = false,
+    this.isNegative = false,
   });
 
   /// Indique si la classe comporte des variantes conditionnelles.
@@ -28,6 +35,23 @@ final class JxClassToken {
 
   /// Indique si la classe possède une valeur spécifiée.
   bool get hasValue => value != null && value!.isNotEmpty;
+
+  /// Indique si la valeur est arbitraire, c'est-à-dire entourée de crochets
+  /// (ex. `[#ff0000]`, `[200px]`).
+  bool get isArbitrary =>
+      hasValue &&
+      value!.length > 2 &&
+      value!.startsWith('[') &&
+      value!.endsWith(']');
+
+  /// Valeur arbitraire décodée (sans crochets, `_` remplacés par des espaces),
+  /// ou `null` si la valeur n'est pas arbitraire.
+  ///
+  /// Exemple : `[calc(100%_-_1rem)]` -> `calc(100% - 1rem)`.
+  String? get arbitraryValue {
+    if (!isArbitrary) return null;
+    return value!.substring(1, value!.length - 1).replaceAll('_', ' ');
+  }
 
   @override
   bool operator ==(Object other) =>
@@ -38,6 +62,7 @@ final class JxClassToken {
           identifier == other.identifier &&
           value == other.value &&
           isImportant == other.isImportant &&
+          isNegative == other.isNegative &&
           _listEquals(variants, other.variants);
 
   @override
@@ -46,6 +71,7 @@ final class JxClassToken {
     identifier,
     value,
     isImportant,
+    isNegative,
     Object.hashAll(variants),
   );
 
@@ -59,5 +85,5 @@ final class JxClassToken {
 
   @override
   String toString() =>
-      'JxClassToken(raw: $raw, id: $identifier, value: $value, variants: $variants, important: $isImportant)';
+      'JxClassToken(raw: $raw, id: $identifier, value: $value, variants: $variants, important: $isImportant, negative: $isNegative)';
 }

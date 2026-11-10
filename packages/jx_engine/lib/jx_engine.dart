@@ -3,3 +3,4 @@ library;
 
 export 'src/engine.dart';
 export 'src/engine_config.dart';
+export 'src/variant_resolver.dart';

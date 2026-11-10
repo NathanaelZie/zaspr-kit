@@ -27,6 +27,29 @@ final class JxCssRule {
   /// Indique si la règle possède des déclarations.
   bool get hasDeclarations => declarations.isNotEmpty;
 
+  /// Indique si la règle porte une pseudo-classe ou un pseudo-élément.
+  bool get hasPseudoSelector =>
+      pseudoSelector != null && pseudoSelector!.isNotEmpty;
+
+  /// Sélecteur complet tel qu'il doit être écrit dans la feuille de style
+  /// (sélecteur de base suivi de la pseudo-classe éventuelle).
+  String get fullSelector => '$selector${pseudoSelector ?? ''}';
+
+  /// Copie la règle en surchargeant les champs spécifiés.
+  JxCssRule copyWith({
+    String? selector,
+    List<JxCssDeclaration>? declarations,
+    String? mediaQuery,
+    String? pseudoSelector,
+  }) {
+    return JxCssRule(
+      selector: selector ?? this.selector,
+      declarations: declarations ?? this.declarations,
+      mediaQuery: mediaQuery ?? this.mediaQuery,
+      pseudoSelector: pseudoSelector ?? this.pseudoSelector,
+    );
+  }
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -59,7 +82,7 @@ final class JxCssRule {
     if (hasMediaQuery) {
       buffer.write('$mediaQuery { ');
     }
-    buffer.write('$selector { ');
+    buffer.write('$fullSelector { ');
     for (final dec in declarations) {
       buffer.write('${dec.toCss()} ');
     }

@@ -1,11 +1,24 @@
 import 'package:jx_core/jx_core.dart';
 
+import 'preset.dart';
+
 /// Registre central conservant et interrogeant les règles CSS utilitaires enregistrées.
 final class JxRuleRegistry {
   final Map<String, JxRuleContract> _rulesById = {};
   final List<JxRuleContract> _rules = [];
 
   JxRuleRegistry();
+
+  /// Crée un registre pré-rempli avec le preset fourni
+  /// (par défaut [JxDefaultPreset]).
+  factory JxRuleRegistry.withPreset([
+    JxPreset preset = const JxDefaultPreset(),
+  ]) {
+    return JxRuleRegistry()..registerPreset(preset);
+  }
+
+  /// Enregistre toutes les règles d'un preset.
+  void registerPreset(JxPreset preset) => registerAll(preset.rules);
 
   /// Enregistre une nouvelle règle. Remplace toute règle existante avec le même id.
   void register(JxRuleContract rule) {
@@ -59,7 +72,7 @@ final class JxRuleRegistry {
 
   /// Réinitialise l'ensemble des règles enregistrées.
   void clear() {
-    _rulesById.clear;
+    _rulesById.clear();
     _rules.clear();
   }
 }
