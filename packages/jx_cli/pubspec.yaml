@@ -14,6 +14,12 @@ dependencies:
     path: ../jx_core
   jx_engine:
     path: ../jx_engine
+  jx_parser:
+    path: ../jx_parser
+  jx_theme:
+    path: ../jx_theme
+  path: ^1.9.0
+  yaml: ^3.1.4
 
 dev_dependencies:
   lints: ^6.0.0

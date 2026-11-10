@@ -2,6 +2,7 @@ import 'package:jx_core/jx_core.dart';
 import 'package:jx_generator/jx_generator.dart';
 import 'package:jx_parser/jx_parser.dart';
 import 'package:jx_rules/jx_rules.dart';
+import 'package:jx_theme/jx_theme.dart';
 
 import 'engine_config.dart';
 import 'variant_resolver.dart';
@@ -44,7 +45,12 @@ final class JxEngine implements JxEngineContract {
     JxVariantResolver? variantResolver,
   }) {
     final cfg = config ?? JxEngineConfig();
-    final resolver = variantResolver ?? JxVariantResolver(theme: cfg.theme);
+    final theme = cfg.theme;
+    final resolver =
+        variantResolver ??
+        (theme is JxTheme
+            ? JxVariantResolver.forTheme(theme)
+            : JxVariantResolver(theme: theme));
     return JxEngine._(
       cfg,
       parser ?? JxParser(variants: resolver.knownVariants),
@@ -124,7 +130,11 @@ final class JxEngine implements JxEngineContract {
     }
 
     final orderedRules = _sortByMedia(generatedRules);
-    final cssOutput = generator.generate(orderedRules);
+    // Le preflight précède les utilitaires mais n'apparaît pas dans `rules`.
+    final cssOutput = generator.generate([
+      if (config.config.includeReset) ...JxPreflight.rules,
+      ...orderedRules,
+    ]);
     stopwatch.stop();
 
     return JxCompileResult(

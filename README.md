@@ -113,6 +113,61 @@ melos run format
 melos run format:fix
 ```
 
+### Utiliser JX CSS dans un projet
+
+```bash
+# Crée un jx.yaml commenté à la racine du projet
+dart run jx_cli:jx init
+
+# Scanne lib/ et web/ (fichiers .dart et .html) et écrit build/jx.css
+dart run jx_cli:jx build
+
+# Reconstruit automatiquement à chaque modification
+dart run jx_cli:jx build --watch
+
+# Compile une expression et affiche le CSS (sans scan ni preflight)
+dart run jx_cli:jx build -i "flex p:4 hover:bg:blue md:p:8"
+```
+
+Options de `build` : `-c/--config`, `--content <dossier>` (répétable), `-o/--output`, `-m/--minify`, `--[no-]reset`, `-w/--watch`.
+
+Dans les fichiers `.dart`, seuls les littéraux de chaîne sont analysés (y compris les interpolations), afin que des mots-clés comme `static` ou `final` ne génèrent pas de CSS.
+
+```yaml
+# jx.yaml
+content: [lib, web]
+extensions: [dart, html]
+exclude: [generated]        # en plus de build, .dart_tool, .git, node_modules
+output: build/jx.css
+minify: false
+reset: true                 # feuille de réinitialisation (preflight)
+theme:
+  extend:                   # fusionné avec le thème par défaut
+    colors: { brand: '#0ea5e9' }
+    breakpoints: { 3xl: 1920px }
+  override:                 # remplace entièrement une catégorie
+    font-size: { sm: 0.875rem, base: 1rem }
+```
+
+### Syntaxe des classes
+
+`[variante1:variante2:]identifiant[:valeur][!]`
+
+| Classe | CSS |
+| --- | --- |
+| `flex` | `display: flex` |
+| `c:red` | `color: #ef4444` (thème) |
+| `p:4` | `padding: 1rem` (échelle d'espacement) |
+| `hover:bg:blue` | `.hover\:bg\:blue:hover { background-color: … }` |
+| `md:p:8` | `@media (min-width: 768px) { … padding: 2rem }` |
+| `c:[#ff0000]` | `color: #ff0000` (valeur arbitraire, `_` = espace) |
+| `m:-4` / `-m:4` | `margin: -1rem` |
+| `p:4!` | `padding: 1rem !important` |
+
+Utilitaires disponibles : display (`d:`, `flex`, `hidden`…), spacing (`p*:`, `m*:`), couleurs (`c:`, `bg:`), typographie (`fs:`, `fw:`, `lh:`, `ta:`), dimensions (`w:`, `h:`, `mw:`, `mh:`), bordures (`bw:`, `bwt:`/`bwr:`/`bwb:`/`bwl:`/`bwx:`/`bwy:`, `bc:`, `br:`), flexbox (`ai:`, `jc:`, `fd:`, `gap:`, `wrap`, `flw:`, `fl:`, `grow:`, `shrink:`, `as:`), grid (`cols:`, `rows:`, `span:`, `rspan:`, `gx:`, `gy:`), position (`pos:`, `relative`…, `top:`/`right:`/`bottom:`/`left:`/`inset:`, `z:`), overflow (`ov:`, `ovx:`, `ovy:`, `smt:`), opacité (`o:`), ombres (`sh:`), transitions (`tr:`, `dur:`, `ease:`), transformations (`tx:`, `ty:`, `sc:`), curseur (`cur:`).
+
+Exemple : `grid cols:1 md:cols:3 gap:6`, `sticky top:0 z:50`, `sh:md hover:sh:xl tr:default hover:-ty:1`.
+
 ---
 
 ## 5. Conventions de nommage

@@ -23,6 +23,14 @@ String? _fontWeightFallback(String value) {
   return value;
 }
 
+final RegExp _image = RegExp(
+  r'^(repeating-)?(linear|radial|conic)-gradient\(|^url\(|^image-set\(',
+);
+
+/// Les dégradés et images d'un `bg:` ciblent `background-image`.
+List<String>? _backgroundImageSelector(String value) =>
+    _image.hasMatch(value) ? const ['background-image'] : null;
+
 String? _unitlessNumberFallback(String value) =>
     _number.hasMatch(value) ? value : null;
 
@@ -118,6 +126,7 @@ const List<JxRuleContract> jxColorRules = [
     },
     themeCategory: JxThemeCategory.colors,
     fallback: _hexColorFallback,
+    propertySelector: _backgroundImageSelector,
   ),
 ];
 
@@ -231,8 +240,22 @@ const List<JxRuleContract> jxBorderRules = [
     'border-width',
     properties: {
       'bw': ['border-width'],
+      'bwt': ['border-top-width'],
+      'bwr': ['border-right-width'],
+      'bwb': ['border-bottom-width'],
+      'bwl': ['border-left-width'],
+      'bwx': ['border-left-width', 'border-right-width'],
+      'bwy': ['border-top-width', 'border-bottom-width'],
     },
     themeCategory: JxThemeCategory.borderWidth,
+  ),
+  JxValueRule(
+    'border-color',
+    properties: {
+      'bc': ['border-color'],
+    },
+    themeCategory: JxThemeCategory.colors,
+    fallback: _hexColorFallback,
   ),
   JxValueRule(
     'border-radius',

@@ -170,3 +170,19 @@ sequenceDiagram
 - **Contexte** : La mission 01 porte sur l'initialisation de l'architecture, du monorepo et des contrats.
 - **Décision** : Fournir l'ossature, les modèles, le registre et le parseur de base, sans implémenter prématurément le catalogue exhaustif des utilitaires CSS (qui fera l'objet des missions suivantes).
 
+### ADR 06 : Variantes connues du parseur (mission 02)
+- **Contexte** : `md:hidden` (variante + classe standalone) et `c:red` (identifiant + valeur) ont la même forme.
+- **Décision** : Le parseur consomme en tête les segments appartenant à un ensemble de variantes connues. Le moteur lui transmet celles du `JxVariantResolver`, lui-même construit à partir des breakpoints du thème : ajouter un breakpoint au thème suffit à le rendre utilisable.
+
+### ADR 07 : Variantes appliquées après génération (mission 02)
+- **Contexte** : Les règles utilitaires ne doivent pas connaître les pseudo-classes ni les media queries.
+- **Décision** : Une règle génère des `JxCssRule` « nues » ; le `JxVariantResolver` renseigne ensuite `pseudoSelector` et `mediaQuery`. Le moteur trie les règles de façon stable : sans media query d'abord, puis par breakpoint croissant (mobile-first).
+
+### ADR 08 : Extraction des classes par littéraux de chaîne pour Dart (mission 03)
+- **Contexte** : Un scan textuel brut d'un fichier Dart produit des faux positifs (`static` -> `position: static`, `hidden` dans un commentaire…).
+- **Décision** : `JxClassExtractor.extractFromDart` ne lit que le contenu des littéraux de chaîne (simples, triples, bruts, interpolations imbriquées) et ignore les commentaires. Les autres fichiers (HTML…) utilisent un découpage générique. Les candidats sont filtrés par le parseur puis par le registre : un mot sans règle est ignoré silencieusement.
+
+### ADR 09 : Preflight hors du modèle de règles utilitaires (mission 03)
+- **Contexte** : La réinitialisation doit précéder tous les utilitaires sans fausser les métriques de compilation.
+- **Décision** : `JxPreflight.rules` (dans `jx_generator`) est préfixé au CSS lorsque `JxConfig.includeReset` est actif, mais n'apparaît pas dans `JxCompileResult.rules`. Il fixe `border-style: solid` et `border-width: 0` afin que `bw:2` suffise à afficher une bordure.
+

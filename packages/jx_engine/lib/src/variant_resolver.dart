@@ -51,6 +51,44 @@ final class JxVariantResolver {
     this.breakpoints = defaultBreakpoints,
   });
 
+  /// Crée un résolveur dont les breakpoints sont tous ceux déclarés dans la
+  /// catégorie `breakpoints` du [theme], triés par largeur croissante.
+  ///
+  /// Permet d'ajouter un breakpoint personnalisé (ex. `3xl: 1920px`) par
+  /// simple configuration du thème.
+  factory JxVariantResolver.forTheme(
+    JxTheme theme, {
+    Map<String, String> pseudoClasses = defaultPseudoClasses,
+  }) {
+    final entries = theme.data
+        .getCategory(JxThemeCategory.breakpoints)
+        .entries
+        .toList();
+    final indexed = [
+      for (var i = 0; i < entries.length; i++)
+        (index: i, name: entries[i].key, width: _widthOf(entries[i].value)),
+    ];
+    indexed.sort((a, b) {
+      final byWidth = a.width.compareTo(b.width);
+      return byWidth != 0 ? byWidth : a.index.compareTo(b.index);
+    });
+    return JxVariantResolver(
+      theme: theme,
+      pseudoClasses: pseudoClasses,
+      breakpoints: [for (final e in indexed) e.name],
+    );
+  }
+
+  /// Largeur approximative en pixels (`px`, `em`/`rem` à 16px).
+  static double _widthOf(String value) {
+    final match = RegExp(r'^([0-9.]+)(px|r?em)?$').firstMatch(value.trim());
+    if (match == null) return double.infinity;
+    final number = double.tryParse(match.group(1)!) ?? double.infinity;
+    return match.group(2) == null || match.group(2) == 'px'
+        ? number
+        : number * 16;
+  }
+
   /// Ensemble des variantes reconnues (à transmettre au parseur).
   Set<String> get knownVariants => {...pseudoClasses.keys, ...breakpoints};
 
