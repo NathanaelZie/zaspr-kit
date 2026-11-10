@@ -6,6 +6,7 @@ abstract final class JxThemeCategory {
   static const colors = 'colors';
   static const spacing = 'spacing';
   static const breakpoints = 'breakpoints';
+  static const fontFamily = 'font-family';
   static const fontSize = 'font-size';
   static const fontWeight = 'font-weight';
   static const lineHeight = 'line-height';

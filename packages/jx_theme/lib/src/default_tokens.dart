@@ -28,6 +28,15 @@ abstract final class JxDefaultTokens {
     '2xl': '1536px',
   };
 
+  /// Familles de caractères (`ff:`), à surcharger dans jx.yaml.
+  static const Map<String, String> fontFamily = {
+    'sans':
+        'ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
+    'serif': 'ui-serif, Georgia, Cambria, "Times New Roman", serif',
+    'mono':
+        'ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace',
+  };
+
   static const Map<String, String> fontSize = {
     'xs': '0.75rem',
     'sm': '0.875rem',
@@ -106,6 +115,7 @@ abstract final class JxDefaultTokens {
     JxThemeCategory.colors: colors,
     JxThemeCategory.spacing: spacing,
     JxThemeCategory.breakpoints: breakpoints,
+    JxThemeCategory.fontFamily: fontFamily,
     JxThemeCategory.fontSize: fontSize,
     JxThemeCategory.fontWeight: fontWeight,
     JxThemeCategory.lineHeight: lineHeight,

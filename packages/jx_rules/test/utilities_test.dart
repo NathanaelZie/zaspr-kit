@@ -153,6 +153,21 @@ void main() {
     });
   });
 
+  group('Typographie (compléments)', () {
+    test('famille, interlettrage, soulignement, blancs', () {
+      expect(css('ff:mono')['font-family'], startsWith('ui-monospace'));
+      expect(css('ff:[Georgia,serif]'), {'font-family': 'Georgia,serif'});
+      expect(css('ls:tighter'), {'letter-spacing': '-0.05em'});
+      expect(css('ls:[0.2em]'), {'letter-spacing': '0.2em'});
+      expect(css('td:underline'), {'text-decoration-line': 'underline'});
+      expect(css('tdc:blue'), {'text-decoration-color': '#3b82f6'});
+      expect(css('tdt:2'), {'text-decoration-thickness': '2px'});
+      expect(css('tuo:4'), {'text-underline-offset': '4px'});
+      expect(css('ws:pre'), {'white-space': 'pre'});
+      expect(() => css('ff:comic'), throwsRule);
+    });
+  });
+
   group('Sizing', () {
     test('width / height', () {
       expect(css('w:4'), {'width': '1rem'});

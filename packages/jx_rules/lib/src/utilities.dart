@@ -174,6 +174,75 @@ const List<JxRuleContract> jxTypographyRules = [
     },
     allowArbitrary: false,
   ),
+  JxValueRule(
+    'font-family',
+    properties: {
+      'ff': ['font-family'],
+    },
+    themeCategory: JxThemeCategory.fontFamily,
+  ),
+  JxValueRule(
+    'letter-spacing',
+    properties: {
+      'ls': ['letter-spacing'],
+    },
+    keywords: {
+      'tighter': '-0.05em',
+      'tight': '-0.025em',
+      'normal': '0em',
+      'wide': '0.025em',
+      'wider': '0.05em',
+    },
+    allowNegative: true,
+  ),
+  JxValueRule(
+    'text-decoration-line',
+    properties: {
+      'td': ['text-decoration-line'],
+    },
+    keywords: {
+      'underline': 'underline',
+      'line-through': 'line-through',
+      'none': 'none',
+    },
+    allowArbitrary: false,
+  ),
+  JxValueRule(
+    'text-decoration-color',
+    properties: {
+      'tdc': ['text-decoration-color'],
+    },
+    themeCategory: JxThemeCategory.colors,
+    fallback: _hexColorFallback,
+  ),
+  JxValueRule(
+    'text-decoration-thickness',
+    properties: {
+      'tdt': ['text-decoration-thickness'],
+    },
+    keywords: {'1': '1px', '2': '2px', '4': '4px', 'auto': 'auto'},
+  ),
+  JxValueRule(
+    'text-underline-offset',
+    properties: {
+      'tuo': ['text-underline-offset'],
+    },
+    keywords: {'1': '1px', '2': '2px', '4': '4px', '8': '8px', 'auto': 'auto'},
+  ),
+  JxValueRule(
+    'white-space',
+    properties: {
+      'ws': ['white-space'],
+    },
+    keywords: {
+      'normal': 'normal',
+      'nowrap': 'nowrap',
+      'pre': 'pre',
+      'pre-wrap': 'pre-wrap',
+      'pre-line': 'pre-line',
+    },
+    allowArbitrary: false,
+  ),
 ];
 
 // ---------------------------------------------------------------------------
