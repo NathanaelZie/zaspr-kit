@@ -17,11 +17,18 @@ import 'package:jx_core/jx_core.dart';
 /// Les classes syntaxiquement invalides (segment vide, crochets non
 /// équilibrés, identifiant invalide…) produisent `null`.
 final class JxParser implements JxParserContract {
-  /// Variantes connues par défaut (pseudo-classes et breakpoints).
+  /// Variantes connues par défaut (pseudo-classes, pseudo-éléments et
+  /// breakpoints).
   static const Set<String> defaultVariants = {
     // Pseudo-classes
     'hover', 'focus', 'active', 'visited', 'disabled', 'checked',
     'focus-within', 'focus-visible', 'first', 'last', 'odd', 'even',
+    // États des champs de formulaire
+    'enabled', 'required', 'optional', 'valid', 'invalid', 'user-valid',
+    'user-invalid', 'read-only', 'placeholder-shown', 'autofill',
+    'indeterminate',
+    // Pseudo-éléments
+    'placeholder', 'file',
     // Breakpoints
     'sm', 'md', 'lg', 'xl', '2xl',
   };
