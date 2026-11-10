@@ -3,3 +3,4 @@ library;
 
 export 'src/generator.dart';
 export 'src/generator_options.dart';
+export 'src/preflight.dart';

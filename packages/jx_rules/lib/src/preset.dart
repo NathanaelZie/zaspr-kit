@@ -1,6 +1,7 @@
 import 'package:jx_core/jx_core.dart';
 
 import 'utilities.dart';
+import 'utilities_layout.dart';
 
 /// Ensemble nommé de règles pouvant être enregistré d'un bloc dans un registre.
 abstract interface class JxPreset {
@@ -29,5 +30,10 @@ final class JxDefaultPreset implements JxPreset {
     ...jxFlexboxRules,
     ...jxPositionRules,
     ...jxOpacityRules,
+    ...jxGridRules,
+    ...jxFlexRules,
+    ...jxEffectRules,
+    ...jxTransformRules,
+    ...jxLayoutRules,
   ];
 }

@@ -144,4 +144,20 @@ void main() {
       expect(result.rules.single.mediaQuery, '@media (min-width: 1920px)');
     });
   });
+
+  group('Preflight', () {
+    test('ajouté en tête si includeReset, absent de result.rules', () {
+      final engine = JxEngine(
+        config: JxEngineConfig(config: const JxConfig(includeReset: true)),
+      );
+      final result = engine.compile('flex');
+      expect(result.css, startsWith('*, ::before, ::after {'));
+      expect(result.css, contains('border-style: solid'));
+      expect(result.rules, hasLength(1));
+    });
+
+    test('absent par défaut', () {
+      expect(JxEngine().compile('flex').css, isNot(contains('box-sizing')));
+    });
+  });
 }

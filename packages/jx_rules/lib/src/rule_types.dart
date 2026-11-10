@@ -44,6 +44,13 @@ final class JxStaticRule extends JxRule {
 /// token du thème, ni un mot-clé. Retourne `null` si la valeur est invalide.
 typedef JxValueFallback = String? Function(String value);
 
+/// Sélecteur de propriétés dépendant de la valeur résolue. Retourne `null`
+/// pour conserver les propriétés par défaut de l'identifiant.
+///
+/// Exemple : `bg:[linear-gradient(…)]` doit cibler `background-image` et non
+/// `background-color`.
+typedef JxPropertySelector = List<String>? Function(String value);
+
 /// Règle à valeur : `identifiant:valeur` -> une ou plusieurs propriétés CSS.
 ///
 /// Ordre de résolution de la valeur :
@@ -75,6 +82,13 @@ final class JxValueRule extends JxRule {
   /// Résolveur de repli optionnel.
   final JxValueFallback? fallback;
 
+  /// Redirection optionnelle vers d'autres propriétés selon la valeur.
+  final JxPropertySelector? propertySelector;
+
+  /// Gabarit appliqué à la valeur finale, `{}` étant remplacé par celle-ci
+  /// (ex. `translateY({})`, `repeat({}, minmax(0, 1fr))`).
+  final String? template;
+
   const JxValueRule(
     super.id, {
     required this.properties,
@@ -84,6 +98,8 @@ final class JxValueRule extends JxRule {
     this.allowArbitrary = true,
     this.allowNegative = false,
     this.fallback,
+    this.propertySelector,
+    this.template,
   });
 
   @override
@@ -108,15 +124,17 @@ final class JxValueRule extends JxRule {
       );
     }
     if (token.isNegative) value = _negate(value, token);
+    final targets = propertySelector?.call(value) ?? props;
+    final rendered = template?.replaceAll('{}', value) ?? value;
 
     return [
       JxCssRule(
         selector: escapeSelector(token.raw),
         declarations: [
-          for (final property in props)
+          for (final property in targets)
             JxCssDeclaration(
               property: property,
-              value: value,
+              value: rendered,
               isImportant: token.isImportant,
             ),
         ],
@@ -152,5 +170,51 @@ final class JxValueRule extends JxRule {
     throw JxRuleException(
       'La valeur "$value" ne peut pas être négative (${token.raw}).',
     );
+  }
+}
+
+/// Règle à mots-clés produisant plusieurs déclarations distinctes
+/// (ex. `tr:colors` -> `transition-property`, `transition-duration`…).
+final class JxKeywordRule extends JxRule {
+  /// Identifiants acceptés (ex. `{'tr'}`).
+  final Set<String> identifiers;
+
+  /// Table `mot-clé -> (propriété -> valeur)`.
+  final Map<String, Map<String, String>> values;
+
+  const JxKeywordRule(
+    super.id, {
+    required this.identifiers,
+    required this.values,
+  });
+
+  @override
+  bool matches(JxClassToken token) =>
+      token.hasValue &&
+      !token.isNegative &&
+      !token.isArbitrary &&
+      identifiers.contains(token.identifier);
+
+  @override
+  List<JxCssRule> generate(JxClassToken token, JxThemeContract theme) {
+    final declarations = values[token.value];
+    if (declarations == null) {
+      throw JxRuleException(
+        'Valeur "${token.value}" invalide pour "${token.identifier}".',
+      );
+    }
+    return [
+      JxCssRule(
+        selector: escapeSelector(token.raw),
+        declarations: [
+          for (final entry in declarations.entries)
+            JxCssDeclaration(
+              property: entry.key,
+              value: entry.value,
+              isImportant: token.isImportant,
+            ),
+        ],
+      ),
+    ];
   }
 }

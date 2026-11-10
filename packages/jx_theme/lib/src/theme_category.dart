@@ -12,4 +12,5 @@ abstract final class JxThemeCategory {
   static const borderRadius = 'border-radius';
   static const borderWidth = 'border-width';
   static const opacity = 'opacity';
+  static const shadow = 'shadow';
 }

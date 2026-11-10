@@ -106,6 +106,19 @@ void main() {
       expect(css('bg:[rgb(0,0,0)]'), {'background-color': 'rgb(0,0,0)'});
     });
 
+    test('dégradés et images -> background-image', () {
+      expect(css('bg:[linear-gradient(180deg,#fff,#000)]'), {
+        'background-image': 'linear-gradient(180deg,#fff,#000)',
+      });
+      expect(css('bg:[radial-gradient(circle,red,blue)]'), {
+        'background-image': 'radial-gradient(circle,red,blue)',
+      });
+      expect(css('bg:[url(/img/hero.png)]'), {
+        'background-image': 'url(/img/hero.png)',
+      });
+      expect(css('bg:[rgb(0,0,0)]'), {'background-color': 'rgb(0,0,0)'});
+    });
+
     test('important', () {
       expect(css('c:black!'), {'color': '#000000 !important'});
     });
