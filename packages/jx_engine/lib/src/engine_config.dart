@@ -17,6 +17,6 @@ final class JxEngineConfig {
     this.config = const JxConfig(),
     JxThemeContract? theme,
     JxRuleRegistry? registry,
-  })  : theme = theme ?? JxTheme.defaultTheme(),
-        registry = registry ?? JxRuleRegistry();
+  }) : theme = theme ?? JxTheme.defaultTheme(),
+       registry = registry ?? JxRuleRegistry();
 }

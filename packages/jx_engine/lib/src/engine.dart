@@ -26,13 +26,14 @@ final class JxEngine implements JxEngineContract {
     JxEngineConfig? config,
     this.parser = const JxParser(),
     JxGeneratorContract? generator,
-  })  : config = config ?? JxEngineConfig(),
-        generator = generator ??
-            JxGenerator(
-              options: JxGeneratorOptions(
-                minify: config?.config.minify ?? false,
-              ),
-            );
+  }) : config = config ?? JxEngineConfig(),
+       generator =
+           generator ??
+           JxGenerator(
+             options: JxGeneratorOptions(
+               minify: config?.config.minify ?? false,
+             ),
+           );
 
   @override
   JxCompileResult compile(String classNames) {

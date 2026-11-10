@@ -34,9 +34,7 @@ void main() {
     test('gère correctement les sélecteurs et déclarations', () {
       const rule = JxCssRule(
         selector: '.btn',
-        declarations: [
-          JxCssDeclaration(property: 'cursor', value: 'pointer'),
-        ],
+        declarations: [JxCssDeclaration(property: 'cursor', value: 'pointer')],
       );
 
       expect(rule.selector, equals('.btn'));
@@ -49,9 +47,7 @@ void main() {
         selector: '.btn:hover',
         mediaQuery: '@media (min-width: 640px)',
         pseudoSelector: ':hover',
-        declarations: [
-          JxCssDeclaration(property: 'opacity', value: '0.8'),
-        ],
+        declarations: [JxCssDeclaration(property: 'opacity', value: '0.8')],
       );
 
       expect(rule.hasMediaQuery, isTrue);
@@ -88,9 +84,7 @@ void main() {
         rules: [
           JxCssRule(
             selector: '.test',
-            declarations: [
-              JxCssDeclaration(property: 'color', value: 'red'),
-            ],
+            declarations: [JxCssDeclaration(property: 'color', value: 'red')],
           ),
         ],
         matchedTokens: [

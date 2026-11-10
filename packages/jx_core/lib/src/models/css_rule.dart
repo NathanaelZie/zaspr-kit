@@ -39,16 +39,13 @@ final class JxCssRule {
 
   @override
   int get hashCode => Object.hash(
-        selector,
-        mediaQuery,
-        pseudoSelector,
-        Object.hashAll(declarations),
-      );
+    selector,
+    mediaQuery,
+    pseudoSelector,
+    Object.hashAll(declarations),
+  );
 
-  static bool _listEquals(
-    List<JxCssDeclaration> a,
-    List<JxCssDeclaration> b,
-  ) {
+  static bool _listEquals(List<JxCssDeclaration> a, List<JxCssDeclaration> b) {
     if (a.length != b.length) return false;
     for (var i = 0; i < a.length; i++) {
       if (a[i] != b[i]) return false;

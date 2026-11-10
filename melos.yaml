@@ -1,8 +1,5 @@
 name: jx_css
 
-packages:
-  - packages/**
-
 command:
   bootstrap:
     usePubspecOverrides: true

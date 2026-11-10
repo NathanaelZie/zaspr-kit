@@ -21,11 +21,9 @@ void main() {
   group('JxThemeData', () {
     test('stocke et extrait des tokens par catégorie', () {
       final data = JxThemeData();
-      data.setToken(const JxTokenValue(
-        category: 'spacing',
-        key: '4',
-        value: '1rem',
-      ));
+      data.setToken(
+        const JxTokenValue(category: 'spacing', key: '4', value: '1rem'),
+      );
 
       expect(data.getValue('spacing', '4'), equals('1rem'));
       expect(data.getValue('spacing', 'unknown'), isNull);

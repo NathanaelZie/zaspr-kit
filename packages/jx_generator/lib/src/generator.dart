@@ -7,9 +7,7 @@ final class JxGenerator implements JxGeneratorContract {
   /// Options de configuration du générateur.
   final JxGeneratorOptions options;
 
-  const JxGenerator({
-    this.options = const JxGeneratorOptions(),
-  });
+  const JxGenerator({this.options = const JxGeneratorOptions()});
 
   @override
   String generate(List<JxCssRule> rules) {
@@ -87,7 +85,9 @@ final class JxGenerator implements JxGeneratorContract {
 
     for (final dec in rule.declarations) {
       final important = dec.isImportant ? '$space!important' : '';
-      buffer.write('$innerIndent${dec.property}:$space${dec.value}$important;$nl');
+      buffer.write(
+        '$innerIndent${dec.property}:$space${dec.value}$important;$nl',
+      );
     }
 
     buffer.write('$indent}');

@@ -6,7 +6,7 @@ final class JxThemeData {
   final Map<String, Map<String, JxTokenValue>> _categories;
 
   JxThemeData([Map<String, Map<String, JxTokenValue>>? categories])
-      : _categories = categories ?? {};
+    : _categories = categories ?? {};
 
   /// Récupère un token spécifique dans une catégorie.
   JxTokenValue? getToken(String category, String key) {

@@ -6,9 +6,7 @@ void main() {
   final css = generator.generate([
     const JxCssRule(
       selector: '.c-primary',
-      declarations: [
-        JxCssDeclaration(property: 'color', value: '#2563eb'),
-      ],
+      declarations: [JxCssDeclaration(property: 'color', value: '#2563eb')],
     ),
   ]);
 

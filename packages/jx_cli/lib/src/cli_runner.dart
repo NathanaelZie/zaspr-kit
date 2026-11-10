@@ -12,14 +12,11 @@ final class JxCliRunner {
   final StringSink out;
   final StringSink err;
 
-  JxCliRunner({
-    JxEngine? engine,
-    StringSink? out,
-    StringSink? err,
-  })  : engine = engine ?? JxEngine(),
-        out = out ?? stdout,
-        err = err ?? stderr,
-        argParser = ArgParser() {
+  JxCliRunner({JxEngine? engine, StringSink? out, StringSink? err})
+    : engine = engine ?? JxEngine(),
+      out = out ?? stdout,
+      err = err ?? stderr,
+      argParser = ArgParser() {
     _setupArgs();
   }
 
@@ -69,7 +66,8 @@ final class JxCliRunner {
         return 0;
       }
 
-      if (results['help'] as bool || results.command == null && arguments.isEmpty) {
+      if (results['help'] as bool ||
+          results.command == null && arguments.isEmpty) {
         out.writeln('JX CSS - Framework CSS Utility-First en Dart\n');
         out.writeln('Usage: jx <commande> [options]\n');
         out.writeln(argParser.usage);
@@ -80,11 +78,15 @@ final class JxCliRunner {
       if (command != null && command.name == 'build') {
         final input = command['input'] as String? ?? '';
         final result = engine.compile(input);
-        out.writeln('Compilation réussie: ${result.ruleCount} règle(s) générée(s).');
+        out.writeln(
+          'Compilation réussie: ${result.ruleCount} règle(s) générée(s).',
+        );
         return 0;
       }
 
-      err.writeln('Commande inconnue. Utilisez --help pour voir les commandes disponibles.');
+      err.writeln(
+        'Commande inconnue. Utilisez --help pour voir les commandes disponibles.',
+      );
       return 1;
     } on FormatException catch (e) {
       err.writeln('Erreur d\'arguments: ${e.message}');

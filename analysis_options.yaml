@@ -18,4 +18,3 @@ linter:
     - unawaited_futures
     - avoid_void_async
     - directives_ordering
-    - sort_constructors_first

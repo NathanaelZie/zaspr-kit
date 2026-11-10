@@ -42,12 +42,12 @@ final class JxClassToken {
 
   @override
   int get hashCode => Object.hash(
-        raw,
-        identifier,
-        value,
-        isImportant,
-        Object.hashAll(variants),
-      );
+    raw,
+    identifier,
+    value,
+    isImportant,
+    Object.hashAll(variants),
+  );
 
   static bool _listEquals(List<String> a, List<String> b) {
     if (a.length != b.length) return false;
