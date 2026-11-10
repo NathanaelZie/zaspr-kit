@@ -24,6 +24,26 @@ final class JxVariantResolver {
     'last': ':last-child',
     'odd': ':nth-child(odd)',
     'even': ':nth-child(even)',
+    // États des champs de formulaire
+    'enabled': ':enabled',
+    'required': ':required',
+    'optional': ':optional',
+    'valid': ':valid',
+    'invalid': ':invalid',
+    'user-valid': ':user-valid',
+    'user-invalid': ':user-invalid',
+    'read-only': ':read-only',
+    'placeholder-shown': ':placeholder-shown',
+    'autofill': ':autofill',
+    'indeterminate': ':indeterminate',
+  };
+
+  /// Pseudo-éléments supportés par défaut. Toujours placés en fin de
+  /// sélecteur, quel que soit l'ordre d'écriture des variantes :
+  /// `placeholder:focus:c:gray` -> `.…:focus::placeholder`.
+  static const Map<String, String> defaultPseudoElements = {
+    'placeholder': '::placeholder',
+    'file': '::file-selector-button',
   };
 
   /// Breakpoints supportés par défaut, du plus petit au plus grand.
@@ -42,12 +62,16 @@ final class JxVariantResolver {
   /// Table `variante -> pseudo-classe CSS`.
   final Map<String, String> pseudoClasses;
 
+  /// Table `variante -> pseudo-élément CSS`.
+  final Map<String, String> pseudoElements;
+
   /// Noms des breakpoints, dans l'ordre croissant (détermine l'ordre de sortie).
   final List<String> breakpoints;
 
   const JxVariantResolver({
     required this.theme,
     this.pseudoClasses = defaultPseudoClasses,
+    this.pseudoElements = defaultPseudoElements,
     this.breakpoints = defaultBreakpoints,
   });
 
@@ -59,6 +83,7 @@ final class JxVariantResolver {
   factory JxVariantResolver.forTheme(
     JxTheme theme, {
     Map<String, String> pseudoClasses = defaultPseudoClasses,
+    Map<String, String> pseudoElements = defaultPseudoElements,
   }) {
     final entries = theme.data
         .getCategory(JxThemeCategory.breakpoints)
@@ -75,6 +100,7 @@ final class JxVariantResolver {
     return JxVariantResolver(
       theme: theme,
       pseudoClasses: pseudoClasses,
+      pseudoElements: pseudoElements,
       breakpoints: [for (final e in indexed) e.name],
     );
   }
@@ -90,11 +116,17 @@ final class JxVariantResolver {
   }
 
   /// Ensemble des variantes reconnues (à transmettre au parseur).
-  Set<String> get knownVariants => {...pseudoClasses.keys, ...breakpoints};
+  Set<String> get knownVariants => {
+    ...pseudoClasses.keys,
+    ...pseudoElements.keys,
+    ...breakpoints,
+  };
 
   /// Indique si la variante est prise en charge.
   bool supports(String variant) =>
-      pseudoClasses.containsKey(variant) || breakpoints.contains(variant);
+      pseudoClasses.containsKey(variant) ||
+      pseudoElements.containsKey(variant) ||
+      breakpoints.contains(variant);
 
   /// Media query associée à un breakpoint (ex. `@media (min-width: 768px)`).
   String mediaQueryFor(String breakpoint) {
@@ -109,25 +141,38 @@ final class JxVariantResolver {
 
   /// Applique les [variants] à [rule] et retourne la règle transformée.
   ///
-  /// Lève une [JxRuleException] si une variante n'est pas supportée.
+  /// Lève une [JxRuleException] si une variante n'est pas supportée, ou si
+  /// plusieurs pseudo-éléments sont combinés (interdit en CSS).
   JxCssRule apply(JxCssRule rule, List<String> variants) {
     if (variants.isEmpty) return rule;
 
     final pseudo = StringBuffer(rule.pseudoSelector ?? '');
+    String? pseudoElement;
     final conditions = <String>[
       if (rule.hasMediaQuery) _stripMedia(rule.mediaQuery!),
     ];
 
     for (final variant in variants) {
       final pseudoClass = pseudoClasses[variant];
+      final element = pseudoElements[variant];
       if (pseudoClass != null) {
         pseudo.write(pseudoClass);
+      } else if (element != null) {
+        if (pseudoElement != null) {
+          throw JxRuleException(
+            'Un seul pseudo-élément par classe : "$variant" en plus de '
+            '"$pseudoElement".',
+          );
+        }
+        pseudoElement = element;
       } else if (breakpoints.contains(variant)) {
         conditions.add(_stripMedia(mediaQueryFor(variant)));
       } else {
         throw JxRuleException('Variante "$variant" non supportée.');
       }
     }
+    // Le pseudo-élément clôt toujours le sélecteur.
+    if (pseudoElement != null) pseudo.write(pseudoElement);
 
     return JxCssRule(
       selector: rule.selector,

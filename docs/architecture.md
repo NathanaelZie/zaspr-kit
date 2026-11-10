@@ -186,3 +186,11 @@ sequenceDiagram
 - **Contexte** : La réinitialisation doit précéder tous les utilitaires sans fausser les métriques de compilation.
 - **Décision** : `JxPreflight.rules` (dans `jx_generator`) est préfixé au CSS lorsque `JxConfig.includeReset` est actif, mais n'apparaît pas dans `JxCompileResult.rules`. Il fixe `border-style: solid` et `border-width: 0` afin que `bw:2` suffise à afficher une bordure.
 
+
+### ADR 10 : Pseudo-éléments en fin de sélecteur (mission 05, formulaires)
+- **Contexte** : Les champs de formulaire se stylent via des pseudo-éléments (`::placeholder`, `::file-selector-button`) qui, en CSS, doivent clore le sélecteur et ne peuvent pas être cumulés. Or l'ordre d'écriture des variantes JX est libre (`placeholder:focus:c:gray`).
+- **Décision** : Le `JxVariantResolver` distingue `pseudoElements` de `pseudoClasses`. Les pseudo-classes sont concaténées dans l'ordre d'écriture, le pseudo-élément est toujours ajouté en dernier (`.…:focus::placeholder`). Combiner deux pseudo-éléments lève une `JxRuleException`, remontée en avertissement par le moteur. Les états de champs (`invalid`, `user-invalid`, `required`, `read-only`, `placeholder-shown`, `autofill`, `indeterminate`…) sont de simples pseudo-classes.
+
+### ADR 11 : Anneau de focus par propriété personnalisée (mission 05, formulaires)
+- **Contexte** : L'anneau de focus doit pouvoir changer de largeur et de couleur indépendamment, chacun avec ses propres variantes (`focus-visible:ring:2 ringc:blue`), alors qu'une `box-shadow` est une valeur unique.
+- **Décision** : `ring:` génère `box-shadow: 0 0 0 <largeur> var(--jx-ring-color, currentColor)` et `ringc:` ne définit que `--jx-ring-color`. Conséquence assumée : `ring:` et `sh:` écrivent tous deux `box-shadow` et ne se cumulent pas sur un même élément.

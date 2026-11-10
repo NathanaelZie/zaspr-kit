@@ -159,5 +159,91 @@ void main() {
     test('absent par défaut', () {
       expect(JxEngine().compile('flex').css, isNot(contains('box-sizing')));
     });
+
+    test('réinitialise les champs de formulaire', () {
+      final engine = JxEngine(
+        config: JxEngineConfig(config: const JxConfig(includeReset: true)),
+      );
+      final css = engine.compile('flex').css;
+      expect(css, contains('input::placeholder, textarea::placeholder {'));
+      expect(css, contains('resize: vertical'));
+      expect(css, contains(':disabled {\n  cursor: default;\n}'));
+    });
+  });
+
+  group('Formulaires', () {
+    final resolver = JxVariantResolver(theme: JxTheme.defaultTheme());
+    const base = JxCssRule(
+      selector: '.x',
+      declarations: [JxCssDeclaration(property: 'color', value: 'red')],
+    );
+    final engine = JxEngine();
+
+    test('pseudo-classes d\'état', () {
+      expect(resolver.apply(base, ['invalid']).fullSelector, '.x:invalid');
+      expect(
+        resolver.apply(base, ['user-invalid']).fullSelector,
+        '.x:user-invalid',
+      );
+      expect(
+        resolver.apply(base, ['placeholder-shown']).fullSelector,
+        '.x:placeholder-shown',
+      );
+      expect(resolver.apply(base, ['read-only']).fullSelector, '.x:read-only');
+    });
+
+    test('le pseudo-élément clôt toujours le sélecteur', () {
+      expect(
+        resolver.apply(base, ['placeholder']).fullSelector,
+        '.x::placeholder',
+      );
+      expect(
+        resolver.apply(base, ['placeholder', 'focus']).fullSelector,
+        '.x:focus::placeholder',
+      );
+      expect(
+        resolver.apply(base, ['md', 'file', 'hover']).fullSelector,
+        '.x:hover::file-selector-button',
+      );
+    });
+
+    test('deux pseudo-éléments sont refusés', () {
+      expect(
+        () => resolver.apply(base, ['placeholder', 'file']),
+        throwsA(isA<JxRuleException>()),
+      );
+      final result = engine.compile('placeholder:file:c:red');
+      expect(result.rules, isEmpty);
+      expect(result.warnings.single, contains('Un seul pseudo-élément'));
+    });
+
+    test('champ complet compilé de bout en bout', () {
+      final result = engine.compile(
+        'app:none w:full px:4 py:2 br:md bw:1 bc:gray accent:blue caret:blue '
+        'placeholder:c:gray focus:ol:none focus-visible:ring:2 ringc:blue '
+        'user-invalid:bc:red disabled:o:50 rsz:none fsz:content',
+      );
+      expect(result.unmatchedTokens, isEmpty);
+      expect(result.warnings, isEmpty);
+
+      final css = result.css;
+      expect(
+        css,
+        contains(
+          '.app\\:none {\n  -webkit-appearance: none;\n  appearance: none;\n}',
+        ),
+      );
+      expect(css, contains('.placeholder\\:c\\:gray::placeholder {'));
+      expect(
+        css,
+        contains(
+          '.focus-visible\\:ring\\:2:focus-visible {\n'
+          '  box-shadow: 0 0 0 2px var(--jx-ring-color, currentColor);\n}',
+        ),
+      );
+      expect(css, contains('.ringc\\:blue {\n  --jx-ring-color: #3b82f6;\n}'));
+      expect(css, contains('.user-invalid\\:bc\\:red:user-invalid {'));
+      expect(css, contains('.fsz\\:content {\n  field-sizing: content;\n}'));
+    });
   });
 }

@@ -6,4 +6,5 @@ export 'src/rule.dart';
 export 'src/rule_registry.dart';
 export 'src/rule_types.dart';
 export 'src/utilities.dart';
+export 'src/utilities_forms.dart';
 export 'src/utilities_layout.dart';
