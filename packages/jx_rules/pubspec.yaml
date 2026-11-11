@@ -1,7 +1,10 @@
 name: jx_rules
-description: Definition des regles CSS et registre de regles pour JX CSS.
+description: "Catalogue des utilitaires JX CSS et registre de règles : affichage, espacement, couleurs, typographie, grille, flexbox, formulaires…"
 version: 0.1.0
-publish_to: none
+topics:
+  - css
+  - utility-first
+  - jaspr
 
 environment:
   sdk: ^3.10.7
@@ -9,13 +12,10 @@ environment:
 resolution: workspace
 
 dependencies:
-  jx_core:
-    path: ../jx_core
-  jx_theme:
-    path: ../jx_theme
+  jx_core: ^0.1.0
+  jx_theme: ^0.1.0
 
 dev_dependencies:
-  jx_parser:
-    path: ../jx_parser
+  jx_parser: ^0.1.0
   lints: ^6.0.0
   test: ^1.25.6

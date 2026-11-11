@@ -1,7 +1,10 @@
 name: jx_parser
-description: Analyse et interpretation de la syntaxe des classes pour JX CSS.
+description: "Parseur de la syntaxe de classes JX CSS [variantes:]identifiant[:valeur][!] : variantes, valeurs arbitraires, négatives et importance."
 version: 0.1.0
-publish_to: none
+topics:
+  - css
+  - parser
+  - jaspr
 
 environment:
   sdk: ^3.10.7
@@ -9,8 +12,7 @@ environment:
 resolution: workspace
 
 dependencies:
-  jx_core:
-    path: ../jx_core
+  jx_core: ^0.1.0
 
 dev_dependencies:
   lints: ^6.0.0

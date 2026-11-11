@@ -1,7 +1,10 @@
 name: jx_core
-description: Modeles, interfaces, erreurs et contrats communs du framework JX CSS.
+description: "Modèles, contrats et exceptions partagés par les packages de JX CSS, le framework CSS utilitaire écrit en Dart pour Jaspr."
 version: 0.1.0
-publish_to: none
+topics:
+  - css
+  - jaspr
+  - web
 
 environment:
   sdk: ^3.10.7

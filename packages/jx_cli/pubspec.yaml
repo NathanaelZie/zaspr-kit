@@ -1,7 +1,11 @@
 name: jx_cli
-description: Interface en ligne de commande pour JX CSS.
+description: "CLI de JX CSS : extrait les classes utilitaires de vos fichiers Dart et génère une feuille de style minimale, avec mode watch."
 version: 0.1.0
-publish_to: none
+topics:
+  - css
+  - cli
+  - jaspr
+  - utility-first
 
 environment:
   sdk: ^3.10.7
@@ -10,14 +14,10 @@ resolution: workspace
 
 dependencies:
   args: ^2.5.0
-  jx_core:
-    path: ../jx_core
-  jx_engine:
-    path: ../jx_engine
-  jx_parser:
-    path: ../jx_parser
-  jx_theme:
-    path: ../jx_theme
+  jx_core: ^0.1.0
+  jx_engine: ^0.1.0
+  jx_parser: ^0.1.0
+  jx_theme: ^0.1.0
   path: ^1.9.0
   yaml: ^3.1.4
 

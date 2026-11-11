@@ -182,6 +182,46 @@ const List<JxRuleContract> jxTypographyRules = [
     allowArbitrary: false,
   ),
   JxValueRule(
+    'vertical-align',
+    properties: {
+      'va': ['vertical-align'],
+    },
+    keywords: {
+      'baseline': 'baseline',
+      'top': 'top',
+      'middle': 'middle',
+      'bottom': 'bottom',
+      'text-top': 'text-top',
+      'text-bottom': 'text-bottom',
+      'sub': 'sub',
+      'super': 'super',
+    },
+  ),
+  JxValueRule(
+    'list-style-type',
+    properties: {
+      'lst': ['list-style-type'],
+    },
+    keywords: {
+      'none': 'none',
+      'disc': 'disc',
+      'circle': 'circle',
+      'square': 'square',
+      'decimal': 'decimal',
+    },
+  ),
+  JxValueRule(
+    'list-style-position',
+    properties: {
+      'lsp': ['list-style-position'],
+    },
+    keywords: {
+      'inside': 'inside',
+      'outside': 'outside',
+    },
+    allowArbitrary: false,
+  ),
+  JxValueRule(
     'font-family',
     properties: {
       'ff': ['font-family'],
@@ -344,6 +384,27 @@ const List<JxRuleContract> jxSizingRules = [
     },
     themeCategory: JxThemeCategory.spacing,
     keywords: {..._sizeKeywords, 'none': 'none', 'screen': '100vh'},
+    disallowed: {'auto'},
+  ),
+  // `mnw:0` est indispensable aux enfants de grilles et de flex qui doivent
+  // pouvoir rétrécir ; `mnh:` fixe la hauteur de départ d'un champ
+  // `fsz:content`.
+  JxValueRule(
+    'min-width',
+    properties: {
+      'mnw': ['min-width'],
+    },
+    themeCategory: JxThemeCategory.spacing,
+    keywords: {..._sizeKeywords, 'screen': '100vw'},
+    disallowed: {'auto'},
+  ),
+  JxValueRule(
+    'min-height',
+    properties: {
+      'mnh': ['min-height'],
+    },
+    themeCategory: JxThemeCategory.spacing,
+    keywords: {..._sizeKeywords, 'screen': '100vh'},
     disallowed: {'auto'},
   ),
 ];

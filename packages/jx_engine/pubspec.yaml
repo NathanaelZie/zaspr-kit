@@ -1,7 +1,10 @@
 name: jx_engine
-description: Orchestration du moteur de compilation pour JX CSS.
+description: "Moteur de compilation JX CSS : transforme des classes utilitaires en CSS trié mobile-first, utilisable côté serveur ou navigateur."
 version: 0.1.0
-publish_to: none
+topics:
+  - css
+  - utility-first
+  - jaspr
 
 environment:
   sdk: ^3.10.7
@@ -9,16 +12,11 @@ environment:
 resolution: workspace
 
 dependencies:
-  jx_core:
-    path: ../jx_core
-  jx_generator:
-    path: ../jx_generator
-  jx_parser:
-    path: ../jx_parser
-  jx_rules:
-    path: ../jx_rules
-  jx_theme:
-    path: ../jx_theme
+  jx_core: ^0.1.0
+  jx_generator: ^0.1.0
+  jx_parser: ^0.1.0
+  jx_rules: ^0.1.0
+  jx_theme: ^0.1.0
 
 dev_dependencies:
   lints: ^6.0.0

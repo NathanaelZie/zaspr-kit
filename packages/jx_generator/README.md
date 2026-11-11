@@ -1,16 +1,45 @@
 # jx_generator
 
-Package de génération et de formatage de feuilles de style CSS pour le framework **JX CSS**.
+Le générateur CSS de JX CSS : sérialisation standard ou minifiée, regroupement des requêtes média et preflight de réinitialisation.
 
-## Responsabilités
+> Ce package fait partie de **JX CSS** (ZASPR Kit), un framework CSS utilitaire écrit en Dart.
+> Pour styler une application, installez plutôt [`jx_cli`](https://pub.dev/packages/jx_cli).
 
-- Sérialisation des règles CSS (`JxCssRule`) et déclarations (`JxCssDeclaration`).
-- Formatage standard ou minifié (`JxGeneratorOptions`).
-- Regroupement des règles déclarées sous `@media`.
-- Génération du bloc `:root` pour l'injection des variables CSS du thème.
-- Implémentation du contrat `JxGeneratorContract` (`JxGenerator`).
+## Installation
 
-## Dépendances
+```bash
+dart pub add jx_generator
+```
 
-- `jx_core` (interne)
-- `jx_theme` (interne)
+## Utilisation
+
+```dart
+import 'package:jx_core/jx_core.dart';
+import 'package:jx_generator/jx_generator.dart';
+
+void main() {
+  const generator = JxGenerator();
+  print(generator.generate([
+    const JxCssRule(
+      selector: '.c-primary',
+      declarations: [JxCssDeclaration(property: 'color', value: '#2563eb')],
+    ),
+  ]));
+}
+```
+
+## La famille JX CSS
+
+| Package | Rôle |
+| :--- | :--- |
+| [`jx_cli`](https://pub.dev/packages/jx_cli) | Ligne de commande : `jx init`, `jx build`. **Point d'entrée pour la plupart des projets.** |
+| [`jx_engine`](https://pub.dev/packages/jx_engine) | Moteur de compilation, utilisable comme bibliothèque. |
+| [`jx_rules`](https://pub.dev/packages/jx_rules) | Catalogue des utilitaires et registre de règles. |
+| [`jx_theme`](https://pub.dev/packages/jx_theme) | Tokens de design et thème par défaut. |
+| [`jx_parser`](https://pub.dev/packages/jx_parser) | Parseur de la syntaxe des classes. |
+| [`jx_generator`](https://pub.dev/packages/jx_generator) | Sérialisation du CSS et preflight. |
+| [`jx_core`](https://pub.dev/packages/jx_core) | Modèles, contrats et exceptions partagés. |
+
+## Licence
+
+MIT.

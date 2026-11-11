@@ -146,6 +146,15 @@ void main() {
       expect(css('lh:1.4'), {'line-height': '1.4'});
     });
 
+    test('vertical-align / list-style', () {
+      expect(css('va:middle'), {'vertical-align': 'middle'});
+      expect(css('va:[-2px]'), {'vertical-align': '-2px'});
+      expect(css('lst:disc'), {'list-style-type': 'disc'});
+      expect(css('lst:[lower-roman]'), {'list-style-type': 'lower-roman'});
+      expect(css('lsp:inside'), {'list-style-position': 'inside'});
+      expect(() => css('lsp:[x]'), throwsRule);
+    });
+
     test('text-align', () {
       expect(css('ta:center'), {'text-align': 'center'});
       expect(css('ta:justify'), {'text-align': 'justify'});
@@ -196,6 +205,14 @@ void main() {
       expect(css('mw:full'), {'max-width': '100%'});
       expect(css('mh:screen'), {'max-height': '100vh'});
       expect(() => css('mw:auto'), throwsRule);
+    });
+
+    test('min-width / min-height', () {
+      expect(css('mnw:0'), {'min-width': '0px'});
+      expect(css('mnw:full'), {'min-width': '100%'});
+      expect(css('mnh:[8rem]'), {'min-height': '8rem'});
+      expect(css('mnh:screen'), {'min-height': '100vh'});
+      expect(() => css('mnh:auto'), throwsRule);
     });
   });
 
