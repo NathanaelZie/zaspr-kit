@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "zaspr-site",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "cd website && jaspr serve -p 8081 --web-port 5468 --proxy-port 5568"],
+      "port": 8081
+    }
+  ]
+}
