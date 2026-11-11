@@ -1,7 +1,10 @@
 name: jx_theme
-description: Tokens, variables CSS et resolution de themes pour JX CSS.
+description: "Tokens de design, thème par défaut et variables CSS de JX CSS : couleurs, espacements, typographie et breakpoints extensibles."
 version: 0.1.0
-publish_to: none
+topics:
+  - css
+  - design-tokens
+  - jaspr
 
 environment:
   sdk: ^3.10.7
@@ -9,8 +12,7 @@ environment:
 resolution: workspace
 
 dependencies:
-  jx_core:
-    path: ../jx_core
+  jx_core: ^0.1.0
 
 dev_dependencies:
   lints: ^6.0.0

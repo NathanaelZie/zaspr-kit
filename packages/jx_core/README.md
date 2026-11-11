@@ -1,16 +1,44 @@
 # jx_core
 
-Package central du framework **JX CSS** contenant les modèles de données fondamentaux, les interfaces et contrats d'architecture, ainsi que les exceptions standards.
+Les modèles, contrats et exceptions partagés par tous les packages de JX CSS. Ce package n'a aucune dépendance.
 
-## Responsabilités
+> Ce package fait partie de **JX CSS** (ZASPR Kit), un framework CSS utilitaire écrit en Dart.
+> Pour styler une application, installez plutôt [`jx_cli`](https://pub.dev/packages/jx_cli).
 
-- **Modèles de données** : `JxCssDeclaration`, `JxCssRule`, `JxClassToken`, `JxCompileResult`, `JxConfig`.
-- **Contrats & Interfaces** :
-  - `JxParserContract` : interface pour l'analyse syntaxique.
-  - `JxRuleContract` : interface pour la déclaration de règles utilitaires.
-  - `JxThemeContract` : interface pour la résolution de tokens et variables de thème.
-  - `JxGeneratorContract` : interface pour la génération et le formatage CSS.
-  - `JxEngineContract` : interface pour le moteur de compilation.
-- **Erreurs & Exceptions** : `JxException`, `JxParseException`, `JxRuleException`, `JxThemeException`, `JxConfigException`.
+## Installation
 
-Ce package ne dépend d'aucun autre package interne du monorepo.
+```bash
+dart pub add jx_core
+```
+
+## Utilisation
+
+```dart
+import 'package:jx_core/jx_core.dart';
+
+void main() {
+  const rule = JxCssRule(
+    selector: '.c-primary',
+    declarations: [JxCssDeclaration(property: 'color', value: '#2563eb')],
+  );
+  print(rule);
+}
+```
+
+Contrats : `JxParserContract`, `JxRuleContract`, `JxThemeContract`, `JxGeneratorContract`, `JxEngineContract`. Exceptions : `JxParseException`, `JxRuleException`, `JxThemeException`, `JxConfigException`.
+
+## La famille JX CSS
+
+| Package | Rôle |
+| :--- | :--- |
+| [`jx_cli`](https://pub.dev/packages/jx_cli) | Ligne de commande : `jx init`, `jx build`. **Point d'entrée pour la plupart des projets.** |
+| [`jx_engine`](https://pub.dev/packages/jx_engine) | Moteur de compilation, utilisable comme bibliothèque. |
+| [`jx_rules`](https://pub.dev/packages/jx_rules) | Catalogue des utilitaires et registre de règles. |
+| [`jx_theme`](https://pub.dev/packages/jx_theme) | Tokens de design et thème par défaut. |
+| [`jx_parser`](https://pub.dev/packages/jx_parser) | Parseur de la syntaxe des classes. |
+| [`jx_generator`](https://pub.dev/packages/jx_generator) | Sérialisation du CSS et preflight. |
+| [`jx_core`](https://pub.dev/packages/jx_core) | Modèles, contrats et exceptions partagés. |
+
+## Licence
+
+MIT.
