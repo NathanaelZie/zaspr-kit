@@ -26,21 +26,3 @@ dev_dependencies:
 
 jaspr:
   mode: static
-
-# Tant que les packages JX ne sont pas publiés sur pub.dev, ils sont lus
-# depuis le dépôt local. Supprimez ce bloc une fois la publication faite.
-dependency_overrides:
-  jx_core:
-    path: ../packages/jx_core
-  jx_theme:
-    path: ../packages/jx_theme
-  jx_parser:
-    path: ../packages/jx_parser
-  jx_rules:
-    path: ../packages/jx_rules
-  jx_generator:
-    path: ../packages/jx_generator
-  jx_engine:
-    path: ../packages/jx_engine
-  jx_cli:
-    path: ../packages/jx_cli
