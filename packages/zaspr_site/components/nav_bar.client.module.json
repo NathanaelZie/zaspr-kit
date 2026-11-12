@@ -1,1 +1,0 @@
-{"name":"NavBar","id":["zaspr_site","lib/components/nav_bar.dart"],"import":"package:zaspr_site/components/nav_bar.dart","params":[{"name":"current","isNamed":true,"decoder":"p['current'] as String","encoder":"c.current"}]}
