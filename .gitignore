@@ -14,3 +14,6 @@ pubspec_overrides.yaml
 .DS_Store
 Thumbs.db
 
+
+# Site officiel : développé à part, hors du dépôt du framework.
+website/
