@@ -1,6 +1,8 @@
 name: jx_rules
 description: "Catalogue des utilitaires JX CSS et registre de règles : affichage, espacement, couleurs, typographie, grille, flexbox, formulaires…"
 version: 0.1.0
+repository: https://github.com/NathanaelZie/zaspr-kit/tree/main/packages/jx_rules
+issue_tracker: https://github.com/NathanaelZie/zaspr-kit/issues
 topics:
   - css
   - utility-first

@@ -1,6 +1,8 @@
 name: jx_parser
 description: "Parseur de la syntaxe de classes JX CSS [variantes:]identifiant[:valeur][!] : variantes, valeurs arbitraires, négatives et importance."
 version: 0.1.0
+repository: https://github.com/NathanaelZie/zaspr-kit/tree/main/packages/jx_parser
+issue_tracker: https://github.com/NathanaelZie/zaspr-kit/issues
 topics:
   - css
   - parser

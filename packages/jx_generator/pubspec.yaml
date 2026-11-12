@@ -1,6 +1,8 @@
 name: jx_generator
 description: "Générateur CSS de JX CSS : sérialisation standard ou minifiée, regroupement des requêtes média et preflight de réinitialisation."
 version: 0.1.0
+repository: https://github.com/NathanaelZie/zaspr-kit/tree/main/packages/jx_generator
+issue_tracker: https://github.com/NathanaelZie/zaspr-kit/issues
 topics:
   - css
   - codegen
