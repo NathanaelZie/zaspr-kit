@@ -1,1 +1,0 @@
-{"name":"DocsMobileNav","id":["zaspr_site","lib/components/docs_layout.dart"],"import":"package:zaspr_site/components/docs_layout.dart","params":[{"name":"current","isNamed":true,"decoder":"p['current'] as String","encoder":"c.current"}]}

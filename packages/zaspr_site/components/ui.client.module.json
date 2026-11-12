@@ -1,1 +1,0 @@
-{"name":"CopyCommand","id":["zaspr_site","lib/components/ui.dart"],"import":"package:zaspr_site/components/ui.dart","params":[{"name":"command","isNamed":false,"decoder":"p['command'] as String","encoder":"c.command"}]}
