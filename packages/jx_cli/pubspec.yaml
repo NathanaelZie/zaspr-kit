@@ -1,6 +1,8 @@
 name: jx_cli
 description: "CLI de JX CSS : extrait les classes utilitaires de vos fichiers Dart et génère une feuille de style minimale, avec mode watch."
 version: 0.1.0
+repository: https://github.com/NathanaelZie/zaspr-kit/tree/main/packages/jx_cli
+issue_tracker: https://github.com/NathanaelZie/zaspr-kit/issues
 topics:
   - css
   - cli
