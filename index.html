@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <base href="/zaspr-kit/"/>
+    <meta charset="utf-8"/>
+    <link href="/zaspr-kit/favicon.svg" rel="icon" type="image/svg+xml"/>
+    <link href="/zaspr-kit/jx.css" rel="stylesheet"/>
+    <!--$-->
+    <title>ZASPR Kit : Du CSS utilitaire, écrit en Dart.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="ZASPR Kit compile des classes comme md:hover:bg:blue en CSS, directement à partir de vos composants Jaspr. Un parseur, un thème et une CLI, entièrement en Dart."/>
+    <!--/-->
+    <script src="main.client.dart.js" defer></script>
+  </head>
+  <body>
+    <div class="ff:text c:snow bg:abyss">
+      <!--@nav_bar data={"current":"/"}-->
+      <header class="sticky top:0 z:50 bg:[rgba(11,13,18,0.9)] bwb:1 bc:edge">
+        <nav class="mw:[90rem] mx:auto px:5 md:px:8 flex ai:center jc:between gap:6 h:[4rem]" aria-label="Navigation principale">
+          <div class="flex ai:center gap:8">
+            <a class="flex ai:center gap:3 br:md fw:bold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/">
+              <span class="flex ai:center jc:center shrink:0 c:white ff:code fw:extrabold bg:[linear-gradient(135deg,#3B6CF0,#2DD4BF)] w:8 h:8 br:lg fs:base" aria-hidden="true">Z</span>
+              ZASPR Kit
+            </a>
+            <div class="hidden md:flex ai:center gap:1 fs:sm">
+              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/docs/introduction">Documentation</a>
+              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/docs/utilitaires">Utilitaires</a>
+              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/bac-a-sable">Bac à sable</a>
+            </div>
+          </div>
+          <div class="flex ai:center gap:3">
+            <span class="hidden sm:inline ff:code fs:xs c:haze px:2 py:1 br:md bg:[rgba(255,255,255,0.06)]">v0.1.0</span>
+            <button class="md:hidden px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold c:snow bg:[rgba(255,255,255,0.06)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+          </div>
+        </nav>
+      </header>
+      <!--/@nav_bar-->
+      <main>
+        <section id="top" class="relative ov:hidden">
+          <div class="absolute inset:0 z:0 bg:[radial-gradient(42rem_30rem_at_12%_-6%,rgba(59,108,240,0.38),transparent_70%),radial-gradient(38rem_26rem_at_92%_4%,rgba(45,212,191,0.22),transparent_70%),radial-gradient(34rem_22rem_at_55%_62%,rgba(255,181,71,0.1),transparent_70%)]" aria-hidden="true"></div>
+          <div class="absolute inset:0 z:0 bg:[linear-gradient(to_bottom,transparent_55%,#0B0D12)]" aria-hidden="true"></div>
+          <div class="mw:[76rem] mx:auto px:5 md:px:8 relative z:10 flex fd:col ai:center ta:center pt:16 md:pt:[6.5rem]">
+            <span class="flex ai:center jc:center shrink:0 c:white ff:code fw:extrabold bg:[linear-gradient(135deg,#3B6CF0,#2DD4BF)] w:[4.5rem] h:[4.5rem] br:2xl fs:4xl sh:2xl" aria-hidden="true">Z</span>
+            <a class="inline-flex ai:center gap:2 mt:8 px:4 py:2 br:full fs:sm fw:medium c:variant bg:[rgba(255,181,71,0.1)] bw:1 bc:[rgba(255,181,71,0.3)] tr:all hover:bg:[rgba(255,181,71,0.18)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/formulaires">
+              Nouveau : utilitaires de formulaires
+              <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+            </a>
+            <h1 class="mt:6 fs:[clamp(2.4rem,6vw,4.5rem)] fw:extrabold lh:[1.05] ls:tighter c:snow mw:[18ch]">Construisez vos interfaces Jaspr avec du CSS utilitaire</h1>
+            <p class="mt:6 fs:lg md:fs:xl lh:relaxed c:haze mw:[42rem]">
+              ZASPR Kit compile des classes comme md:hover:bg:blue en CSS, directement à partir de vos composants Jaspr. Un parseur, un thème et une CLI, entièrement en Dart.
+            </p>
+            <div class="flex fd:col md:fd:row ai:stretch gap:3 mt:10 w:full md:w:auto">
+              <!--@ui data={"command":"dart run jx_cli:jx build"}-->
+              <div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left">
+                <code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart run jx_cli:jx build</code>
+                <button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copier la commande" title="Copier">
+                  <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg>
+                </button>
+              </div>
+              <!--/@ui-->
+              <a class="inline-flex ai:center jc:center gap:2 px:6 py:3 mnh:[48px] br:lg fw:semibold c:white bg:brand sh:lg tr:all hover:bg:[#4E7CF5] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/introduction">
+                <svg class="shrink:0 w:5 h:5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Lire la documentation
+              </a>
+            </div>
+            <p class="mt:5 fs:sm c:haze">Version actuelle : v0.1.0. Dart 3.10 et Jaspr 0.22 minimum.</p>
+          </div>
+          <div class="mw:[76rem] mx:auto px:5 md:px:8 relative z:10 pt:16 md:pt:[5rem] pb:8">
+            <div class="br:2xl bw:1 bc:edge bg:deep sh:2xl ov:hidden">
+              <div class="px:5 md:px:10 pt:8 md:pt:10 pb:8">
+                <p class="fs:sm fw:semibold c:haze mb:4">Anatomie d'une classe</p>
+                <code class="inline-flex wrap ff:code fs:[clamp(1.6rem,6vw,3.5rem)] fw:bold ls:tight">
+                  <span class="c:variant">md</span>
+                  <span class="c:haze">:</span>
+                  <span class="c:variant">hover</span>
+                  <span class="c:haze">:</span>
+                  <span class="c:ident">bg</span>
+                  <span class="c:haze">:</span>
+                  <span class="c:value">blue</span>
+                  <span class="c:bang">!</span>
+                </code>
+              </div>
+              <div class="grid cols:1 sm:cols:2 lg:cols:4 gap:6 px:5 md:px:10 pb:8">
+                <div class="pt:4 bwt:2 bc:variant">
+                  <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Variantes</h3><code class="ff:code fs:sm c:variant">md: hover:</code></div>
+                  <p class="mt:2 fs:sm lh:relaxed c:haze">Breakpoints et états, cumulables. Les pseudo-éléments se placent toujours en fin de sélecteur.</p>
+                </div>
+                <div class="pt:4 bwt:2 bc:ident">
+                  <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Identifiant</h3><code class="ff:code fs:sm c:ident">bg</code></div>
+                  <p class="mt:2 fs:sm lh:relaxed c:haze">La propriété, en abrégé : bg, p, fs, cols, ring…</p>
+                </div>
+                <div class="pt:4 bwt:2 bc:value">
+                  <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Valeur</h3><code class="ff:code fs:sm c:value">blue</code></div>
+                  <p class="mt:2 fs:sm lh:relaxed c:haze">Un token du thème, un mot-clé ou une valeur arbitraire entre crochets.</p>
+                </div>
+                <div class="pt:4 bwt:2 bc:bang">
+                  <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Importance</h3><code class="ff:code fs:sm c:bang">!</code></div>
+                  <p class="mt:2 fs:sm lh:relaxed c:haze">Facultatif : ajoute !important à la déclaration.</p>
+                </div>
+              </div>
+              <div class="p:5 md:px:10 md:py:8 bg:[rgba(0,0,0,0.22)] bwt:1 bc:edge">
+                <p class="fs:sm fw:semibold c:haze mb:3">CSS produit par le moteur</p>
+                <pre class="ff:code fs:sm lh:relaxed ov:auto ws:pre c:[#C9D1DE]"><code>@media (min-width: 768px) {
+  .md\:hover\:bg\:blue\!:hover {
+    background-color: #3b82f6 !important;
+  }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="demarrer" class="smt:16 py:[4.5rem] md:py:[6rem] ">
+          <div class="mw:[76rem] mx:auto px:5 md:px:8">
+            <div class="mb:12 mw:[48rem]">
+              <div class="flex ai:center jc:center w:12 h:12 br:xl mb:6 c:beam bg:[rgba(59,108,240,0.16)]">
+                <svg class="shrink:0 w:6 h:6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 17l6-6-6-6"></path><path d="M12 19h8"></path></svg>
+              </div>
+              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">Démarrez en trois étapes</h2>
+              <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
+                Ajoutez la CLI, générez la configuration, lancez la compilation. La feuille produite ne contient que les classes présentes dans vos sources.
+              </p>
+              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/installation">
+                Lire le guide d'installation
+                <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+            <ol class="grid cols:1 lg:cols:3 gap:6">
+              <li class="flex fd:col gap:4 mnw:0">
+                <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:[rgba(59,108,240,0.16)]">1</span><h3 class="fs:lg fw:bold c:snow">Ajouter la dépendance</h3></div><!--@ui data={"command":"dart pub add dev:jx_cli"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart pub add dev:jx_cli</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copier la commande" title="Copier"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
+              </li>
+              <li class="flex fd:col gap:4 mnw:0">
+                <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:[rgba(59,108,240,0.16)]">2</span><h3 class="fs:lg fw:bold c:snow">Créer la configuration</h3></div><!--@ui data={"command":"dart run jx_cli:jx init"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart run jx_cli:jx init</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copier la commande" title="Copier"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
+              </li>
+              <li class="flex fd:col gap:4 mnw:0">
+                <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:[rgba(59,108,240,0.16)]">3</span><h3 class="fs:lg fw:bold c:snow">Compiler en continu</h3></div><!--@ui data={"command":"dart run jx_cli:jx build -w"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart run jx_cli:jx build -w</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copier la commande" title="Copier"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
+              </li>
+            </ol>
+          </div>
+        </section>
+        <section id="syntaxe" class="smt:16 py:[4.5rem] md:py:[6rem] ">
+          <div class="mw:[76rem] mx:auto px:5 md:px:8">
+            <div class="mb:12 mw:[48rem]">
+              <div class="flex ai:center jc:center w:12 h:12 br:xl mb:6 c:variant bg:[rgba(255,181,71,0.14)]">
+                <svg class="shrink:0 w:6 h:6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg>
+              </div>
+              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">Une syntaxe lisible et prévisible</h2>
+              <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
+                Variantes, identifiant, valeur et importance : chaque classe se lit de gauche à droite. Le CSS ci-dessous est compilé par le moteur au rendu de cette page.
+              </p>
+              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/syntaxe">
+                Découvrir la syntaxe
+                <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+            <div class="mb:8 br:2xl bw:1 bc:edge bg:deep ov:hidden">
+              <div class="grid cols:1 md:cols:[minmax(0,14rem)_minmax(0,1fr)] gap:3 md:gap:6 px:5 py:4">
+                <div>
+                  <code class="inline-flex wrap ff:code fs:sm fw:semibold"><span class="c:ident">p</span><span class="c:haze">:</span><span class="c:value">4</span></code>
+                </div>
+                <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:[#C9D1DE] ov:auto ws:pre"><code>.p\:4 {
+  padding: 1rem;
+}</code></pre>
+              </div>
+              <div class="grid cols:1 md:cols:[minmax(0,14rem)_minmax(0,1fr)] gap:3 md:gap:6 px:5 py:4 bwt:1 bc:edge">
+                <div>
+                  <code class="inline-flex wrap ff:code fs:sm fw:semibold">
+                    <span class="c:variant">md</span>
+                    <span class="c:haze">:</span>
+                    <span class="c:ident">cols</span>
+                    <span class="c:haze">:</span>
+                    <span class="c:value">3</span>
+                  </code>
+                </div>
+                <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:[#C9D1DE] ov:auto ws:pre"><code>@media (min-width: 768px) {
+  .md\:cols\:3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}</code></pre>
+              </div>
+              <div class="grid cols:1 md:cols:[minmax(0,14rem)_minmax(0,1fr)] gap:3 md:gap:6 px:5 py:4 bwt:1 bc:edge">
+                <div>
+                  <code class="inline-flex wrap ff:code fs:sm fw:semibold">
+                    <span class="c:variant">hover</span>
+                    <span class="c:haze">:</span>
+                    <span class="c:ident">bg</span>
+                    <span class="c:haze">:</span>
+                    <span class="c:value">blue-700</span>
+                  </code>
+                </div>
+                <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:[#C9D1DE] ov:auto ws:pre"><code>.hover\:bg\:blue-700:hover {
+  background-color: #1d4ed8;
+}</code></pre>
+              </div>
+              <div class="grid cols:1 md:cols:[minmax(0,14rem)_minmax(0,1fr)] gap:3 md:gap:6 px:5 py:4 bwt:1 bc:edge">
+                <div>
+                  <code class="inline-flex wrap ff:code fs:sm fw:semibold">
+                    <span class="c:ident">w</span>
+                    <span class="c:haze">:</span>
+                    <span class="c:value">[calc(100%_-_2rem)]</span>
+                  </code>
+                </div>
+                <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:[#C9D1DE] ov:auto ws:pre"><code>.w\:\[calc\(100\%_-_2rem\)\] {
+  width: calc(100% - 2rem);
+}</code></pre>
+              </div>
+              <div class="grid cols:1 md:cols:[minmax(0,14rem)_minmax(0,1fr)] gap:3 md:gap:6 px:5 py:4 bwt:1 bc:edge">
+                <div>
+                  <code class="inline-flex wrap ff:code fs:sm fw:semibold">
+                    <span class="c:variant">focus-visible</span>
+                    <span class="c:haze">:</span>
+                    <span class="c:ident">ring</span>
+                    <span class="c:haze">:</span>
+                    <span class="c:value">2</span>
+                  </code>
+                </div>
+                <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:[#C9D1DE] ov:auto ws:pre"><code>.focus-visible\:ring\:2:focus-visible {
+  box-shadow: 0 0 0 2px var(--jx-ring-color, currentColor);
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="theme" class="smt:16 py:[4.5rem] md:py:[6rem] ">
+          <div class="mw:[76rem] mx:auto px:5 md:px:8">
+            <div class="mb:12 mw:[48rem]">
+              <div class="flex ai:center jc:center w:12 h:12 br:xl mb:6 c:ident bg:[rgba(45,212,191,0.14)]">
+                <svg class="shrink:0 w:6 h:6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M12 2 2 7l10 5 10-5-10-5z"></path>
+                  <path d="M2 17l10 5 10-5"></path>
+                  <path d="M2 12l10 5 10-5"></path>
+                </svg>
+              </div>
+              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">Un thème, vos tokens</h2>
+              <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
+                Couleurs, espacements, typographie et breakpoints sont des tokens. Étendez-les dans jx.yaml sans rien redéfinir, ou remplacez une catégorie entière.
+              </p>
+              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/theme">
+                Explorer le thème
+                <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+            <div class="grid cols:1 lg:cols:2 gap:6 ai:start">
+              <figure class="mb:6 br:xl bw:1 bc:edge ov:hidden">
+                <figcaption class="px:5 py:2 ff:code fs:xs c:haze bg:shelf bwb:1 bc:edge">jx.yaml</figcaption>
+                <pre class="ff:code fs:sm lh:relaxed p:5 ov:auto ws:pre bg:[#07090D] c:[#C9D1DE]"><code># jx.yaml
+content:
+  - lib
+extensions: [dart]
+output: web/jx.css
+minify: false
+reset: true
+
+theme:
+  extend:
+    colors:
+      brand: '#2DD4BF'
+    breakpoints:
+      3xl: 1920px</code></pre>
+              </figure>
+              <div class="br:2xl bw:1 bc:edge bg:deep p:5 md:p:6">
+                <p class="fs:sm fw:semibold c:haze mb:4">Palette par défaut</p>
+                <ul class="flex fd:col gap:3">
+                  <li class="grid cols:[5rem_minmax(0,1fr)] gap:3 ai:center">
+                    <code class="ff:code fs:xs c:haze">gray</code><div class="grid cols:5 gap:1"><span class="block h:6 br:sm" style="background-color: #f3f4f6" title="gray-100"></span><span class="block h:6 br:sm" style="background-color: #d1d5db" title="gray-300"></span><span class="block h:6 br:sm" style="background-color: #6b7280" title="gray-500"></span><span class="block h:6 br:sm" style="background-color: #374151" title="gray-700"></span><span class="block h:6 br:sm" style="background-color: #111827" title="gray-900"></span></div>
+                  </li>
+                  <li class="grid cols:[5rem_minmax(0,1fr)] gap:3 ai:center">
+                    <code class="ff:code fs:xs c:haze">red</code><div class="grid cols:5 gap:1"><span class="block h:6 br:sm" style="background-color: #fee2e2" title="red-100"></span><span class="block h:6 br:sm" style="background-color: #fca5a5" title="red-300"></span><span class="block h:6 br:sm" style="background-color: #ef4444" title="red-500"></span><span class="block h:6 br:sm" style="background-color: #b91c1c" title="red-700"></span><span class="block h:6 br:sm" style="background-color: #7f1d1d" title="red-900"></span></div>
+                  </li>
+                  <li class="grid cols:[5rem_minmax(0,1fr)] gap:3 ai:center">
+                    <code class="ff:code fs:xs c:haze">orange</code><div class="grid cols:5 gap:1"><span class="block h:6 br:sm" style="background-color: #ffedd5" title="orange-100"></span><span class="block h:6 br:sm" style="background-color: #fdba74" title="orange-300"></span><span class="block h:6 br:sm" style="background-color: #f97316" title="orange-500"></span><span class="block h:6 br:sm" style="background-color: #c2410c" title="orange-700"></span><span class="block h:6 br:sm" style="background-color: #7c2d12" title="orange-900"></span></div>
+                  </li>
+                  <li class="grid cols:[5rem_minmax(0,1fr)] gap:3 ai:center">
+                    <code class="ff:code fs:xs c:haze">yellow</code><div class="grid cols:5 gap:1"><span class="block h:6 br:sm" style="background-color: #fef9c3" title="yellow-100"></span><span class="block h:6 br:sm" style="background-color: #fde047" title="yellow-300"></span><span class="block h:6 br:sm" style="background-color: #eab308" title="yellow-500"></span><span class="block h:6 br:sm" style="background-color: #a16207" title="yellow-700"></span><span class="block h:6 br:sm" style="background-color: #713f12" title="yellow-900"></span></div>
+                  </li>
+                  <li class="grid cols:[5rem_minmax(0,1fr)] gap:3 ai:center">
+                    <code class="ff:code fs:xs c:haze">green</code><div class="grid cols:5 gap:1"><span class="block h:6 br:sm" style="background-color: #dcfce7" title="green-100"></span><span class="block h:6 br:sm" style="background-color: #86efac" title="green-300"></span><span class="block h:6 br:sm" style="background-color: #22c55e" title="green-500"></span><span class="block h:6 br:sm" style="background-color: #15803d" title="green-700"></span><span class="block h:6 br:sm" style="background-color: #14532d" title="green-900"></span></div>
+                  </li>
+                  <li class="grid cols:[5rem_minmax(0,1fr)] gap:3 ai:center">
+                    <code class="ff:code fs:xs c:haze">teal</code><div class="grid cols:5 gap:1"><span class="block h:6 br:sm" style="background-color: #ccfbf1" title="teal-100"></span><span class="block h:6 br:sm" style="background-color: #5eead4" title="teal-300"></span><span class="block h:6 br:sm" style="background-color: #14b8a6" title="teal-500"></span><span class="block h:6 br:sm" style="background-color: #0f766e" title="teal-700"></span><span class="block h:6 br:sm" style="background-color: #134e4a" title="teal-900"></span></div>
+                  </li>
+                  <li class="grid cols:[5rem_minmax(0,1fr)] gap:3 ai:center">
+                    <code class="ff:code fs:xs c:haze">blue</code><div class="grid cols:5 gap:1"><span class="block h:6 br:sm" style="background-color: #dbeafe" title="blue-100"></span><span class="block h:6 br:sm" style="background-color: #93c5fd" title="blue-300"></span><span class="block h:6 br:sm" style="background-color: #3b82f6" title="blue-500"></span><span class="block h:6 br:sm" style="background-color: #1d4ed8" title="blue-700"></span><span class="block h:6 br:sm" style="background-color: #1e3a8a" title="blue-900"></span></div>
+                  </li>
+                  <li class="grid cols:[5rem_minmax(0,1fr)] gap:3 ai:center">
+                    <code class="ff:code fs:xs c:haze">indigo</code><div class="grid cols:5 gap:1"><span class="block h:6 br:sm" style="background-color: #e0e7ff" title="indigo-100"></span><span class="block h:6 br:sm" style="background-color: #a5b4fc" title="indigo-300"></span><span class="block h:6 br:sm" style="background-color: #6366f1" title="indigo-500"></span><span class="block h:6 br:sm" style="background-color: #4338ca" title="indigo-700"></span><span class="block h:6 br:sm" style="background-color: #312e81" title="indigo-900"></span></div>
+                  </li>
+                  <li class="grid cols:[5rem_minmax(0,1fr)] gap:3 ai:center">
+                    <code class="ff:code fs:xs c:haze">purple</code><div class="grid cols:5 gap:1"><span class="block h:6 br:sm" style="background-color: #f3e8ff" title="purple-100"></span><span class="block h:6 br:sm" style="background-color: #d8b4fe" title="purple-300"></span><span class="block h:6 br:sm" style="background-color: #a855f7" title="purple-500"></span><span class="block h:6 br:sm" style="background-color: #7e22ce" title="purple-700"></span><span class="block h:6 br:sm" style="background-color: #581c87" title="purple-900"></span></div>
+                  </li>
+                  <li class="grid cols:[5rem_minmax(0,1fr)] gap:3 ai:center">
+                    <code class="ff:code fs:xs c:haze">pink</code><div class="grid cols:5 gap:1"><span class="block h:6 br:sm" style="background-color: #fce7f3" title="pink-100"></span><span class="block h:6 br:sm" style="background-color: #f9a8d4" title="pink-300"></span><span class="block h:6 br:sm" style="background-color: #ec4899" title="pink-500"></span><span class="block h:6 br:sm" style="background-color: #be185d" title="pink-700"></span><span class="block h:6 br:sm" style="background-color: #831843" title="pink-900"></span></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="py:[3rem]">
+          <div class="mw:[76rem] mx:auto px:5 md:px:8">
+            <div class="flex fd:col md:fd:row md:ai:center jc:between gap:8 p:8 md:p:12 br:3xl bg:[linear-gradient(135deg,rgba(59,108,240,0.28),rgba(45,212,191,0.14))] bw:1 bc:edge">
+              <div class="mw:[36rem]">
+                <div class="flex ai:center jc:center w:12 h:12 br:xl mb:6 c:snow bg:[rgba(255,255,255,0.1)]">
+                  <svg class="shrink:0 w:6 h:6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                </div>
+                <h2 class="fs:[clamp(1.75rem,3.5vw,2.5rem)] fw:extrabold lh:[1.1] ls:tight c:snow">Le moteur tourne dans votre navigateur</h2>
+                <p class="mt:4 fs:lg lh:relaxed c:[#D3DAE6]">
+                  Le même moteur que la CLI, compilé en JavaScript par Jaspr. Saisissez des classes et lisez le CSS produit, sans rien installer.
+                </p>
+              </div>
+              <a class="inline-flex ai:center jc:center gap:2 px:6 py:3 mnh:[48px] br:lg fw:semibold c:white bg:brand sh:lg tr:all hover:bg:[#4E7CF5] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 shrink:0" href="/zaspr-kit/bac-a-sable">
+                Ouvrir le bac à sable
+                <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+        </section>
+        <section id="utilitaires" class="smt:16 py:[4.5rem] md:py:[6rem] ">
+          <div class="mw:[76rem] mx:auto px:5 md:px:8">
+            <div class="mb:12 mw:[48rem]">
+              <div class="flex ai:center jc:center w:12 h:12 br:xl mb:6 c:value bg:[rgba(125,211,252,0.14)]">
+                <svg class="shrink:0 w:6 h:6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+              </div>
+              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">72 règles, onze familles</h2>
+              <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
+                Chaque famille a sa page : propriétés produites, valeurs acceptées et exemples compilés. La référence est générée à partir du registre de règles.
+              </p>
+              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires">
+                Parcourir la référence
+                <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+            <div class="grid cols:1 sm:cols:2 lg:cols:3 gap:4">
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/affichage">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Affichage</h3><span class="ff:code fs:xs c:haze">2 règles</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Type de boîte, visibilité et débordement des éléments.</p>
+              </a>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/espacement">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Espacement</h3><span class="ff:code fs:xs c:haze">2 règles</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Marges internes et externes, sur l'échelle d'espacement du thème.</p>
+              </a>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/couleurs">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Couleurs</h3><span class="ff:code fs:xs c:haze">3 règles</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Couleur du texte, du fond et des bordures, depuis la palette du thème.</p>
+              </a>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/typographie">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Typographie</h3><span class="ff:code fs:xs c:haze">18 règles</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Familles, tailles, graisses, interlignage, décorations et espaces du texte.</p>
+              </a>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/dimensions">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Dimensions</h3><span class="ff:code fs:xs c:haze">6 règles</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Largeurs et hauteurs, minimales et maximales.</p>
+              </a>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/bordures">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Bordures</h3><span class="ff:code fs:xs c:haze">3 règles</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Épaisseur, couleur, style et rayon des bordures.</p>
+              </a>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/flexbox">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Flexbox</h3><span class="ff:code fs:xs c:haze">9 règles</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Direction, alignement, retour à la ligne et dimensionnement des éléments flexibles.</p>
+              </a>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/grille">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Grille</h3><span class="ff:code fs:xs c:haze">5 règles</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Colonnes, lignes, placement et espacement des grilles CSS.</p>
+              </a>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/position">
+                <div class="flex ai:baseline jc:between gap:3">
+                  <h3 class="fw:bold c:snow">Position et calques</h3>
+                  <span class="ff:code fs:xs c:haze">6 règles</span>
+                </div>
+                <p class="fs:sm lh:relaxed c:haze">Positionnement, décalages, empilement et défilement.</p>
+              </a>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/effets">
+                <div class="flex ai:baseline jc:between gap:3">
+                  <h3 class="fw:bold c:snow">Effets et transitions</h3>
+                  <span class="ff:code fs:xs c:haze">9 règles</span>
+                </div>
+                <p class="fs:sm lh:relaxed c:haze">Opacité, ombres, transitions et transformations.</p>
+              </a>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/formulaires">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Formulaires</h3><span class="ff:code fs:xs c:haze">9 règles</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Apparence native, curseur, redimensionnement, sélection et anneau de focus.</p>
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="bwt:1 bc:edge bg:[#090B0F]">
+        <div class="mw:[90rem] mx:auto px:5 md:px:8 grid cols:1 sm:cols:2 lg:cols:[2fr_1fr_1fr_1fr] gap:10 py:16">
+          <div class="flex fd:col gap:4 mw:[22rem]">
+            <a class="inline-flex ai:center gap:3 fw:bold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/">
+              <span class="flex ai:center jc:center shrink:0 c:white ff:code fw:extrabold bg:[linear-gradient(135deg,#3B6CF0,#2DD4BF)] w:8 h:8 br:lg fs:base" aria-hidden="true">Z</span>
+              ZASPR Kit
+            </a>
+            <p class="fs:sm lh:relaxed c:haze">Framework CSS utilitaire pour Dart et Jaspr, conçu et testé en Dart.</p>
+            <p class="fs:sm lh:relaxed c:haze">
+              Ce site est construit avec Jaspr et stylé uniquement avec <code class="inline-flex wrap ff:code fs:sm"><span class="c:ident">jx</span><span class="c:haze">:</span><span class="c:value">css</span></code>.
+            </p>
+            <p class="ff:code fs:xs c:haze">Version 0.1.0</p>
+          </div>
+          <div>
+            <h2 class="fs:sm fw:semibold c:snow mb:4">Premiers pas</h2>
+            <ul class="flex fd:col gap:3 fs:sm">
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/introduction">Introduction</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/installation">Installation</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/configuration">Configuration</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/cli">Ligne de commande</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/jaspr">Utilisation avec Jaspr</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="fs:sm fw:semibold c:snow mb:4">Fondamentaux</h2>
+            <ul class="flex fd:col gap:3 fs:sm">
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/syntaxe">Syntaxe des classes</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/variantes">Variantes</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/theme">Thème</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/architecture">Architecture</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="fs:sm fw:semibold c:snow mb:4">Outils</h2>
+            <ul class="flex fd:col gap:3 fs:sm">
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/bac-a-sable">Bac à sable</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires">Référence des utilitaires</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/theme">Thème par défaut</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
