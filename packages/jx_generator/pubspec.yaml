@@ -1,6 +1,6 @@
 name: jx_generator
 description: "JX CSS generator: standard or minified serialization, media query grouping and preflight reset."
-version: 0.3.0
+version: 0.0.1
 repository: https://github.com/NathanaelZie/zaspr-kit/tree/main/packages/jx_generator
 issue_tracker: https://github.com/NathanaelZie/zaspr-kit/issues
 topics:
@@ -14,8 +14,8 @@ environment:
 resolution: workspace
 
 dependencies:
-  jx_core: ^0.3.0
-  jx_theme: ^0.3.0
+  jx_core: ^0.0.1
+  jx_theme: ^0.0.1
 
 dev_dependencies:
   lints: ^6.0.0

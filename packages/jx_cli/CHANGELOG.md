@@ -1,4 +1,4 @@
-## 0.3.0
+## 0.0.1
 
 - `jx migrate`: converts Tailwind classes to JX in `classes: '…'` and `class="…"` attributes, with a report of approximations (`-i` for a quick conversion, `--write` to apply).
 - `packages:` in `jx.yaml`: scans the `lib/` folder of dependencies such as `jx_ui`.

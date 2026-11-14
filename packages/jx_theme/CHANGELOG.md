@@ -1,6 +1,6 @@
-## 0.3.0
+## 0.0.1
 
-- Version aligned with the JX CSS 0.3.0 release (`jx_builder`, `jx_ui`, `jx migrate`).
+- Version aligned with the JX CSS 0.0.1 release (`jx_builder`, `jx_ui`, `jx migrate`).
 
 ## 0.2.1
 
