@@ -1,13 +1,14 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
+import 'feedback.dart';
 import 'styles.dart' as s;
+import 'utils.dart';
 
 // `JxTextField.label` shadows the element inside the class.
 const _labelElement = label.new;
 
-String _join(List<String?> parts) =>
-    parts.where((part) => part != null && part.isNotEmpty).join(' ');
+const _join = jxJoin;
 
 /// Visual style of a [JxButton].
 enum JxButtonVariant { primary, secondary, outline, ghost, danger }
@@ -28,6 +29,8 @@ class JxButton extends StatelessComponent {
     this.href,
     this.type = ButtonType.button,
     this.disabled = false,
+    this.loading = false,
+    this.fullWidth = false,
     this.classes,
     this.attributes,
     super.key,
@@ -43,6 +46,12 @@ class JxButton extends StatelessComponent {
   final ButtonType type;
   final bool disabled;
 
+  /// Shows a spinner, disables the button and sets `aria-busy`.
+  final bool loading;
+
+  /// Stretches the button to the width of its container.
+  final bool fullWidth;
+
   /// Extra JX classes, appended last.
   final String? classes;
   final Map<String, String>? attributes;
@@ -53,41 +62,63 @@ class JxButton extends StatelessComponent {
       s.buttonBase,
       s.buttonVariants[variant.name],
       s.buttonSizes[size.name],
+      if (fullWidth) s.buttonFullWidth,
       classes,
     ]);
+    final content = [
+      if (loading) const JxSpinner(size: JxSpinnerSize.sm, label: null),
+      ...children,
+    ];
+    final attrs = {...?attributes, if (loading) 'aria-busy': 'true'};
     if (href case final href?) {
       return a(
-        children,
+        content,
         href: href,
         onClick: onClick,
         classes: classNames,
-        attributes: attributes,
+        attributes: attrs,
       );
     }
     return button(
-      children,
+      content,
       type: type,
-      disabled: disabled,
+      disabled: disabled || loading,
       onClick: onClick,
       classes: classNames,
-      attributes: attributes,
+      attributes: attrs,
     );
   }
 }
 
-/// A surface grouping related content, with an optional heading.
+/// A surface grouping related content, with an optional heading,
+/// description and footer (usually actions).
 class JxCard extends StatelessComponent {
-  const JxCard(this.children, {this.title, this.classes, super.key});
+  const JxCard(
+    this.children, {
+    this.title,
+    this.description,
+    this.footer,
+    this.classes,
+    super.key,
+  });
 
   final List<Component> children;
   final String? title;
+  final String? description;
+
+  /// Shown under a separator, aligned to the end.
+  final List<Component>? footer;
   final String? classes;
 
   @override
   Component build(BuildContext context) {
     return div(classes: _join([s.card, classes]), [
       if (title case final title?) h3(classes: s.cardTitle, [.text(title)]),
+      if (description case final description?)
+        p(classes: s.cardDescription, [.text(description)]),
       ...children,
+      if (footer case final footer? when footer.isNotEmpty)
+        div(classes: s.cardFooter, footer),
     ]);
   }
 }

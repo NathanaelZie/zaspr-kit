@@ -1,6 +1,6 @@
 name: jx_ui
 description: "Accessible Jaspr components styled with JX CSS: buttons, cards, badges, alerts and text fields. No Node.js, no JavaScript."
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/NathanaelZie/zaspr-kit/tree/main/packages/jx_ui
 issue_tracker: https://github.com/NathanaelZie/zaspr-kit/issues
 topics:
