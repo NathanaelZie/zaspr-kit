@@ -6,6 +6,7 @@ import 'package:jx_engine/jx_engine.dart';
 import 'package:jx_parser/jx_parser.dart';
 import 'package:path/path.dart' as p;
 
+import 'package_resolver.dart';
 import 'project_config.dart';
 
 /// Résultat d'une passe de build.
@@ -86,9 +87,22 @@ final class JxBuilder {
       }
     }
 
+    for (final library in resolvePackages().libraries.values) {
+      if (!FileSystemEntity.isDirectorySync(library)) continue;
+      for (final entity in Directory(library).listSync(recursive: true)) {
+        if (entity is File && p.extension(entity.path) == '.dart') {
+          files[p.normalize(entity.path)] = entity;
+        }
+      }
+    }
+
     final sorted = files.keys.toList()..sort();
     return [for (final path in sorted) files[path]!];
   }
+
+  /// Locates the `lib/` folders of the packages listed under `packages:`.
+  JxResolvedPackages resolvePackages() =>
+      const JxPackageResolver().resolve(root, config.packages);
 
   /// Extrait les candidats d'un fichier selon son type.
   List<String> extractFrom(String path, String content) {
@@ -100,7 +114,11 @@ final class JxBuilder {
   /// Exécute un build complet et écrit le CSS.
   JxBuildReport build() {
     final files = sourceFiles();
-    final scanWarnings = <String>[];
+    final scanWarnings = <String>[
+      for (final name in resolvePackages().missing)
+        'Package "$name" listed in packages is not a dependency '
+            '(run dart pub get).',
+    ];
     final candidates = <String>{};
 
     for (final file in files) {

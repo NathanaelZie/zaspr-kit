@@ -21,9 +21,7 @@ final class JxStaticRule extends JxRule {
   List<JxCssRule> generate(JxClassToken token, JxThemeContract theme) {
     final declarations = classes[token.identifier];
     if (declarations == null) {
-      throw JxRuleException(
-        'Unknown class "${token.identifier}" for "$id".',
-      );
+      throw JxRuleException('Unknown class "${token.identifier}" for "$id".');
     }
     return [
       JxCssRule(
@@ -206,9 +204,7 @@ final class JxValueRule extends JxRule {
     if (value.startsWith('calc(') || value.startsWith('var(')) {
       return 'calc(-1 * $value)';
     }
-    throw JxRuleException(
-      'Value "$value" cannot be negative (${token.raw}).',
-    );
+    throw JxRuleException('Value "$value" cannot be negative (${token.raw}).');
   }
 }
 

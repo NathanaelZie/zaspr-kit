@@ -1,0 +1,9 @@
+builders:
+  jx_css:
+    import: "package:jx_builder/jx_builder.dart"
+    builder_factories: ["jxCssBuilder"]
+    build_extensions:
+      "$package$":
+        - "web/jx.css"
+    auto_apply: root_package
+    build_to: cache

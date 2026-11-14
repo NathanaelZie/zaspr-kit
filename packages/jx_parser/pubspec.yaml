@@ -1,6 +1,6 @@
 name: jx_parser
 description: "JX CSS class syntax parser [variants:]utility[:value][!]: variants, arbitrary and negative values, importance, diagnostics."
-version: 0.2.1
+version: 0.3.0
 repository: https://github.com/NathanaelZie/zaspr-kit/tree/main/packages/jx_parser
 issue_tracker: https://github.com/NathanaelZie/zaspr-kit/issues
 topics:
@@ -14,7 +14,7 @@ environment:
 resolution: workspace
 
 dependencies:
-  jx_core: ^0.2.1
+  jx_core: ^0.3.0
 
 dev_dependencies:
   lints: ^6.0.0

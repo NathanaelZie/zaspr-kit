@@ -6,6 +6,7 @@ import 'package:jx_engine/jx_engine.dart';
 import 'package:path/path.dart' as p;
 
 import 'builder.dart';
+import 'migrator.dart';
 import 'project_config.dart';
 
 /// Gestionnaire d'exécution de la ligne de commande JX CSS.
@@ -14,9 +15,10 @@ import 'project_config.dart';
 /// - `jx build` : scanne les sources du projet et écrit la feuille de style ;
 /// - `jx build --watch` : idem, puis reconstruit à chaque modification ;
 /// - `jx build -i "flex p:4"` : compile une expression et l'affiche ;
-/// - `jx init` : crée un fichier `jx.yaml` commenté.
+/// - `jx init` : crée un fichier `jx.yaml` commenté ;
+/// - `jx migrate` : convertit des classes Tailwind en classes JX.
 final class JxCliRunner {
-  static const String version = '0.2.1';
+  static const String version = '0.3.0';
 
   final ArgParser argParser;
   final StringSink out;
@@ -110,6 +112,26 @@ final class JxCliRunner {
         help: 'Overwrites an existing jx.yaml.',
       ),
     );
+
+    argParser.addCommand(
+      'migrate',
+      ArgParser()
+        ..addOption(
+          'input',
+          abbr: 'i',
+          help: 'Tailwind classes to convert and print (no file is read).',
+        )
+        ..addFlag(
+          'write',
+          negatable: false,
+          help: 'Rewrites the files. Without it, changes are only listed.',
+        )
+        ..addOption(
+          'config',
+          abbr: 'c',
+          help: 'Configuration file (default: ./jx.yaml when it exists).',
+        ),
+    );
   }
 
   /// Exécute la CLI avec les arguments fournis et retourne un code de sortie.
@@ -133,11 +155,11 @@ final class JxCliRunner {
           return await _build(command!);
         case 'init':
           return _init(command!);
+        case 'migrate':
+          return _migrate(command!);
       }
 
-      err.writeln(
-        'Unknown command. Use --help to see the available commands.',
-      );
+      err.writeln('Unknown command. Use --help to see the available commands.');
       return 1;
     } on FormatException catch (e) {
       err.writeln('Argument error: ${e.message}');
@@ -156,7 +178,8 @@ final class JxCliRunner {
     out.writeln('Usage: jx <command> [options]\n');
     out.writeln('Commands:');
     out.writeln('  build   Scans the sources and generates the stylesheet.');
-    out.writeln('  init    Creates a jx.yaml file.\n');
+    out.writeln('  init    Creates a jx.yaml file.');
+    out.writeln('  migrate Converts Tailwind classes to JX classes.\n');
     out.writeln(argParser.usage);
     out.writeln('\nbuild options:');
     out.writeln(argParser.commands['build']!.usage);
@@ -186,9 +209,7 @@ final class JxCliRunner {
 
     final builder = JxBuilder(root: root, config: config);
     if (command['watch'] as bool) {
-      out.writeln(
-        'Watching ${config.content.join(', ')}… (Ctrl+C to quit)',
-      );
+      out.writeln('Watching ${config.content.join(', ')}… (Ctrl+C to quit)');
       await builder.watch(
         onBuild: _report,
         onError: (e) => err.writeln('Error: $e'),
@@ -225,9 +246,7 @@ final class JxCliRunner {
       );
     } else {
       if (result.hasOutput) out.writeln(result.css);
-      out.writeln(
-        'Build succeeded: ${result.ruleCount} rule(s) generated.',
-      );
+      out.writeln('Build succeeded: ${result.ruleCount} rule(s) generated.');
     }
     return 0;
   }
@@ -243,6 +262,66 @@ final class JxCliRunner {
       '[${result.matchedTokens.length} class(es) used] '
       'in ${result.duration.inMilliseconds} ms -> ${report.outputPath}',
     );
+  }
+
+  int _migrate(ArgResults command) {
+    final input = command['input'] as String?;
+    if (input != null) {
+      final report = JxTailwindConverter().convert(input);
+      out.writeln(report.output);
+      _printNotes(report);
+      return 0;
+    }
+
+    final configPath = command['config'] as String?;
+    final config = configPath == null
+        ? JxProjectConfig.loadFrom(workingDirectory)
+        : JxProjectConfig.load(
+            File(p.absolute(workingDirectory.path, configPath)),
+          );
+    final paths = command.rest.isEmpty ? config.content : command.rest;
+    final write = command['write'] as bool;
+    final files = JxMigrator().migrateFiles(
+      workingDirectory,
+      paths,
+      extensions: config.extensions.toSet(),
+      exclude: {...JxProjectConfig.defaultExclude, ...config.exclude},
+    );
+
+    var changes = 0;
+    for (final file in files) {
+      out.writeln(p.relative(file.path, from: workingDirectory.path));
+      for (final change in file.changes) {
+        changes++;
+        out.writeln('  line ${change.line}: ${change.before}');
+        out.writeln('  ->      ${change.after}');
+        _printNotes(change.report, indent: '    ');
+      }
+      if (write) File(file.path).writeAsStringSync(file.migrated);
+    }
+
+    if (changes == 0) {
+      out.writeln('No Tailwind classes found in ${paths.join(', ')}.');
+    } else if (write) {
+      out.writeln('Migrated $changes attribute(s) in ${files.length} file(s).');
+    } else {
+      out.writeln(
+        '$changes attribute(s) in ${files.length} file(s) can be migrated. '
+        'Run again with --write to apply.',
+      );
+    }
+    return 0;
+  }
+
+  void _printNotes(JxTailwindReport report, {String indent = ''}) {
+    for (final item in report.approximated) {
+      out.writeln(
+        '$indent~ ${item.source} -> ${item.result}: ${item.notes.join('; ')}',
+      );
+    }
+    for (final item in report.unconverted) {
+      out.writeln('$indent! ${item.source} kept: ${item.notes.join('; ')}');
+    }
   }
 
   int _init(ArgResults command) {
@@ -269,6 +348,9 @@ extensions: [dart, html]
 
 # Folders ignored on top of build, .dart_tool, .git and node_modules.
 exclude: []
+
+# Dependencies whose lib/ folder is scanned too (component libraries).
+# packages: [jx_ui]
 
 output: build/jx.css
 minify: false

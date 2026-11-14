@@ -1,3 +1,9 @@
+## 0.3.0
+
+- `jx migrate`: converts Tailwind classes to JX in `classes: '…'` and `class="…"` attributes, with a report of approximations (`-i` for a quick conversion, `--write` to apply).
+- `packages:` in `jx.yaml`: scans the `lib/` folder of dependencies such as `jx_ui`.
+- New `JxMigrator` and `JxPackageResolver` APIs.
+
 ## 0.2.1
 
 - CLI output, help, warnings and `jx.yaml` errors are now in English, as is the `jx init` template.
