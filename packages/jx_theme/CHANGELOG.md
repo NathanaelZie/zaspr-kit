@@ -1,3 +1,7 @@
+## 0.3.0
+
+- Version aligned with the JX CSS 0.3.0 release (`jx_builder`, `jx_ui`, `jx migrate`).
+
 ## 0.2.1
 
 - README and package description in English.

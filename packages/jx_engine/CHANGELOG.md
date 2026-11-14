@@ -1,3 +1,7 @@
+## 0.3.0
+
+- `JxTailwindConverter`: converts Tailwind classes to JX. Every result is checked by compiling it; approximations and unsupported classes are reported.
+
 ## 0.2.1
 
 - Warnings and suggestions are now in English (`Unknown class "pd:4": did you mean "p:4"?`).

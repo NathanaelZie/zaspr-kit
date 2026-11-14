@@ -11,6 +11,7 @@ import 'package:yaml/yaml.dart';
 /// content: [lib, web]          # fichiers ou dossiers à scanner
 /// extensions: [dart, html]     # extensions prises en compte
 /// exclude: [generated]         # noms de dossiers ignorés (en plus des défauts)
+/// packages: [jx_ui]           # dépendances dont le dossier lib/ est scanné
 /// output: build/jx.css
 /// minify: false
 /// reset: true                  # inclut le preflight
@@ -43,6 +44,10 @@ final class JxProjectConfig {
   /// Noms de dossiers ignorés lors du scan.
   final List<String> exclude;
 
+  /// Dependency packages whose `lib/` folder is scanned too, for component
+  /// libraries such as `jx_ui`.
+  final List<String> packages;
+
   /// Chemin du fichier CSS généré.
   final String output;
 
@@ -66,6 +71,7 @@ final class JxProjectConfig {
     this.content = defaultContent,
     this.extensions = defaultExtensions,
     this.exclude = defaultExclude,
+    this.packages = const [],
     this.output = defaultOutput,
     this.minify = false,
     this.reset = true,
@@ -78,6 +84,7 @@ final class JxProjectConfig {
     'content',
     'extensions',
     'exclude',
+    'packages',
     'output',
     'minify',
     'reset',
@@ -97,9 +104,7 @@ final class JxProjectConfig {
     }
     if (document == null) return const JxProjectConfig();
     if (document is! YamlMap) {
-      throw const JxConfigException(
-        'The root of jx.yaml must be a map.',
-      );
+      throw const JxConfigException('The root of jx.yaml must be a map.');
     }
 
     for (final key in document.keys) {
@@ -131,6 +136,7 @@ final class JxProjectConfig {
           )?.map((e) => e.startsWith('.') ? e.substring(1) : e).toList() ??
           defaultExtensions,
       exclude: [...defaultExclude, ...?_stringList(document, 'exclude')],
+      packages: _stringList(document, 'packages') ?? const [],
       output: _string(document, 'output') ?? defaultOutput,
       minify: _bool(document, 'minify') ?? false,
       reset: _bool(document, 'reset') ?? true,
@@ -153,9 +159,7 @@ final class JxProjectConfig {
   /// Charge un fichier de configuration explicite.
   static JxProjectConfig load(File file) {
     if (!file.existsSync()) {
-      throw JxConfigException(
-        'Configuration file not found: ${file.path}',
-      );
+      throw JxConfigException('Configuration file not found: ${file.path}');
     }
     return JxProjectConfig.fromYaml(file.readAsStringSync());
   }
@@ -171,6 +175,7 @@ final class JxProjectConfig {
       content: content ?? this.content,
       extensions: extensions,
       exclude: exclude,
+      packages: packages,
       output: output ?? this.output,
       minify: minify ?? this.minify,
       reset: reset ?? this.reset,
