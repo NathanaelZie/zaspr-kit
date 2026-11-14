@@ -19,7 +19,7 @@ div(classes: 'flex ai:center gap:3 p:4 br:lg bg:white sh:md md:p:8', [
 
 ## Why JX
 
-- **Pure Dart.** The whole toolchain is a Dart package: `dart pub add dev:jx_cli` and you are done.
+- **Pure Dart.** The whole toolchain is a Dart package: `dart pub add dev:jx_cli:^0.0.1` and you are done.
 - **Made for Jaspr.** Only string literals in `.dart` files are scanned (interpolations included), so keywords like `static` or `final` never produce CSS.
 - **Readable syntax.** `[variants:]utility[:value][!]`: `md:hover:bg:blue`, `p:4!`, `w:[calc(100%_-_2rem)]`.
 - **Safe by default.** Arbitrary values are validated before reaching the stylesheet: no CSS injection, no `javascript:` URLs.
@@ -29,7 +29,7 @@ div(classes: 'flex ai:center gap:3 p:4 br:lg bg:white sh:md md:p:8', [
 ## Quick start
 
 ```bash
-dart pub add dev:jx_cli
+dart pub add dev:jx_cli:^0.0.1
 dart run jx_cli:jx init       # creates jx.yaml
 dart run jx_cli:jx build      # writes the stylesheet
 dart run jx_cli:jx build -w   # rebuilds on every change
