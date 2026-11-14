@@ -13,6 +13,10 @@ final class JxEngineConfig {
   /// Registre des règles CSS utilitaires.
   final JxRuleRegistry registry;
 
+  /// Sélecteur activant la variante `dark:` (ex. `.dark`, posé sur `<html>`).
+  /// `null` : `dark:` suit la préférence système (`prefers-color-scheme`).
+  final String? darkSelector;
+
   /// Crée une configuration.
   ///
   /// Sans [registry] explicite, le registre est pré-rempli avec
@@ -22,6 +26,7 @@ final class JxEngineConfig {
     JxThemeContract? theme,
     JxRuleRegistry? registry,
     bool includeDefaultPreset = true,
+    this.darkSelector,
   }) : theme = theme ?? JxTheme.defaultTheme(),
        registry =
            registry ??

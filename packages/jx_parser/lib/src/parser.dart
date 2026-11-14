@@ -31,6 +31,16 @@ final class JxParser implements JxParserContract {
     'placeholder', 'file',
     // Breakpoints
     'sm', 'md', 'lg', 'xl', '2xl',
+    // Préférences et médias
+    'dark', 'motion-safe', 'motion-reduce', 'contrast-more', 'portrait',
+    'landscape', 'print',
+    // Groupes et pairs (`group` / `peer` sur l'élément de référence)
+    'group-hover', 'group-focus', 'group-active', 'group-focus-within',
+    'group-focus-visible', 'group-disabled', 'group-checked', 'group-invalid',
+    'group-first', 'group-last', 'group-odd', 'group-even',
+    'peer-hover', 'peer-focus', 'peer-active', 'peer-focus-visible',
+    'peer-disabled', 'peer-checked', 'peer-invalid', 'peer-valid',
+    'peer-required', 'peer-placeholder-shown', 'peer-user-invalid',
   };
 
   /// Variantes reconnues. Elles permettent de lever l'ambiguïté entre

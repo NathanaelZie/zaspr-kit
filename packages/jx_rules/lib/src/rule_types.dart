@@ -1,4 +1,5 @@
 import 'package:jx_core/jx_core.dart';
+import 'package:jx_theme/jx_theme.dart';
 
 import 'rule.dart';
 
@@ -89,6 +90,10 @@ final class JxValueRule extends JxRule {
   /// (ex. `translateY({})`, `repeat({}, minmax(0, 1fr))`).
   final String? template;
 
+  /// Déclarations fixes ajoutées après celles de la valeur (ex.
+  /// `filter: var(--jx-blur,) …` pour les filtres composables).
+  final Map<String, String> extra;
+
   const JxValueRule(
     super.id, {
     required this.properties,
@@ -100,6 +105,7 @@ final class JxValueRule extends JxRule {
     this.fallback,
     this.propertySelector,
     this.template,
+    this.extra = const {},
   });
 
   @override
@@ -120,7 +126,8 @@ final class JxValueRule extends JxRule {
     var value = resolveValue(token, theme);
     if (value == null || disallowed.contains(value)) {
       throw JxRuleException(
-        'Valeur "${token.value}" invalide pour "${token.identifier}".',
+        'Valeur "${token.value}" invalide pour "${token.identifier}".'
+        '${describeAccepted(token, theme)}',
       );
     }
     if (token.isNegative) value = _negate(value, token);
@@ -135,6 +142,12 @@ final class JxValueRule extends JxRule {
             JxCssDeclaration(
               property: property,
               value: rendered,
+              isImportant: token.isImportant,
+            ),
+          for (final entry in extra.entries)
+            JxCssDeclaration(
+              property: entry.key,
+              value: entry.value,
               isImportant: token.isImportant,
             ),
         ],
@@ -156,6 +169,31 @@ final class JxValueRule extends JxRule {
       if (fromTheme != null) return fromTheme;
     }
     return keywords[raw] ?? fallback?.call(raw);
+  }
+
+  /// Valeurs acceptées par la règle, pour les messages d'erreur : suggestion
+  /// la plus proche puis aperçu des valeurs possibles.
+  String describeAccepted(JxClassToken token, JxThemeContract theme) {
+    final category = themeCategory;
+    final candidates = <String>[
+      if (category != null && theme is JxTheme)
+        ...theme.data.getCategory(category).keys,
+      ...keywords.keys,
+    ].where((v) => !disallowed.contains(v)).toList();
+    final hints = <String>[];
+    final raw = token.isArbitrary ? null : token.value;
+    final closest = raw == null ? null : closestMatch(raw, candidates);
+    if (closest != null) {
+      hints.add('vouliez-vous dire "${token.identifier}:$closest" ?');
+    }
+    if (candidates.isNotEmpty) {
+      final preview = candidates.take(12).join(', ');
+      hints.add(
+        'valeurs possibles : $preview${candidates.length > 12 ? '…' : ''}',
+      );
+    }
+    if (allowArbitrary) hints.add('ou une valeur arbitraire entre crochets');
+    return hints.isEmpty ? '' : ' ${hints.join(' ; ')}.';
   }
 
   static final RegExp _zero = RegExp(r'^0([a-z%]*)$');
@@ -217,4 +255,111 @@ final class JxKeywordRule extends JxRule {
       ),
     ];
   }
+}
+
+/// Calcule les déclarations d'une [JxDynamicRule] à partir de la valeur du
+/// token (`null` pour une classe sans valeur). Retourne `null` si la valeur
+/// est invalide.
+typedef JxDeclarationBuilder =
+    Map<String, String>? Function(
+      String? value,
+      JxClassToken token,
+      JxThemeContract theme,
+    );
+
+/// Règle libre : un constructeur calcule les déclarations à partir de la
+/// valeur. Sert aux utilitaires qui produisent plusieurs propriétés
+/// différentes (filtres composables, `clamp:3`…).
+///
+/// [identifiers] liste les identifiants acceptés. Si [standalone] est vrai,
+/// la classe s'utilise sans valeur (`truncate`), sinon avec (`blur:4`).
+final class JxDynamicRule extends JxRule {
+  /// Identifiants acceptés.
+  final Set<String> identifiers;
+
+  /// Indique si la règle s'applique aux classes sans valeur.
+  final bool standalone;
+
+  /// Autorise les valeurs négatives.
+  final bool allowNegative;
+
+  /// Constructeur des déclarations.
+  final JxDeclarationBuilder build;
+
+  const JxDynamicRule(
+    super.id, {
+    required this.identifiers,
+    required this.build,
+    this.standalone = false,
+    this.allowNegative = false,
+  });
+
+  @override
+  bool matches(JxClassToken token) =>
+      token.hasValue != standalone &&
+      (allowNegative || !token.isNegative) &&
+      identifiers.contains(token.identifier);
+
+  @override
+  List<JxCssRule> generate(JxClassToken token, JxThemeContract theme) {
+    final value = token.isArbitrary
+        ? token.arbitraryValue!.trim()
+        : token.value;
+    final declarations = build(value, token, theme);
+    if (declarations == null || declarations.isEmpty) {
+      throw JxRuleException(
+        'Valeur "${token.value}" invalide pour "${token.identifier}".',
+      );
+    }
+    return [
+      JxCssRule(
+        selector: escapeSelector(token.raw),
+        declarations: [
+          for (final entry in declarations.entries)
+            JxCssDeclaration(
+              property: entry.key,
+              value: entry.value,
+              isImportant: token.isImportant,
+            ),
+        ],
+      ),
+    ];
+  }
+}
+
+/// Retourne le candidat le plus proche de [input] (distance de Levenshtein
+/// d'au plus 2, et inférieure à la longueur de [input]), ou `null`.
+///
+/// À distance égale, un candidat commençant par la même lettre l'emporte.
+String? closestMatch(String input, Iterable<String> candidates) {
+  String? best;
+  var bestScore = 1 << 30;
+  for (final candidate in candidates) {
+    if (candidate == input || candidate.isEmpty) continue;
+    final d = _levenshtein(input, candidate);
+    if (d > 2 || d >= input.length) continue;
+    final score = d * 2 + (candidate[0] == input[0] ? 0 : 1);
+    if (score < bestScore) {
+      best = candidate;
+      bestScore = score;
+    }
+  }
+  return best;
+}
+
+int _levenshtein(String a, String b) {
+  var previous = List<int>.generate(b.length + 1, (i) => i);
+  for (var i = 0; i < a.length; i++) {
+    final current = List<int>.filled(b.length + 1, 0)..[0] = i + 1;
+    for (var j = 0; j < b.length; j++) {
+      final cost = a[i] == b[j] ? 0 : 1;
+      current[j + 1] = [
+        current[j] + 1,
+        previous[j + 1] + 1,
+        previous[j] + cost,
+      ].reduce((x, y) => x < y ? x : y);
+    }
+    previous = current;
+  }
+  return previous[b.length];
 }

@@ -27,6 +27,9 @@ String? _durationFallback(String value) {
 
 const _easing = 'cubic-bezier(0.4, 0, 0.2, 1)';
 
+/// `tx:` et `ty:` se combinent via des variables CSS.
+const _translate = 'var(--jx-tx, 0) var(--jx-ty, 0)';
+
 Map<String, String> _transition(String property) => {
   'transition-property': property,
   'transition-timing-function': _easing,
@@ -171,8 +174,10 @@ final List<JxRuleContract> jxEffectRules = [
       'opacity': _transition('opacity'),
       'shadow': _transition('box-shadow'),
       'transform': _transition('transform, translate, scale, rotate'),
+      'filter': _transition('filter, backdrop-filter'),
       'default': _transition(
-        'color, background-color, border-color, opacity, box-shadow, transform, translate, scale',
+        'color, background-color, border-color, opacity, box-shadow, transform, '
+        'translate, scale, rotate, filter, backdrop-filter',
       ),
     },
   ),
@@ -226,24 +231,24 @@ const List<JxRuleContract> jxTransformRules = [
   JxValueRule(
     'translate-x',
     properties: {
-      'tx': ['translate'],
+      'tx': ['--jx-tx'],
     },
     themeCategory: JxThemeCategory.spacing,
     keywords: _insetKeywords,
     disallowed: {'auto'},
     allowNegative: true,
-    template: '{} 0',
+    extra: {'translate': _translate},
   ),
   JxValueRule(
     'translate-y',
     properties: {
-      'ty': ['translate'],
+      'ty': ['--jx-ty'],
     },
     themeCategory: JxThemeCategory.spacing,
     keywords: _insetKeywords,
     disallowed: {'auto'},
     allowNegative: true,
-    template: '0 {}',
+    extra: {'translate': _translate},
   ),
   JxValueRule(
     'scale',

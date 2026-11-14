@@ -215,10 +215,7 @@ const List<JxRuleContract> jxTypographyRules = [
     properties: {
       'lsp': ['list-style-position'],
     },
-    keywords: {
-      'inside': 'inside',
-      'outside': 'outside',
-    },
+    keywords: {'inside': 'inside', 'outside': 'outside'},
     allowArbitrary: false,
   ),
   JxValueRule(

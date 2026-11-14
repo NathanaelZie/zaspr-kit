@@ -7,8 +7,13 @@ import 'package:jx_theme/jx_theme.dart';
 /// - Pseudo-classe : `hover:bg:blue` -> `.hover\:bg\:blue:hover { … }`
 /// - Breakpoint : `md:p:8` -> `@media (min-width: 768px) { .md\:p\:8 { … } }`
 ///
+/// - Média : `dark:bg:gray-900` -> `@media (prefers-color-scheme: dark) { … }`
+/// - Groupe : `group-hover:c:blue` -> `.group:hover .group-hover\:c\:blue`
+/// - Pair : `peer-checked:bg:blue` -> `.peer:checked ~ .peer-checked\:bg\:blue`
+///
 /// Les variantes se cumulent : `md:hover:c:red` produit la pseudo-classe
-/// `:hover` sous la media query `md`.
+/// `:hover` sous la media query `md`. Toute pseudo-classe peut être préfixée
+/// par `group-` ou `peer-`.
 final class JxVariantResolver {
   /// Pseudo-classes supportées par défaut.
   static const Map<String, String> defaultPseudoClasses = {
@@ -46,6 +51,18 @@ final class JxVariantResolver {
     'file': '::file-selector-button',
   };
 
+  /// Variantes de préférences et de média (mode sombre, mouvement réduit,
+  /// impression…). Une valeur sans parenthèse est un type de média.
+  static const Map<String, String> defaultMediaVariants = {
+    'dark': '(prefers-color-scheme: dark)',
+    'motion-safe': '(prefers-reduced-motion: no-preference)',
+    'motion-reduce': '(prefers-reduced-motion: reduce)',
+    'contrast-more': '(prefers-contrast: more)',
+    'portrait': '(orientation: portrait)',
+    'landscape': '(orientation: landscape)',
+    'print': 'print',
+  };
+
   /// Breakpoints supportés par défaut, du plus petit au plus grand.
   /// Leurs valeurs sont lues dans la catégorie `breakpoints` du thème.
   static const List<String> defaultBreakpoints = [
@@ -68,11 +85,20 @@ final class JxVariantResolver {
   /// Noms des breakpoints, dans l'ordre croissant (détermine l'ordre de sortie).
   final List<String> breakpoints;
 
+  /// Table `variante -> condition de média`.
+  final Map<String, String> mediaVariants;
+
+  /// Sélecteur activant `dark:` (ex. `.dark`). `null` : préférence système
+  /// (`prefers-color-scheme`).
+  final String? darkSelector;
+
   const JxVariantResolver({
     required this.theme,
     this.pseudoClasses = defaultPseudoClasses,
     this.pseudoElements = defaultPseudoElements,
     this.breakpoints = defaultBreakpoints,
+    this.mediaVariants = defaultMediaVariants,
+    this.darkSelector,
   });
 
   /// Crée un résolveur dont les breakpoints sont tous ceux déclarés dans la
@@ -84,6 +110,8 @@ final class JxVariantResolver {
     JxTheme theme, {
     Map<String, String> pseudoClasses = defaultPseudoClasses,
     Map<String, String> pseudoElements = defaultPseudoElements,
+    Map<String, String> mediaVariants = defaultMediaVariants,
+    String? darkSelector,
   }) {
     final entries = theme.data
         .getCategory(JxThemeCategory.breakpoints)
@@ -102,6 +130,8 @@ final class JxVariantResolver {
       pseudoClasses: pseudoClasses,
       pseudoElements: pseudoElements,
       breakpoints: [for (final e in indexed) e.name],
+      mediaVariants: mediaVariants,
+      darkSelector: darkSelector,
     );
   }
 
@@ -118,15 +148,35 @@ final class JxVariantResolver {
   /// Ensemble des variantes reconnues (à transmettre au parseur).
   Set<String> get knownVariants => {
     ...pseudoClasses.keys,
+    for (final key in pseudoClasses.keys) ...['group-$key', 'peer-$key'],
     ...pseudoElements.keys,
     ...breakpoints,
+    ...mediaVariants.keys,
   };
 
   /// Indique si la variante est prise en charge.
   bool supports(String variant) =>
       pseudoClasses.containsKey(variant) ||
       pseudoElements.containsKey(variant) ||
-      breakpoints.contains(variant);
+      breakpoints.contains(variant) ||
+      mediaVariants.containsKey(variant) ||
+      _relationalPrefix(variant) != null;
+
+  /// Préfixe de sélecteur d'une variante `group-*` ou `peer-*`, ou `null`.
+  String? _relationalPrefix(String variant) {
+    if (variant == 'dark' && darkSelector != null) return '$darkSelector ';
+    for (final (marker, combinator) in const [
+      ('group-', ' '),
+      ('peer-', ' ~ '),
+    ]) {
+      if (!variant.startsWith(marker)) continue;
+      final pseudo = pseudoClasses[variant.substring(marker.length)];
+      if (pseudo == null) return null;
+      final name = marker.substring(0, marker.length - 1);
+      return '.$name$pseudo$combinator';
+    }
+    return null;
+  }
 
   /// Media query associée à un breakpoint (ex. `@media (min-width: 768px)`).
   String mediaQueryFor(String breakpoint) {
@@ -147,7 +197,9 @@ final class JxVariantResolver {
     if (variants.isEmpty) return rule;
 
     final pseudo = StringBuffer(rule.pseudoSelector ?? '');
+    final prefix = StringBuffer(rule.selectorPrefix ?? '');
     String? pseudoElement;
+    final mediaTypes = <String>[];
     final conditions = <String>[
       if (rule.hasMediaQuery) _stripMedia(rule.mediaQuery!),
     ];
@@ -155,6 +207,8 @@ final class JxVariantResolver {
     for (final variant in variants) {
       final pseudoClass = pseudoClasses[variant];
       final element = pseudoElements[variant];
+      final relational = _relationalPrefix(variant);
+      final media = relational == null ? mediaVariants[variant] : null;
       if (pseudoClass != null) {
         pseudo.write(pseudoClass);
       } else if (element != null) {
@@ -167,6 +221,11 @@ final class JxVariantResolver {
         pseudoElement = element;
       } else if (breakpoints.contains(variant)) {
         conditions.add(_stripMedia(mediaQueryFor(variant)));
+      } else if (relational != null) {
+        prefix.write(relational);
+      } else if (media != null) {
+        // Un type de média (`print`) doit précéder les conditions.
+        (media.startsWith('(') ? conditions : mediaTypes).add(media);
       } else {
         throw JxRuleException('Variante "$variant" non supportée.');
       }
@@ -178,9 +237,10 @@ final class JxVariantResolver {
       selector: rule.selector,
       declarations: rule.declarations,
       pseudoSelector: pseudo.isEmpty ? null : pseudo.toString(),
-      mediaQuery: conditions.isEmpty
+      selectorPrefix: prefix.isEmpty ? null : prefix.toString(),
+      mediaQuery: mediaTypes.isEmpty && conditions.isEmpty
           ? null
-          : '@media ${conditions.join(' and ')}',
+          : '@media ${[...mediaTypes, ...conditions].join(' and ')}',
     );
   }
 

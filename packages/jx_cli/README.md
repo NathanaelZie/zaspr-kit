@@ -53,6 +53,7 @@ extensions: [dart, html]
 output: web/jx.css
 minify: false
 reset: true                # inclut le preflight
+dark_mode: media           # ou class : dark: actif sous .dark
 
 theme:
   extend:                  # fusionné avec le thème par défaut
@@ -85,7 +86,28 @@ theme:
 - `w:[calc(100%_-_2rem)]` : valeur arbitraire (`_` = espace).
 - `-mt:2` : valeur négative.
 - `md:hover:bg:blue` : breakpoint et état.
+- `dark:bg:gray-900` : mode sombre (`dark_mode: class` pour l'activer via une classe `.dark`).
+- `group-hover:c:blue`, `peer-checked:bg:teal` : état d'un parent `group` ou d'un frère `peer`.
+- `motion-reduce:anim:none`, `print:hidden` : préférences et impression.
 - `c:red!` : `!important`.
+
+## Quelques utilitaires
+
+| Besoin | Classes |
+| :--- | :--- |
+| Mise en page | `flex`, `grid`, `cols:3`, `gap:4`, `ai:center`, `jc:between`, `pi:center`, `order:first` |
+| Espacement, tailles | `p:4`, `mx:auto`, `w:full`, `mw:[40rem]`, `ar:video`, `basis:1/2` |
+| Texte | `fs:xl`, `fw:bold`, `c:gray-700`, `uppercase`, `truncate`, `clamp:3`, `tw:balance` |
+| Fonds, bordures | `bg:white`, `grad:to-r from:blue to:teal`, `bw:1`, `bs:dashed`, `br:lg`, `sh:md` |
+| Effets | `o:50`, `blur:md`, `bri:110`, `bblur:lg` (verre dépoli), `mix:multiply` |
+| Mouvement | `tr:all`, `dur:300`, `tx:2`, `rot:45`, `sc:105`, `anim:spin`, `anim:fade-in` |
+| Accessibilité | `sr-only`, `focus-visible:ring:2`, `motion-reduce:anim:none` |
+
+Une classe mal écrite est signalée avec une suggestion :
+
+```
+Avertissement: Classe "pd:4" inconnue : vouliez-vous dire "p:4" ?
+```
 
 Écrivez toujours les classes en entier : une classe construite par interpolation ne peut pas être détectée.
 

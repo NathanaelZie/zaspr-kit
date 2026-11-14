@@ -65,6 +65,15 @@ theme:
       expect(() => JxProjectConfig.fromYaml('theme: {colours: {}}'), fails);
       expect(() => JxProjectConfig.fromYaml('content: [a'), fails);
       expect(() => JxProjectConfig.fromYaml('- a'), fails);
+      expect(() => JxProjectConfig.fromYaml('dark_mode: auto'), fails);
+    });
+
+    test('dark_mode : media par défaut, class sur demande', () {
+      expect(JxProjectConfig.fromYaml('minify: false').darkMode, 'media');
+      final engine = JxProjectConfig.fromYaml('dark_mode: class').buildEngine();
+      final rule = engine.compile('dark:c:white').rules.single;
+      expect(rule.mediaQuery, isNull);
+      expect(rule.fullSelector, r'.dark .dark\:c\:white');
     });
   });
 

@@ -1,3 +1,15 @@
+## 0.2.0
+
+- Transformations : `rot:`, `skx:`, `sky:`, `origin:` ; `tx:` et `ty:` se combinent désormais.
+- Filtres composables : `blur:`, `bri:`, `con:`, `gs:`, `hue:`, `sat:`, `dsh:`, `grayscale`, `invert`, `sepia`, `filter-none`, et `bblur:`, `bbri:`, `bcon:`, `bgray:`, `bsat:` pour `backdrop-filter`.
+- Dégradés : `grad:to-r` (ou un angle), `grad-radial`, `grad-conic`, `from:`, `via:`, `to:`.
+- Animations : `anim:spin|ping|pulse|bounce|fade-in|fade-out|slide-up|slide-down|zoom-in`, `adur:`, `adelay:`, `delay:` ; images clés exposées par `jxKeyframes`.
+- Médias et fonds : `ar:`, `obf:`, `obp:`, `bgp:`, `bgr:`, `mix:`, `bs:` (style de bordure).
+- Alignement : `ac:`, `pc:`, `ji:`, `pi:`, `js:`, `order:`, `basis:`.
+- Texte : `uppercase`, `lowercase`, `capitalize`, `italic`, `truncate`, `sr-only`, `visible`, `invisible`, `antialiased`, `tabular-nums`, `tw:balance`, `wb:`, `clamp:3`…
+- Nouveau type de règle `JxDynamicRule`, option `extra` de `JxValueRule`, `JxRuleRegistry.identifiers` et `closestMatch`.
+- Les erreurs de valeur suggèrent la valeur la plus proche et listent les valeurs possibles.
+
 ## 0.1.0
 
 Première version publiée.
