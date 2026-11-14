@@ -46,7 +46,7 @@ lL(d){var w,v,u=d.gdr()
 u.toString
 w=D.d.P(u)
 v=C.kO(w)
-if(v!=null)throw B.h(C.b5('Valeur arbitraire refus\xe9e pour "'+d.a+'" : '+v+"."))
+if(v!=null)throw B.h(C.b5('Arbitrary value rejected for "'+d.a+'": '+v+"."))
 return w},
 lM(d,e){var w,v,u,t,s,r,q,p=d.length
 if(p===0)return A.u
@@ -135,14 +135,14 @@ ji:function ji(){},
 pJ(d){var w=C.jL(d,null)
 if(w!=null)return w
 throw B.h(B.jA(d,null))},
-kO(d){var w,v,u,t,s,r,q,p,o,n,m,l="commentaire CSS interdit",k="parenth\xe8ses non \xe9quilibr\xe9es"
+kO(d){var w,v,u,t,s,r,q,p,o,n,m,l="commentaire CSS interdit",k="unbalanced parentheses"
 if(D.d.P(d).length===0)return"valeur vide"
 w=d.length
-if(w>512)return"valeur trop longue (plus de 512 caract\xe8res)"
+if(w>512)return"value too long (more than 512 characters)"
 for(v=null,u=0,t=-1,s=0;s<w;++s){r=d.charCodeAt(s)
-if(r<32||r===127)return"caract\xe8re de contr\xf4le interdit"
-if(r===92)return'caract\xe8re "\\" interdit'
-if(r===60)return'caract\xe8re "<" interdit'
+if(r<32||r===127)return"control character not allowed"
+if(r===92)return'character "\\" not allowed'
+if(r===60)return'character "<" not allowed'
 if(r===47){q=s+1
 q=q<w&&d.charCodeAt(q)===42}else q=!1
 if(q)return l
@@ -155,22 +155,22 @@ break $label0$1}if(40===r){++u
 q=!1
 if(t<0)if(s>=3){q=s-3
 p=q+4
-q=p<=w&&D.d.S(d,q,p).toLowerCase()==="url("}if(q)t=u
+q=p<=w&&D.d.T(d,q,p).toLowerCase()==="url("}if(q)t=u
 break $label0$1}if(41===r){if(u===t)t=-1;--u
 if(u<0)return k
-break $label0$1}if(59===r){if(t<0)return'caract\xe8re ";" interdit'
+break $label0$1}if(59===r){if(t<0)return'character ";" not allowed'
 break $label0$1}if(123===r||125===r)return"accolades interdites"
-if(33===r)return'caract\xe8re "!" interdit (utilisez le suffixe ! de la classe)'}}if(v!=null)return"guillemets non ferm\xe9s"
+if(33===r)return'character "!" not allowed (use the class ! suffix)'}}if(v!=null)return"unclosed quotes"
 if(u!==0)return k
 w=B.V("\\s+")
 o=B.kf(d.toLowerCase(),w,"")
-if(D.d.E(o,"@"))return"r\xe8gle @ interdite"
+if(D.d.E(o,"@"))return"@ rule not allowed"
 for(w=A.fV.gM(),q=w.$ti,w=new B.ao(w.a(),q.h("ao<1>")),q=q.c;w.i();){p=w.b
 if(p==null)p=q.a(p)
 if(D.d.H(o,p.a))return p.b}n=D.d.aU(o,"data:")
 while(n!==-1){w=n+5
-m=D.d.T(o,w)
-if(!D.d.E(m,"image/")&&!D.d.E(m,"font/"))return"seules les URL data: d'image ou de police sont accept\xe9es"
+m=D.d.S(o,w)
+if(!D.d.E(m,"image/")&&!D.d.E(m,"font/"))return"only image or font data: URLs are allowed"
 n=D.d.ce(o,"data:",w)}return null},
 oL(d){var w=$.mv()
 return w.b.test(d)?d:null},
@@ -264,7 +264,7 @@ $iS:1}
 C.b6.prototype={
 aY(d){return!d.gaT()&&!d.f&&this.b.L(d.b)},
 ah(d,e){var w,v,u,t,s=d.b,r=this.b.n(0,s)
-if(r==null)throw B.h(C.b5('Classe "'+s+'" inconnue pour "'+this.a+'".'))
+if(r==null)throw B.h(C.b5('Unknown class "'+s+'" for "'+this.a+'".'))
 s=this.aR(d.a)
 w=B.c([],x.K)
 for(v=r.gM(),v=v.gq(v),u=d.e;v.i();){t=v.gl()
@@ -275,9 +275,9 @@ if(d.gaT())w=(this.r||!d.f)&&this.b.L(d.b)
 else w=!1
 return w},
 ah(d,e){var w,v,u,t,s,r,q,p,o=this,n=null,m=d.b,l=o.b.n(0,m)
-if(l==null)throw B.h(C.b5('Identifiant "'+m+'" non pris en charge par "'+o.a+'".'))
+if(l==null)throw B.h(C.b5('Utility "'+m+'" is not handled by "'+o.a+'".'))
 w=o.ea(d,e)
-if(w==null||o.e.H(0,w))throw B.h(C.b5('Valeur "'+B.p(d.c)+'" invalide pour "'+m+'".'+o.dD(d,e)))
+if(w==null||o.e.H(0,w))throw B.h(C.b5('Invalid value "'+B.p(d.c)+'" for "'+m+'".'+o.dD(d,e)))
 if(d.f)w=o.d4(w,d)
 m=o.x
 v=m==null?n:m.$1(w)
@@ -302,30 +302,33 @@ if(u!=null)return u}t=s.d.n(0,w)
 if(t==null){t=s.w
 w=t==null?null:t.$1(w)}else w=t
 return w},
-dD(d,e){var w,v,u,t,s,r,q=this,p=q.c,o=x.s,n=B.c([],o)
-if(p!=null)D.a.t(n,e.c.bD(p).gB())
-D.a.t(n,q.d.gB())
+dD(d,e){var w,v,u,t,s,r,q,p=this,o=p.c,n=x.s,m=B.c([],n)
+if(o!=null)D.a.t(m,e.c.bD(o).gB())
+D.a.t(m,p.d.gB())
 w=x.U
-v=B.a_(new B.a1(n,x.Q.a(new C.hz(q)),w),w.h("e.E"))
-u=B.c([],o)
+v=B.a_(new B.a1(m,x.Q.a(new C.hz(p)),w),w.h("e.E"))
+u=B.c([],n)
 t=d.gar()?null:d.c
 s=t==null?null:B.c2(C.lM(t,v),x.N)
-if(s!=null)D.a.p(u,'vouliez-vous dire "'+d.b+":"+s+'" ?')
+if(s!=null)D.a.p(u,'did you mean "'+d.b+":"+s+'"?')
 if(v.length!==0){r=B.l3(v,0,B.fx(12,"count",x.S),B.R(v).c).F(0,", ")
-o=v.length>12?"\u2026":""
-D.a.p(u,"valeurs possibles : "+r+o)}if(q.f)D.a.p(u,"ou une valeur arbitraire entre crochets")
-return u.length===0?"":" "+D.a.F(u," ; ")+"."},
+n=v.length>12?"\u2026":""
+D.a.p(u,"accepted values: "+r+n)}if(p.f)D.a.p(u,"or an arbitrary value in brackets")
+if(u.length===0)return""
+q=D.a.F(u,"; ")
+if(0>=q.length)return B.k(q,0)
+return" "+q[0].toUpperCase()+D.d.S(q,1)+"."},
 d4(d,e){var w=$.ma()
 if(w.b.test(d))return d
 w=B.V("^[0-9.]")
 if(w.b.test(d))return"-"+d
-if(D.d.E(d,"-"))return D.d.T(d,1)
+if(D.d.E(d,"-"))return D.d.S(d,1)
 if(D.d.E(d,"calc(")||D.d.E(d,"var("))return"calc(-1 * "+d+")"
-throw B.h(C.b5('La valeur "'+d+'" ne peut pas \xeatre n\xe9gative ('+e.a+")."))}}
+throw B.h(C.b5('Value "'+d+'" cannot be negative ('+e.a+")."))}}
 C.c6.prototype={
 aY(d){return d.gaT()&&!d.f&&!d.gar()&&this.b.H(0,d.b)},
 ah(d,e){var w,v,u,t,s=d.c,r=this.c.n(0,s)
-if(r==null)throw B.h(C.b5('Valeur "'+B.p(s)+'" invalide pour "'+d.b+'".'))
+if(r==null)throw B.h(C.b5('Invalid value "'+B.p(s)+'" for "'+d.b+'".'))
 s=this.aR(d.a)
 w=B.c([],x.K)
 for(v=r.gM(),v=v.gq(v),u=d.e;v.i();){t=v.gl()
@@ -336,7 +339,7 @@ if(d.gaT())w=!d.f&&this.b.H(0,d.b)
 else w=!1
 return w},
 ah(d,e){var w,v,u,t,s,r=d.gar()?C.lL(d):d.c,q=this.e.$3(r,d,e)
-if(q==null||q.gA(q))throw B.h(C.b5('Valeur "'+B.p(d.c)+'" invalide pour "'+d.b+'".'))
+if(q==null||q.gA(q))throw B.h(C.b5('Invalid value "'+B.p(d.c)+'" for "'+d.b+'".'))
 w=this.aR(d.a)
 v=B.c([],x.K)
 for(u=q.gM(),u=u.gq(u),t=d.e;u.i();){s=u.gl()
@@ -956,7 +959,7 @@ A.fF=new B.b(A.jy,[y.a,y.a],x.w)
 A.jg={overflow:0,display:1,"-webkit-box-orient":2,"-webkit-line-clamp":3}
 A.fT=new B.b(A.jg,["visible","block","horizontal","unset"],x.w)
 A.jh={"expression(":0,"javascript:":1,"vbscript:":2,"-moz-binding":3,"behavior:":4,"@import":5,"@charset":6}
-A.fV=new B.b(A.jh,["la fonction expression() est interdite","le sch\xe9ma javascript: est interdit","le sch\xe9ma vbscript: est interdit","-moz-binding est interdit","behavior est interdit","@import est interdit","@charset est interdit"],x.w)
+A.fV=new B.b(A.jh,["la fonction expression() est interdite","the javascript: scheme is not allowed","the vbscript: scheme is not allowed","-moz-binding est interdit","behavior est interdit","@import est interdit","@charset est interdit"],x.w)
 A.hp=new B.b(A.af,[y.d],x.w)
 A.jr={none:0,sm:1,md:2,lg:3,xl:4,"2xl":5,"3xl":6}
 A.a8=new B.b(A.jr,["0","4px","8px","16px","24px","40px","64px"],x.w)
@@ -999,5 +1002,5 @@ w($,"qW","cy",()=>B.V("^[0-9]+$"))
 w($,"r4","ks",()=>{var v="blur",u="brightness",t="contrast",s="grayscale",r="hue-rotate",q="saturate",p="drop-shadow",o=x.N
 return B.c([C.aK(v,v,"--jx-blur",v,!1,!1,C.m0(),A.a8),C.aK(u,"bri","--jx-brightness",u,!1,!1,C.bX(),A.b),C.aK(t,"con","--jx-contrast",t,!1,!1,C.bX(),A.b),C.aK(s,"gs","--jx-grayscale",s,!1,!1,C.bX(),A.b),C.aK(r,"hue","--jx-hue-rotate",r,!0,!1,C.jt(),A.b),C.aK(q,"sat","--jx-saturate",q,!1,!1,C.bX(),A.b),C.aK(p,"dsh","--jx-drop-shadow",p,!1,!1,null,B.K(["sm","0 1px 1px rgb(0 0 0 / 0.05)","md","0 3px 3px rgb(0 0 0 / 0.12)","lg","0 8px 10px rgb(0 0 0 / 0.15)","xl","0 16px 24px rgb(0 0 0 / 0.18)","none","0 0 #0000"],o,o)),A.b8,C.aK("backdrop-blur","bblur","--jx-bd-blur",v,!1,!0,C.m0(),A.a8),C.aK("backdrop-brightness","bbri","--jx-bd-brightness",u,!1,!0,C.bX(),A.b),C.aK("backdrop-contrast","bcon","--jx-bd-contrast",t,!1,!0,C.bX(),A.b),C.aK("backdrop-grayscale","bgray","--jx-bd-grayscale",s,!1,!0,C.bX(),A.b),C.aK("backdrop-saturate","bsat","--jx-bd-saturate",q,!1,!0,C.bX(),A.b)],x.D)})
 w($,"r8","kw",()=>B.c([A.b7,A.c_,A.bP,new C.c5(A.lY,new C.ji(),"line-clamp")],x.D))})()};
-(a=>{a["J28vfuD2IaNmkY1GKHMivjeoCEM="]=a.current})($__dart_deferred_initializers__);
+(a=>{a["eaKp2XelZLV5ZH1BOP8IGLBNnqY="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_7.part.js.map
