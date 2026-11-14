@@ -123,7 +123,7 @@ for(v=r.length,t=y.t,s=y.s,u=0;u<r.length;r.length===v||(0,A.M)(r),++u){p=r[u]
 o=p.a.a
 n=A.c([new A.z(o[3],f)],x)
 o="/docs/utilitaires/"+o[2]
-if(D.d.E(o,"/"))o="C:/Program Files/Git/zaspr-kit"+o
+if(D.d.E(o,"/"))o="/zaspr-kit"+o
 o=A.c([new B.fA("fs:xl fw:bold c:snow",n,f),K.fv(A.c([new A.z("Page d\xe9taill\xe9e",f)],x),f,"fs:sm fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4",o)],x)
 n=A.c([],x)
 for(p=F.kH(p.b,0,t),m=J.Y(p.a),l=p.b,p=new F.b2(m,l,A.j(p).h("b2<1>"));p.i();){k=p.c
@@ -174,5 +174,5 @@ s=A.c([],v)
 for(r=J.Y(t.a[1]);r.i();){q=B.pw(r.gl())
 if(q!=null)s.push(q)}p.push(new A.a6(t,s))}return p})
 x($,"r9","mA",()=>D.a.cc($.ju(),0,new B.js(),y.S))})()};
-(a=>{a["V6D8ER3FPsKOlUzygj+TLHdcSvw="]=a.current})($__dart_deferred_initializers__);
+(a=>{a["FIhwhh/TMPOR2lLxdvs11y47Qh0="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_15.part.js.map
