@@ -29,7 +29,7 @@ div(classes: 'flex ai:center gap:3 p:4 br:lg bg:white sh:md md:p:8', [
 ## Quick start
 
 ```bash
-dart pub add jx_cli:^0.0.3
+dart pub add jx_cli
 dart run jx_cli:jx init       # creates jx.yaml
 dart run jx_cli:jx build      # writes the stylesheet
 dart run jx_cli:jx build -w   # rebuilds on every change
@@ -152,7 +152,7 @@ Everything ships in one package, [`jx_cli`](https://pub.dev/packages/jx_cli). Ea
 | `package:jx_cli/generator.dart` | CSS serialization, media query grouping, preflight. |
 | `package:jx_cli/core.dart` | Shared models, contracts, exceptions and value validation. |
 
-The former `jx_ui`, `jx_builder`, `jx_engine`, `jx_rules`, `jx_theme`, `jx_parser`, `jx_generator` and `jx_core` packages are replaced by `jx_cli`. Their published versions keep working.
+The former `jx_ui`, `jx_builder`, `jx_engine`, `jx_rules`, `jx_theme`, `jx_parser`, `jx_generator` and `jx_core` packages are replaced by `jx_cli` and discontinued on pub.dev. Projects that already lock one of their versions keep building.
 
 ## Contributing
 
