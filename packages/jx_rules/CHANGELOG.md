@@ -1,3 +1,7 @@
+## 0.0.2
+
+- Table utilities: `bcol:collapse|separate` (border-collapse), `tl:auto|fixed` (table-layout), `cap:top|bottom` (caption-side).
+
 ## 0.0.1
 
 - Version aligned with the JX CSS 0.0.1 release (`jx_builder`, `jx_ui`, `jx migrate`).

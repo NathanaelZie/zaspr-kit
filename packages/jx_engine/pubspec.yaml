@@ -1,6 +1,6 @@
 name: jx_engine
 description: "JX CSS compilation engine: turns utility classes into mobile-first sorted CSS, on the server or in the browser."
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/NathanaelZie/zaspr-kit/tree/main/packages/jx_engine
 issue_tracker: https://github.com/NathanaelZie/zaspr-kit/issues
 topics:
@@ -17,7 +17,7 @@ dependencies:
   jx_core: ^0.0.1
   jx_generator: ^0.0.1
   jx_parser: ^0.0.1
-  jx_rules: ^0.0.1
+  jx_rules: ^0.0.2
   jx_theme: ^0.0.1
 
 dev_dependencies:

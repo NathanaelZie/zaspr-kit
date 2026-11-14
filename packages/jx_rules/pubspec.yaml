@@ -1,6 +1,6 @@
 name: jx_rules
 description: "JX CSS utility catalog and rule registry: display, spacing, colors, typography, grid, flexbox, filters, gradients, animations."
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/NathanaelZie/zaspr-kit/tree/main/packages/jx_rules
 issue_tracker: https://github.com/NathanaelZie/zaspr-kit/issues
 topics:

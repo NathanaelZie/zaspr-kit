@@ -1,3 +1,8 @@
+## 0.0.2
+
+- New variants: `open:` (`[open]`, for `<details>` and `<dialog>`), `group-open:`, `peer-open:`, `modal:` (`:modal`) and `backdrop:` (`::backdrop`).
+- Requires `jx_rules` 0.0.2 for the table utilities.
+
 ## 0.0.1
 
 - `JxTailwindConverter`: converts Tailwind classes to JX. Every result is checked by compiling it; approximations and unsupported classes are reported.

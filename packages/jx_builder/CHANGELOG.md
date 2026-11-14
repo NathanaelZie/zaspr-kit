@@ -1,3 +1,7 @@
+## 0.0.2
+
+- Uses `jx_cli` 0.0.2 (new variants and table utilities).
+
 ## 0.0.1
 
 First release.

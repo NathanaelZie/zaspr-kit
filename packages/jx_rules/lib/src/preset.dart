@@ -3,6 +3,7 @@ import 'package:jx_core/jx_core.dart';
 import 'utilities.dart';
 import 'utilities_forms.dart';
 import 'utilities_layout.dart';
+import 'utilities_table.dart';
 import 'utilities_visual.dart';
 
 /// Ensemble nommé de règles pouvant être enregistré d'un bloc dans un registre.
@@ -45,5 +46,6 @@ final class JxDefaultPreset implements JxPreset {
     ...jxMediaRules,
     ...jxAlignmentRules,
     ...jxTextRules,
+    ...jxTableRules,
   ];
 }

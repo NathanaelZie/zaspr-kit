@@ -201,3 +201,92 @@ const emptyState =
 const emptyStateTitle = 'fs:base fw:semibold c:gray-900 dark:c:gray-100';
 
 const emptyStateText = 'fs:sm lh:relaxed c:gray-500 mw:[28rem]';
+
+const modal =
+    'm:auto w:[calc(100%_-_2rem)] mh:[85vh] p:0 br:xl bw:1 bc:gray-100 '
+    'bg:white c:gray-900 sh:2xl ov:auto '
+    'backdrop:bg:[rgba(15,23,42,0.6)] backdrop:bblur:sm '
+    'open:anim:fade-in motion-reduce:anim:none '
+    'dark:bg:gray-900 dark:bc:gray-700 dark:c:gray-100';
+
+const modalSizes = {'sm': 'mw:[24rem]', 'md': 'mw:[32rem]', 'lg': 'mw:[48rem]'};
+
+const modalBody = 'flex fd:col gap:4 p:6';
+
+const modalHeader = 'flex ai:start jc:between gap:4';
+
+const modalTitle = 'fs:lg fw:semibold lh:tight';
+
+const modalDescription = 'fs:sm lh:relaxed c:gray-500';
+
+const modalClose =
+    'inline-flex ai:center jc:center shrink:0 w:8 h:8 -mt:1 -mr:2 br:md bw:0 '
+    'bg:transparent c:gray-500 cur:pointer tr:colors hover:bg:gray-100 '
+    'hover:c:gray-900 dark:hover:bg:gray-700 dark:hover:c:gray-100 '
+    'focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2';
+
+const modalFooter = 'flex wrap ai:center jc:end gap:2 pt:2';
+
+const tableWrapper =
+    'w:full ovx:auto br:xl bw:1 bc:gray-100 bg:white dark:bg:gray-900 '
+    'dark:bc:gray-700';
+
+const tableWrapperSticky = 'mh:[28rem] ovy:auto';
+
+const table = 'w:full bcol:collapse fs:sm ta:left c:gray-900 dark:c:gray-100';
+
+const tableCaption =
+    'cap:top px:4 py:3 ta:left fs:sm fw:semibold c:gray-900 dark:c:gray-100';
+
+const tableHead = 'bg:gray-100 dark:bg:gray-700';
+
+const tableHeaderCell =
+    'px:4 py:3 fs:xs fw:semibold ws:nowrap c:gray-700 dark:c:gray-100';
+
+const tableHeaderSticky = 'sticky top:0 z:10 bg:gray-100 dark:bg:gray-700';
+
+const tableSortButton =
+    'inline-flex ai:center gap:1 p:0 bw:0 bg:transparent c:current fw:semibold '
+    'cur:pointer br:sm hover:c:gray-900 dark:hover:c:white '
+    'focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2';
+
+const tableRow = 'bwt:1 bc:gray-100 dark:bc:gray-700';
+
+const tableRowStriped =
+    'even:bg:gray-100 dark:even:bg:[rgba(255,255,255,0.04)]';
+
+/// Row hover: the row is the group and its cells take the color, so the
+/// highlight paints above the stripes whatever the rule order.
+const tableRowHover = 'group';
+
+const tableCellHover =
+    'tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700';
+
+/// Cell padding: use one of [tableCell] or [tableCellDense], never both.
+const tableCell = 'px:4 py:3 va:middle ws:nowrap';
+
+const tableCellDense = 'px:3 py:2 va:middle ws:nowrap';
+
+const tableNumeric = 'ta:right tabular-nums';
+
+const tableEmpty = 'px:4 py:10 ta:center c:gray-500';
+
+const pagination = 'flex wrap ai:center gap:1 fs:sm lst:none p:0 m:0';
+
+const paginationItem =
+    'inline-flex ai:center jc:center mnw:[36px] h:9 px:2 br:md bw:1 '
+    'td:none cur:pointer tr:colors '
+    'focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2';
+
+/// Colors of a page that is not the current one (exclusive with
+/// [paginationCurrent], so the two never compete in the stylesheet).
+const paginationIdle =
+    'bc:transparent c:gray-700 bg:transparent hover:bg:gray-100 '
+    'dark:c:gray-100 dark:hover:bg:gray-700';
+
+const paginationCurrent = 'c:white bg:blue-700 bc:blue-700';
+
+const paginationDisabled = 'o:50 pe:none';
+
+const paginationGap =
+    'inline-flex ai:center jc:center mnw:[36px] h:9 c:gray-500';
