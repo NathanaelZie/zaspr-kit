@@ -65,19 +65,28 @@ class JxTooltip extends StatelessComponent {
   const JxTooltip({
     required this.text,
     required this.child,
+    this.id,
     this.classes,
     super.key,
   });
 
   final String text;
   final Component child;
+
+  /// Id of the bubble. Point the child at it with
+  /// `attributes: JxTooltip.describedBy(id)` so screen readers read the hint.
+  final String? id;
   final String? classes;
+
+  /// Attributes linking an element to the tooltip [id].
+  static Map<String, String> describedBy(String id) => {'aria-describedby': id};
 
   @override
   Component build(BuildContext context) {
     return span(classes: jxJoin([s.tooltipWrapper, classes]), [
       child,
       span(
+        id: id,
         classes: s.tooltipBubble,
         attributes: const {'role': 'tooltip'},
         [.text(text)],

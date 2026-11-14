@@ -51,6 +51,7 @@ class JxTextArea extends StatelessComponent {
       hint: hint,
       error: error,
       classes: classes,
+      required: required,
       control: (aria) => textarea(
         id: id,
         name: name,
@@ -115,6 +116,7 @@ class JxSelect extends StatelessComponent {
       hint: hint,
       error: error,
       classes: classes,
+      required: required,
       control: (aria) => div(classes: s.selectWrapper, [
         select(
           id: id,
@@ -169,9 +171,11 @@ class JxCheckbox extends StatelessComponent {
     required this.id,
     required this.label,
     this.description,
+    this.error,
     this.name,
     this.value,
     this.checked = false,
+    this.required = false,
     this.disabled = false,
     this.onChange,
     this.classes,
@@ -181,9 +185,15 @@ class JxCheckbox extends StatelessComponent {
   final String id;
   final String label;
   final String? description;
+
+  /// Marks the checkbox invalid and shows the message under it.
+  final String? error;
   final String? name;
   final String? value;
   final bool checked;
+
+  /// Native `required`, with a visual marker after the label.
+  final bool required;
   final bool disabled;
   final ValueChanged<bool>? onChange;
   final String? classes;
@@ -195,9 +205,11 @@ class JxCheckbox extends StatelessComponent {
       type: InputType.checkbox,
       label: label,
       description: description,
+      error: error,
       name: name,
       value: value,
       checked: checked,
+      required: required,
       disabled: disabled,
       onChange: onChange,
       classes: classes,
@@ -269,6 +281,9 @@ class JxRadioGroup extends StatelessComponent {
     required this.legend,
     required this.options,
     this.value,
+    this.hint,
+    this.error,
+    this.required = false,
     this.disabled = false,
     this.onChange,
     this.classes,
@@ -280,6 +295,15 @@ class JxRadioGroup extends StatelessComponent {
   final String legend;
   final List<JxOption> options;
   final String? value;
+
+  /// Help text under the options.
+  final String? hint;
+
+  /// Marks the group invalid; replaces the hint.
+  final String? error;
+
+  /// Native `required` on the radios, with a marker after the legend.
+  final bool required;
   final bool disabled;
   final ValueChanged<String>? onChange;
   final String? classes;
@@ -287,11 +311,17 @@ class JxRadioGroup extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     final onChange = this.onChange;
+    final message = error ?? hint;
+    final messageId = message == null ? null : '$name-message';
     return fieldset(
       disabled: disabled,
       classes: jxJoin([s.radioGroup, classes]),
+      attributes: {'aria-describedby': ?messageId},
       [
-        _legendElement(classes: s.radioLegend, [.text(legend)]),
+        _legendElement(classes: s.radioLegend, [
+          .text(legend),
+          if (required) jxRequiredMarker,
+        ]),
         for (final o in options)
           _choice(
             id: '$name-${o.value}',
@@ -300,6 +330,8 @@ class JxRadioGroup extends StatelessComponent {
             name: name,
             value: o.value,
             checked: o.value == value,
+            required: required,
+            invalid: error != null,
             disabled: disabled,
             onChange: onChange == null
                 ? null
@@ -307,6 +339,10 @@ class JxRadioGroup extends StatelessComponent {
                     if (selected) onChange(o.value);
                   },
           ),
+        if (message != null)
+          p(id: messageId, classes: error != null ? s.fieldError : s.fieldHint, [
+            .text(message),
+          ]),
       ],
     );
   }
@@ -317,14 +353,21 @@ Component _choice({
   required InputType type,
   required String label,
   String? description,
+  String? error,
   String? name,
   String? value,
   bool checked = false,
+  bool required = false,
+  bool invalid = false,
   bool disabled = false,
   ValueChanged<bool>? onChange,
   String? classes,
 }) {
   final descriptionId = description == null ? null : '$id-description';
+  final errorId = error == null ? null : '$id-error';
+  final describedBy = [?descriptionId, ?errorId].join(' ');
+  // A checkbox shows its own marker; radios share the one of the legend.
+  final ownMarker = required && type == InputType.checkbox;
   return _labelElement(htmlFor: id, classes: jxJoin([s.choiceLabel, classes]), [
     input<bool?>(
       id: id,
@@ -335,14 +378,95 @@ Component _choice({
       disabled: disabled,
       onChange: onChange == null ? null : (v) => onChange(v ?? false),
       classes: s.choiceInput,
-      attributes: {'aria-describedby': ?descriptionId},
+      attributes: {
+        if (describedBy.isNotEmpty) 'aria-describedby': describedBy,
+        if (error != null || invalid) 'aria-invalid': 'true',
+        if (required) 'required': '',
+      },
     ),
     span(classes: s.choiceText, [
-      span([.text(label)]),
+      span([.text(label), if (ownMarker) jxRequiredMarker]),
       if (description != null)
         span(id: descriptionId, classes: s.choiceDescription, [
           .text(description),
         ]),
+      if (error != null)
+        span(id: errorId, classes: s.fieldError, [.text(error)]),
     ]),
   ]);
+}
+
+/// A text field with suggestions, on the native `<input list>` and
+/// `<datalist>`: the browser filters the list as the user types, and any
+/// other value stays accepted.
+class JxCombobox extends StatelessComponent {
+  const JxCombobox({
+    required this.id,
+    required this.label,
+    required this.suggestions,
+    this.name,
+    this.value,
+    this.placeholder,
+    this.hint,
+    this.error,
+    this.required = false,
+    this.disabled = false,
+    this.onInput,
+    this.classes,
+    super.key,
+  });
+
+  final String id;
+  final String label;
+
+  /// Values offered while typing.
+  final List<String> suggestions;
+  final String? name;
+  final String? value;
+  final String? placeholder;
+  final String? hint;
+  final String? error;
+  final bool required;
+  final bool disabled;
+  final ValueChanged<String>? onInput;
+  final String? classes;
+
+  @override
+  Component build(BuildContext context) {
+    final onInput = this.onInput;
+    final listId = '$id-suggestions';
+    return jxField(
+      id: id,
+      label: label,
+      hint: hint,
+      error: error,
+      classes: classes,
+      required: required,
+      control: (aria) => Component.fragment([
+        input(
+          id: id,
+          type: InputType.text,
+          name: name,
+          value: value,
+          disabled: disabled,
+          onInput: onInput == null ? null : (v) => onInput('$v'),
+          classes: jxJoin([s.fieldInput, if (error != null) s.fieldInputInvalid]),
+          attributes: {
+            'list': listId,
+            'autocomplete': 'off',
+            'placeholder': ?placeholder,
+            if (required) 'required': '',
+            ...aria,
+          },
+        ),
+        Component.element(
+          tag: 'datalist',
+          id: listId,
+          children: [
+            for (final suggestion in suggestions) option(value: suggestion, []),
+          ],
+        ),
+      ]),
+    );
+  }
 }

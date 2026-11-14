@@ -239,6 +239,7 @@ class JxTextField extends StatelessComponent {
       hint: hint,
       error: error,
       classes: classes,
+      required: required,
       control: (aria) => input(
         id: id,
         type: type,
