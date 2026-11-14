@@ -538,8 +538,9 @@ class JxTailwindConverter {
     for (final side in const ['x', 'y', 't', 'r', 'b', 'l']) {
       if (v.startsWith('$side-')) {
         final width = v.substring(2);
-        if (_isNumber(width) || width.startsWith('['))
+        if (_isNumber(width) || width.startsWith('[')) {
           return _one('bw$side', width);
+        }
       }
     }
     if (_isNumber(v) || _length.hasMatch(v)) return _one('bw', v);

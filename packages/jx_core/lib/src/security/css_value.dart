@@ -55,13 +55,13 @@ abstract final class JxCssValue {
 
   /// Motifs refusés où qu'ils apparaissent (comparaison sans casse ni blancs).
   static const Map<String, String> _forbidden = {
-    'expression(': 'la fonction expression() est interdite',
+    'expression(': 'the expression() function is not allowed',
     'javascript:': 'the javascript: scheme is not allowed',
     'vbscript:': 'the vbscript: scheme is not allowed',
-    '-moz-binding': '-moz-binding est interdit',
-    'behavior:': 'behavior est interdit',
-    '@import': '@import est interdit',
-    '@charset': '@charset est interdit',
+    '-moz-binding': '-moz-binding is not allowed',
+    'behavior:': 'behavior is not allowed',
+    '@import': '@import is not allowed',
+    '@charset': '@charset is not allowed',
   };
 
   /// Retourne la raison pour laquelle [value] ne peut pas être écrite dans
@@ -69,7 +69,7 @@ abstract final class JxCssValue {
   ///
   /// [value] est la valeur décodée (voir [decodeArbitrary]).
   static String? unsafeReason(String value) {
-    if (value.trim().isEmpty) return 'valeur vide';
+    if (value.trim().isEmpty) return 'empty value';
     if (value.length > maxLength) {
       return 'value too long (more than $maxLength characters)';
     }
@@ -87,12 +87,12 @@ abstract final class JxCssValue {
       if (code == 0x2F &&
           i + 1 < value.length &&
           value.codeUnitAt(i + 1) == 0x2A) {
-        return 'commentaire CSS interdit';
+        return 'CSS comments are not allowed';
       }
       if (code == 0x2A &&
           i + 1 < value.length &&
           value.codeUnitAt(i + 1) == 0x2F) {
-        return 'commentaire CSS interdit';
+        return 'CSS comments are not allowed';
       }
       if (quote != null) {
         if (code == quote) quote = null;
@@ -110,7 +110,7 @@ abstract final class JxCssValue {
         case 0x3B: // ;
           if (urlAt < 0) return 'character ";" not allowed';
         case 0x7B || 0x7D: // { }
-          return 'accolades interdites';
+          return 'braces are not allowed';
         case 0x21: // !
           return 'character "!" not allowed (use the class ! suffix)';
       }

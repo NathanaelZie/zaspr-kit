@@ -44,7 +44,7 @@ const card =
 const cardTitle = 'fs:lg fw:semibold lh:tight';
 
 const badgeBase =
-    'inline-flex ai:center px:2 py:[2px] br:full fs:xs fw:medium lh:none ws:nowrap';
+    'inline-flex as:start ai:center px:2 py:[2px] br:full fs:xs fw:medium lh:none ws:nowrap';
 
 const badgeTones = {
   'neutral': 'c:gray-700 bg:gray-100 dark:c:gray-100 dark:bg:gray-700',
