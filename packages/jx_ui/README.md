@@ -9,6 +9,8 @@ Accessible [Jaspr](https://jaspr.site) components styled with **JX CSS** (ZASPR 
 | Forms | `JxTextField`, `JxTextArea`, `JxSelect`, `JxCheckbox`, `JxSwitch`, `JxRadioGroup` |
 | Feedback | `JxAlert`, `JxBadge`, `JxSpinner`, `JxProgress`, `JxSkeleton`, `JxEmptyState` |
 | Display | `JxAvatar`, `JxTooltip`, `JxKbd` |
+| Overlays | `JxModal`, `JxModalTrigger` (native `<dialog>`, no JavaScript) |
+| Data | `JxDataTable` (sortable, sticky header, numeric columns), `JxPagination` |
 
 Form controls link their label, hint and error (`for`, `aria-describedby`, `aria-invalid`). The switch, tooltip and skeleton need no JavaScript: they are drawn with `peer-*` and `group-*` classes. Animations stop when the system asks for reduced motion.
 

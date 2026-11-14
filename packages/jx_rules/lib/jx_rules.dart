@@ -8,4 +8,5 @@ export 'src/rule_types.dart';
 export 'src/utilities.dart';
 export 'src/utilities_forms.dart';
 export 'src/utilities_layout.dart';
+export 'src/utilities_table.dart';
 export 'src/utilities_visual.dart';

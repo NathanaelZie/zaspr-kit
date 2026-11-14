@@ -1,3 +1,7 @@
+## 0.0.2
+
+- Uses `jx_engine` 0.0.2: `open:`, `modal:`, `backdrop:` variants and the table utilities `bcol:`, `tl:`, `cap:`.
+
 ## 0.0.1
 
 - `jx migrate`: converts Tailwind classes to JX in `classes: '…'` and `class="…"` attributes, with a report of approximations (`-i` for a quick conversion, `--write` to apply).

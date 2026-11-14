@@ -18,7 +18,7 @@ import 'project_config.dart';
 /// - `jx init` : crée un fichier `jx.yaml` commenté ;
 /// - `jx migrate` : convertit des classes Tailwind en classes JX.
 final class JxCliRunner {
-  static const String version = '0.0.1';
+  static const String version = '0.0.2';
 
   final ArgParser argParser;
   final StringSink out;

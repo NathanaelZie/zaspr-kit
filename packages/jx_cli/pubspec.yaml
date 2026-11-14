@@ -1,6 +1,6 @@
 name: jx_cli
 description: "JX CSS command line: extracts utility classes from your Dart files and generates a minimal stylesheet, with watch mode. Built for Jaspr."
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/NathanaelZie/zaspr-kit/tree/main/packages/jx_cli
 issue_tracker: https://github.com/NathanaelZie/zaspr-kit/issues
 topics:
@@ -17,7 +17,7 @@ resolution: workspace
 dependencies:
   args: ^2.5.0
   jx_core: ^0.0.1
-  jx_engine: ^0.0.1
+  jx_engine: ^0.0.2
   jx_parser: ^0.0.1
   jx_theme: ^0.0.1
   path: ^1.9.0

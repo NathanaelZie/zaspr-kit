@@ -41,6 +41,9 @@ final class JxVariantResolver {
     'placeholder-shown': ':placeholder-shown',
     'autofill': ':autofill',
     'indeterminate': ':indeterminate',
+    // Disclosure and dialogs: `<details open>`, `<dialog open>`.
+    'open': '[open]',
+    'modal': ':modal',
   };
 
   /// Pseudo-éléments supportés par défaut. Toujours placés en fin de
@@ -49,6 +52,7 @@ final class JxVariantResolver {
   static const Map<String, String> defaultPseudoElements = {
     'placeholder': '::placeholder',
     'file': '::file-selector-button',
+    'backdrop': '::backdrop',
   };
 
   /// Variantes de préférences et de média (mode sombre, mouvement réduit,
