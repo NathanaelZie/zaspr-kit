@@ -53,19 +53,23 @@ const badgeBase =
 
 const badgeTones = {
   'neutral': 'c:gray-700 bg:gray-100 dark:c:gray-100 dark:bg:gray-700',
-  'info': 'c:blue-900 bg:blue-100',
-  'success': 'c:green-900 bg:green-100',
-  'warning': 'c:yellow-900 bg:yellow-100',
-  'danger': 'c:red-900 bg:red-100',
+  'info': 'c:blue-900 bg:blue-100 dark:c:blue-100 dark:bg:blue-900',
+  'success': 'c:green-900 bg:green-100 dark:c:green-100 dark:bg:green-900',
+  'warning': 'c:yellow-900 bg:yellow-100 dark:c:yellow-100 dark:bg:yellow-900',
+  'danger': 'c:red-900 bg:red-100 dark:c:red-100 dark:bg:red-900',
 };
 
 const alertBase = 'flex fd:col gap:1 p:4 br:lg bw:1 bwl:4 fs:sm';
 
 const alertTones = {
-  'info': 'c:blue-900 bg:blue-100 bc:blue-300',
-  'success': 'c:green-900 bg:green-100 bc:green-300',
-  'warning': 'c:yellow-900 bg:yellow-100 bc:yellow-300',
-  'danger': 'c:red-900 bg:red-100 bc:red-300',
+  'info':
+      'c:blue-900 bg:blue-100 bc:blue-300 dark:c:blue-100 dark:bg:blue-900 dark:bc:blue-700',
+  'success':
+      'c:green-900 bg:green-100 bc:green-300 dark:c:green-100 dark:bg:green-900 dark:bc:green-700',
+  'warning':
+      'c:yellow-900 bg:yellow-100 bc:yellow-300 dark:c:yellow-100 dark:bg:yellow-900 dark:bc:yellow-700',
+  'danger':
+      'c:red-900 bg:red-100 bc:red-300 dark:c:red-100 dark:bg:red-900 dark:bc:red-700',
 };
 
 const alertTitle = 'fw:semibold';
@@ -81,7 +85,10 @@ const fieldInputInvalid = 'bc:red-500 focus:bc:red-500 focus:ringc:red-300';
 
 const fieldHint = 'fs:xs c:gray-500';
 
-const fieldError = 'fs:xs c:red-700';
+const fieldError = 'fs:xs c:red-700 dark:c:red-300';
+
+/// Visual marker of a required field; the input carries `required` itself.
+const fieldRequired = 'ml:1 c:red-700 dark:c:red-300';
 
 const buttonFullWidth = 'w:full';
 
@@ -143,6 +150,10 @@ const progressTrack =
     'w:full h:2 br:full bg:gray-100 ov:hidden dark:bg:gray-700';
 
 const progressBar = 'h:full br:full bg:blue-700 tr:all dur:300';
+
+/// Bar of a progress without a value: a third of the track, sliding.
+const progressIndeterminate =
+    'h:full w:1/3 br:full bg:blue-700 anim:indeterminate motion-reduce:anim:pulse';
 
 const skeleton =
     'block br:md bg:gray-100 anim:pulse motion-reduce:anim:none dark:bg:gray-700';
@@ -297,3 +308,65 @@ const drawerSides = {
 const drawerBody = 'flex fd:col gap:4 p:6 mnh:full';
 
 const drawerFooter = 'flex wrap ai:center jc:end gap:2 mt:auto pt:4';
+
+const tabs = 'flex fd:col gap:4';
+
+const tabList =
+    'flex ai:end gap:1 bwb:1 bc:gray-100 ovx:auto dark:bc:gray-700';
+
+const tabBase =
+    '$focusRing inline-flex ai:center gap:2 shrink:0 px:4 py:2 mnh:[40px] -mb:px bw:0 bwb:2 bg:transparent fs:sm fw:medium ws:nowrap cur:pointer tr:colors disabled:o:50 disabled:cur:not-allowed';
+
+/// Tab colors: one of [tabIdle] or [tabSelected], never both.
+const tabIdle =
+    'bc:transparent c:gray-500 hover:c:gray-900 hover:bc:gray-300 dark:hover:c:gray-100';
+
+const tabSelected = 'bc:blue-700 c:blue-700 dark:c:blue-300 dark:bc:blue-300';
+
+const tabPanel = '$focusRing br:md fs:sm lh:relaxed';
+
+const menu = 'group relative inline-block';
+
+const menuSummary = 'lst:none';
+
+const menuList =
+    '$surfaceBorder absolute z:20 top:full mt:2 flex fd:col mnw:[12rem] p:1 br:lg bg:white sh:lg lst:none m:0 group-open:anim:fade-in motion-reduce:anim:none dark:bg:gray-900';
+
+const menuAlign = {'start': 'left:0', 'end': 'right:0'};
+
+const menuItem =
+    '$focusRing flex ai:center gap:2 w:full px:3 py:2 br:md bw:0 bg:transparent fs:sm ta:left td:none cur:pointer tr:colors hover:bg:gray-100 dark:hover:bg:gray-700 disabled:o:50 disabled:cur:not-allowed';
+
+const menuItemTones = {
+  'normal': 'c:gray-900 dark:c:gray-100',
+  'danger': 'c:red-700 dark:c:red-300',
+};
+
+const menuSeparator = 'h:px my:1 bg:gray-100 dark:bg:gray-700';
+
+const toastRegion =
+    'fixed z:50 flex fd:col gap:3 w:[min(24rem,calc(100%_-_2rem))] pe:none';
+
+const toastPositions = {
+  'bottomEnd': 'bottom:4 right:4',
+  'bottomStart': 'bottom:4 left:4',
+  'topEnd': 'top:4 right:4',
+  'topStart': 'top:4 left:4',
+};
+
+const toast =
+    '$textStrong $surfaceBorder flex ai:start gap:3 p:4 br:lg bwl:4 bg:white sh:lg fs:sm pe:auto anim:slide-up motion-reduce:anim:none dark:bg:gray-900';
+
+const toastTones = {
+  'neutral': 'bc:gray-300',
+  'info': 'bc:blue-500',
+  'success': 'bc:green-500',
+  'warning': 'bc:yellow-500',
+  'danger': 'bc:red-500',
+};
+
+const toastBody = 'flex fd:col gap:1 grow:1 mnw:0';
+
+const toastTitle = 'fw:semibold';
+
+const toastText = 'lh:relaxed c:gray-700 dark:c:gray-300';

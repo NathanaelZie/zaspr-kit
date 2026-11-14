@@ -16,11 +16,15 @@ Component jxField({
   required String? error,
   required String? classes,
   required Component Function(Map<String, String> aria) control,
+  bool required = false,
 }) {
   final message = error ?? hint;
   final messageId = message == null ? null : '$id-message';
   return div(classes: jxJoin([s.fieldWrapper, classes]), [
-    _labelElement(htmlFor: id, classes: s.fieldLabel, [.text(label)]),
+    _labelElement(htmlFor: id, classes: s.fieldLabel, [
+      .text(label),
+      if (required) jxRequiredMarker,
+    ]),
     control({
       if (error != null) 'aria-invalid': 'true',
       'aria-describedby': ?messageId,
@@ -31,3 +35,11 @@ Component jxField({
       ]),
   ]);
 }
+
+/// Red asterisk after the label of a required field. Hidden from assistive
+/// technology: the control announces `required` itself.
+const Component jxRequiredMarker = span(
+  classes: s.fieldRequired,
+  attributes: {'aria-hidden': 'true'},
+  [Component.text('*')],
+);

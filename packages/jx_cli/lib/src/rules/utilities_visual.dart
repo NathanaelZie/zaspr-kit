@@ -360,6 +360,10 @@ const Map<String, Map<String, Map<String, String>>> jxKeyframes = {
   'jx-slide-in-left': {
     'from': {'translate': '-100% 0'},
   },
+  'jx-indeterminate': {
+    'from': {'translate': '-100% 0'},
+    'to': {'translate': '300% 0'},
+  },
 };
 
 const _enter = 'cubic-bezier(0.16, 1, 0.3, 1)';
@@ -385,6 +389,7 @@ const List<JxRuleContract> jxAnimationRules = [
       'zoom-in': 'jx-zoom-in 0.3s $_enter both',
       'slide-in-right': 'jx-slide-in-right 0.35s $_enter both',
       'slide-in-left': 'jx-slide-in-left 0.35s $_enter both',
+      'indeterminate': 'jx-indeterminate 1.4s ease-in-out infinite',
     },
   ),
   JxValueRule(

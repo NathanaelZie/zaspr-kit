@@ -9,6 +9,12 @@
 - The history of the former packages is in `doc/history/`.
 - Components:
   - new `JxAccordion` (`<details>`, optionally exclusive) and `JxDrawer` (side panel on `<dialog>`), with the `slide-in-left` and `slide-in-right` animations;
+  - new `JxTabs` (ARIA tabs with arrow keys), `JxDropdownMenu` (`<details>`, Escape closes it), `JxToast` with `JxToastRegion`, and `JxCombobox` (`<input list>`);
+  - `JxProgress` without `value` is indeterminate (new `anim:indeterminate`);
+  - `JxCheckbox(error:, required:)` and `JxRadioGroup(hint:, error:, required:)`;
+  - required fields show a decorative asterisk;
+  - badge and alert tones have dark-mode variants;
+  - `JxTooltip(id:)` and `JxTooltip.describedBy(id)` link the hint to its element;
   - `JxCard(titleLevel:)` picks the heading level of the title;
   - a disabled or loading `JxButton(href:)` no longer navigates (`aria-disabled`, no `href`);
   - focus ring, strong text and surface borders are shared tokens, so every component focuses the same way.

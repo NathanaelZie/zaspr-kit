@@ -63,18 +63,22 @@ class JxSpinner extends StatelessComponent {
   }
 }
 
-/// A determinate progress bar (`role="progressbar"`).
+/// A progress bar (`role="progressbar"`).
+///
+/// Without a [value] it is indeterminate: a bar slides along the track and
+/// no percentage is announced.
 class JxProgress extends StatelessComponent {
   const JxProgress({
-    required this.value,
     required this.label,
+    this.value,
     this.max = 100,
     this.showValue = true,
     this.classes,
     super.key,
   });
 
-  final num value;
+  /// Current value, between 0 and [max]. `null` when the progress is unknown.
+  final num? value;
   final num max;
 
   /// Accessible name, also shown above the bar.
@@ -86,28 +90,37 @@ class JxProgress extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final ratio = max <= 0 ? 0.0 : (value / max).clamp(0, 1).toDouble();
+    final value = this.value;
+    final ratio = value == null || max <= 0
+        ? 0.0
+        : (value / max).clamp(0, 1).toDouble();
     final percent = (ratio * 100).round();
     return div(classes: jxJoin([s.progressWrapper, classes]), [
       div(classes: s.progressHeader, [
         span([.text(label)]),
-        if (showValue) span([.text('$percent%')]),
+        if (showValue && value != null) span([.text('$percent%')]),
       ]),
       div(
         classes: s.progressTrack,
         attributes: {
           'role': 'progressbar',
           'aria-label': label,
-          'aria-valuemin': '0',
-          'aria-valuemax': '$max',
-          'aria-valuenow': '$value',
+          if (value != null) ...{
+            'aria-valuemin': '0',
+            'aria-valuemax': '$max',
+            'aria-valuenow': '$value',
+          } else
+            'aria-busy': 'true',
         },
         [
-          div(
-            classes: s.progressBar,
-            styles: Styles(width: Unit.percent(ratio * 100)),
-            [],
-          ),
+          if (value == null)
+            const div(classes: s.progressIndeterminate, [])
+          else
+            div(
+              classes: s.progressBar,
+              styles: Styles(width: Unit.percent(ratio * 100)),
+              [],
+            ),
         ],
       ),
     ]);
