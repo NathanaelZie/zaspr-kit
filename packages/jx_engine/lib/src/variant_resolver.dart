@@ -183,7 +183,7 @@ final class JxVariantResolver {
     final width = theme.resolveToken(JxThemeCategory.breakpoints, breakpoint);
     if (width == null) {
       throw JxRuleException(
-        'Breakpoint "$breakpoint" absent du thème "${theme.name}".',
+        'Breakpoint "$breakpoint" is missing from theme "${theme.name}".',
       );
     }
     return '@media (min-width: $width)';
@@ -214,7 +214,7 @@ final class JxVariantResolver {
       } else if (element != null) {
         if (pseudoElement != null) {
           throw JxRuleException(
-            'Un seul pseudo-élément par classe : "$variant" en plus de '
+            'Only one pseudo-element per class: "$variant" in addition to '
             '"$pseudoElement".',
           );
         }
@@ -227,7 +227,7 @@ final class JxVariantResolver {
         // Un type de média (`print`) doit précéder les conditions.
         (media.startsWith('(') ? conditions : mediaTypes).add(media);
       } else {
-        throw JxRuleException('Variante "$variant" non supportée.');
+        throw JxRuleException('Unsupported variant "$variant".');
       }
     }
     // Le pseudo-élément clôt toujours le sélecteur.

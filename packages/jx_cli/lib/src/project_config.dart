@@ -93,30 +93,30 @@ final class JxProjectConfig {
     try {
       document = loadYaml(source);
     } on YamlException catch (e) {
-      throw JxConfigException('YAML invalide : ${e.message}', e);
+      throw JxConfigException('Invalid YAML: ${e.message}', e);
     }
     if (document == null) return const JxProjectConfig();
     if (document is! YamlMap) {
       throw const JxConfigException(
-        'La racine de jx.yaml doit être une table.',
+        'The root of jx.yaml must be a map.',
       );
     }
 
     for (final key in document.keys) {
       if (!_knownKeys.contains(key)) {
-        throw JxConfigException('Clé inconnue dans jx.yaml : "$key".');
+        throw JxConfigException('Unknown key in jx.yaml: "$key".');
       }
     }
 
     final theme = document['theme'];
     if (theme != null && theme is! YamlMap) {
-      throw const JxConfigException('"theme" doit être une table.');
+      throw const JxConfigException('"theme" must be a map.');
     }
     if (theme is YamlMap) {
       for (final key in theme.keys) {
         if (key != 'extend' && key != 'override') {
           throw JxConfigException(
-            'Clé inconnue sous "theme" : "$key" (attendu : extend, override).',
+            'Unknown key under "theme": "$key" (expected: extend, override).',
           );
         }
       }
@@ -154,7 +154,7 @@ final class JxProjectConfig {
   static JxProjectConfig load(File file) {
     if (!file.existsSync()) {
       throw JxConfigException(
-        'Fichier de configuration introuvable : ${file.path}',
+        'Configuration file not found: ${file.path}',
       );
     }
     return JxProjectConfig.fromYaml(file.readAsStringSync());
@@ -215,21 +215,21 @@ final class JxProjectConfig {
     if (value == null) return null;
     if (value is String) return [value];
     if (value is YamlList) return [for (final item in value) '$item'];
-    throw JxConfigException('"$key" doit être une liste de chaînes.');
+    throw JxConfigException('"$key" must be a list of strings.');
   }
 
   static String? _string(YamlMap map, String key) {
     final value = map[key];
     if (value == null) return null;
     if (value is String) return value;
-    throw JxConfigException('"$key" doit être une chaîne.');
+    throw JxConfigException('"$key" must be a string.');
   }
 
   static String _darkMode(String? value) {
     if (value == null) return 'media';
     if (value == 'media' || value == 'class') return value;
     throw JxConfigException(
-      '"dark_mode" doit valoir "media" ou "class" (reçu : "$value").',
+      '"dark_mode" must be "media" or "class" (got "$value").',
     );
   }
 
@@ -237,20 +237,20 @@ final class JxProjectConfig {
     final value = map[key];
     if (value == null) return null;
     if (value is bool) return value;
-    throw JxConfigException('"$key" doit être un booléen.');
+    throw JxConfigException('"$key" must be a boolean.');
   }
 
   static Map<String, Map<String, String>> _tokens(Object? node, String name) {
     if (node == null) return const {};
     if (node is! YamlMap) {
-      throw JxConfigException('"theme.$name" doit être une table.');
+      throw JxConfigException('"theme.$name" must be a map.');
     }
     final result = <String, Map<String, String>>{};
     for (final entry in node.entries) {
       final tokens = entry.value;
       if (tokens is! YamlMap) {
         throw JxConfigException(
-          '"theme.$name.${entry.key}" doit être une table clé -> valeur.',
+          '"theme.$name.${entry.key}" must be a key -> value map.',
         );
       }
       result['${entry.key}'] = {

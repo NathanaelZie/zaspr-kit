@@ -1,3 +1,7 @@
+## 0.2.1
+
+- README and package description in English.
+
 ## 0.2.0
 
 - Version alignée sur le reste de la famille JX CSS.

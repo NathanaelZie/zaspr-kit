@@ -1,6 +1,6 @@
 name: jx_theme
-description: "Tokens de design, thème par défaut et variables CSS de JX CSS : couleurs, espacements, typographie et breakpoints extensibles."
-version: 0.2.0
+description: "JX CSS design tokens, default theme and CSS variables: extensible colors, spacing, typography and breakpoints."
+version: 0.2.1
 repository: https://github.com/NathanaelZie/zaspr-kit/tree/main/packages/jx_theme
 issue_tracker: https://github.com/NathanaelZie/zaspr-kit/issues
 topics:
@@ -14,7 +14,7 @@ environment:
 resolution: workspace
 
 dependencies:
-  jx_core: ^0.2.0
+  jx_core: ^0.2.1
 
 dev_dependencies:
   lints: ^6.0.0

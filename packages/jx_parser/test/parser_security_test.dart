@@ -36,7 +36,7 @@ void main() {
       final failure = parser.analyze('c:[red;}x{]').failure!;
       expect(failure.isSecurityRelated, isTrue);
       expect(failure.message, contains('";"'));
-      expect('$failure', startsWith('Classe "c:[red;}x{]" invalide :'));
+      expect('$failure', startsWith('Invalid class "c:[red;}x{]":'));
     });
 
     test('valeurs arbitraires légitimes acceptées', () {

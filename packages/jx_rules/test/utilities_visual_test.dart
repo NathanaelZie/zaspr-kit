@@ -158,7 +158,7 @@ void main() {
           isA<JxRuleException>().having(
             (e) => e.message,
             'message',
-            allOf(contains('"fw:bold"'), contains('valeurs possibles')),
+            allOf(contains('"fw:bold"'), contains('accepted values')),
           ),
         ),
       );

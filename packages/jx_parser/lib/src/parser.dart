@@ -131,7 +131,7 @@ final class JxParser implements JxParserContract {
     if (raw.length > maxClassLength) {
       return fail(
         JxParseErrorCode.tooLong,
-        'classe trop longue (plus de $maxClassLength caractères)',
+        'class too long (more than $maxClassLength characters)',
       );
     }
     for (var i = 0; i < raw.length; i++) {
@@ -139,7 +139,7 @@ final class JxParser implements JxParserContract {
       if (code <= 0x20 || code == 0x7F) {
         return fail(
           JxParseErrorCode.invalidCharacter,
-          'espace ou caractère de contrôle interdit',
+          'space or control character not allowed',
         );
       }
     }
@@ -155,7 +155,7 @@ final class JxParser implements JxParserContract {
       working = working.substring(1);
     }
     if (working.isEmpty) {
-      return fail(JxParseErrorCode.empty, 'classe réduite à "!"');
+      return fail(JxParseErrorCode.empty, 'class is only "!"');
     }
 
     final List<String> segments;
@@ -204,13 +204,13 @@ final class JxParser implements JxParserContract {
       if (!_variantPattern.hasMatch(variant)) {
         return fail(
           JxParseErrorCode.invalidVariant,
-          'variante "$variant" invalide',
+          'invalid variant "$variant"',
         );
       }
       if (!seen.add(variant)) {
         return fail(
           JxParseErrorCode.duplicateVariant,
-          'variante "$variant" répétée',
+          'repeated variant "$variant"',
         );
       }
     }
@@ -231,7 +231,7 @@ final class JxParser implements JxParserContract {
       if (isNegative) {
         return fail(
           JxParseErrorCode.invalidNegative,
-          'double négation ("-m:-4")',
+          'double negation ("-m:-4")',
         );
       }
       isNegative = true;
@@ -239,7 +239,7 @@ final class JxParser implements JxParserContract {
       if (value.isEmpty || value.startsWith('-')) {
         return fail(
           JxParseErrorCode.invalidNegative,
-          'valeur négative incomplète',
+          'incomplete negative value',
         );
       }
     }
@@ -248,8 +248,8 @@ final class JxParser implements JxParserContract {
       return fail(
         JxParseErrorCode.invalidIdentifier,
         identifier.contains('!')
-            ? 'le "!" se place au début ou à la fin de la classe'
-            : 'identifiant "$identifier" invalide',
+            ? '"!" goes at the start or the end of the class'
+            : 'invalid utility "$identifier"',
       );
     }
 
@@ -283,7 +283,7 @@ final class JxParser implements JxParserContract {
         depth++;
       } else if (code == 0x5D) {
         if (--depth < 0) {
-          throw const FormatException('crochet "]" sans "[" correspondant');
+          throw const FormatException('"]" without a matching "["');
         }
       } else if (code == 0x3A && depth == 0) {
         segments.add(input.substring(start, i));
@@ -291,7 +291,7 @@ final class JxParser implements JxParserContract {
       }
     }
 
-    if (depth != 0) throw const FormatException('crochet "[" non fermé');
+    if (depth != 0) throw const FormatException('unclosed "["');
     segments.add(input.substring(start));
     return segments;
   }
@@ -303,9 +303,9 @@ final class JxParser implements JxParserContract {
       return (
         JxParseErrorCode.invalidValue,
         value.contains('!')
-            ? 'le "!" se place au début ou à la fin de la classe'
-            : 'valeur "${_preview(value)}" invalide '
-                  '(pour une valeur libre, utilisez des crochets)',
+            ? '"!" goes at the start or the end of the class'
+            : 'invalid value "${_preview(value)}" '
+                  '(use brackets for a free-form value)',
       );
     }
     if (!value.endsWith(']')) {
@@ -321,7 +321,7 @@ final class JxParser implements JxParserContract {
     }
     final reason = JxCssValue.unsafeReason(decoded);
     if (reason != null) {
-      return (JxParseErrorCode.unsafeValue, 'valeur refusée : $reason');
+      return (JxParseErrorCode.unsafeValue, 'value rejected: $reason');
     }
     return null;
   }

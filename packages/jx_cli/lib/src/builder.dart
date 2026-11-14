@@ -107,7 +107,7 @@ final class JxBuilder {
       try {
         candidates.addAll(extractFrom(file.path, file.readAsStringSync()));
       } on FileSystemException catch (e) {
-        scanWarnings.add('Lecture impossible de ${file.path} : ${e.message}');
+        scanWarnings.add('Cannot read ${file.path}: ${e.message}');
       }
     }
 

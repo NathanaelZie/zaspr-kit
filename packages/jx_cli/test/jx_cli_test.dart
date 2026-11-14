@@ -23,7 +23,7 @@ void main() {
 
       final code = await runner.run(['--help']);
       expect(code, equals(0));
-      expect(out.toString(), contains('Usage: jx <commande> [options]'));
+      expect(out.toString(), contains('Usage: jx <command> [options]'));
       expect(out.toString(), contains('--help'));
     });
 
@@ -34,7 +34,7 @@ void main() {
 
       final code = await runner.run(['build', '--input', '']);
       expect(code, equals(0));
-      expect(out.toString(), contains('Compilation réussie'));
+      expect(out.toString(), contains('Build succeeded'));
     });
 
     test('renvoie une erreur en cas d\'option inconnue', () async {
@@ -44,7 +44,7 @@ void main() {
 
       final code = await runner.run(['--invalid-flag']);
       expect(code, equals(1));
-      expect(err.toString(), contains('Erreur d\'arguments'));
+      expect(err.toString(), contains('Argument error'));
     });
   });
 }

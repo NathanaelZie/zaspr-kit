@@ -1,28 +1,30 @@
-# Politique de sécurité
+# Security policy
 
-## Versions prises en charge
+[Version française](SECURITY.fr.md)
 
-Seule la dernière version publiée de chaque package `jx_*` reçoit des correctifs de sécurité.
+## Supported versions
 
-## Signaler une vulnérabilité
+Only the latest published version of each `jx_*` package receives security fixes.
 
-N'ouvrez pas d'issue publique. Utilisez le signalement privé de GitHub :
+## Reporting a vulnerability
+
+Do not open a public issue. Use GitHub private reporting:
 [Security > Report a vulnerability](https://github.com/NathanaelZie/zaspr-kit/security/advisories/new).
 
-Indiquez la version concernée, une classe ou un fichier qui reproduit le problème, et l'effet observé.
+Include the affected version, a class or file that reproduces the problem, and the observed effect.
 
-## Modèle de menace
+## Threat model
 
-JX CSS lit des fichiers sources et écrit une feuille de style. Les classes peuvent provenir de contenus que vous ne contrôlez pas (CMS, texte saisi par un utilisateur, compilation à l'exécution dans le navigateur). Elles sont donc traitées comme des entrées non fiables.
+JX CSS reads source files and writes a stylesheet. Classes can come from content you do not control (a CMS, user input, runtime compilation in the browser), so they are treated as untrusted input.
 
-| Risque | Protection |
+| Risk | Protection |
 | :--- | :--- |
-| Injection CSS par une valeur arbitraire (`c:[red;}body{…]`) | `;`, `{`, `}`, `<`, `\`, `!`, commentaires et caractères de contrôle refusés ; parenthèses et guillemets équilibrés exigés |
-| Chargement de code (`url(javascript:…)`, `expression()`, `@import`) | motifs refusés sans tenir compte de la casse ; `data:` limité aux images et polices |
-| Sortie d'une balise `<style>` | `<` refusé dans toute valeur |
-| Sélecteur malformé | tout caractère hors `[a-zA-Z0-9_-]` est échappé |
-| Déni de service (entrée géante ou très imbriquée) | longueurs et nombre de variantes bornés, analyse linéaire, profondeur d'interpolation bornée |
+| CSS injection through an arbitrary value (`c:[red;}body{…]`) | `;`, `{`, `}`, `<`, `\`, `!`, comments and control characters rejected; parentheses and quotes must be balanced |
+| Code loading (`url(javascript:…)`, `expression()`, `@import`) | patterns rejected regardless of case; `data:` limited to images and fonts |
+| Breaking out of a `<style>` tag | `<` rejected in every value |
+| Malformed selector | every character outside `[a-zA-Z0-9_-]` is escaped |
+| Denial of service (huge or deeply nested input) | bounded lengths and variant count, linear parsing, bounded interpolation depth |
 
-La validation est faite deux fois : par le parseur (`jx_parser`), puis par les règles (`jx_rules`) au moment de générer le CSS.
+Validation runs twice: in the parser (`jx_parser`), then in the rules (`jx_rules`) when the CSS is generated.
 
-Hors périmètre : le contenu de `jx.yaml` (thème, breakpoints) est considéré comme fiable, car il est écrit par le développeur du projet.
+Out of scope: the content of `jx.yaml` (theme, breakpoints) is trusted, since it is written by the project's developer.

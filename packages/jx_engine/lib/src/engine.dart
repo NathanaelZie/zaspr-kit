@@ -114,8 +114,8 @@ final class JxEngine implements JxEngineContract {
       unmatchedTokens.add(raw);
       warnings.add(
         reason.isEmpty
-            ? 'Syntaxe de classe invalide : "$raw".'
-            : 'Syntaxe de classe invalide : "$raw" ($reason).',
+            ? 'Invalid class syntax: "$raw".'
+            : 'Invalid class syntax: "$raw" ($reason).',
       );
     }
 
@@ -140,10 +140,10 @@ final class JxEngine implements JxEngineContract {
         matchedTokens.add(token);
       } on JxException catch (e) {
         unmatchedTokens.add(token.raw);
-        warnings.add('"${token.raw}" ignorée : ${e.message}');
+        warnings.add('"${token.raw}" ignored: ${e.message}');
       } catch (e) {
         unmatchedTokens.add(token.raw);
-        warnings.add('Erreur lors de la génération pour "${token.raw}": $e');
+        warnings.add('Error while generating "${token.raw}": $e');
       }
     }
 
@@ -206,7 +206,7 @@ final class JxEngine implements JxEngineContract {
       break;
     }
     if (suggestion == null) return null;
-    return 'Classe "${token.raw}" inconnue : vouliez-vous dire "$suggestion${token.isImportant ? '!' : ''}" ?';
+    return 'Unknown class "${token.raw}": did you mean "$suggestion${token.isImportant ? '!' : ''}"?';
   }
 
   /// Règles `@property` (variables `--jx-*` non héritées) et `@keyframes`
