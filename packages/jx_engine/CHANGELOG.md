@@ -1,4 +1,4 @@
-## 0.3.0
+## 0.0.1
 
 - `JxTailwindConverter`: converts Tailwind classes to JX. Every result is checked by compiling it; approximations and unsupported classes are reported.
 

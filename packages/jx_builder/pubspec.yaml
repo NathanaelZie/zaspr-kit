@@ -1,6 +1,6 @@
 name: jx_builder
 description: "build_runner integration for JX CSS: jaspr serve and jaspr build generate web/jx.css automatically, with no extra command."
-version: 0.3.0
+version: 0.0.1
 repository: https://github.com/NathanaelZie/zaspr-kit/tree/main/packages/jx_builder
 issue_tracker: https://github.com/NathanaelZie/zaspr-kit/issues
 topics:
@@ -17,9 +17,9 @@ resolution: workspace
 dependencies:
   build: ^4.0.0
   glob: ^2.1.1
-  jx_cli: ^0.3.0
-  jx_core: ^0.3.0
-  jx_parser: ^0.3.0
+  jx_cli: ^0.0.1
+  jx_core: ^0.0.1
+  jx_parser: ^0.0.1
   path: ^1.9.0
 
 dev_dependencies:

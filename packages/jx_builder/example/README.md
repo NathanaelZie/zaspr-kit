@@ -5,7 +5,7 @@
 dev_dependencies:
   build_runner: ^2.10.0
   jaspr_builder: ^0.22.4
-  jx_builder: ^0.3.0
+  jx_builder: ^0.0.1
 ```
 
 ```dart
