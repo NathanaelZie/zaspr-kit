@@ -8,3 +8,6 @@
 library;
 
 export 'src/components.dart';
+export 'src/display.dart';
+export 'src/feedback.dart';
+export 'src/forms.dart';

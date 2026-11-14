@@ -81,3 +81,123 @@ const fieldInputInvalid = 'bc:red-500 focus:bc:red-500 focus:ringc:red-300';
 const fieldHint = 'fs:xs c:gray-500';
 
 const fieldError = 'fs:xs c:red-700';
+
+const buttonFullWidth = 'w:full';
+
+const cardDescription = 'fs:sm lh:relaxed c:gray-500';
+
+const cardFooter =
+    'flex wrap ai:center jc:end gap:2 pt:4 mt:1 bwt:1 bc:gray-100 dark:bc:gray-700';
+
+const textArea = 'rsz:y mnh:[96px] lh:relaxed';
+
+const selectWrapper = 'relative';
+
+const selectInput = 'app:none pr:10 cur:pointer';
+
+const selectChevron =
+    'absolute top:0 right:0 flex ai:center h:full px:3 pe:none c:gray-500';
+
+const choiceLabel =
+    'flex ai:start gap:3 cur:pointer fs:sm c:gray-900 dark:c:gray-100';
+
+const choiceInput =
+    'shrink:0 w:4 h:4 mt:[2px] accent:blue-700 cur:pointer '
+    'disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 '
+    'focus-visible:olo:2';
+
+const choiceText = 'flex fd:col gap:[2px]';
+
+const choiceDescription = 'fs:xs c:gray-500';
+
+const radioGroup = 'flex fd:col gap:3 bw:0 p:0 m:0';
+
+const radioLegend = 'mb:1 fs:sm fw:medium c:gray-900 dark:c:gray-100';
+
+const switchLabel =
+    'inline-flex ai:center gap:3 cur:pointer fs:sm c:gray-900 dark:c:gray-100';
+
+const switchControl = 'relative inline-flex shrink:0 w:11 h:6';
+
+const switchInput = 'peer sr-only';
+
+const switchTrack =
+    'absolute inset:0 br:full bg:gray-300 tr:colors dur:200 '
+    'peer-checked:bg:blue-700 peer-disabled:o:50 '
+    'peer-focus-visible:ol:2 peer-focus-visible:olc:blue-500 '
+    'peer-focus-visible:olo:2 dark:bg:gray-700';
+
+const switchThumb =
+    'absolute top:[2px] left:[2px] w:5 h:5 br:full bg:white sh:sm pe:none '
+    'tr:all dur:200 peer-checked:tx:5 motion-reduce:tr:none';
+
+const spinner = 'inline-block shrink:0 anim:spin motion-reduce:anim:none';
+
+const spinnerSizes = {'sm': 'w:4 h:4', 'md': 'w:5 h:5', 'lg': 'w:8 h:8'};
+
+const progressWrapper = 'flex fd:col gap:1 w:full';
+
+const progressHeader =
+    'flex jc:between fs:sm fw:medium c:gray-900 dark:c:gray-100';
+
+const progressTrack =
+    'w:full h:2 br:full bg:gray-100 ov:hidden dark:bg:gray-700';
+
+const progressBar = 'h:full br:full bg:blue-700 tr:all dur:300';
+
+const skeleton =
+    'block br:md bg:gray-100 anim:pulse motion-reduce:anim:none dark:bg:gray-700';
+
+const skeletonDefault = 'h:4 w:full';
+
+const avatarBase =
+    'inline-flex ai:center jc:center shrink:0 br:full ov:hidden fw:semibold '
+    'us:none c:blue-900 bg:blue-100';
+
+const avatarSizes = {
+  'sm': 'w:8 h:8 fs:xs',
+  'md': 'w:10 h:10 fs:sm',
+  'lg': 'w:14 h:14 fs:lg',
+};
+
+const avatarImage = 'w:full h:full obf:cover';
+
+const tooltipWrapper = 'group relative inline-flex';
+
+const tooltipBubble =
+    'absolute bottom:full left:1/2 -tx:1/2 mb:2 z:10 px:2 py:1 br:md fs:xs '
+    'fw:medium ws:nowrap c:white bg:gray-900 sh:md pe:none invisible o:0 '
+    'tr:all dur:150 group-hover:visible group-hover:o:100 '
+    'group-focus-within:visible group-focus-within:o:100 dark:bg:gray-700';
+
+const kbd =
+    'inline-flex ai:center px:2 py:[1px] br:md bw:1 bwb:2 bc:gray-300 '
+    'bg:gray-100 ff:mono fs:xs fw:medium c:gray-900 '
+    'dark:bg:gray-700 dark:bc:gray-500 dark:c:gray-100';
+
+const breadcrumbList = 'flex wrap ai:center gap:2 fs:sm lst:none p:0 m:0';
+
+const breadcrumbItem = 'inline-flex ai:center gap:2';
+
+const breadcrumbLink =
+    'c:gray-500 td:none br:sm hover:c:gray-900 hover:td:underline '
+    'dark:hover:c:gray-100 focus-visible:ol:2 focus-visible:olc:blue-500 '
+    'focus-visible:olo:2';
+
+const breadcrumbCurrent = 'fw:medium c:gray-900 dark:c:gray-100';
+
+const breadcrumbSeparator = 'c:gray-300 dark:c:gray-500';
+
+const divider = 'w:full h:px bw:0 m:0 bg:gray-100 dark:bg:gray-700';
+
+const dividerLabelled = 'flex ai:center gap:3 fs:xs fw:medium c:gray-500';
+
+const dividerLine = 'grow:1 h:px bg:gray-100 dark:bg:gray-700';
+
+const emptyState =
+    'flex fd:col ai:center ta:center gap:3 px:6 py:10 br:xl bw:1 bs:dashed '
+    'bc:gray-300 dark:bc:gray-700';
+
+const emptyStateTitle = 'fs:base fw:semibold c:gray-900 dark:c:gray-100';
+
+const emptyStateText = 'fs:sm lh:relaxed c:gray-500 mw:[28rem]';

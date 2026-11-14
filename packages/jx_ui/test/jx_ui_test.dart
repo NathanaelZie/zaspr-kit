@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:jaspr/server.dart';
 import 'package:jx_engine/jx_engine.dart';
@@ -15,29 +16,18 @@ void main() {
   setUpAll(Jaspr.initializeApp);
 
   test('every class in the styles compiles with the default theme', () {
-    final groups = [
-      s.focusRing,
-      s.buttonBase,
-      ...s.buttonVariants.values,
-      ...s.buttonSizes.values,
-      s.card,
-      s.cardTitle,
-      s.badgeBase,
-      ...s.badgeTones.values,
-      s.alertBase,
-      ...s.alertTones.values,
-      s.alertTitle,
-      s.fieldWrapper,
-      s.fieldLabel,
-      s.fieldInput,
-      s.fieldInputInvalid,
-      s.fieldHint,
-      s.fieldError,
-    ];
+    // Every string literal of styles.dart, map keys excepted.
+    final source = File('lib/src/styles.dart').readAsStringSync();
+    final classes = {
+      for (final match in RegExp(r"'([^'\n]*)'(\s*:)?").allMatches(source))
+        if (match[2] == null) ...match[1]!.split(' '),
+    }..remove('');
+    expect(classes, contains(s.buttonFullWidth));
+    // Marker classes produce no CSS on their own.
+    const markers = {'group', 'peer'};
     final engine = JxEngine();
     final failures = <String>[];
-    for (final jx in groups.expand((g) => g.split(' '))) {
-      if (jx.isEmpty) continue;
+    for (final jx in classes.difference(markers)) {
       final result = engine.compile(jx);
       if (result.warnings.isNotEmpty || result.ruleCount == 0) {
         failures.add('$jx: ${result.warnings.join('; ')}');

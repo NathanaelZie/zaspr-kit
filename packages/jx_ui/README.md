@@ -2,21 +2,23 @@
 
 Accessible [Jaspr](https://jaspr.site) components styled with **JX CSS** (ZASPR Kit), the utility-first CSS framework written in Dart. No Node.js, no JavaScript runtime, no CSS file to ship: the styles are regular JX classes compiled into your own stylesheet.
 
-| Component | Notes |
+| Group | Components |
 | :--- | :--- |
-| `JxButton` | `primary`, `secondary`, `outline`, `ghost`, `danger`; `sm`, `md`, `lg`; renders a link when `href` is set. |
-| `JxCard` | Surface with an optional title. |
-| `JxBadge` | `neutral`, `info`, `success`, `warning`, `danger`. |
-| `JxAlert` | `role="alert"` for `warning` and `danger`, `role="status"` otherwise. |
-| `JxTextField` | Label, hint and error linked to the input (`for`, `aria-describedby`, `aria-invalid`). |
+| Actions | `JxButton` (5 variants, 3 sizes, `loading`, `fullWidth`, link with `href`) |
+| Layout | `JxCard` (title, description, footer), `JxDivider`, `JxBreadcrumbs` |
+| Forms | `JxTextField`, `JxTextArea`, `JxSelect`, `JxCheckbox`, `JxSwitch`, `JxRadioGroup` |
+| Feedback | `JxAlert`, `JxBadge`, `JxSpinner`, `JxProgress`, `JxSkeleton`, `JxEmptyState` |
+| Display | `JxAvatar`, `JxTooltip`, `JxKbd` |
+
+Form controls link their label, hint and error (`for`, `aria-describedby`, `aria-invalid`). The switch, tooltip and skeleton need no JavaScript: they are drawn with `peer-*` and `group-*` classes. Animations stop when the system asks for reduced motion.
 
 Every component has a visible keyboard focus and `dark:` styles.
 
 ## Installation
 
 ```bash
-dart pub add jx_ui
-dart pub add dev:jx_cli     # or dev:jx_builder
+dart pub add jx_ui:^0.0.2
+dart pub add dev:jx_cli:^0.0.1     # or dev:jx_builder
 ```
 
 List the package in `jx.yaml` so its classes end up in your stylesheet:
