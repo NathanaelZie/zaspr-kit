@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="/zaspr-kit/"/>
+    <meta charset="utf-8"/>
+    <link href="/zaspr-kit/favicon.svg" rel="icon" type="image/svg+xml"/>
+    <link href="/zaspr-kit/jx.css" rel="stylesheet"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="ZASPR Kit"/>
+    <meta property="og:title" content="ZASPR Kit : Utility-first CSS, written in Dart."/>
+    <meta property="og:description" content="ZASPR Kit compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components. A parser, a theme and a CLI, all in Dart. No Node.js required."/>
+    <meta property="og:locale" content="en_US"/>
+    <!--$-->
+    <title>What's new in 0.2: ZASPR Kit docs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Dark mode, groups, filters, gradients, animations, and a parser that refuses any value able to inject CSS."/>
+    <meta name="theme-color" content="#0B0D12"/>
+    <meta name="color-scheme" content="dark"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="ZASPR Kit : Utility-first CSS, written in Dart."/>
+    <meta name="twitter:description" content="ZASPR Kit compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components. A parser, a theme and a CLI, all in Dart. No Node.js required."/>
+    <!--/-->
+    <script src="main.client.dart.js" defer></script>
+  </head>
+  <body>
+    <div class="ff:text c:snow bg:abyss mnh:[100vh]">
+      <!--@nav_bar data={"current":"/docs/whats-new"}-->
+      <header class="sticky top:0 z:50 bg:[rgba(11,13,18,0.9)] bwb:1 bc:edge">
+        <nav class="mw:[90rem] mx:auto px:5 md:px:8 flex ai:center jc:between gap:6 h:[4rem]" aria-label="Main navigation">
+          <div class="flex ai:center gap:8">
+            <a class="flex ai:center gap:3 br:md fw:bold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/">
+              <span class="flex ai:center jc:center shrink:0 c:white ff:code fw:extrabold bg:[linear-gradient(135deg,#3B6CF0,#2DD4BF)] w:8 h:8 br:lg fs:base" aria-hidden="true">Z</span>
+              ZASPR Kit
+            </a>
+            <div class="hidden md:flex ai:center gap:1 fs:sm">
+              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:snow fw:semibold" aria-current="page" href="/zaspr-kit/docs/introduction">Documentation</a>
+              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/docs/utilities">Utilities</a>
+              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/playground">Playground</a>
+            </div>
+          </div>
+          <div class="flex ai:center gap:3">
+            <span class="hidden sm:inline ff:code fs:xs c:haze px:2 py:1 br:md bg:[rgba(255,255,255,0.06)]">v0.2.1</span>
+            <button class="md:hidden px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold c:snow bg:[rgba(255,255,255,0.06)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" aria-expanded="false" aria-controls="main-menu">Menu</button>
+          </div>
+        </nav>
+      </header>
+      <!--/@nav_bar-->
+      <div class="mw:[90rem] mx:auto px:5 md:px:8 grid cols:1 lg:cols:[15rem_minmax(0,1fr)] xl:cols:[15rem_minmax(0,1fr)_13rem] gap:10">
+        <aside class="hidden lg:block sticky top:[4rem] h:[calc(100vh_-_4rem)] ovy:auto py:10 pr:2">
+          <nav aria-label="Documentation">
+            <div class="mb:8">
+              <p class="mb:2 px:3 fs:sm fw:semibold c:snow">Getting started</p>
+              <ul class="flex fd:col gap:px">
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/introduction">Introduction</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/installation">Installation</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/configuration">Configuration</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/cli">Command line</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/jaspr">Using with Jaspr</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mb:8">
+              <p class="mb:2 px:3 fs:sm fw:semibold c:snow">Core concepts</p>
+              <ul class="flex fd:col gap:px">
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/syntax">Class syntax</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/variants">Variants</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/theme">Theme</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mb:8">
+              <p class="mb:2 px:3 fs:sm fw:semibold c:snow">Utilities</p>
+              <ul class="flex fd:col gap:px">
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities">Overview</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/display">Display</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/spacing">Spacing</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/colors">Colors</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/typography">Typography</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/sizing">Sizing</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/borders">Borders</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/flexbox">Flexbox</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/grid">Grid</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/position">Position and layers</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/effects">Effects and transitions</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/filters">Filters</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/gradients">Gradients</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/animations">Animations</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/media">Media and backgrounds</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/forms">Forms</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mb:8">
+              <p class="mb:2 px:3 fs:sm fw:semibold c:snow">Going further</p>
+              <ul class="flex fd:col gap:px">
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/architecture">Architecture</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/security">Security</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:snow fw:medium bg:[rgba(59,108,240,0.16)]" aria-current="page" href="/zaspr-kit/docs/whats-new">What's new</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </aside>
+        <main class="mnw:0 py:8 lg:py:12">
+          <div class="lg:hidden mb:8">
+            <!--@docs_layout data={"current":"/docs/whats-new"}-->
+            <div class="br:2xl bw:1 bc:edge bg:deep">
+              <button class="flex ai:center jc:between w:full px:5 py:3 mnh:[48px] br:2xl fs:sm fw:semibold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" aria-expanded="false" aria-controls="docs-menu">
+                <span>Documentation<span class="c:haze fw:normal"> / What's new</span></span>
+                <span class="c:haze">Open</span>
+              </button>
+            </div>
+            <!--/@docs_layout-->
+          </div>
+          <article class="mw:[48rem]">
+            <p class="fs:sm fw:semibold c:beam mb:3">Going further</p>
+            <h1 class="fs:[clamp(2rem,4vw,2.75rem)] fw:extrabold lh:[1.1] ls:tight c:snow">What's new in 0.2</h1>
+            <p class="mt:4 fs:lg md:fs:xl lh:relaxed c:haze">
+              Dark mode, groups, filters, gradients, animations, and a parser that refuses any value able to inject CSS.
+            </p>
+            <div class="mt:10">
+              <h2 id="variants" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new#variants">New variants</a>
+              </h2>
+              <ul class="mb:6 flex fd:col gap:2 pl:5 lst:disc c:[#C5CCD8]">
+                <li class="lh:[1.7] pl:1">
+                  <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">dark:</code>
+                   follows the system preference, or a <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">.dark</code>
+                   class with <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">dark_mode: class</code>.
+                </li>
+                <li class="lh:[1.7] pl:1">
+                  <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">group-hover:</code>, 
+                  <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">peer-checked:</code>
+                   and the other <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">group-*</code>
+                   / <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">peer-*</code>
+                   variants react to the state of a parent or a sibling.
+                </li>
+                <li class="lh:[1.7] pl:1">
+                  <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">motion-safe:</code>, 
+                  <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">motion-reduce:</code>, 
+                  <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">print:</code>, 
+                  <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">contrast-more:</code>, 
+                  <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">portrait:</code>, 
+                  <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">landscape:</code>.
+                </li>
+              </ul>
+              <div class="mb:8 br:2xl bw:1 bc:edge bg:deep ov:hidden">
+                <div class="grid cols:1 md:cols:[minmax(0,14rem)_minmax(0,1fr)] gap:3 md:gap:6 px:5 py:4">
+                  <div>
+                    <code class="inline-flex wrap ff:code fs:sm fw:semibold">
+                      <span class="c:variant">dark</span>
+                      <span class="c:haze">:</span>
+                      <span class="c:ident">bg</span>
+                      <span class="c:haze">:</span>
+                      <span class="c:value">gray-900</span>
+                    </code>
+                  </div>
+                  <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:[#C9D1DE] ov:auto ws:pre"><code>@media (prefers-color-scheme: dark) {
+  .dark\:bg\:gray-900 {
+    background-color: #111827;
+  }
+}</code></pre>
+                </div>
+                <div class="grid cols:1 md:cols:[minmax(0,14rem)_minmax(0,1fr)] gap:3 md:gap:6 px:5 py:4 bwt:1 bc:edge">
+                  <div>
+                    <code class="inline-flex wrap ff:code fs:sm fw:semibold">
+                      <span class="c:variant">group-hover</span>
+                      <span class="c:haze">:</span>
+                      <span class="c:ident">c</span>
+                      <span class="c:haze">:</span>
+                      <span class="c:value">blue</span>
+                    </code>
+                  </div>
+                  <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:[#C9D1DE] ov:auto ws:pre"><code>.group:hover .group-hover\:c\:blue {
+  color: #3b82f6;
+}</code></pre>
+                </div>
+                <div class="grid cols:1 md:cols:[minmax(0,14rem)_minmax(0,1fr)] gap:3 md:gap:6 px:5 py:4 bwt:1 bc:edge">
+                  <div>
+                    <code class="inline-flex wrap ff:code fs:sm fw:semibold">
+                      <span class="c:variant">motion-reduce</span>
+                      <span class="c:haze">:</span>
+                      <span class="c:ident">anim</span>
+                      <span class="c:haze">:</span>
+                      <span class="c:value">none</span>
+                    </code>
+                  </div>
+                  <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:[#C9D1DE] ov:auto ws:pre"><code>@media (prefers-reduced-motion: reduce) {
+  .motion-reduce\:anim\:none {
+    animation: none;
+  }
+}</code></pre>
+                </div>
+              </div>
+              <h2 id="utilities" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new#utilities">New utilities</a>
+              </h2>
+              <div class="mb:8 br:xl bw:1 bc:edge ovx:auto">
+                <table class="w:full fs:sm">
+                  <thead class="bg:shelf">
+                    <tr>
+                      <th class="px:4 py:3 ta:left fw:semibold c:snow ws:nowrap">Family</th>
+                      <th class="px:4 py:3 ta:left fw:semibold c:snow ws:nowrap">Classes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Transforms</td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">rot:45  skx:6  origin:top-left</code>
+                      </td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Filters</td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">blur:md  bri:110  gs:100  dsh:lg</code>
+                      </td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Frosted glass</td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">bblur:lg  bsat:180</code>
+                      </td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Gradients</td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">grad:to-r  from:blue  via:white  to:teal</code>
+                      </td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Animations</td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">anim:spin  anim:fade-in  adur:500</code>
+                      </td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Media and backgrounds</td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">ar:video  obf:cover  bgp:center  bs:dashed</code>
+                      </td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Alignment</td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">pi:center  ac:between  order:first  basis:1/2</code>
+                      </td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Text</td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">truncate  clamp:3  uppercase  tw:balance  sr-only</code>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="mb:5 lh:[1.75] c:[#C5CCD8]">
+                <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">tx:</code>
+                 and <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">ty:</code>
+                 now stack on the same element, and filters compose: <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">blur:sm bri:110</code>
+                 applies both.
+              </p>
+              <div class="mb:8 br:2xl bw:1 bc:edge bg:deep ov:hidden">
+                <div class="grid cols:1 md:cols:[minmax(0,14rem)_minmax(0,1fr)] gap:3 md:gap:6 px:5 py:4">
+                  <div>
+                    <code class="inline-flex wrap ff:code fs:sm fw:semibold"><span class="c:ident">grad</span><span class="c:haze">:</span><span class="c:value">to-r</span></code>
+                  </div>
+                  <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:[#C9D1DE] ov:auto ws:pre"><code>.grad\:to-r {
+  background-image: linear-gradient(to right, var(--jx-from, transparent), var(--jx-via,) var(--jx-to, transparent));
+}</code></pre>
+                </div>
+                <div class="grid cols:1 md:cols:[minmax(0,14rem)_minmax(0,1fr)] gap:3 md:gap:6 px:5 py:4 bwt:1 bc:edge">
+                  <div>
+                    <code class="inline-flex wrap ff:code fs:sm fw:semibold"><span class="c:ident">from</span><span class="c:haze">:</span><span class="c:value">blue</span></code>
+                  </div>
+                  <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:[#C9D1DE] ov:auto ws:pre"><code>.from\:blue {
+  --jx-from: #3b82f6;
+}
+
+@property --jx-from {
+  syntax: "*";
+  inherits: false;
+}</code></pre>
+                </div>
+                <div class="grid cols:1 md:cols:[minmax(0,14rem)_minmax(0,1fr)] gap:3 md:gap:6 px:5 py:4 bwt:1 bc:edge">
+                  <div>
+                    <code class="inline-flex wrap ff:code fs:sm fw:semibold"><span class="c:ident">blur</span><span class="c:haze">:</span><span class="c:value">md</span></code>
+                  </div>
+                  <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:[#C9D1DE] ov:auto ws:pre"><code>.blur\:md {
+  --jx-blur: blur(8px);
+  filter: var(--jx-blur,) var(--jx-brightness,) var(--jx-contrast,) var(--jx-grayscale,) var(--jx-hue-rotate,) var(--jx-invert,) var(--jx-saturate,) var(--jx-sepia,) var(--jx-drop-shadow,);
+}
+
+@property --jx-blur {
+  syntax: "*";
+  inherits: false;
+}</code></pre>
+                </div>
+                <div class="grid cols:1 md:cols:[minmax(0,14rem)_minmax(0,1fr)] gap:3 md:gap:6 px:5 py:4 bwt:1 bc:edge">
+                  <div>
+                    <code class="inline-flex wrap ff:code fs:sm fw:semibold"><span class="c:ident">anim</span><span class="c:haze">:</span><span class="c:value">spin</span></code>
+                  </div>
+                  <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:[#C9D1DE] ov:auto ws:pre"><code>.anim\:spin {
+  animation: jx-spin 1s linear infinite;
+}
+
+@keyframes jx-spin {
+  to {
+    rotate: 360deg;
+  }
+}</code></pre>
+                </div>
+              </div>
+              <h2 id="diagnostics" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new#diagnostics">Messages and diagnostics</a>
+              </h2>
+              <p class="mb:5 lh:[1.75] c:[#C5CCD8]">
+                A misspelled class is reported with a fix, offered only when that fix compiles. An unknown value lists the accepted values.
+              </p>
+              <pre class="ff:code fs:sm lh:relaxed p:5 br:xl ov:auto ws:pre bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] mb:6"><code>Warning: Invalid class syntax: "hover:hover:c:red" (repeated variant "hover").
+Warning: Unknown class "pd:4": did you mean "p:4"?
+Warning: "c:bleu" ignored: Invalid value "bleu" for "c". Did you mean "c:blue"?; accepted values: transparent, current, black, white, gray, gray-100, gray-300, gray-500, gray-700, gray-900, red, red-100…; or an arbitrary value in brackets.</code></pre>
+              <p class="mb:5 lh:[1.75] c:[#C5CCD8]">
+                In Dart, <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">JxParser.analyze</code>
+                 returns the reason for a rejection as a code: <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">unsafeValue</code>, 
+                <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">duplicateVariant</code>, 
+                <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">invalidValue</code>…
+              </p>
+              <h2 id="security" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new#security">Security</a>
+              </h2>
+              <p class="mb:5 lh:[1.75] c:[#C5CCD8]">
+                Bracketed values are validated before being written to the stylesheet. The details are on the Security page.
+              </p>
+              <h2 id="migration" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new#migration">Migrating from 0.1</a>
+              </h2>
+              <ul class="mb:6 flex fd:col gap:2 pl:5 lst:disc c:[#C5CCD8]">
+                <li class="lh:[1.7] pl:1">
+                  A plain value can no longer start with a dot: <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">lh:.5</code>
+                   is rejected, write <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">lh:[.5]</code>.
+                </li>
+                <li class="lh:[1.7] pl:1">
+                  In an arbitrary value, <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">;</code>, 
+                  <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">{</code>, 
+                  <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">}</code>, 
+                  <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">&lt;</code>, 
+                  <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">!</code>
+                   and <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">\</code>
+                   are rejected.
+                </li>
+                <li class="lh:[1.7] pl:1">
+                  The <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">_</code>
+                   inside <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">url(…)</code>
+                   are no longer turned into spaces. For a literal <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">_</code>
+                   elsewhere, write <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">\_</code>.
+                </li>
+                <li class="lh:[1.7] pl:1">
+                  <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">tx:</code>
+                   and <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">ty:</code>
+                   now produce a <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">--jx-tx</code>
+                   / <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">--jx-ty</code>
+                   variable: the rendering is the same, the generated CSS changes.
+                </li>
+              </ul>
+            </div>
+          </article>
+          <nav class="mw:[48rem] grid cols:1 sm:cols:2 gap:4 mt:16 pt:8 bwt:1 bc:edge" aria-label="Previous and next pages">
+            <a class="flex fd:col gap:1 p:5 br:xl bw:1 bc:edge tr:all hover:bc:[rgba(126,162,255,0.5)] hover:bg:deep focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/security"><span class="fs:sm c:haze">Previous</span><span class="fw:semibold c:beam">Security</span></a>
+          </nav>
+        </main>
+        <aside class="hidden xl:block sticky top:[4rem] h:[calc(100vh_-_4rem)] ovy:auto py:12">
+          <nav aria-label="On this page">
+            <p class="fs:sm fw:semibold c:snow mb:3">On this page</p>
+            <ul class="flex fd:col gap:2 bwl:1 bc:edge">
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new#variants">New variants</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new#utilities">New utilities</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new#diagnostics">Messages and diagnostics</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new#security">Security</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new#migration">Migrating from 0.1</a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+      </div>
+      <footer class="bwt:1 bc:edge bg:[#090B0F]">
+        <div class="mw:[90rem] mx:auto px:5 md:px:8 grid cols:1 sm:cols:2 lg:cols:[2fr_1fr_1fr_1fr] gap:10 py:16">
+          <div class="flex fd:col gap:4 mw:[22rem]">
+            <a class="inline-flex ai:center gap:3 fw:bold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/">
+              <span class="flex ai:center jc:center shrink:0 c:white ff:code fw:extrabold bg:[linear-gradient(135deg,#3B6CF0,#2DD4BF)] w:8 h:8 br:lg fs:base" aria-hidden="true">Z</span>
+              ZASPR Kit
+            </a>
+            <p class="fs:sm lh:relaxed c:haze">Utility-first CSS framework for Dart and Jaspr, built and tested in Dart.</p>
+            <p class="fs:sm lh:relaxed c:haze">
+              This site is built with Jaspr and styled only with <code class="inline-flex wrap ff:code fs:sm"><span class="c:ident">jx</span><span class="c:haze">:</span><span class="c:value">css</span></code>.
+            </p>
+            <p class="ff:code fs:xs c:haze">Version 0.2.1</p>
+          </div>
+          <div>
+            <h2 class="fs:sm fw:semibold c:snow mb:4">Getting started</h2>
+            <ul class="flex fd:col gap:3 fs:sm">
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/introduction">Introduction</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/installation">Installation</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/configuration">Configuration</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/cli">Command line</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/jaspr">Using with Jaspr</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="fs:sm fw:semibold c:snow mb:4">Core concepts</h2>
+            <ul class="flex fd:col gap:3 fs:sm">
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/syntax">Class syntax</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/variants">Variants</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/theme">Theme</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/architecture">Architecture</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/security">Security</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new">What's new</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="fs:sm fw:semibold c:snow mb:4">Tools</h2>
+            <ul class="flex fd:col gap:3 fs:sm">
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/playground">Playground</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities">Utility reference</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/theme">Default theme</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

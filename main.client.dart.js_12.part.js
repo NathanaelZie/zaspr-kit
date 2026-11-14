@@ -86,7 +86,7 @@ if(u==null)u=1/0
 if(2>=w.length)return A.k(w,2)
 w=w[2]
 return w==null||w==="px"?u:u*16},
-ns(d){return D.d.E(d,"@media ")?D.d.P(D.d.T(d,7)):D.d.P(d)},
+ns(d){return D.d.E(d,"@media ")?D.d.P(D.d.S(d,7)):D.d.P(d)},
 hA:function hA(d,e,f,g,h,i){var _=this
 _.a=d
 _.b=e
@@ -110,20 +110,20 @@ nn(d){var w,v,u,t,s,r=A.c([],x.s)
 for(w=d.length,v=0,u=0,t=0;t<w;++t){s=d.charCodeAt(t)
 if(s===91)++v
 else if(s===93){--v
-if(v<0)throw A.h(C.aE)}else if(s===58&&v===0){D.a.p(r,D.d.S(d,u,t))
-u=t+1}}if(v!==0)throw A.h(C.aD)
-D.a.p(r,D.d.T(d,u))
+if(v<0)throw A.h(C.aD)}else if(s===58&&v===0){D.a.p(r,D.d.T(d,u,t))
+u=t+1}}if(v!==0)throw A.h(C.aE)
+D.a.p(r,D.d.S(d,u))
 return r},
 nm(d){var w,v,u
 if(!D.d.E(d,"[")){w=$.m7()
 if(w.b.test(d))return null
-return new A.a6(C.q,D.d.H(d,"!")?y.d:'valeur "'+B.kP(d)+'" invalide (pour une valeur libre, utilisez des crochets)')}if(!D.d.bu(d,"]"))return C.lJ
-v=B.kN(D.d.S(d,1,d.length-1))
+return new A.a6(C.q,D.d.H(d,"!")?y.b:'invalid value "'+B.kP(d)+'" (use brackets for a free-form value)')}if(!D.d.bu(d,"]"))return C.lJ
+v=B.kN(D.d.T(d,1,d.length-1))
 if(D.d.P(v).length===0)return C.lI
 u=G.kO(v)
-if(u!=null)return new A.a6(C.aZ,"valeur refus\xe9e : "+u)
+if(u!=null)return new A.a6(C.aZ,"value rejected: "+u)
 return null},
-kP(d){return d.length<=80?d:D.d.S(d,0,77)+"\u2026"},
+kP(d){return d.length<=80?d:D.d.T(d,0,77)+"\u2026"},
 ep:function ep(d){this.a=d},
 hu:function hu(d){this.a=d},
 ht:function ht(){},
@@ -162,8 +162,8 @@ if(s===92){r=u+1
 r=r<w&&d.charCodeAt(r)===95}else r=!1
 if(r){t+=A.jM(95);++u
 continue}if(v===0){r=u+4
-r=r<=w&&D.d.S(d,u,r).toLowerCase()==="url("}else r=!1
-if(r){t+=D.d.S(d,u,u+4)
+r=r<=w&&D.d.T(d,u,r).toLowerCase()==="url("}else r=!1
+if(r){t+=D.d.T(d,u,u+4)
 u+=3
 v=1
 continue}if(v>0){if(s===40)++v
@@ -226,7 +226,7 @@ gar(){var w=this.c
 return w!=null&&w.length!==0&&w.length>2&&D.d.E(w,"[")&&D.d.bu(w,"]")},
 gdr(){if(!this.gar())return null
 var w=this.c
-return B.kN(D.d.S(w,1,w.length-1))},
+return B.kN(D.d.T(w,1,w.length-1))},
 J(d,e){var w,v=this
 if(e==null)return!1
 if(v!==e)w=e instanceof B.aQ&&A.a8(v)===A.a8(e)&&v.a===e.a&&v.b===e.b&&v.c==e.c&&v.e===e.e&&v.f===e.f&&B.nh(v.d,e.d)
@@ -271,7 +271,7 @@ for(i=new A.am(b2,A.j(b2).h("am<1,2>")).gq(0);i.i();){h=i.d
 g=h.a
 f=h.b
 J.aj(v,g)
-h='Syntaxe de classe invalide : "'+g
+h='Invalid class syntax: "'+g
 h=f.length===0?h+'".':h+'" ('+f+")."
 J.aj(u,h)}for(i=b0.length,h=a9.a,e=h.b,d=a9.d,h=h.c,a0=0;a0<b0.length;b0.length===i||(0,A.M)(b0),++a0){s=b0[a0]
 if(!j.p(0,s.a))continue
@@ -286,9 +286,9 @@ J.mC(t,o)
 J.aj(w,s)}catch(a4){a2=A.a9(a4)
 if(a2 instanceof G.cW){n=a2
 J.aj(v,s.a)
-J.aj(u,'"'+s.a+'" ignor\xe9e : '+n.a)}else{m=a2
+J.aj(u,'"'+s.a+'" ignored: '+n.a)}else{m=a2
 J.aj(v,s.a)
-J.aj(u,'Erreur lors de la g\xe9n\xe9ration pour "'+s.a+'": '+A.p(m))}}}a5=a9.df(t)
+J.aj(u,'Error while generating "'+s.a+'": '+A.p(m))}}}a5=a9.df(t)
 q=A.c([],l)
 D.a.t(q,a5)
 a6=a9.c.co(q)
@@ -324,7 +324,7 @@ if(d&&e.length!==0)s.push(e)
 t=D.a.F(s,":")
 break}q.length===p||(0,A.M)(q);++j}if(t==null)return null
 e=m?"!":""
-return'Classe "'+k+'" inconnue : vouliez-vous dire "'+t+e+'" ?'},
+return'Unknown class "'+k+'": did you mean "'+t+e+'"?'},
 cP(d){var w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g
 x.y.a(d)
 w=x.N
@@ -377,9 +377,9 @@ u=v.a
 t=v.b
 if(!D.d.E(d,u))continue
 v=u.length
-s=this.b.n(0,D.d.T(d,v))
+s=this.b.n(0,D.d.S(d,v))
 if(s==null)return null
-return"."+D.d.S(u,0,v-1)+s+t}return null},
+return"."+D.d.T(u,0,v-1)+s+t}return null},
 c4(a2,a3){var w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,a0=this,a1=null
 x.a.a(a3)
 w=a3.length
@@ -400,15 +400,15 @@ g=a0.d6(j)
 f=g==null
 e=f?o.n(0,j):a1
 if(i!=null)u.a+=i
-else if(h!=null){if(l!=null)throw A.h(G.b5('Un seul pseudo-\xe9l\xe9ment par classe : "'+j+'" en plus de "'+l+'".'))
+else if(h!=null){if(l!=null)throw A.h(G.b5('Only one pseudo-element per class: "'+j+'" in addition to "'+l+'".'))
 l=h}else if(D.a.H(r,j)){f=m.n(0,"breakpoints")
 f=f==null?a1:f.n(0,j)
 d=f==null?a1:f.c
-if(d==null)A.bz(G.b5('Breakpoint "'+j+'" absent du th\xe8me "'+n+'".'))
+if(d==null)A.bz(G.b5('Breakpoint "'+j+'" is missing from theme "'+n+'".'))
 f="@media (min-width: "+d+")"
-D.a.p(v,D.d.E(f,"@media ")?D.d.P(D.d.T(f,7)):D.d.P(f))}else if(!f)t.a+=g
+D.a.p(v,D.d.E(f,"@media ")?D.d.P(D.d.S(f,7)):D.d.P(f))}else if(!f)t.a+=g
 else if(e!=null)D.a.p(D.d.E(e,"(")?v:s,e)
-else throw A.h(G.b5('Variante "'+j+'" non support\xe9e.'))}if(l!=null)u.a+=l
+else throw A.h(G.b5('Unsupported variant "'+j+'".'))}if(l!=null)u.a+=l
 w=u.a
 w=w.length===0?a1:w.charCodeAt(0)==0?w:w
 r=t.a
@@ -459,17 +459,17 @@ B.ho.prototype={}
 B.ah.prototype={
 al(){return"JxParseErrorCode."+this.b}}
 B.hs.prototype={
-j(d){return'Classe "'+this.a+'" invalide : '+this.c+"."}}
+j(d){return'Invalid class "'+this.a+'": '+this.c+"."}}
 B.c7.prototype={}
 B.ep.prototype={
 dq(a2){var w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d=D.d.P(a2),a0=new B.hu(d),a1=d.length
 if(a1===0)return a0.$2(C.L,"classe vide")
-if(a1>512)return a0.$2(C.aY,"classe trop longue (plus de 512 caract\xe8res)")
+if(a1>512)return a0.$2(C.aY,"class too long (more than 512 characters)")
 for(t=0;t<a1;++t){s=d.charCodeAt(t)
-if(s<=32||s===127)return a0.$2(C.b_,"espace ou caract\xe8re de contr\xf4le interdit")}w=d
+if(s<=32||s===127)return a0.$2(C.b_,"space or control character not allowed")}w=d
 if(J.mE(w,"!")){w=J.mL(w,0,J.ak(w)-1)
 r=!0}else{r=J.mH(w,"!")
-if(r)w=J.mK(w,1)}if(J.ak(w)===0)return a0.$2(C.L,'classe r\xe9duite \xe0 "!"')
+if(r)w=J.mK(w,1)}if(J.ak(w)===0)return a0.$2(C.L,'class is only "!"')
 v=null
 try{v=B.nn(w)}catch(q){a1=A.a9(q)
 if(a1 instanceof A.c1){u=a1
@@ -491,14 +491,14 @@ k=x.N
 j=A.b9(k)
 for(i=0;i<n.length;n.length===a1||(0,A.M)(n),++i){h=n[i]
 g=$.m8()
-if(!g.b.test(h))return a0.$2(C.b3,'variante "'+h+'" invalide')
-if(!j.p(0,h))return a0.$2(C.b4,'variante "'+h+'" r\xe9p\xe9t\xe9e')}f=D.d.E(m,"-")
+if(!g.b.test(h))return a0.$2(C.b3,'invalid variant "'+h+'"')
+if(!j.p(0,h))return a0.$2(C.b4,'repeated variant "'+h+'"')}f=D.d.E(m,"-")
 if(f){if(l==null)return a0.$2(C.r,'le signe "-" exige une valeur (ex. "-m:4")')
-m=D.d.T(m,1)}if(l!=null&&D.d.E(l,"-")){if(f)return a0.$2(C.r,'double n\xe9gation ("-m:-4")')
-l=D.d.T(l,1)
-if(l.length===0||D.d.E(l,"-"))return a0.$2(C.r,"valeur n\xe9gative incompl\xe8te")
+m=D.d.S(m,1)}if(l!=null&&D.d.E(l,"-")){if(f)return a0.$2(C.r,'double negation ("-m:-4")')
+l=D.d.S(l,1)
+if(l.length===0||D.d.E(l,"-"))return a0.$2(C.r,"incomplete negative value")
 f=!0}a1=$.m6()
-if(!a1.b.test(m)){a1=D.d.H(m,"!")?y.d:'identifiant "'+m+'" invalide'
+if(!a1.b.test(m)){a1=D.d.H(m,"!")?y.b:'invalid utility "'+m+'"'
 return a0.$2(C.b5,a1)}if(l!=null){e=B.nm(l)
 if(e!=null)return a0.$2(e.a,e.b)}return new B.c7(new B.aQ(d,m,l,A.d0(n,k),r,f),null)},
 $inl:1}
@@ -558,7 +558,7 @@ s=!(s!=null&&s.length!==0)}else s=!1
 if(s)for(s=t.b,r=s.length,q=0;q<s.length;s.length===r||(0,A.M)(s),++q){p=s[q]
 a1.push(p.a+": "+p.b)}}o=D.a.F(a1,"; ")
 a1=x.N
-w=A.K(["role","group","aria-label","Exemples"],a1,a1)
+w=A.K(["role","group","aria-label","Examples"],a1,a1)
 s=x.i
 r=A.c([],s)
 for(n=H.kH(C.n,0,x.v),m=J.Y(n.a),l=n.b,n=new H.b2(m,l,A.j(n).h("b2<1>"));n.i();){k={}
@@ -575,18 +575,18 @@ r.push(new K.dW(new B.hO(k,g),D.a.F(j," "),A.K(["aria-pressed",""+(i===g.d)],a1,
 w=F.bl(A.c([new A.z("Classes",f)],s),f,"fs:sm fw:semibold c:snow")
 r=g.d
 r=A.c([w,new B.fJ(3,C.lZ,new B.hP(g),"w:full px:4 py:3 br:lg c:snow bg:[#07090D] bw:1 bc:edge app:none caret:beam placeholder:c:[#6B7385] tr:all focus:ol:none focus:bc:brand focus:ring:4 ringc:[rgba(59,108,240,0.25)] ff:code fs:sm fsz:content rsz:none mnh:[6rem] mh:[12rem]",A.c([new A.z(g.gc8(),f)],s),new B.dm(r,x.h))],s)
-w=F.bl(A.c([new A.z("CSS g\xe9n\xe9r\xe9",f)],s),f,"fw:semibold c:snow")
-n=v>1?"s":""
-n=F.a7(A.c([w,F.bl(A.c([new A.z(""+v+" r\xe8gle"+n,f)],s),f,"c:haze")],s),f,"flex jc:between fs:sm",f)
+w=F.bl(A.c([new A.z("Generated CSS",f)],s),f,"fw:semibold c:snow")
+n=v===1?"":"s"
+n=F.a7(A.c([w,F.bl(A.c([new A.z(""+v+" rule"+n,f)],s),f,"c:haze")],s),f,"flex jc:between fs:sm",f)
 w=d.a
-w=A.c([n,new B.fG("ff:code fs:sm lh:relaxed p:5 br:xl ov:auto ws:pre bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] mh:[18rem]",A.c([I.lN(A.c([new A.z(w.length===0?"/* Aucune classe reconnue */":w,f)],s),f)],s),f)],s)
+w=A.c([n,new B.fG("ff:code fs:sm lh:relaxed p:5 br:xl ov:auto ws:pre bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] mh:[18rem]",A.c([I.lN(A.c([new A.z(w.length===0?"/* No class recognized */":w,f)],s),f)],s),f)],s)
 v=d.e
 n=v.length
 if(n!==0){m=A.K(["role","status"],a1,a1)
 l=A.c([],s)
 for(u=0;u<n;++u)l.push(new G.ct(f,A.c([new A.z(v[u],f)],s),f))
 w.push(G.q4(l,m,"flex fd:col gap:1 fs:sm c:bang"))}w=F.a7(A.c([new B.fC(e,r,f),F.a7(w,f,e,f)],s),f,"flex fd:col gap:5 p:5 md:p:6",f)
-v=F.bl(A.c([new A.z("Aper\xe7u",f)],s),f,"absolute top:4 left:5 fs:sm c:haze")
+v=F.bl(A.c([new A.z("Preview",f)],s),f,"absolute top:4 left:5 fs:sm c:haze")
 a1=A.K(["style",o],a1,a1)
 r=g.d
 if(!(r>=0&&r<6))return A.k(C.n,r)
@@ -660,12 +660,12 @@ w(A.aq,[B.hp,B.hq,B.ht,B.hw,B.hP])
 v(B.bc,F.a3)
 v(B.eH,F.X)})()
 A.aw(b.typeUniverse,JSON.parse('{"fG":{"y":[],"n":[]},"fC":{"y":[],"n":[]},"fJ":{"y":[],"n":[]},"eu":{"c8":[]},"dm":{"c8":[]},"eo":{"nk":[]},"ep":{"nl":[]},"er":{"jH":[]},"bc":{"a3":[],"n":[]},"eH":{"X":["bc"],"X.T":"bc"}}'))
-var y={d:'le "!" se place au d\xe9but ou \xe0 la fin de la classe'}
+var y={b:'"!" goes at the start or the end of the class'}
 var x=(function rtii(){var w=A.t
 return{w:w("b<a,a>"),j:w("b<a,r<a,a>>"),m:w("e<S>"),i:w("l<n>"),T:w("l<aQ>"),R:w("l<ag>"),D:w("l<S>"),U:w("l<+index,rank(d,d)>"),P:w("l<+index,name,width(d,a,v)>"),s:w("l<a>"),L:w("aQ"),l:w("ag"),M:w("S"),S:w("bq"),O:w("f<aQ>"),y:w("f<ag>"),a:w("f<a>"),A:w("r<a,bq>"),f:w("r<a,a>"),c:w("+index,rank(d,d)"),v:w("+classes,label,preview(a,a,a)"),V:w("+index,name,width(d,a,v)"),F:w("cd"),N:w("a"),h:w("dm<d>"),g:w("~(u)")}})();(function constants(){var w=a.makeConstList
 C.mf=new B.hj()
-C.aD=new A.c1('crochet "[" non ferm\xe9',null)
-C.aE=new A.c1('crochet "]" sans "[" correspondant',null)
+C.aD=new A.c1('"]" without a matching "["',null)
+C.aE=new A.c1('unclosed "["',null)
 C.L=new B.ah(0,"empty")
 C.aY=new B.ah(1,"tooLong")
 C.q=new B.ah(10,"invalidValue")
@@ -678,17 +678,17 @@ C.b3=new B.ah(6,"invalidVariant")
 C.b4=new B.ah(7,"duplicateVariant")
 C.r=new B.ah(8,"invalidNegative")
 C.b5=new B.ah(9,"invalidIdentifier")
+C.lT=new A.aV("px:6 py:3 br:lg bg:teal c:white fw:semibold hover:bg:teal-700 focus-visible:ring:2","Button","Confirm")
+C.lS=new A.aV("p:6 br:xl bg:white c:gray-900 sh:xl mw:[16rem] lh:relaxed","Card","A card compiled by JX")
+C.lQ=new A.aV("px:4 py:3 br:md bw:1 bc:gray-300 bg:white c:gray-700 w:[16rem] focus:ring:4 ringc:blue-300","Input","Your email")
+C.lR=new A.aV("px:6 py:3 br:full fw:bold c:white grad:to-r from:blue via:teal to:teal-300","Gradient","New")
+C.lU=new A.aV("p:6 br:2xl c:white bg:[rgba(255,255,255,0.12)] bblur:lg bw:1 bc:[rgba(255,255,255,0.3)]","Glass","Frosted glass")
+C.lM=new A.aV("fs:4xl fw:extrabold ls:tight c:teal-300 md:fs:6xl","Heading","Hello JX")
+C.n=w([C.lT,C.lS,C.lQ,C.lR,C.lU,C.lM],A.t("l<+classes,label,preview(a,a,a)>"))
 C.cW=w(["100","300","500","700","900"],x.s)
 C.lK=new A.a6("group-"," ")
 C.lL=new A.a6("peer-"," ~ ")
 C.ep=w([C.lK,C.lL],A.t("l<+(a,a)>"))
-C.lU=new A.aV("px:6 py:3 br:lg bg:teal c:white fw:semibold hover:bg:teal-700 focus-visible:ring:2","Bouton","Valider")
-C.lN=new A.aV("p:6 br:xl bg:white c:gray-900 sh:xl mw:[16rem] lh:relaxed","Carte","Une carte compil\xe9e par JX")
-C.lM=new A.aV("px:4 py:3 br:md bw:1 bc:gray-300 bg:white c:gray-700 w:[16rem] focus:ring:4 ringc:blue-300","Champ","Votre email")
-C.lQ=new A.aV("px:6 py:3 br:full fw:bold c:white grad:to-r from:blue via:teal to:teal-300","D\xe9grad\xe9","Nouveau")
-C.lT=new A.aV("p:6 br:2xl c:white bg:[rgba(255,255,255,0.12)] bblur:lg bw:1 bc:[rgba(255,255,255,0.3)]","Verre","Verre d\xe9poli")
-C.lR=new A.aV("fs:4xl fw:extrabold ls:tight c:teal-300 md:fs:6xl","Titre","Bonjour JX")
-C.n=w([C.lU,C.lN,C.lM,C.lQ,C.lT,C.lR],A.t("l<+classes,label,preview(a,a,a)>"))
 C.kB={xs:0,sm:1,base:2,lg:3,xl:4,"2xl":5,"3xl":6,"4xl":7,"5xl":8,"6xl":9}
 C.eR=new A.b(C.kB,["0.75rem","0.875rem","1rem","1.125rem","1.25rem","1.5rem","1.875rem","2.25rem","3rem","3.75rem"],x.w)
 C.iU={sans:0,serif:1,mono:2}
@@ -811,5 +811,5 @@ s=t.b
 r=B.nr(s,q)
 p=r.gdP()
 return new B.hk(t,new B.ep(p),new B.eo(new B.ho(!1)),r)})})()};
-(a=>{a["t0kJWSRiEzg56GpHcyh/AGJUbfw="]=a.current})($__dart_deferred_initializers__);
+(a=>{a["CEbyFsPuANcAiasrwQD/ZSZEX7M="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_12.part.js.map

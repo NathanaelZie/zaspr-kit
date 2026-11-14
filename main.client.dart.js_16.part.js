@@ -89,8 +89,8 @@ if(u.d)x.push("c:ident")
 else x.push("c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]")
 x=E.a.F(x," ")
 w=u.d
-v=w?"Commande copi\xe9e":"Copier la commande"
-s=B.K(["type","button","aria-label",v,"title",w?"Copi\xe9":"Copier"],s,s)
+v=w?"Command copied":"Copy the command"
+s=B.K(["type","button","aria-label",v,"title",w?"Copied":"Copy"],s,s)
 return D.a7(B.c([r,G.k6(B.c([A.pD(u.d?"check":"copy","w:4 h:4")],q),s,x,u.gcV())],q),t,"flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left",t)}}
 var z=a.updateTypes(["af<~>()"])
 A.jq.prototype={
@@ -130,5 +130,5 @@ C.cH=x(["M9 9h11v11H9z","M5 15H4V4h11v1"],y.x)
 C.cz=x(["M20 6 9 17l-5-5"],y.x)
 C.eE=x(["M5 12h14","M12 5l7 7-7 7"],y.x)
 C.i4=new B.b(C.iX,[C.dq,C.cy,C.e_,C.dK,C.cB,C.cH,C.cz,C.eE],B.t("b<a,f<a>>"))})()};
-(a=>{a["sccgOZ8ovmyq7y8ulOJHfManquw="]=a.current})($__dart_deferred_initializers__);
+(a=>{a["SGPDkHWGtgpbU7spQNI8tBDgmcM="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_16.part.js.map

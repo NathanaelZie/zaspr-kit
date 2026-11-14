@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <base href="/zaspr-kit/"/>
     <meta charset="utf-8"/>
@@ -7,18 +7,18 @@
     <link href="/zaspr-kit/jx.css" rel="stylesheet"/>
     <meta property="og:type" content="website"/>
     <meta property="og:site_name" content="ZASPR Kit"/>
-    <meta property="og:title" content="ZASPR Kit : Du CSS utilitaire, écrit en Dart."/>
-    <meta property="og:description" content="ZASPR Kit compile des classes comme md:hover:bg:blue en CSS, directement à partir de vos composants Jaspr. Un parseur, un thème et une CLI, entièrement en Dart."/>
-    <meta property="og:locale" content="fr_FR"/>
+    <meta property="og:title" content="ZASPR Kit : Utility-first CSS, written in Dart."/>
+    <meta property="og:description" content="ZASPR Kit compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components. A parser, a theme and a CLI, all in Dart. No Node.js required."/>
+    <meta property="og:locale" content="en_US"/>
     <!--$-->
-    <title>ZASPR Kit : Du CSS utilitaire, écrit en Dart.</title>
+    <title>ZASPR Kit : Utility-first CSS, written in Dart.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="ZASPR Kit compile des classes comme md:hover:bg:blue en CSS, directement à partir de vos composants Jaspr. Un parseur, un thème et une CLI, entièrement en Dart."/>
+    <meta name="description" content="ZASPR Kit compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components. A parser, a theme and a CLI, all in Dart. No Node.js required."/>
     <meta name="theme-color" content="#0B0D12"/>
     <meta name="color-scheme" content="dark"/>
     <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:title" content="ZASPR Kit : Du CSS utilitaire, écrit en Dart."/>
-    <meta name="twitter:description" content="ZASPR Kit compile des classes comme md:hover:bg:blue en CSS, directement à partir de vos composants Jaspr. Un parseur, un thème et une CLI, entièrement en Dart."/>
+    <meta name="twitter:title" content="ZASPR Kit : Utility-first CSS, written in Dart."/>
+    <meta name="twitter:description" content="ZASPR Kit compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components. A parser, a theme and a CLI, all in Dart. No Node.js required."/>
     <!--/-->
     <script src="main.client.dart.js" defer></script>
   </head>
@@ -26,7 +26,7 @@
     <div class="ff:text c:snow bg:abyss">
       <!--@nav_bar data={"current":"/"}-->
       <header class="sticky top:0 z:50 bg:[rgba(11,13,18,0.9)] bwb:1 bc:edge">
-        <nav class="mw:[90rem] mx:auto px:5 md:px:8 flex ai:center jc:between gap:6 h:[4rem]" aria-label="Navigation principale">
+        <nav class="mw:[90rem] mx:auto px:5 md:px:8 flex ai:center jc:between gap:6 h:[4rem]" aria-label="Main navigation">
           <div class="flex ai:center gap:8">
             <a class="flex ai:center gap:3 br:md fw:bold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/">
               <span class="flex ai:center jc:center shrink:0 c:white ff:code fw:extrabold bg:[linear-gradient(135deg,#3B6CF0,#2DD4BF)] w:8 h:8 br:lg fs:base" aria-hidden="true">Z</span>
@@ -34,13 +34,13 @@
             </a>
             <div class="hidden md:flex ai:center gap:1 fs:sm">
               <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/docs/introduction">Documentation</a>
-              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/docs/utilitaires">Utilitaires</a>
-              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/bac-a-sable">Bac à sable</a>
+              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/docs/utilities">Utilities</a>
+              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/playground">Playground</a>
             </div>
           </div>
           <div class="flex ai:center gap:3">
-            <span class="hidden sm:inline ff:code fs:xs c:haze px:2 py:1 br:md bg:[rgba(255,255,255,0.06)]">v0.2.0</span>
-            <button class="md:hidden px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold c:snow bg:[rgba(255,255,255,0.06)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+            <span class="hidden sm:inline ff:code fs:xs c:haze px:2 py:1 br:md bg:[rgba(255,255,255,0.06)]">v0.2.1</span>
+            <button class="md:hidden px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold c:snow bg:[rgba(255,255,255,0.06)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" aria-expanded="false" aria-controls="main-menu">Menu</button>
           </div>
         </nav>
       </header>
@@ -51,19 +51,19 @@
           <div class="absolute inset:0 z:0 bg:[linear-gradient(to_bottom,transparent_55%,#0B0D12)]" aria-hidden="true"></div>
           <div class="mw:[76rem] mx:auto px:5 md:px:8 relative z:10 flex fd:col ai:center ta:center pt:16 md:pt:[6.5rem]">
             <span class="flex ai:center jc:center shrink:0 c:white ff:code fw:extrabold bg:[linear-gradient(135deg,#3B6CF0,#2DD4BF)] w:[4.5rem] h:[4.5rem] br:2xl fs:4xl sh:2xl" aria-hidden="true">Z</span>
-            <a class="inline-flex ai:center gap:2 mt:8 px:4 py:2 br:full fs:sm fw:medium c:variant bg:[rgba(255,181,71,0.1)] bw:1 bc:[rgba(255,181,71,0.3)] tr:all hover:bg:[rgba(255,181,71,0.18)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/nouveautes">
-              Nouveau : mode sombre, dégradés et animations
+            <a class="inline-flex ai:center gap:2 mt:8 px:4 py:2 br:full fs:sm fw:medium c:variant bg:[rgba(255,181,71,0.1)] bw:1 bc:[rgba(255,181,71,0.3)] tr:all hover:bg:[rgba(255,181,71,0.18)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new">
+              New: dark mode, gradients and animations
               <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
             </a>
-            <h1 class="mt:6 fs:[clamp(2.4rem,6vw,4.5rem)] fw:extrabold lh:[1.05] ls:tighter c:snow mw:[18ch]">Construisez vos interfaces Jaspr avec du CSS utilitaire</h1>
+            <h1 class="mt:6 fs:[clamp(2.4rem,6vw,4.5rem)] fw:extrabold lh:[1.05] ls:tighter c:snow mw:[18ch]">Style your Jaspr apps with utility-first CSS</h1>
             <p class="mt:6 fs:lg md:fs:xl lh:relaxed c:haze mw:[42rem]">
-              ZASPR Kit compile des classes comme md:hover:bg:blue en CSS, directement à partir de vos composants Jaspr. Un parseur, un thème et une CLI, entièrement en Dart.
+              ZASPR Kit compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components. A parser, a theme and a CLI, all in Dart. No Node.js required.
             </p>
             <div class="flex fd:col md:fd:row ai:stretch gap:3 mt:10 w:full md:w:auto">
               <!--@ui data={"command":"dart run jx_cli:jx build"}-->
               <div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left">
                 <code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart run jx_cli:jx build</code>
-                <button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copier la commande" title="Copier">
+                <button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copy the command" title="Copy">
                   <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg>
                 </button>
               </div>
@@ -73,15 +73,15 @@
                   <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                   <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                 </svg>
-                Lire la documentation
+                Read the docs
               </a>
             </div>
-            <p class="mt:5 fs:sm c:haze">Version actuelle : v0.2.0. Dart 3.10 et Jaspr 0.22 minimum.</p>
+            <p class="mt:5 fs:sm c:haze">Current version: v0.2.1. Requires Dart 3.10 and Jaspr 0.22.</p>
           </div>
           <div class="mw:[76rem] mx:auto px:5 md:px:8 relative z:10 pt:16 md:pt:[5rem] pb:8">
             <div class="br:2xl bw:1 bc:edge bg:deep sh:2xl ov:hidden">
               <div class="px:5 md:px:10 pt:8 md:pt:10 pb:8">
-                <p class="fs:sm fw:semibold c:haze mb:4">Anatomie d'une classe</p>
+                <p class="fs:sm fw:semibold c:haze mb:4">Anatomy of a class</p>
                 <code class="inline-flex wrap ff:code fs:[clamp(1.6rem,6vw,3.5rem)] fw:bold ls:tight">
                   <span class="c:variant">md</span>
                   <span class="c:haze">:</span>
@@ -95,24 +95,24 @@
               </div>
               <div class="grid cols:1 sm:cols:2 lg:cols:4 gap:6 px:5 md:px:10 pb:8">
                 <div class="pt:4 bwt:2 bc:variant">
-                  <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Variantes</h3><code class="ff:code fs:sm c:variant">md: hover:</code></div>
-                  <p class="mt:2 fs:sm lh:relaxed c:haze">Breakpoints et états, cumulables. Les pseudo-éléments se placent toujours en fin de sélecteur.</p>
+                  <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Variants</h3><code class="ff:code fs:sm c:variant">md: hover:</code></div>
+                  <p class="mt:2 fs:sm lh:relaxed c:haze">Breakpoints and states, stackable. Pseudo-elements always go at the end of the selector.</p>
                 </div>
                 <div class="pt:4 bwt:2 bc:ident">
-                  <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Identifiant</h3><code class="ff:code fs:sm c:ident">bg</code></div>
-                  <p class="mt:2 fs:sm lh:relaxed c:haze">La propriété, en abrégé : bg, p, fs, cols, ring…</p>
+                  <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Utility</h3><code class="ff:code fs:sm c:ident">bg</code></div>
+                  <p class="mt:2 fs:sm lh:relaxed c:haze">The property, abbreviated: bg, p, fs, cols, ring…</p>
                 </div>
                 <div class="pt:4 bwt:2 bc:value">
-                  <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Valeur</h3><code class="ff:code fs:sm c:value">blue</code></div>
-                  <p class="mt:2 fs:sm lh:relaxed c:haze">Un token du thème, un mot-clé ou une valeur arbitraire entre crochets.</p>
+                  <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Value</h3><code class="ff:code fs:sm c:value">blue</code></div>
+                  <p class="mt:2 fs:sm lh:relaxed c:haze">A theme token, a keyword or an arbitrary value in brackets.</p>
                 </div>
                 <div class="pt:4 bwt:2 bc:bang">
-                  <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Importance</h3><code class="ff:code fs:sm c:bang">!</code></div>
-                  <p class="mt:2 fs:sm lh:relaxed c:haze">Facultatif : ajoute !important à la déclaration.</p>
+                  <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Important</h3><code class="ff:code fs:sm c:bang">!</code></div>
+                  <p class="mt:2 fs:sm lh:relaxed c:haze">Optional: adds !important to the declaration.</p>
                 </div>
               </div>
               <div class="p:5 md:px:10 md:py:8 bg:[rgba(0,0,0,0.22)] bwt:1 bc:edge">
-                <p class="fs:sm fw:semibold c:haze mb:3">CSS produit par le moteur</p>
+                <p class="fs:sm fw:semibold c:haze mb:3">CSS produced by the engine</p>
                 <pre class="ff:code fs:sm lh:relaxed ov:auto ws:pre c:[#C9D1DE]"><code>@media (min-width: 768px) {
   .md\:hover\:bg\:blue\!:hover {
     background-color: #3b82f6 !important;
@@ -122,46 +122,46 @@
             </div>
           </div>
         </section>
-        <section id="demarrer" class="smt:16 py:[4.5rem] md:py:[6rem] ">
+        <section id="get-started" class="smt:16 py:[4.5rem] md:py:[6rem] ">
           <div class="mw:[76rem] mx:auto px:5 md:px:8">
             <div class="mb:12 mw:[48rem]">
               <div class="flex ai:center jc:center w:12 h:12 br:xl mb:6 c:beam bg:[rgba(59,108,240,0.16)]">
                 <svg class="shrink:0 w:6 h:6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 17l6-6-6-6"></path><path d="M12 19h8"></path></svg>
               </div>
-              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">Démarrez en trois étapes</h2>
+              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">Get started in three steps</h2>
               <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
-                Ajoutez la CLI, générez la configuration, lancez la compilation. La feuille produite ne contient que les classes présentes dans vos sources.
+                Add the CLI, generate the configuration, start the build. The stylesheet only contains the classes found in your sources.
               </p>
               <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/installation">
-                Lire le guide d'installation
+                Read the installation guide
                 <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
               </a>
             </div>
             <ol class="grid cols:1 lg:cols:3 gap:6">
               <li class="flex fd:col gap:4 mnw:0">
-                <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:[rgba(59,108,240,0.16)]">1</span><h3 class="fs:lg fw:bold c:snow">Ajouter la dépendance</h3></div><!--@ui data={"command":"dart pub add dev:jx_cli"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart pub add dev:jx_cli</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copier la commande" title="Copier"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
+                <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:[rgba(59,108,240,0.16)]">1</span><h3 class="fs:lg fw:bold c:snow">Add the dependency</h3></div><!--@ui data={"command":"dart pub add dev:jx_cli"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart pub add dev:jx_cli</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copy the command" title="Copy"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
               </li>
               <li class="flex fd:col gap:4 mnw:0">
-                <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:[rgba(59,108,240,0.16)]">2</span><h3 class="fs:lg fw:bold c:snow">Créer la configuration</h3></div><!--@ui data={"command":"dart run jx_cli:jx init"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart run jx_cli:jx init</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copier la commande" title="Copier"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
+                <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:[rgba(59,108,240,0.16)]">2</span><h3 class="fs:lg fw:bold c:snow">Create the configuration</h3></div><!--@ui data={"command":"dart run jx_cli:jx init"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart run jx_cli:jx init</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copy the command" title="Copy"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
               </li>
               <li class="flex fd:col gap:4 mnw:0">
-                <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:[rgba(59,108,240,0.16)]">3</span><h3 class="fs:lg fw:bold c:snow">Compiler en continu</h3></div><!--@ui data={"command":"dart run jx_cli:jx build -w"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart run jx_cli:jx build -w</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copier la commande" title="Copier"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
+                <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:[rgba(59,108,240,0.16)]">3</span><h3 class="fs:lg fw:bold c:snow">Build in watch mode</h3></div><!--@ui data={"command":"dart run jx_cli:jx build -w"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart run jx_cli:jx build -w</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copy the command" title="Copy"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
               </li>
             </ol>
           </div>
         </section>
-        <section id="syntaxe" class="smt:16 py:[4.5rem] md:py:[6rem] ">
+        <section id="syntax" class="smt:16 py:[4.5rem] md:py:[6rem] ">
           <div class="mw:[76rem] mx:auto px:5 md:px:8">
             <div class="mb:12 mw:[48rem]">
               <div class="flex ai:center jc:center w:12 h:12 br:xl mb:6 c:variant bg:[rgba(255,181,71,0.14)]">
                 <svg class="shrink:0 w:6 h:6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg>
               </div>
-              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">Une syntaxe lisible et prévisible</h2>
+              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">A readable, predictable syntax</h2>
               <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
-                Variantes, identifiant, valeur et importance : chaque classe se lit de gauche à droite. Le CSS ci-dessous est compilé par le moteur au rendu de cette page.
+                Variants, utility, value and importance: every class reads from left to right. The CSS below is compiled by the engine when this page is rendered.
               </p>
-              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/syntaxe">
-                Découvrir la syntaxe
+              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/syntax">
+                Learn the syntax
                 <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
               </a>
             </div>
@@ -233,18 +233,18 @@
             </div>
           </div>
         </section>
-        <section id="nouveautes" class="smt:16 py:[4.5rem] md:py:[6rem] ">
+        <section id="whats-new" class="smt:16 py:[4.5rem] md:py:[6rem] ">
           <div class="mw:[76rem] mx:auto px:5 md:px:8">
             <div class="mb:12 mw:[48rem]">
               <div class="flex ai:center jc:center w:12 h:12 br:xl mb:6 c:bang bg:[rgba(251,113,133,0.14)]">
                 <svg class="shrink:0 w:6 h:6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
               </div>
-              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">Nouveau dans la 0.2.0</h2>
+              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">New in 0.2</h2>
               <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
-                Mode sombre, groupes, filtres, dégradés et animations. Chaque tuile ci-dessous est stylée par les classes qu'elle affiche.
+                Dark mode, groups, filters, gradients and animations. Each tile below is styled by the classes it shows.
               </p>
-              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/nouveautes">
-                Voir toutes les nouveautés
+              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new">
+                See everything new
                 <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
               </a>
             </div>
@@ -252,7 +252,7 @@
               <div class="flex fd:col br:2xl bw:1 bc:edge bg:deep ov:hidden">
                 <div class="h:[9rem] p:4"><div class="w:full h:full br:xl grad:to-br from:brand via:ident to:variant"></div></div>
                 <div class="px:5 py:4 bwt:1 bc:edge">
-                  <h3 class="fw:bold c:snow">Dégradés</h3>
+                  <h3 class="fw:bold c:snow">Gradients</h3>
                   <code class="block mt:2 ff:code fs:xs lh:relaxed c:haze wb:anywhere">grad:to-br from:brand via:ident to:variant</code>
                 </div>
               </div>
@@ -263,14 +263,14 @@
                   </div>
                 </div>
                 <div class="px:5 py:4 bwt:1 bc:edge">
-                  <h3 class="fw:bold c:snow">Verre dépoli</h3>
+                  <h3 class="fw:bold c:snow">Frosted glass</h3>
                   <code class="block mt:2 ff:code fs:xs lh:relaxed c:haze wb:anywhere">bblur:md bg:[rgba(255,255,255,0.08)]</code>
                 </div>
               </div>
               <div class="flex fd:col br:2xl bw:1 bc:edge bg:deep ov:hidden">
                 <div class="h:[9rem] p:4">
                   <div class="flex ai:center jc:center w:full h:full">
-                    <div class="w:10 h:10 br:full bw:4 bc:[rgba(255,255,255,0.12)] bs:solid anim:spin motion-reduce:anim:none bc:[#2DD4BF_rgba(255,255,255,0.12)_rgba(255,255,255,0.12)]" role="img" aria-label="Indicateur de chargement animé"></div>
+                    <div class="w:10 h:10 br:full bw:4 bc:[rgba(255,255,255,0.12)] bs:solid anim:spin motion-reduce:anim:none bc:[#2DD4BF_rgba(255,255,255,0.12)_rgba(255,255,255,0.12)]" role="img" aria-label="Animated loading indicator"></div>
                   </div>
                 </div>
                 <div class="px:5 py:4 bwt:1 bc:edge">
@@ -281,12 +281,12 @@
               <div class="flex fd:col br:2xl bw:1 bc:edge bg:deep ov:hidden">
                 <div class="h:[9rem] p:4">
                   <div class="group flex ai:center jc:center gap:2 w:full h:full br:xl bg:shelf cur:pointer">
-                    <span class="fw:semibold c:snow tr:colors group-hover:c:ident">Survolez-moi</span>
+                    <span class="fw:semibold c:snow tr:colors group-hover:c:ident">Hover me</span>
                     <span class="inline-flex c:haze tr:all group-hover:tx:2 group-hover:c:ident"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></span>
                   </div>
                 </div>
                 <div class="px:5 py:4 bwt:1 bc:edge">
-                  <h3 class="fw:bold c:snow">Groupes</h3>
+                  <h3 class="fw:bold c:snow">Groups</h3>
                   <code class="block mt:2 ff:code fs:xs lh:relaxed c:haze wb:anywhere">group-hover:tx:2 group-hover:c:ident</code>
                 </div>
               </div>
@@ -303,12 +303,12 @@
                   <path d="M2 12l10 5 10-5"></path>
                 </svg>
               </div>
-              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">Un thème, vos tokens</h2>
+              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">One theme, your tokens</h2>
               <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
-                Couleurs, espacements, typographie et breakpoints sont des tokens. Étendez-les dans jx.yaml sans rien redéfinir, ou remplacez une catégorie entière.
+                Colors, spacing, typography and breakpoints are tokens. Extend them in jx.yaml without redefining anything, or replace a whole category.
               </p>
               <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/theme">
-                Explorer le thème
+                Explore the theme
                 <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
               </a>
             </div>
@@ -332,7 +332,7 @@ theme:
       3xl: 1920px</code></pre>
               </figure>
               <div class="br:2xl bw:1 bc:edge bg:deep p:5 md:p:6">
-                <p class="fs:sm fw:semibold c:haze mb:4">Palette par défaut</p>
+                <p class="fs:sm fw:semibold c:haze mb:4">Default palette</p>
                 <ul class="flex fd:col gap:3">
                   <li class="grid cols:[5rem_minmax(0,1fr)] gap:3 ai:center">
                     <code class="ff:code fs:xs c:haze">gray</code><div class="grid cols:5 gap:1"><span class="block h:6 br:sm" style="background-color: #f3f4f6" title="gray-100"></span><span class="block h:6 br:sm" style="background-color: #d1d5db" title="gray-300"></span><span class="block h:6 br:sm" style="background-color: #6b7280" title="gray-500"></span><span class="block h:6 br:sm" style="background-color: #374151" title="gray-700"></span><span class="block h:6 br:sm" style="background-color: #111827" title="gray-900"></span></div>
@@ -376,19 +376,19 @@ theme:
                 <div class="flex ai:center jc:center w:12 h:12 br:xl mb:6 c:snow bg:[rgba(255,255,255,0.1)]">
                   <svg class="shrink:0 w:6 h:6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
                 </div>
-                <h2 class="fs:[clamp(1.75rem,3.5vw,2.5rem)] fw:extrabold lh:[1.1] ls:tight c:snow">Le moteur tourne dans votre navigateur</h2>
+                <h2 class="fs:[clamp(1.75rem,3.5vw,2.5rem)] fw:extrabold lh:[1.1] ls:tight c:snow">The engine runs in your browser</h2>
                 <p class="mt:4 fs:lg lh:relaxed c:[#D3DAE6]">
-                  Le même moteur que la CLI, compilé en JavaScript par Jaspr. Saisissez des classes et lisez le CSS produit, sans rien installer.
+                  The same engine as the CLI, compiled to JavaScript by Jaspr. Type classes and read the generated CSS, with nothing to install.
                 </p>
               </div>
-              <a class="inline-flex ai:center jc:center gap:2 px:6 py:3 mnh:[48px] br:lg fw:semibold c:white bg:brand sh:lg tr:all hover:bg:[#4E7CF5] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 shrink:0" href="/zaspr-kit/bac-a-sable">
-                Ouvrir le bac à sable
+              <a class="inline-flex ai:center jc:center gap:2 px:6 py:3 mnh:[48px] br:lg fw:semibold c:white bg:brand sh:lg tr:all hover:bg:[#4E7CF5] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 shrink:0" href="/zaspr-kit/playground">
+                Open the playground
                 <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
               </a>
             </div>
           </div>
         </section>
-        <section id="utilitaires" class="smt:16 py:[4.5rem] md:py:[6rem] ">
+        <section id="utilities" class="smt:16 py:[4.5rem] md:py:[6rem] ">
           <div class="mw:[76rem] mx:auto px:5 md:px:8">
             <div class="mb:12 mw:[48rem]">
               <div class="flex ai:center jc:center w:12 h:12 br:xl mb:6 c:value bg:[rgba(125,211,252,0.14)]">
@@ -397,87 +397,83 @@ theme:
                   <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                 </svg>
               </div>
-              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">112 règles, 15 familles</h2>
+              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">112 rules, 15 families</h2>
               <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
-                Chaque famille a sa page : propriétés produites, valeurs acceptées et exemples compilés. La référence est générée à partir du registre de règles.
+                Every family has its own page: produced properties, accepted values and compiled examples. The reference is generated from the rule registry.
               </p>
-              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires">
-                Parcourir la référence
+              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities">
+                Browse the reference
                 <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
               </a>
             </div>
             <div class="grid cols:1 sm:cols:2 lg:cols:3 gap:4">
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/affichage">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Affichage</h3><span class="ff:code fs:xs c:haze">2 règles</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Type de boîte, visibilité et débordement des éléments.</p>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/display">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Display</h3><span class="ff:code fs:xs c:haze">2 rules</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Box type, visibility and overflow of elements.</p>
               </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/espacement">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Espacement</h3><span class="ff:code fs:xs c:haze">2 règles</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Marges internes et externes, sur l'échelle d'espacement du thème.</p>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/spacing">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Spacing</h3><span class="ff:code fs:xs c:haze">2 rules</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Padding and margin, on the theme spacing scale.</p>
               </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/couleurs">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Couleurs</h3><span class="ff:code fs:xs c:haze">3 règles</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Couleur du texte, du fond et des bordures, depuis la palette du thème.</p>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/colors">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Colors</h3><span class="ff:code fs:xs c:haze">3 rules</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Text, background and border colors, from the theme palette.</p>
               </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/typographie">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Typographie</h3><span class="ff:code fs:xs c:haze">22 règles</span></div>
-                <p class="fs:sm lh:relaxed c:haze">
-                  Familles, tailles, graisses, interlignage, décorations, casse, troncature et texte réservé aux lecteurs d'écran.
-                </p>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/typography">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Typography</h3><span class="ff:code fs:xs c:haze">22 rules</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Families, sizes, weights, line height, decorations, case, truncation and screen-reader-only text.</p>
               </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/dimensions">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Dimensions</h3><span class="ff:code fs:xs c:haze">6 règles</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Largeurs et hauteurs, minimales et maximales.</p>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/sizing">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Sizing</h3><span class="ff:code fs:xs c:haze">6 rules</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Widths and heights, minimum and maximum.</p>
               </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/bordures">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Bordures</h3><span class="ff:code fs:xs c:haze">3 règles</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Épaisseur, couleur, style et rayon des bordures.</p>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/borders">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Borders</h3><span class="ff:code fs:xs c:haze">3 rules</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Border width, color, style and radius.</p>
               </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/flexbox">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Flexbox</h3><span class="ff:code fs:xs c:haze">15 règles</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Direction, alignement, ordre, retour à la ligne et dimensionnement des éléments flexibles.</p>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/flexbox">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Flexbox</h3><span class="ff:code fs:xs c:haze">15 rules</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Direction, alignment, order, wrapping and sizing of flex items.</p>
               </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/grille">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Grille</h3><span class="ff:code fs:xs c:haze">5 règles</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Colonnes, lignes, placement et espacement des grilles CSS.</p>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/grid">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Grid</h3><span class="ff:code fs:xs c:haze">5 rules</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Columns, rows, placement and gaps of CSS grids.</p>
               </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/position">
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/position">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Position and layers</h3><span class="ff:code fs:xs c:haze">6 rules</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Positioning, offsets, stacking and scrolling.</p>
+              </a>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/effects">
                 <div class="flex ai:baseline jc:between gap:3">
-                  <h3 class="fw:bold c:snow">Position et calques</h3>
-                  <span class="ff:code fs:xs c:haze">6 règles</span>
+                  <h3 class="fw:bold c:snow">Effects and transitions</h3>
+                  <span class="ff:code fs:xs c:haze">12 rules</span>
                 </div>
-                <p class="fs:sm lh:relaxed c:haze">Positionnement, décalages, empilement et défilement.</p>
+                <p class="fs:sm lh:relaxed c:haze">Opacity, shadows, transitions, translation, scale, rotation and skew.</p>
               </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/effets">
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/filters">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Filters</h3><span class="ff:code fs:xs c:haze">13 rules</span></div>
+                <p class="fs:sm lh:relaxed c:haze">
+                  Blur, brightness, contrast and saturation, on the element or on what lies behind it. Filters compose with each other.
+                </p>
+              </a>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/gradients">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Gradients</h3><span class="ff:code fs:xs c:haze">4 rules</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Gradient direction or angle, then its start, middle and end colors.</p>
+              </a>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/animations">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Animations</h3><span class="ff:code fs:xs c:haze">3 rules</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Ready-made animations, duration and delay. Keyframes are only written for the animations you use.</p>
+              </a>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/media">
                 <div class="flex ai:baseline jc:between gap:3">
-                  <h3 class="fw:bold c:snow">Effets et transitions</h3>
-                  <span class="ff:code fs:xs c:haze">12 règles</span>
+                  <h3 class="fw:bold c:snow">Media and backgrounds</h3>
+                  <span class="ff:code fs:xs c:haze">7 rules</span>
                 </div>
-                <p class="fs:sm lh:relaxed c:haze">Opacité, ombres, transitions, translation, échelle, rotation et inclinaison.</p>
+                <p class="fs:sm lh:relaxed c:haze">Aspect ratio, image fit, background position and repeat, border style.</p>
               </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/filtres">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Filtres</h3><span class="ff:code fs:xs c:haze">13 règles</span></div>
-                <p class="fs:sm lh:relaxed c:haze">
-                  Flou, luminosité, contraste et saturation, sur l'élément ou sur ce qui se trouve derrière lui. Les filtres se composent entre eux.
-                </p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/degrades">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Dégradés</h3><span class="ff:code fs:xs c:haze">4 règles</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Direction ou angle du dégradé, puis ses couleurs de départ, d'étape et d'arrivée.</p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/animations">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Animations</h3><span class="ff:code fs:xs c:haze">3 règles</span></div>
-                <p class="fs:sm lh:relaxed c:haze">
-                  Animations prêtes à l'emploi, durée et délai. Les images clés ne sont écrites que pour les animations utilisées.
-                </p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/medias">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Médias et fonds</h3><span class="ff:code fs:xs c:haze">7 règles</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Proportions, cadrage des images, position et répétition du fond, style de bordure.</p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires/formulaires">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Formulaires</h3><span class="ff:code fs:xs c:haze">9 règles</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Apparence native, curseur, redimensionnement, sélection et anneau de focus.</p>
+              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/forms">
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Forms</h3><span class="ff:code fs:xs c:haze">9 rules</span></div>
+                <p class="fs:sm lh:relaxed c:haze">Native appearance, cursor, resizing, selection and focus ring.</p>
               </a>
             </div>
           </div>
@@ -490,14 +486,14 @@ theme:
               <span class="flex ai:center jc:center shrink:0 c:white ff:code fw:extrabold bg:[linear-gradient(135deg,#3B6CF0,#2DD4BF)] w:8 h:8 br:lg fs:base" aria-hidden="true">Z</span>
               ZASPR Kit
             </a>
-            <p class="fs:sm lh:relaxed c:haze">Framework CSS utilitaire pour Dart et Jaspr, conçu et testé en Dart.</p>
+            <p class="fs:sm lh:relaxed c:haze">Utility-first CSS framework for Dart and Jaspr, built and tested in Dart.</p>
             <p class="fs:sm lh:relaxed c:haze">
-              Ce site est construit avec Jaspr et stylé uniquement avec <code class="inline-flex wrap ff:code fs:sm"><span class="c:ident">jx</span><span class="c:haze">:</span><span class="c:value">css</span></code>.
+              This site is built with Jaspr and styled only with <code class="inline-flex wrap ff:code fs:sm"><span class="c:ident">jx</span><span class="c:haze">:</span><span class="c:value">css</span></code>.
             </p>
-            <p class="ff:code fs:xs c:haze">Version 0.2.0</p>
+            <p class="ff:code fs:xs c:haze">Version 0.2.1</p>
           </div>
           <div>
-            <h2 class="fs:sm fw:semibold c:snow mb:4">Premiers pas</h2>
+            <h2 class="fs:sm fw:semibold c:snow mb:4">Getting started</h2>
             <ul class="flex fd:col gap:3 fs:sm">
               <li>
                 <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/introduction">Introduction</a>
@@ -509,47 +505,47 @@ theme:
                 <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/configuration">Configuration</a>
               </li>
               <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/cli">Ligne de commande</a>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/cli">Command line</a>
               </li>
               <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/jaspr">Utilisation avec Jaspr</a>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/jaspr">Using with Jaspr</a>
               </li>
             </ul>
           </div>
           <div>
-            <h2 class="fs:sm fw:semibold c:snow mb:4">Fondamentaux</h2>
+            <h2 class="fs:sm fw:semibold c:snow mb:4">Core concepts</h2>
             <ul class="flex fd:col gap:3 fs:sm">
               <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/syntaxe">Syntaxe des classes</a>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/syntax">Class syntax</a>
               </li>
               <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/variantes">Variantes</a>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/variants">Variants</a>
               </li>
               <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/theme">Thème</a>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/theme">Theme</a>
               </li>
               <li>
                 <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/architecture">Architecture</a>
               </li>
               <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/securite">Sécurité</a>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/security">Security</a>
               </li>
               <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/nouveautes">Nouveautés</a>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new">What's new</a>
               </li>
             </ul>
           </div>
           <div>
-            <h2 class="fs:sm fw:semibold c:snow mb:4">Outils</h2>
+            <h2 class="fs:sm fw:semibold c:snow mb:4">Tools</h2>
             <ul class="flex fd:col gap:3 fs:sm">
               <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/bac-a-sable">Bac à sable</a>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/playground">Playground</a>
               </li>
               <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilitaires">Référence des utilitaires</a>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities">Utility reference</a>
               </li>
               <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/theme">Thème par défaut</a>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/theme">Default theme</a>
               </li>
             </ul>
           </div>

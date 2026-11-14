@@ -25,7 +25,7 @@ w=A.a_(w,A.j(w).h("e.E"))
 v=A.b9(y.N)
 for(u=x.ga2(),u=u.gq(u);u.i();)for(t=u.gl().gB(),t=t.gq(t);t.i();)v.p(0,A.x(t.gl()))
 v=A.a_(v,v.$ti.c)
-w=new A.bv(w,v,"Classe sans valeur")
+w=new A.bv(w,v,"Class without a value")
 break $label0$0}if(d instanceof E.i){s=d.b
 r=d.c
 q=d.d
@@ -36,10 +36,10 @@ u=A.b9(y.N)
 for(t=s.ga2(),t=t.gq(t);t.i();)for(p=J.Y(t.gl());p.i();)u.p(0,A.x(p.gl()))
 u=A.a_(u,u.$ti.c)
 w=A.c([],w)
-if(r!=null)w.push("th\xe8me : "+r)
+if(r!=null)w.push("theme: "+r)
 if(q.gI(q))w.push(B.lF(q.gB()))
-if(d.f)w.push("[arbitraire]")
-w=new A.bv(v,u,D.a.F(w," ; "))
+if(d.f)w.push("[arbitrary]")
+w=new A.bv(v,u,D.a.F(w,"; "))
 break $label0$0}if(d instanceof E.c6){o=d.b
 n=d.c
 w=A.c([],y.s)
@@ -51,7 +51,7 @@ w=new A.bv(w,v,B.lF(new A.an(n,u.h("an<1>"))))
 break $label0$0}if(d instanceof E.c5){o=d.b
 w=A.c([],y.s)
 for(v=o.gq(o);v.i();){u=v.gl()
-w.push(u+":")}w=new A.bv(w,L.u,"nombre ; [arbitraire]")
+w.push(u+":")}w=new A.bv(w,L.u,"number; [arbitrary]")
 break $label0$0}w=null
 break $label0$0}return w},
 lF(d){var x=A.a_(d,A.j(d).h("e.E"))
@@ -114,17 +114,19 @@ r=A.a_(new A.a1(e,y.b.a(new B.hX()),x),x.h("e.E"))
 q=D.a.cc(r,0,new B.hY(),y.S)
 e=y.N
 x=y.V
-w=C.a7(A.c([new B.dY(I.K,new B.hZ(g),"w:full px:4 py:3 br:lg c:snow bg:[#07090D] bw:1 bc:edge app:none caret:beam placeholder:c:[#6B7385] tr:all focus:ol:none focus:bc:brand focus:ring:4 ringc:[rgba(59,108,240,0.25)]",A.K(["placeholder","Rechercher : bg, grid, ring, padding\u2026","aria-label","Rechercher une classe ou une propri\xe9t\xe9 CSS"],e,e),f,y.v)],x),f,"fl:1",f)
+w=C.a7(A.c([new B.dY(I.K,new B.hZ(g),"w:full px:4 py:3 br:lg c:snow bg:[#07090D] bw:1 bc:edge app:none caret:beam placeholder:c:[#6B7385] tr:all focus:ol:none focus:bc:brand focus:ring:4 ringc:[rgba(59,108,240,0.25)]",A.K(["placeholder","Search: bg, grid, ring, padding\u2026","aria-label","Search for a class or a CSS property"],e,e),f,y.v)],x),f,"fl:1",f)
 e=A.K(["role","status"],e,e)
-e=A.c([C.a7(A.c([w,G.lS(A.c([new A.z(D.d.P(g.d).length===0?""+$.mA()+" r\xe8gles":""+q+" r\xe9sultat(s)",f)],x),e,"fs:sm c:haze ws:nowrap")],x),f,"flex fd:col sm:fd:row sm:ai:center gap:3 mb:8",f)],x)
-if(r.length===0)e.push(G.lS(A.c([new A.z("Aucune r\xe8gle ne correspond \xe0 \xab "+D.d.P(g.d)+" \xbb.",f)],x),f,"c:haze"))
+if(D.d.P(g.d).length===0)v=""+$.mA()+" rules"
+else{v=q===1?"":"s"
+v=""+q+" result"+v}e=A.c([C.a7(A.c([w,G.lS(A.c([new A.z(v,f)],x),e,"fs:sm c:haze ws:nowrap")],x),f,"flex fd:col sm:fd:row sm:ai:center gap:3 mb:8",f)],x)
+if(r.length===0)e.push(G.lS(A.c([new A.z('No rule matches "'+D.d.P(g.d)+'".',f)],x),f,"c:haze"))
 else{w=A.c([],x)
 for(v=r.length,t=y.t,s=y.s,u=0;u<r.length;r.length===v||(0,A.M)(r),++u){p=r[u]
 o=p.a.a
 n=A.c([new A.z(o[3],f)],x)
-o="/docs/utilitaires/"+o[2]
+o="/docs/utilities/"+o[2]
 if(D.d.E(o,"/"))o="/zaspr-kit"+o
-o=A.c([new B.fA("fs:xl fw:bold c:snow",n,f),K.fv(A.c([new A.z("Page d\xe9taill\xe9e",f)],x),f,"fs:sm fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4",o)],x)
+o=A.c([new B.fA("fs:xl fw:bold c:snow",n,f),K.fv(A.c([new A.z("Detailed page",f)],x),f,"fs:sm fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4",o)],x)
 n=A.c([],x)
 for(p=F.kH(p.b,0,t),m=J.Y(p.a),l=p.b,p=new F.b2(m,l,A.j(p).h("b2<1>"));p.i();){k=p.c
 k=k>=0?new A.a6(l+k,m.gl()):A.bz(A.cP())
@@ -174,5 +176,5 @@ s=A.c([],v)
 for(r=J.Y(t.a[1]);r.i();){q=B.pw(r.gl())
 if(q!=null)s.push(q)}p.push(new A.a6(t,s))}return p})
 x($,"r9","mA",()=>D.a.cc($.ju(),0,new B.js(),y.S))})()};
-(a=>{a["FIhwhh/TMPOR2lLxdvs11y47Qh0="]=a.current})($__dart_deferred_initializers__);
+(a=>{a["agA0Q7AqBwH06f1DmdFlnErf03U="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_15.part.js.map

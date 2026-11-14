@@ -46,7 +46,7 @@ u=s==null?v:s.b
 if(u==null)u=""
 x=y.p
 u=C.bl(A.c([new A.z("Documentation",v),C.bl(A.c([new A.z(" / "+u,v)],x),v,"c:haze fw:normal")],x),v,v)
-u=A.c([F.k6(A.c([u,C.bl(A.c([new A.z(w.d?"Fermer":"Ouvrir",v)],x),v,"c:haze")],x),t,"flex ai:center jc:between w:full px:5 py:3 mnh:[48px] br:2xl fs:sm fw:semibold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4",new B.fX(w))],x)
+u=A.c([F.k6(A.c([u,C.bl(A.c([new A.z(w.d?"Close":"Open",v)],x),v,"c:haze")],x),t,"flex ai:center jc:between w:full px:5 py:3 mnh:[48px] br:2xl fs:sm fw:semibold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4",new B.fX(w))],x)
 if(w.d)u.push(C.a7(A.c([new B.ee(w.a.c,v)],x),v,"px:2 pt:4 pb:2 bwt:1 bc:edge","docs-menu"))
 return C.a7(u,v,"br:2xl bw:1 bc:edge bg:deep",v)}}
 var z=a.updateTypes([])
@@ -68,12 +68,12 @@ x(B.fW,A.aq)
 w(A.aP,[B.fX,B.fV])})()
 A.aw(b.typeUniverse,JSON.parse('{"ee":{"y":[],"n":[]},"b0":{"a3":[],"n":[]},"ed":{"X":["b0"],"X.T":"b0"}}'))
 var y={p:A.t("l<n>"),h:A.t("l<a>"),c:A.t("+path,title(a,a)"),g:A.t("a")};(function lazyInitializers(){var x=a.lazyFinal
-x($,"r0","kp",()=>{var w,v,u,t,s=A.t("l<+path,title(a,a)>"),r=A.c([new A.ad("/docs/introduction","Introduction"),new A.ad("/docs/installation","Installation"),new A.ad("/docs/configuration","Configuration"),new A.ad("/docs/cli","Ligne de commande"),new A.ad("/docs/jaspr","Utilisation avec Jaspr")],s),q=A.c([new A.ad("/docs/syntaxe","Syntaxe des classes"),new A.ad("/docs/variantes","Variantes"),new A.ad("/docs/theme","Th\xe8me")],s),p=A.c([new A.ad("/docs/utilitaires","Vue d'ensemble")],s)
+x($,"r0","kp",()=>{var w,v,u,t,s=A.t("l<+path,title(a,a)>"),r=A.c([new A.ad("/docs/introduction","Introduction"),new A.ad("/docs/installation","Installation"),new A.ad("/docs/configuration","Configuration"),new A.ad("/docs/cli","Command line"),new A.ad("/docs/jaspr","Using with Jaspr")],s),q=A.c([new A.ad("/docs/syntax","Class syntax"),new A.ad("/docs/variants","Variants"),new A.ad("/docs/theme","Theme")],s),p=A.c([new A.ad("/docs/utilities","Overview")],s)
 for(w=$.ju(),v=0;v<15;++v){u=w[v].a
 t=u[3]
-p.push(new A.ad("/docs/utilitaires/"+u[2],t))}return A.c([new A.bu(r,"Premiers pas"),new A.bu(q,"Fondamentaux"),new A.bu(p,"Utilitaires"),new A.bu(A.c([new A.ad("/docs/architecture","Architecture"),new A.ad("/docs/securite","S\xe9curit\xe9"),new A.ad("/docs/nouveautes","Nouveaut\xe9s")],s),"Approfondir")],A.t("l<+links,title(f<+path,title(a,a)>,a)>"))})
+p.push(new A.ad("/docs/utilities/"+u[2],t))}return A.c([new A.bu(r,"Getting started"),new A.bu(q,"Core concepts"),new A.bu(p,"Utilities"),new A.bu(A.c([new A.ad("/docs/architecture","Architecture"),new A.ad("/docs/security","Security"),new A.ad("/docs/whats-new","What's new")],s),"Going further")],A.t("l<+links,title(f<+path,title(a,a)>,a)>"))})
 x($,"r1","mz",()=>{var w,v,u=A.c([],A.t("l<+path,title(a,a)>"))
 for(w=$.kp(),v=0;v<4;++v)D.a.t(u,w[v].a)
 return u})})()};
-(a=>{a["yxyYLQSf8xfvHqP8B5hg+J1f58E="]=a.current})($__dart_deferred_initializers__);
+(a=>{a["3y/kkUXHuNLfPK9LpddcpXbX89s="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_1.part.js.map
