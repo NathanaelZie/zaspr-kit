@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:jx_core/jx_core.dart';
-import 'package:jx_engine/jx_engine.dart';
-import 'package:jx_parser/jx_parser.dart';
+import 'package:jx_cli/core.dart';
+import 'package:jx_cli/engine.dart';
+import 'package:jx_cli/parser.dart';
 import 'package:path/path.dart' as p;
 
 import 'package_resolver.dart';

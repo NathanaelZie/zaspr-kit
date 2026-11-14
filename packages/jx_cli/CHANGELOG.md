@@ -1,3 +1,13 @@
+## 0.0.3
+
+- **One package.** `jx_cli` now contains the whole of JX CSS, so `dart pub add jx_cli` installs everything. Each part has its own import:
+  - `package:jx_cli/ui.dart` (formerly `jx_ui`): modals, data tables, pagination, forms and the other components;
+  - `package:jx_cli/builder.dart` (formerly `jx_builder`);
+  - `package:jx_cli/engine.dart`, `rules.dart`, `theme.dart`, `parser.dart`, `generator.dart` and `core.dart` (formerly `jx_engine`, `jx_rules`, `jx_theme`, `jx_parser`, `jx_generator` and `jx_core`).
+- `packages:` in `jx.yaml` accepts a package folder: `packages: [jx_cli/ui]`. `jx_ui` still works and points there when the old package is not installed.
+- The build_runner builder (`jx_cli:jx_css`) is opt-in: enable it in `build.yaml`. This keeps projects that write `web/jx.css` with `jx build` working.
+- The history of the former packages is in `doc/history/`.
+
 ## 0.0.2
 
 - Uses `jx_engine` 0.0.2: `open:`, `modal:`, `backdrop:` variants and the table utilities `bcol:`, `tl:`, `cap:`.

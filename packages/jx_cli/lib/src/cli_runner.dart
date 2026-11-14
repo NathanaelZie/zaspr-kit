@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
-import 'package:jx_core/jx_core.dart';
-import 'package:jx_engine/jx_engine.dart';
+import 'package:jx_cli/core.dart';
+import 'package:jx_cli/engine.dart';
 import 'package:path/path.dart' as p;
 
 import 'builder.dart';
@@ -18,7 +18,7 @@ import 'project_config.dart';
 /// - `jx init` : crée un fichier `jx.yaml` commenté ;
 /// - `jx migrate` : convertit des classes Tailwind en classes JX.
 final class JxCliRunner {
-  static const String version = '0.0.2';
+  static const String version = '0.0.3';
 
   final ArgParser argParser;
   final StringSink out;
@@ -349,8 +349,9 @@ extensions: [dart, html]
 # Folders ignored on top of build, .dart_tool, .git and node_modules.
 exclude: []
 
-# Dependencies whose lib/ folder is scanned too (component libraries).
-# packages: [jx_ui]
+# Component libraries scanned too: a package (its lib/ folder) or a folder
+# of one. jx_cli/ui holds the JX UI components.
+# packages: [jx_cli/ui]
 
 output: build/jx.css
 minify: false

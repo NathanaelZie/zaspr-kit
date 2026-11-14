@@ -7,15 +7,7 @@ environment:
   sdk: ^3.10.7
 
 workspace:
-  - packages/jx_builder
   - packages/jx_cli
-  - packages/jx_core
-  - packages/jx_engine
-  - packages/jx_generator
-  - packages/jx_parser
-  - packages/jx_rules
-  - packages/jx_theme
-  - packages/jx_ui
 
 dev_dependencies:
   lints: ^6.0.0

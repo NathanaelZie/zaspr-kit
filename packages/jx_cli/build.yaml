@@ -1,0 +1,10 @@
+builders:
+  jx_css:
+    import: "package:jx_cli/builder.dart"
+    builder_factories: ["jxCssBuilder"]
+    build_extensions:
+      "$package$":
+        - "web/jx.css"
+    # Opt-in: enable it in the project build.yaml (see lib/builder.dart).
+    auto_apply: none
+    build_to: cache

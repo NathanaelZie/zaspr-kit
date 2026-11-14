@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:jx_core/jx_core.dart';
-import 'package:jx_engine/jx_engine.dart';
-import 'package:jx_theme/jx_theme.dart';
+import 'package:jx_cli/core.dart';
+import 'package:jx_cli/engine.dart';
+import 'package:jx_cli/theme.dart';
 import 'package:yaml/yaml.dart';
 
 /// Configuration d'un projet JX CSS, chargée depuis `jx.yaml`.
@@ -11,7 +11,7 @@ import 'package:yaml/yaml.dart';
 /// content: [lib, web]          # fichiers ou dossiers à scanner
 /// extensions: [dart, html]     # extensions prises en compte
 /// exclude: [generated]         # noms de dossiers ignorés (en plus des défauts)
-/// packages: [jx_ui]           # dépendances dont le dossier lib/ est scanné
+/// packages: [jx_cli/ui]       # packages, or package folders, scanned too
 /// output: build/jx.css
 /// minify: false
 /// reset: true                  # inclut le preflight
@@ -45,7 +45,7 @@ final class JxProjectConfig {
   final List<String> exclude;
 
   /// Dependency packages whose `lib/` folder is scanned too, for component
-  /// libraries such as `jx_ui`.
+  /// libraries, or folders of one such as `jx_cli/ui`.
   final List<String> packages;
 
   /// Chemin du fichier CSS généré.
