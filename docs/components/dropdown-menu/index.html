@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="/zaspr-kit/"/>
+    <meta charset="utf-8"/>
+    <link sizes="48x48" href="/zaspr-kit/favicon.ico" rel="icon"/>
+    <link href="/zaspr-kit/favicon.png" rel="icon" type="image/png"/>
+    <link href="/zaspr-kit/apple-touch-icon.png" rel="apple-touch-icon"/>
+    <link href="/zaspr-kit/jx.css" rel="stylesheet"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="ZASPR Kit"/>
+    <meta property="og:title" content="ZASPR Kit : A complete styling ecosystem for Jaspr."/>
+    <meta property="og:description" content="JX CSS compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components, and ships accessible components built with them. One Dart package, no Node.js."/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:image" content="https://nathanaelzie.github.io/zaspr-kit/og-image.png"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:image:alt" content="ZASPR Kit logo"/>
+    <!--$-->
+    <title>Dropdown menu: ZASPR Kit docs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="A button that reveals a list of links and actions, built on &lt;details&gt;. It opens without JavaScript; in the browser, Escape, a click outside and a chosen action close it."/>
+    <meta name="theme-color" content="#0B0D12"/>
+    <meta name="color-scheme" content="dark"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="ZASPR Kit : A complete styling ecosystem for Jaspr."/>
+    <meta name="twitter:description" content="JX CSS compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components, and ships accessible components built with them. One Dart package, no Node.js."/>
+    <meta name="twitter:image" content="https://nathanaelzie.github.io/zaspr-kit/og-image.png"/>
+    <!--/-->
+    <script src="main.client.dart.js" defer></script>
+  </head>
+  <body>
+    <div class="ff:text c:snow bg:abyss mnh:[100vh]">
+      <!--@nav_bar data={"current":"/docs/components/dropdown-menu"}-->
+      <header class="sticky top:0 z:50 bg:[rgba(11,13,18,0.9)] bwb:1 bc:edge">
+        <nav class="mw:[90rem] mx:auto px:5 md:px:8 flex ai:center jc:between gap:6 h:[4rem]" aria-label="Main navigation">
+          <div class="flex ai:center gap:8">
+            <a class="flex ai:center gap:3 br:md fw:bold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/">
+              <img class="block shrink:0 obf:contain w:8 h:8" alt width="512" height="512" src="/zaspr-kit/logo.png"/>
+              ZASPR Kit
+            </a>
+            <div class="hidden md:flex ai:center gap:1 fs:sm">
+              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:snow fw:semibold" aria-current="page" href="/zaspr-kit/docs/introduction">Documentation</a>
+              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/docs/utilities">Utilities</a>
+              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/playground">Playground</a>
+            </div>
+          </div>
+          <div class="flex ai:center gap:3">
+            <span class="hidden sm:inline ff:code fs:xs c:haze px:2 py:1 br:md bg:[rgba(255,255,255,0.06)]">v0.0.3</span>
+            <button class="md:hidden px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold c:snow bg:[rgba(255,255,255,0.06)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" aria-expanded="false" aria-controls="main-menu">Menu</button>
+          </div>
+        </nav>
+      </header>
+      <!--/@nav_bar-->
+      <div class="mw:[90rem] mx:auto px:5 md:px:8 grid cols:1 lg:cols:[15rem_minmax(0,1fr)] xl:cols:[15rem_minmax(0,1fr)_13rem] gap:10">
+        <aside class="hidden lg:block sticky top:[4rem] h:[calc(100vh_-_4rem)] ovy:auto py:10 pr:2">
+          <nav aria-label="Documentation">
+            <div class="mb:8">
+              <p class="mb:2 px:3 fs:sm fw:semibold c:snow">Getting started</p>
+              <ul class="flex fd:col gap:px">
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/introduction">Introduction</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/installation">Installation</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/configuration">Configuration</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/cli">Command line</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/jaspr">Using with Jaspr</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/builder">Automatic builds</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/migrate">Coming from Tailwind</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mb:8">
+              <p class="mb:2 px:3 fs:sm fw:semibold c:snow">Core concepts</p>
+              <ul class="flex fd:col gap:px">
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/syntax">Class syntax</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/variants">Variants</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/theme">Theme</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mb:8">
+              <p class="mb:2 px:3 fs:sm fw:semibold c:snow">Utilities</p>
+              <ul class="flex fd:col gap:px">
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities">Overview</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/display">Display</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/spacing">Spacing</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/colors">Colors</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/typography">Typography</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/sizing">Sizing</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/borders">Borders</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/flexbox">Flexbox</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/grid">Grid</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/position">Position and layers</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/effects">Effects and transitions</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/filters">Filters</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/gradients">Gradients</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/animations">Animations</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/media">Media and backgrounds</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/utilities/forms">Forms</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mb:8">
+              <p class="mb:2 px:3 fs:sm fw:semibold c:snow">Components</p>
+              <ul class="flex fd:col gap:px">
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components">All components</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/getting-started">Getting started</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/playground">Playground</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/roadmap">Status and roadmap</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mb:8">
+              <p class="mb:2 px:3 fs:sm fw:semibold c:snow">Actions</p>
+              <ul class="flex fd:col gap:px">
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/button">Button</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mb:8">
+              <p class="mb:2 px:3 fs:sm fw:semibold c:snow">Layout</p>
+              <ul class="flex fd:col gap:px">
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/card">Card</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/divider">Divider</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/accordion">Accordion</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mb:8">
+              <p class="mb:2 px:3 fs:sm fw:semibold c:snow">Forms</p>
+              <ul class="flex fd:col gap:px">
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/text-field">Text field</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/text-area">Text area</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/select">Select</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/checkbox">Checkbox</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/switch">Switch</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/radio-group">Radio group</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/combobox">Combobox</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/segmented-control">Segmented control</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/slider">Slider</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/date-field">Date field</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mb:8">
+              <p class="mb:2 px:3 fs:sm fw:semibold c:snow">Feedback</p>
+              <ul class="flex fd:col gap:px">
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/alert">Alert</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/badge">Badge</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/spinner">Spinner</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/progress">Progress bar</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/skeleton">Skeleton</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/empty-state">Empty state</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/toast">Toast</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mb:8">
+              <p class="mb:2 px:3 fs:sm fw:semibold c:snow">Data display</p>
+              <ul class="flex fd:col gap:px">
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/avatar">Avatar</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/tooltip">Tooltip</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/kbd">Keyboard key</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/data-table">Data table</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/stat">Stat</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mb:8">
+              <p class="mb:2 px:3 fs:sm fw:semibold c:snow">Navigation</p>
+              <ul class="flex fd:col gap:px">
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/breadcrumbs">Breadcrumbs</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/pagination">Pagination</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/tabs">Tabs</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/steps">Steps</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mb:8">
+              <p class="mb:2 px:3 fs:sm fw:semibold c:snow">Overlays</p>
+              <ul class="flex fd:col gap:px">
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/modal">Modal</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components/drawer">Drawer</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:snow fw:medium bg:[rgba(59,108,240,0.16)]" aria-current="page" href="/zaspr-kit/docs/components/dropdown-menu">Dropdown menu</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mb:8">
+              <p class="mb:2 px:3 fs:sm fw:semibold c:snow">Going further</p>
+              <ul class="flex fd:col gap:px">
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/architecture">Architecture</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/security">Security</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/whats-new">What's new</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </aside>
+        <main class="mnw:0 py:8 lg:py:12">
+          <div class="lg:hidden mb:8">
+            <!--@docs_layout data={"current":"/docs/components/dropdown-menu"}-->
+            <div class="br:2xl bw:1 bc:edge bg:deep">
+              <button class="flex ai:center jc:between w:full px:5 py:3 mnh:[48px] br:2xl fs:sm fw:semibold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" aria-expanded="false" aria-controls="docs-menu">
+                <span>Documentation<span class="c:haze fw:normal"> / Dropdown menu</span></span>
+                <span class="c:haze">Open</span>
+              </button>
+            </div>
+            <!--/@docs_layout-->
+          </div>
+          <article class="mw:[48rem]">
+            <p class="fs:sm fw:semibold c:beam mb:3">Overlays</p>
+            <h1 class="fs:[clamp(2rem,4vw,2.75rem)] fw:extrabold lh:[1.1] ls:tight c:snow">Dropdown menu</h1>
+            <p class="mt:4 fs:lg md:fs:xl lh:relaxed c:haze">
+              A button that reveals a list of links and actions, built on &lt;details&gt;. It opens without JavaScript; in the browser, Escape, a click outside and a chosen action close it.
+            </p>
+            <div class="mt:10">
+              <div class="flex wrap ai:center gap:2 mb:2">
+                <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">JxDropdownMenu</code>
+                <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">import 'package:jx_cli/ui.dart'</code>
+                <span class="inline-flex ai:center px:2 py:[2px] br:full fs:xs fw:semibold ws:nowrap c:ident bg:[rgba(45,212,191,0.12)]">New in 0.0.3</span>
+              </div>
+              <h2 id="preview" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#preview">Preview</a>
+              </h2>
+              <div class="mb:6 p:6 br:xl bw:1 bc:edge bg:white dark:bg:gray-900 c:gray-900 dark:c:gray-100">
+                <div class="block">
+                  <!--@dropdown_demo data={"id":"demo-menu"}-->
+                  <div class="flex fd:col ai:start gap:3 mnh:[15rem]">
+                    <details id="demo-menu" class="group relative inline-block" data-jx-menu>
+                      <summary class="focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed c:gray-900 bg:transparent bc:gray-300 hover:bg:gray-100 active:sc:95 dark:c:gray-100 dark:bc:gray-500 dark:hover:bg:gray-700 fs:sm px:4 py:2 mnh:[40px] lst:none">
+                        <span>Account</span>
+                        <svg class="w:4 h:4" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
+                          <path d="M5.2 7.2a.75.75 0 0 1 1.06 0L10 10.94l3.74-3.74a.75.75 0 1 1 1.06 1.06l-4.27 4.27a.75.75 0 0 1-1.06 0L5.2 8.26a.75.75 0 0 1 0-1.06z"></path>
+                        </svg>
+                      </summary>
+                      <ul class="bw:1 bc:gray-100 dark:bc:gray-700 absolute z:20 top:full mt:2 flex fd:col mnw:[12rem] p:1 br:lg bg:white sh:lg lst:none m:0 group-open:anim:fade-in motion-reduce:anim:none dark:bg:gray-900 left:0">
+                        <li>
+                          <a class="focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 flex ai:center gap:2 w:full px:3 py:2 br:md bw:0 bg:transparent fs:sm ta:left td:none cur:pointer tr:colors hover:bg:gray-100 dark:hover:bg:gray-700 disabled:o:50 disabled:cur:not-allowed c:gray-900 dark:c:gray-100" href="#profile">Profile</a>
+                        </li>
+                        <li>
+                          <a class="focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 flex ai:center gap:2 w:full px:3 py:2 br:md bw:0 bg:transparent fs:sm ta:left td:none cur:pointer tr:colors hover:bg:gray-100 dark:hover:bg:gray-700 disabled:o:50 disabled:cur:not-allowed c:gray-900 dark:c:gray-100 o:50 cur:not-allowed pe:none" role="link" aria-disabled="true">Billing</a>
+                        </li>
+                        <li>
+                          <button class="focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 flex ai:center gap:2 w:full px:3 py:2 br:md bw:0 bg:transparent fs:sm ta:left td:none cur:pointer tr:colors hover:bg:gray-100 dark:hover:bg:gray-700 disabled:o:50 disabled:cur:not-allowed c:gray-900 dark:c:gray-100" type="button">Duplicate project</button>
+                        </li>
+                        <li class="h:px my:1 bg:gray-100 dark:bg:gray-700" role="separator"></li>
+                        <li>
+                          <button class="focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 flex ai:center gap:2 w:full px:3 py:2 br:md bw:0 bg:transparent fs:sm ta:left td:none cur:pointer tr:colors hover:bg:gray-100 dark:hover:bg:gray-700 disabled:o:50 disabled:cur:not-allowed c:red-700 dark:c:red-300" type="button">Delete project</button>
+                        </li>
+                      </ul>
+                    </details>
+                    <p class="fs:sm c:gray-500">Choose an action.</p>
+                  </div>
+                  <!--/@dropdown_demo-->
+                </div>
+              </div>
+              <h2 id="usage" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#usage">When to use it</a>
+              </h2>
+              <ul class="mb:6 flex fd:col gap:2 pl:5 lst:disc c:[#C5CCD8]">
+                <li class="lh:[1.7] pl:1">An account menu.</li>
+                <li class="lh:[1.7] pl:1">Secondary actions of a row or a card ("Duplicate", "Delete").</li>
+              </ul>
+              <h2 id="minimal" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#minimal">Minimal example</a>
+              </h2>
+              <figure class="mb:6 br:xl bw:1 bc:edge ov:hidden">
+                <div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 bg:shelf bwb:1 bc:edge">
+                  <figcaption class="ff:code fs:xs c:haze">Dart</figcaption>
+                  <!--@copy_code data={"text":"JxDropdownMenu(\n  id: 'account',\n  label: 'Account',\n  items: [\n    JxMenuItem(label: 'Profile', href: '/profile'),\n    JxMenuItem(label: 'Sign out', href: '/sign-out'),\n  ],\n)"}-->
+                  <button class="inline-flex ai:center gap:2 h:9 px:3 br:md fs:xs fw:medium tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-live="polite">
+                    <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg>
+                    Copy
+                  </button>
+                  <!--/@copy_code-->
+                </div>
+                <pre class="ff:code fs:sm lh:relaxed p:5 ov:auto ws:pre bg:[#07090D] c:[#C9D1DE]"><code>JxDropdownMenu(
+  id: 'account',
+  label: 'Account',
+  items: [
+    JxMenuItem(label: 'Profile', href: '/profile'),
+    JxMenuItem(label: 'Sign out', href: '/sign-out'),
+  ],
+)</code></pre>
+              </figure>
+              <h2 id="advanced" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#advanced">Complete example</a>
+              </h2>
+              <p class="mb:5 lh:[1.75] c:[#C5CCD8]">A full Jaspr component you can paste into a project.</p>
+              <figure class="mb:6 br:xl bw:1 bc:edge ov:hidden">
+                <div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 bg:shelf bwb:1 bc:edge">
+                  <figcaption class="ff:code fs:xs c:haze">Dart</figcaption>
+                  <!--@copy_code data={"text":"import 'package:jaspr/jaspr.dart';\nimport 'package:jx_cli/ui.dart';\n\n/// Row actions; the destructive one is separated and red.\n@client\nclass ProjectActions extends StatelessComponent {\n  const ProjectActions({required this.projectId, required this.onDelete, super.key});\n\n  final String projectId;\n  final VoidCallback onDelete;\n\n  @override\n  Component build(BuildContext context) {\n    return JxDropdownMenu(\n      id: 'actions-$projectId',\n      label: 'Actions',\n      variant: JxButtonVariant.ghost,\n      size: JxButtonSize.sm,\n      align: JxMenuAlign.end,\n      items: [\n        JxMenuItem(label: 'Open', href: '/projects/$projectId'),\n        JxMenuItem(label: 'Settings', href: '/projects/$projectId/settings'),\n        const JxMenuItem.separator(),\n        JxMenuItem(label: 'Delete', danger: true, onSelect: onDelete),\n      ],\n    );\n  }\n}"}-->
+                  <button class="inline-flex ai:center gap:2 h:9 px:3 br:md fs:xs fw:medium tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-live="polite">
+                    <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg>
+                    Copy
+                  </button>
+                  <!--/@copy_code-->
+                </div>
+                <pre class="ff:code fs:sm lh:relaxed p:5 ov:auto ws:pre bg:[#07090D] c:[#C9D1DE]"><code>import 'package:jaspr/jaspr.dart';
+import 'package:jx_cli/ui.dart';
+
+/// Row actions; the destructive one is separated and red.
+@client
+class ProjectActions extends StatelessComponent {
+  const ProjectActions({required this.projectId, required this.onDelete, super.key});
+
+  final String projectId;
+  final VoidCallback onDelete;
+
+  @override
+  Component build(BuildContext context) {
+    return JxDropdownMenu(
+      id: 'actions-$projectId',
+      label: 'Actions',
+      variant: JxButtonVariant.ghost,
+      size: JxButtonSize.sm,
+      align: JxMenuAlign.end,
+      items: [
+        JxMenuItem(label: 'Open', href: '/projects/$projectId'),
+        JxMenuItem(label: 'Settings', href: '/projects/$projectId/settings'),
+        const JxMenuItem.separator(),
+        JxMenuItem(label: 'Delete', danger: true, onSelect: onDelete),
+      ],
+    );
+  }
+}</code></pre>
+              </figure>
+              <h2 id="api" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#api">Properties</a>
+              </h2>
+              <div class="mb:8 br:xl bw:1 bc:edge ovx:auto">
+                <table class="w:full fs:sm">
+                  <thead class="bg:shelf">
+                    <tr>
+                      <th class="px:4 py:3 ta:left fw:semibold c:snow ws:nowrap">Property</th>
+                      <th class="px:4 py:3 ta:left fw:semibold c:snow ws:nowrap">Type</th>
+                      <th class="px:4 py:3 ta:left fw:semibold c:snow ws:nowrap">Default</th>
+                      <th class="px:4 py:3 ta:left fw:semibold c:snow ws:nowrap">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">id</code>
+                      </td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed"><code class="ff:code fs:xs c:value ws:nowrap">String</code></td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed"><code class="ff:code fs:xs c:haze ws:nowrap">required</code></td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        Id of the 
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">&lt;details&gt;</code>
+                        ; unique on the page.
+                      </td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">label</code>
+                      </td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed"><code class="ff:code fs:xs c:value ws:nowrap">String</code></td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed"><code class="ff:code fs:xs c:haze ws:nowrap">required</code></td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Text of the trigger button.</td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">items</code>
+                      </td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed"><code class="ff:code fs:xs c:value ws:nowrap">List&lt;JxMenuItem&gt;</code></td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed"><code class="ff:code fs:xs c:haze ws:nowrap">required</code></td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Links, actions and separators.</td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">variant</code>
+                      </td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed"><code class="ff:code fs:xs c:value ws:nowrap">JxButtonVariant</code></td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed"><code class="ff:code fs:xs c:haze ws:nowrap">outline</code></td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        Style of the trigger, as for 
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">JxButton</code>
+                        .
+                      </td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">size</code>
+                      </td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed"><code class="ff:code fs:xs c:value ws:nowrap">JxButtonSize</code></td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed"><code class="ff:code fs:xs c:haze ws:nowrap">md</code></td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Size of the trigger.</td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">align</code>
+                      </td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed"><code class="ff:code fs:xs c:value ws:nowrap">JxMenuAlign</code></td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed"><code class="ff:code fs:xs c:haze ws:nowrap">start</code></td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        Lines the list up with the 
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">start</code>
+                         or 
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">end</code>
+                         of the trigger.
+                      </td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">classes</code>
+                      </td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed"><code class="ff:code fs:xs c:value ws:nowrap">String?</code></td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed"><code class="ff:code fs:xs c:haze ws:nowrap">null</code></td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Extra JX classes, appended after the component classes.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <h3 class="smt:[5.5rem] mt:10 mb:3 fs:lg fw:semibold c:snow">Related types</h3>
+              <div class="mb:8 br:xl bw:1 bc:edge ovx:auto">
+                <table class="w:full fs:sm">
+                  <thead class="bg:shelf">
+                    <tr>
+                      <th class="px:4 py:3 ta:left fw:semibold c:snow ws:nowrap">Name</th>
+                      <th class="px:4 py:3 ta:left fw:semibold c:snow ws:nowrap">Role</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">JxMenuItem(label:, href:, onSelect:, danger:, disabled:)</code>
+                      </td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        A link (
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">href</code>
+                        ) or an action (
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">onSelect</code>
+                        ).
+                      </td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">JxMenuItem.separator()</code>
+                      </td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">A line between groups.</td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">JxMenuAlign</code>
+                      </td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">start, end.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <h2 id="customize" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#customize">Customizing</a>
+              </h2>
+              <ul class="mb:6 flex fd:col gap:2 pl:5 lst:disc c:[#C5CCD8]">
+                <li class="lh:[1.7] pl:1">
+                  Pass <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">classes</code>
+                   to add or override utilities: they come last, so <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">classes: 'w:full'</code>
+                   wins over the default width.
+                </li>
+                <li class="lh:[1.7] pl:1">The trigger uses the button styles; the list the surface border and shadow of cards.</li>
+              </ul>
+              <h2 id="responsive" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#responsive">Responsive</a>
+              </h2>
+              <ul class="mb:6 flex fd:col gap:2 pl:5 lst:disc c:[#C5CCD8]">
+                <li class="lh:[1.7] pl:1">
+                  Use <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">align: JxMenuAlign.end</code>
+                   near the right edge so the list stays on screen.
+                </li>
+              </ul>
+              <h2 id="a11y" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#a11y">Accessibility</a>
+              </h2>
+              <ul class="mb:6 flex fd:col gap:2 pl:5 lst:disc c:[#C5CCD8]">
+                <li class="lh:[1.7] pl:1">
+                  A disclosure: the trigger is a native <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">&lt;summary&gt;</code>
+                   announced as expanded or collapsed; Tab moves through the entries.
+                </li>
+                <li class="lh:[1.7] pl:1">
+                  Entries are real links and buttons; a disabled link loses its <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">href</code>
+                   and gets <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">aria-disabled</code>.
+                </li>
+                <li class="lh:[1.7] pl:1">
+                  In the browser, Escape closes the list and gives the focus back to the trigger; a click or tap outside closes it too.
+                </li>
+              </ul>
+              <h2 id="limits" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#limits">Limitations</a>
+              </h2>
+              <ul class="mb:6 flex fd:col gap:2 pl:5 lst:disc c:[#C5CCD8]">
+                <li class="lh:[1.7] pl:1">Rendered on the server alone, only the trigger closes it.</li>
+                <li class="lh:[1.7] pl:1">
+                  Not an ARIA <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">menu</code>: no arrow-key navigation between entries.
+                </li>
+                <li class="lh:[1.7] pl:1">
+                  The list opens below the trigger and can be clipped by a parent with <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">ov:hidden</code>.
+                </li>
+              </ul>
+            </div>
+          </article>
+          <nav class="mw:[48rem] grid cols:1 sm:cols:2 gap:4 mt:16 pt:8 bwt:1 bc:edge" aria-label="Previous and next pages">
+            <a class="flex fd:col gap:1 p:5 br:xl bw:1 bc:edge tr:all hover:bc:[rgba(126,162,255,0.5)] hover:bg:deep focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/drawer"><span class="fs:sm c:haze">Previous</span><span class="fw:semibold c:beam">Drawer</span></a>
+            <a class="flex fd:col gap:1 p:5 br:xl bw:1 bc:edge tr:all hover:bc:[rgba(126,162,255,0.5)] hover:bg:deep focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 ai:end ta:right" href="/zaspr-kit/docs/architecture"><span class="fs:sm c:haze">Next</span><span class="fw:semibold c:beam">Architecture</span></a>
+          </nav>
+        </main>
+        <aside class="hidden xl:block sticky top:[4rem] h:[calc(100vh_-_4rem)] ovy:auto py:12">
+          <nav aria-label="On this page">
+            <p class="fs:sm fw:semibold c:snow mb:3">On this page</p>
+            <ul class="flex fd:col gap:2 bwl:1 bc:edge">
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#preview">Preview</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#usage">When to use it</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#minimal">Minimal example</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#advanced">Complete example</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#api">Properties</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#customize">Customizing</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#responsive">Responsive</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#a11y">Accessibility</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/dropdown-menu#limits">Limitations</a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+      </div>
+      <footer class="bwt:1 bc:edge bg:[#090B0F]">
+        <div class="mw:[90rem] mx:auto px:5 md:px:8 grid cols:1 sm:cols:2 lg:cols:[2fr_1fr_1fr_1fr] gap:10 py:16">
+          <div class="flex fd:col gap:4 mw:[22rem]">
+            <a class="inline-flex ai:center gap:3 fw:bold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/">
+              <img class="block shrink:0 obf:contain w:8 h:8" alt width="512" height="512" src="/zaspr-kit/logo.png"/>
+              ZASPR Kit
+            </a>
+            <p class="fs:sm lh:relaxed c:haze">Utility-first CSS framework for Dart and Jaspr, built and tested in Dart.</p>
+            <p class="fs:sm lh:relaxed c:haze">
+              This site is built with Jaspr and styled only with <code class="inline-flex wrap ff:code fs:sm"><span class="c:ident">jx</span><span class="c:haze">:</span><span class="c:value">css</span></code>.
+            </p>
+            <p class="ff:code fs:xs c:haze">Version 0.0.3</p>
+          </div>
+          <div>
+            <h2 class="fs:sm fw:semibold c:snow mb:4">Getting started</h2>
+            <ul class="flex fd:col gap:3 fs:sm">
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/introduction">Introduction</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/installation">Installation</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/configuration">Configuration</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/cli">Command line</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/jaspr">Using with Jaspr</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/builder">Automatic builds</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/migrate">Coming from Tailwind</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="fs:sm fw:semibold c:snow mb:4">Core concepts</h2>
+            <ul class="flex fd:col gap:3 fs:sm">
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/syntax">Class syntax</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/variants">Variants</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/theme">Theme</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components">All components</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/getting-started">Getting started</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/playground">Playground</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/roadmap">Status and roadmap</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="fs:sm fw:semibold c:snow mb:4">Tools</h2>
+            <ul class="flex fd:col gap:3 fs:sm">
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/playground">Playground</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities">Utility reference</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/theme">Default theme</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

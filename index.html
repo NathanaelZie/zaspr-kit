@@ -3,22 +3,29 @@
   <head>
     <base href="/zaspr-kit/"/>
     <meta charset="utf-8"/>
-    <link href="/zaspr-kit/favicon.svg" rel="icon" type="image/svg+xml"/>
+    <link sizes="48x48" href="/zaspr-kit/favicon.ico" rel="icon"/>
+    <link href="/zaspr-kit/favicon.png" rel="icon" type="image/png"/>
+    <link href="/zaspr-kit/apple-touch-icon.png" rel="apple-touch-icon"/>
     <link href="/zaspr-kit/jx.css" rel="stylesheet"/>
     <meta property="og:type" content="website"/>
     <meta property="og:site_name" content="ZASPR Kit"/>
-    <meta property="og:title" content="ZASPR Kit : Utility-first CSS, written in Dart."/>
-    <meta property="og:description" content="ZASPR Kit compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components. A parser, a theme and a CLI, all in Dart. No Node.js required."/>
+    <meta property="og:title" content="ZASPR Kit : A complete styling ecosystem for Jaspr."/>
+    <meta property="og:description" content="JX CSS compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components, and ships accessible components built with them. One Dart package, no Node.js."/>
     <meta property="og:locale" content="en_US"/>
+    <meta property="og:image" content="https://nathanaelzie.github.io/zaspr-kit/og-image.png"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:image:alt" content="ZASPR Kit logo"/>
     <!--$-->
-    <title>ZASPR Kit : Utility-first CSS, written in Dart.</title>
+    <title>ZASPR Kit : A complete styling ecosystem for Jaspr.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="ZASPR Kit compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components. A parser, a theme and a CLI, all in Dart. No Node.js required."/>
+    <meta name="description" content="JX CSS compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components, and ships accessible components built with them. One Dart package, no Node.js."/>
     <meta name="theme-color" content="#0B0D12"/>
     <meta name="color-scheme" content="dark"/>
-    <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:title" content="ZASPR Kit : Utility-first CSS, written in Dart."/>
-    <meta name="twitter:description" content="ZASPR Kit compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components. A parser, a theme and a CLI, all in Dart. No Node.js required."/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="ZASPR Kit : A complete styling ecosystem for Jaspr."/>
+    <meta name="twitter:description" content="JX CSS compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components, and ships accessible components built with them. One Dart package, no Node.js."/>
+    <meta name="twitter:image" content="https://nathanaelzie.github.io/zaspr-kit/og-image.png"/>
     <!--/-->
     <script src="main.client.dart.js" defer></script>
   </head>
@@ -29,7 +36,7 @@
         <nav class="mw:[90rem] mx:auto px:5 md:px:8 flex ai:center jc:between gap:6 h:[4rem]" aria-label="Main navigation">
           <div class="flex ai:center gap:8">
             <a class="flex ai:center gap:3 br:md fw:bold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/">
-              <span class="flex ai:center jc:center shrink:0 c:white ff:code fw:extrabold bg:[linear-gradient(135deg,#3B6CF0,#2DD4BF)] w:8 h:8 br:lg fs:base" aria-hidden="true">Z</span>
+              <img class="block shrink:0 obf:contain w:8 h:8" alt width="512" height="512" src="/zaspr-kit/logo.png"/>
               ZASPR Kit
             </a>
             <div class="hidden md:flex ai:center gap:1 fs:sm">
@@ -39,7 +46,7 @@
             </div>
           </div>
           <div class="flex ai:center gap:3">
-            <span class="hidden sm:inline ff:code fs:xs c:haze px:2 py:1 br:md bg:[rgba(255,255,255,0.06)]">v0.0.1</span>
+            <span class="hidden sm:inline ff:code fs:xs c:haze px:2 py:1 br:md bg:[rgba(255,255,255,0.06)]">v0.0.3</span>
             <button class="md:hidden px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold c:snow bg:[rgba(255,255,255,0.06)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" aria-expanded="false" aria-controls="main-menu">Menu</button>
           </div>
         </nav>
@@ -50,14 +57,14 @@
           <div class="absolute inset:0 z:0 bg:[radial-gradient(42rem_30rem_at_12%_-6%,rgba(59,108,240,0.38),transparent_70%),radial-gradient(38rem_26rem_at_92%_4%,rgba(45,212,191,0.22),transparent_70%),radial-gradient(34rem_22rem_at_55%_62%,rgba(255,181,71,0.1),transparent_70%)]" aria-hidden="true"></div>
           <div class="absolute inset:0 z:0 bg:[linear-gradient(to_bottom,transparent_55%,#0B0D12)]" aria-hidden="true"></div>
           <div class="mw:[76rem] mx:auto px:5 md:px:8 relative z:10 flex fd:col ai:center ta:center pt:16 md:pt:[6.5rem]">
-            <span class="flex ai:center jc:center shrink:0 c:white ff:code fw:extrabold bg:[linear-gradient(135deg,#3B6CF0,#2DD4BF)] w:[4.5rem] h:[4.5rem] br:2xl fs:4xl sh:2xl" aria-hidden="true">Z</span>
-            <a class="inline-flex ai:center gap:2 mt:8 px:4 py:2 br:full fs:sm fw:medium c:variant bg:[rgba(255,181,71,0.1)] bw:1 bc:[rgba(255,181,71,0.3)] tr:all hover:bg:[rgba(255,181,71,0.18)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new">
-              New: automatic builds, components and Tailwind migration
+            <img class="block shrink:0 obf:contain w:[5.5rem] h:[5.5rem]" alt="ZASPR Kit" width="512" height="512" src="/zaspr-kit/logo.png"/>
+            <a class="inline-flex ai:center gap:2 mt:8 px:4 py:2 br:full fs:sm fw:medium c:variant bg:[rgba(255,181,71,0.1)] bw:1 bc:[rgba(255,181,71,0.3)] tr:all hover:bg:[rgba(255,181,71,0.18)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components">
+              jx_cli 0.0.3 is out: one package, 33 components
               <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
             </a>
-            <h1 class="mt:6 fs:[clamp(2.4rem,6vw,4.5rem)] fw:extrabold lh:[1.05] ls:tighter c:snow mw:[18ch]">Style your Jaspr apps with utility-first CSS</h1>
+            <h1 class="mt:6 fs:[clamp(2.4rem,6vw,4.5rem)] fw:extrabold lh:[1.05] ls:tighter c:snow mw:[18ch]">A complete styling ecosystem for Jaspr</h1>
             <p class="mt:6 fs:lg md:fs:xl lh:relaxed c:haze mw:[42rem]">
-              ZASPR Kit compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components. A parser, a theme and a CLI, all in Dart. No Node.js required.
+              JX CSS compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components, and ships accessible components built with them. One Dart package, no Node.js.
             </p>
             <div class="flex fd:col md:fd:row ai:stretch gap:3 mt:10 w:full md:w:auto">
               <!--@ui data={"command":"dart run jx_cli:jx build"}-->
@@ -76,7 +83,7 @@
                 Read the docs
               </a>
             </div>
-            <p class="mt:5 fs:sm c:haze">Current version: v0.0.1. Requires Dart 3.10 and Jaspr 0.22.</p>
+            <p class="mt:5 fs:sm c:haze">Current version: v0.0.3. Requires Dart 3.10 and Jaspr 0.22.</p>
           </div>
           <div class="mw:[76rem] mx:auto px:5 md:px:8 relative z:10 pt:16 md:pt:[5rem] pb:8">
             <div class="br:2xl bw:1 bc:edge bg:deep sh:2xl ov:hidden">
@@ -122,6 +129,58 @@
             </div>
           </div>
         </section>
+        <section id="ecosystem" class="smt:16 py:[4.5rem] md:py:[6rem] ">
+          <div class="mw:[76rem] mx:auto px:5 md:px:8">
+            <div class="mb:12 mw:[48rem]">
+              <div class="flex ai:center jc:center w:12 h:12 br:xl mb:6 c:beam bg:[rgba(59,108,240,0.16)]">
+                <svg class="shrink:0 w:6 h:6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M12 2 2 7l10 5 10-5-10-5z"></path>
+                  <path d="M2 17l10 5 10-5"></path>
+                  <path d="M2 12l10 5 10-5"></path>
+                </svg>
+              </div>
+              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">Three parts, one package</h2>
+              <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
+                jx_cli brings the classes, the tools that compile them and the components built with them. Use the classes alone, or the components on top.
+              </p>
+            </div>
+            <div class="grid cols:1 lg:cols:3 gap:4">
+              <div class="flex fd:col gap:4 p:6 br:2xl bw:1 bc:edge bg:deep">
+                <h3 class="fs:xl fw:bold c:snow">JX CSS</h3>
+                <p class="lh:relaxed c:haze grow:1">
+                  Utility classes with a readable syntax: variants, utility, value, importance. 113 rules in 15 families, on a theme you extend.
+                </p>
+                <code class="block ff:code fs:xs lh:relaxed px:4 py:3 br:lg bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] wb:anywhere">div(classes: 'flex gap:4 p:6 md:p:8')</code>
+                <a class="inline-flex ai:center gap:2 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/syntax">
+                  Class syntax
+                  <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                </a>
+              </div>
+              <div class="flex fd:col gap:4 p:6 br:2xl bw:1 bc:edge bg:deep">
+                <h3 class="fs:xl fw:bold c:snow">JX Engine and CLI</h3>
+                <p class="lh:relaxed c:haze grow:1">
+                  The compiler, a watch mode, a build_runner builder and a Tailwind migration. Only the classes found in your sources reach the stylesheet.
+                </p>
+                <code class="block ff:code fs:xs lh:relaxed px:4 py:3 br:lg bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] wb:anywhere">dart run jx_cli:jx build -w</code>
+                <a class="inline-flex ai:center gap:2 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/cli">
+                  Command line
+                  <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                </a>
+              </div>
+              <div class="flex fd:col gap:4 p:6 br:2xl bw:1 bc:edge bg:deep">
+                <h3 class="fs:xl fw:bold c:snow">JX Components</h3>
+                <p class="lh:relaxed c:haze grow:1">
+                  33 accessible components: buttons, fields, dialogs, drawers, accordions, data tables. Styled with JX, themed by your tokens.
+                </p>
+                <code class="block ff:code fs:xs lh:relaxed px:4 py:3 br:lg bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] wb:anywhere">JxButton([.text('Save')], onClick: save)</code>
+                <a class="inline-flex ai:center gap:2 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components">
+                  Browse the components
+                  <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
         <section id="get-started" class="smt:16 py:[4.5rem] md:py:[6rem] ">
           <div class="mw:[76rem] mx:auto px:5 md:px:8">
             <div class="mb:12 mw:[48rem]">
@@ -139,7 +198,7 @@
             </div>
             <ol class="grid cols:1 lg:cols:3 gap:6">
               <li class="flex fd:col gap:4 mnw:0">
-                <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:[rgba(59,108,240,0.16)]">1</span><h3 class="fs:lg fw:bold c:snow">Add the dependency</h3></div><!--@ui data={"command":"dart pub add dev:jx_cli:^0.0.1"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart pub add dev:jx_cli:^0.0.1</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copy the command" title="Copy"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
+                <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:[rgba(59,108,240,0.16)]">1</span><h3 class="fs:lg fw:bold c:snow">Add the dependency</h3></div><!--@ui data={"command":"dart pub add jx_cli"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart pub add jx_cli</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copy the command" title="Copy"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
               </li>
               <li class="flex fd:col gap:4 mnw:0">
                 <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:[rgba(59,108,240,0.16)]">2</span><h3 class="fs:lg fw:bold c:snow">Create the configuration</h3></div><!--@ui data={"command":"dart run jx_cli:jx init"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart run jx_cli:jx init</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copy the command" title="Copy"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
@@ -241,7 +300,7 @@
               </div>
               <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">New in 0.0.1</h2>
               <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
-                The stylesheet now builds itself inside jaspr serve, jx_ui brings ready-made components, and jx migrate converts Tailwind projects.
+                One package, jx_cli: the stylesheet builds itself inside jaspr serve, the UI library brings ready-made components, and jx migrate converts Tailwind projects.
               </p>
               <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new">
                 See everything new
@@ -251,7 +310,7 @@
             <div class="grid cols:1 lg:cols:3 gap:4 mb:4">
               <div class="flex fd:col br:2xl bw:1 bc:edge bg:deep ov:hidden">
                 <div class="flex ai:center mnh:[8.5rem] p:5 bg:[#07090D] bwb:1 bc:edge" aria-hidden="true">
-                  <pre class="ff:code fs:xs lh:relaxed c:[#C9D1DE] ws:pre"><code><span class="c:haze">$ </span>dart pub add dev:jx_builder
+                  <pre class="ff:code fs:xs lh:relaxed c:[#C9D1DE] ws:pre"><code><span class="c:haze">$ </span>dart pub add jx_cli
 <span class="c:haze">$ </span>jaspr serve
 <span class="c:ident">web/jx.css rebuilt on save</span></code></pre>
                 </div>
@@ -259,22 +318,22 @@
                   <h3 class="fw:bold">
                     <a class="c:snow td:none br:sm tr:colors hover:c:beam focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/builder">Automatic builds</a>
                   </h3>
-                  <p class="fs:sm lh:relaxed c:haze">jx_builder runs inside build_runner: no second terminal, no watch command.</p>
+                  <p class="fs:sm lh:relaxed c:haze">The JX builder runs inside build_runner: no second terminal, no watch command.</p>
                 </div>
               </div>
               <div class="flex fd:col br:2xl bw:1 bc:edge bg:deep ov:hidden">
                 <div class="flex ai:center mnh:[8.5rem] p:5 bg:[#07090D] bwb:1 bc:edge" aria-hidden="true">
                   <div class="flex wrap ai:center gap:2 p:4 br:lg bg:white dark:bg:gray-900">
-                    <button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:white bg:blue-700 bc:blue-700 hover:bg:blue-900 hover:bc:blue-900 active:sc:95 fs:sm px:3 py:1 mnh:[32px]" tabindex="-1" type="button">Save</button>
-                    <button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:gray-900 bg:transparent bc:gray-300 hover:bg:gray-100 active:sc:95 dark:c:gray-100 dark:bc:gray-500 dark:hover:bg:gray-700 fs:sm px:3 py:1 mnh:[32px]" tabindex="-1" type="button">Cancel</button>
-                    <span class="inline-flex as:start ai:center px:2 py:[2px] br:full fs:xs fw:medium lh:none ws:nowrap c:green-900 bg:green-100">New</span>
+                    <button class="focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed c:white bg:blue-700 bc:blue-700 hover:bg:blue-900 hover:bc:blue-900 active:sc:95 fs:sm px:3 py:1 mnh:[32px]" tabindex="-1" type="button">Save</button>
+                    <button class="focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed c:gray-900 bg:transparent bc:gray-300 hover:bg:gray-100 active:sc:95 dark:c:gray-100 dark:bc:gray-500 dark:hover:bg:gray-700 fs:sm px:3 py:1 mnh:[32px]" tabindex="-1" type="button">Cancel</button>
+                    <span class="inline-flex as:start ai:center px:2 py:[2px] br:full fs:xs fw:medium lh:none ws:nowrap c:green-900 bg:green-100 dark:c:green-100 dark:bg:green-900">New</span>
                   </div>
                 </div>
                 <div class="flex fd:col gap:2 px:5 py:4">
                   <h3 class="fw:bold">
                     <a class="c:snow td:none br:sm tr:colors hover:c:beam focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components">Components</a>
                   </h3>
-                  <p class="fs:sm lh:relaxed c:haze">jx_ui: buttons, cards, badges, alerts and fields, accessible and styled with JX.</p>
+                  <p class="fs:sm lh:relaxed c:haze">Buttons, fields, modals, data tables and more, accessible and styled with JX.</p>
                 </div>
               </div>
               <div class="flex fd:col br:2xl bw:1 bc:edge bg:deep ov:hidden">
@@ -331,6 +390,99 @@
                   <code class="block mt:2 ff:code fs:xs lh:relaxed c:haze wb:anywhere">group-hover:tx:2 group-hover:c:ident</code>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+        <section id="components" class="smt:16 py:[4.5rem] md:py:[6rem] ">
+          <div class="mw:[76rem] mx:auto px:5 md:px:8">
+            <div class="mb:12 mw:[48rem]">
+              <div class="flex ai:center jc:center w:12 h:12 br:xl mb:6 c:ident bg:[rgba(45,212,191,0.14)]">
+                <svg class="shrink:0 w:6 h:6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+              </div>
+              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">Components in action</h2>
+              <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
+                A settings screen built only with JX Components and a few layout classes. Nothing below is a picture: the fields, the switches and the accordion work.
+              </p>
+              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/playground">
+                Try them in the playground
+                <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+            <div class="grid cols:1 lg:cols:[minmax(0,1.2fr)_minmax(0,1fr)] gap:6 p:5 md:p:8 br:2xl bg:white dark:bg:gray-900 c:gray-900 dark:c:gray-100">
+              <div class="flex fd:col gap:5">
+                <nav aria-label="Breadcrumb">
+                  <ol class="flex wrap ai:center gap:2 fs:sm lst:none p:0 m:0">
+                    <li class="inline-flex ai:center gap:2"><span class="c:gray-900 dark:c:gray-100 fw:medium">Workspace</span></li>
+                    <li class="inline-flex ai:center gap:2">
+                      <span class="c:gray-300 dark:c:gray-500" aria-hidden="true">/</span><span class="c:gray-900 dark:c:gray-100 fw:medium" aria-current="page">Settings</span>
+                    </li>
+                  </ol>
+                </nav>
+                <div class="c:gray-900 dark:c:gray-100 bw:1 bc:gray-100 dark:bc:gray-700 flex fd:col gap:3 p:6 br:xl bg:white sh:sm dark:bg:gray-900">
+                  <h3 class="fs:lg fw:semibold lh:tight">Profile</h3>
+                  <p class="fs:sm lh:relaxed c:gray-500">Shown to your teammates.</p>
+                  <div class="flex ai:center gap:4">
+                    <span class="inline-flex ai:center jc:center shrink:0 br:full ov:hidden fw:semibold us:none c:blue-900 bg:blue-100 w:14 h:14 fs:lg" role="img" aria-label="Grace Hopper"><span aria-hidden="true">GH</span></span>
+                    <div class="flex fd:col ai:start gap:1">
+                      <span class="fw:semibold">Grace Hopper</span>
+                      <span class="inline-flex as:start ai:center px:2 py:[2px] br:full fs:xs fw:medium lh:none ws:nowrap c:blue-900 bg:blue-100 dark:c:blue-100 dark:bg:blue-900">Admin</span>
+                    </div>
+                  </div>
+                  <div class="flex fd:col gap:1">
+                    <label class="c:gray-900 dark:c:gray-100 fs:sm fw:medium" for="home-name">Display name</label>
+                    <input id="home-name" class="c:gray-900 dark:c:gray-100 w:full px:3 py:2 mnh:[40px] br:lg bw:1 bc:gray-300 bg:white fs:sm tr:colors placeholder:c:gray-500 focus:ol:none focus:bc:blue-500 focus:ring:2 focus:ringc:blue-300 disabled:o:50 disabled:cur:not-allowed dark:bg:gray-900 dark:bc:gray-700" type="text" value="Grace Hopper"/>
+                  </div>
+                  <div class="flex fd:col gap:1">
+                    <label class="c:gray-900 dark:c:gray-100 fs:sm fw:medium" for="home-role">Role</label>
+                    <div class="relative">
+                      <select id="home-role" class="c:gray-900 dark:c:gray-100 w:full px:3 py:2 mnh:[40px] br:lg bw:1 bc:gray-300 bg:white fs:sm tr:colors placeholder:c:gray-500 focus:ol:none focus:bc:blue-500 focus:ring:2 focus:ringc:blue-300 disabled:o:50 disabled:cur:not-allowed dark:bg:gray-900 dark:bc:gray-700 app:none pr:10 cur:pointer"><option value="editor">Editor</option><option value="admin" selected>Admin</option></select>
+                      <span class="absolute top:0 right:0 flex ai:center h:full px:3 pe:none c:gray-500" aria-hidden="true"><svg class="w:4 h:4" fill="currentColor" viewBox="0 0 20 20"><path d="M5.2 7.2a.75.75 0 0 1 1.06 0L10 10.94l3.74-3.74a.75.75 0 1 1 1.06 1.06l-4.27 4.27a.75.75 0 0 1-1.06 0L5.2 8.26a.75.75 0 0 1 0-1.06z"></path></svg></span>
+                    </div>
+                  </div>
+                  <div class="flex wrap ai:center jc:end gap:2 pt:4 mt:1 bwt:1 bc:gray-100 dark:bc:gray-700">
+                    <button class="focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed c:gray-900 bg:transparent bc:transparent hover:bg:gray-100 dark:c:gray-100 dark:hover:bg:gray-700 fs:sm px:4 py:2 mnh:[40px]" type="button">Cancel</button>
+                    <button class="focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed c:white bg:blue-700 bc:blue-700 hover:bg:blue-900 hover:bc:blue-900 active:sc:95 fs:sm px:4 py:2 mnh:[40px]" type="button">Save changes</button>
+                  </div>
+                </div>
+              </div>
+              <div class="flex fd:col gap:5">
+                <div class="flex fd:col gap:1 p:4 br:lg bw:1 bwl:4 fs:sm c:green-900 bg:green-100 bc:green-300 dark:c:green-100 dark:bg:green-900 dark:bc:green-700" role="status"><p class="fw:semibold">Saved</p>Your notification settings are online.</div>
+                <div class="flex fd:col gap:3 p:5 br:xl bw:1 bc:gray-100 dark:bc:gray-700">
+                  <label class="c:gray-900 dark:c:gray-100 inline-flex ai:center gap:3 cur:pointer fs:sm" for="home-email">
+                    <span class="relative inline-flex shrink:0 w:11 h:6"><input id="home-email" class="peer sr-only" role="switch" type="checkbox" checked/><span class="absolute inset:0 br:full bg:gray-300 tr:colors dur:200 peer-checked:bg:blue-700 peer-disabled:o:50 peer-focus-visible:ol:2 peer-focus-visible:olc:blue-500 peer-focus-visible:olo:2 dark:bg:gray-700" aria-hidden="true"></span><span class="absolute top:[2px] left:[2px] w:5 h:5 br:full bg:white sh:sm pe:none tr:all dur:200 peer-checked:tx:5 motion-reduce:tr:none" aria-hidden="true"></span></span><span>Email notifications</span>
+                  </label>
+                  <label class="c:gray-900 dark:c:gray-100 inline-flex ai:center gap:3 cur:pointer fs:sm" for="home-digest">
+                    <span class="relative inline-flex shrink:0 w:11 h:6"><input id="home-digest" class="peer sr-only" role="switch" type="checkbox"/><span class="absolute inset:0 br:full bg:gray-300 tr:colors dur:200 peer-checked:bg:blue-700 peer-disabled:o:50 peer-focus-visible:ol:2 peer-focus-visible:olc:blue-500 peer-focus-visible:olo:2 dark:bg:gray-700" aria-hidden="true"></span><span class="absolute top:[2px] left:[2px] w:5 h:5 br:full bg:white sh:sm pe:none tr:all dur:200 peer-checked:tx:5 motion-reduce:tr:none" aria-hidden="true"></span></span><span>Weekly digest</span>
+                  </label>
+                </div>
+                <div class="flex fd:col gap:1 w:full">
+                  <div class="c:gray-900 dark:c:gray-100 flex jc:between fs:sm fw:medium"><span>Storage: 7.4 GB of 10 GB</span><span>74%</span></div>
+                  <div class="w:full h:2 br:full bg:gray-100 ov:hidden dark:bg:gray-700" role="progressbar" aria-label="Storage: 7.4 GB of 10 GB" aria-valuemin="0" aria-valuemax="10" aria-valuenow="7.4"><div class="h:full br:full bg:blue-700 tr:all dur:300" style="width: 74%"></div></div>
+                </div>
+                <div class="bw:1 bc:gray-100 dark:bc:gray-700 flex fd:col br:xl ov:hidden bg:white dark:bg:gray-900">
+                  <details class="group bwt:1 bc:gray-100 first:bwt:0 dark:bc:gray-700" name="home-faq">
+                    <summary class="focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:gray-900 dark:c:gray-100 flex ai:center jc:between gap:4 px:5 py:4 fw:semibold cur:pointer lst:none us:none tr:colors hover:bg:gray-100 dark:hover:bg:gray-700">
+                      <span>Who can see my profile?</span>
+                      <svg class="shrink:0 w:4 h:4 c:gray-500 tr:all dur:200 group-open:rot:180 motion-reduce:tr:none" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
+                        <path d="M5.2 7.2a.75.75 0 0 1 1.06 0L10 10.94l3.74-3.74a.75.75 0 1 1 1.06 1.06l-4.27 4.27a.75.75 0 0 1-1.06 0L5.2 8.26a.75.75 0 0 1 0-1.06z"></path>
+                      </svg>
+                    </summary>
+                    <div class="px:5 pb:5 fs:sm lh:relaxed c:gray-700 dark:c:gray-300">Members of this workspace only.</div>
+                  </details>
+                  <details class="group bwt:1 bc:gray-100 first:bwt:0 dark:bc:gray-700" name="home-faq">
+                    <summary class="focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:gray-900 dark:c:gray-100 flex ai:center jc:between gap:4 px:5 py:4 fw:semibold cur:pointer lst:none us:none tr:colors hover:bg:gray-100 dark:hover:bg:gray-700">
+                      <span>How do I delete my account?</span>
+                      <svg class="shrink:0 w:4 h:4 c:gray-500 tr:all dur:200 group-open:rot:180 motion-reduce:tr:none" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
+                        <path d="M5.2 7.2a.75.75 0 0 1 1.06 0L10 10.94l3.74-3.74a.75.75 0 1 1 1.06 1.06l-4.27 4.27a.75.75 0 0 1-1.06 0L5.2 8.26a.75.75 0 0 1 0-1.06z"></path>
+                      </svg>
+                    </summary>
+                    <div class="px:5 pb:5 fs:sm lh:relaxed c:gray-700 dark:c:gray-300">Ask an admin of the workspace.</div>
+                  </details>
+                </div>
+              </div>
+            </div>
+            <div class="flex wrap gap:3 mt:6">
+              <a class="inline-flex ai:center jc:center gap:2 px:6 py:3 mnh:[48px] br:lg fw:semibold c:snow bg:[rgba(255,255,255,0.06)] tr:all hover:bg:[rgba(255,255,255,0.12)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components">See all 33 components</a>
             </div>
           </div>
         </section>
@@ -438,7 +590,7 @@ theme:
                   <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                 </svg>
               </div>
-              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">112 rules, 15 families</h2>
+              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">113 rules, 15 families</h2>
               <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
                 Every family has its own page: produced properties, accepted values and compiled examples. The reference is generated from the rule registry.
               </p>
@@ -513,7 +665,7 @@ theme:
                 <p class="fs:sm lh:relaxed c:haze">Aspect ratio, image fit, background position and repeat, border style.</p>
               </a>
               <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/forms">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Forms</h3><span class="ff:code fs:xs c:haze">9 rules</span></div>
+                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Forms</h3><span class="ff:code fs:xs c:haze">10 rules</span></div>
                 <p class="fs:sm lh:relaxed c:haze">Native appearance, cursor, resizing, selection and focus ring.</p>
               </a>
             </div>
@@ -524,14 +676,14 @@ theme:
         <div class="mw:[90rem] mx:auto px:5 md:px:8 grid cols:1 sm:cols:2 lg:cols:[2fr_1fr_1fr_1fr] gap:10 py:16">
           <div class="flex fd:col gap:4 mw:[22rem]">
             <a class="inline-flex ai:center gap:3 fw:bold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/">
-              <span class="flex ai:center jc:center shrink:0 c:white ff:code fw:extrabold bg:[linear-gradient(135deg,#3B6CF0,#2DD4BF)] w:8 h:8 br:lg fs:base" aria-hidden="true">Z</span>
+              <img class="block shrink:0 obf:contain w:8 h:8" alt width="512" height="512" src="/zaspr-kit/logo.png"/>
               ZASPR Kit
             </a>
             <p class="fs:sm lh:relaxed c:haze">Utility-first CSS framework for Dart and Jaspr, built and tested in Dart.</p>
             <p class="fs:sm lh:relaxed c:haze">
               This site is built with Jaspr and styled only with <code class="inline-flex wrap ff:code fs:sm"><span class="c:ident">jx</span><span class="c:haze">:</span><span class="c:value">css</span></code>.
             </p>
-            <p class="ff:code fs:xs c:haze">Version 0.0.1</p>
+            <p class="ff:code fs:xs c:haze">Version 0.0.3</p>
           </div>
           <div>
             <h2 class="fs:sm fw:semibold c:snow mb:4">Getting started</h2>
@@ -555,9 +707,6 @@ theme:
                 <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/builder">Automatic builds</a>
               </li>
               <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components">Components</a>
-              </li>
-              <li>
                 <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/migrate">Coming from Tailwind</a>
               </li>
             </ul>
@@ -575,13 +724,16 @@ theme:
                 <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/theme">Theme</a>
               </li>
               <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/architecture">Architecture</a>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components">All components</a>
               </li>
               <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/security">Security</a>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/getting-started">Getting started</a>
               </li>
               <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new">What's new</a>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/playground">Playground</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/roadmap">Status and roadmap</a>
               </li>
             </ul>
           </div>
