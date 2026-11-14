@@ -30,7 +30,7 @@ void main() {
             isA<JxRuleException>().having(
               (e) => e.message,
               'message',
-              contains('Valeur arbitraire refusée'),
+              contains('Arbitrary value rejected'),
             ),
           ),
           reason: inner,

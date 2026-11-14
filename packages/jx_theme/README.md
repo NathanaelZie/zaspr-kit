@@ -1,9 +1,9 @@
 # jx_theme
 
-Les tokens de design de JX CSS : palette, espacements, breakpoints, typographie, rayons, bordures, opacités et ombres, avec leurs variables CSS `--jx-*`.
+The JX CSS design tokens: palette, spacing, breakpoints, typography, radii, borders, opacities and shadows, with their `--jx-*` CSS variables.
 
-> Ce package fait partie de **JX CSS** (ZASPR Kit), un framework CSS utilitaire écrit en Dart.
-> Pour styler une application, installez plutôt [`jx_cli`](https://pub.dev/packages/jx_cli).
+> This package is part of **JX CSS** (ZASPR Kit), a utility-first CSS framework written in Dart.
+> To style an application, install [`jx_cli`](https://pub.dev/packages/jx_cli) instead.
 
 ## Installation
 
@@ -11,7 +11,7 @@ Les tokens de design de JX CSS : palette, espacements, breakpoints, typographie,
 dart pub add jx_theme
 ```
 
-## Utilisation
+## Usage
 
 ```dart
 import 'package:jx_theme/jx_theme.dart';
@@ -23,18 +23,20 @@ void main() {
 }
 ```
 
-## La famille JX CSS
+## The JX CSS family
 
-| Package | Rôle |
+| Package | Role |
 | :--- | :--- |
-| [`jx_cli`](https://pub.dev/packages/jx_cli) | Ligne de commande : `jx init`, `jx build`. **Point d'entrée pour la plupart des projets.** |
-| [`jx_engine`](https://pub.dev/packages/jx_engine) | Moteur de compilation, utilisable comme bibliothèque. |
-| [`jx_rules`](https://pub.dev/packages/jx_rules) | Catalogue des utilitaires et registre de règles. |
-| [`jx_theme`](https://pub.dev/packages/jx_theme) | Tokens de design et thème par défaut. |
-| [`jx_parser`](https://pub.dev/packages/jx_parser) | Parseur de la syntaxe des classes. |
-| [`jx_generator`](https://pub.dev/packages/jx_generator) | Sérialisation du CSS et preflight. |
-| [`jx_core`](https://pub.dev/packages/jx_core) | Modèles, contrats et exceptions partagés. |
+| [`jx_cli`](https://pub.dev/packages/jx_cli) | Command line: `jx init`, `jx build`. **Entry point for most projects.** |
+| [`jx_engine`](https://pub.dev/packages/jx_engine) | Compilation engine, usable as a library. |
+| [`jx_rules`](https://pub.dev/packages/jx_rules) | Utility catalog and rule registry. |
+| [`jx_theme`](https://pub.dev/packages/jx_theme) | Design tokens and default theme. |
+| [`jx_parser`](https://pub.dev/packages/jx_parser) | Class syntax parser. |
+| [`jx_generator`](https://pub.dev/packages/jx_generator) | CSS serialization and preflight. |
+| [`jx_core`](https://pub.dev/packages/jx_core) | Shared models, contracts and exceptions. |
 
-## Licence
+Documentation: https://nathanaelzie.github.io/zaspr-kit/
+
+## License
 
 MIT.

@@ -102,14 +102,14 @@ void main() {
     test('identifiant inconnu', () {
       final result = engine.compile('pd:4 hover:bgg:blue! texte');
       expect(result.warnings, [
-        'Classe "pd:4" inconnue : vouliez-vous dire "p:4" ?',
-        'Classe "hover:bgg:blue!" inconnue : vouliez-vous dire "hover:bg:blue!" ?',
+        'Unknown class "pd:4": did you mean "p:4"?',
+        'Unknown class "hover:bgg:blue!": did you mean "hover:bg:blue!"?',
       ]);
     });
 
     test('valeur inconnue', () {
       final warning = engine.compile('c:bleu').warnings.single;
-      expect(warning, contains('vouliez-vous dire "c:blue" ?'));
+      expect(warning, contains('Did you mean "c:blue"?'));
     });
   });
 }

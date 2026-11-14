@@ -61,7 +61,7 @@ final class JxParseFailure {
   bool get isSecurityRelated => code == JxParseErrorCode.unsafeValue;
 
   @override
-  String toString() => 'Classe "$raw" invalide : $message.';
+  String toString() => 'Invalid class "$raw": $message.';
 }
 
 /// Résultat de l'analyse d'une classe : un [token] ou une [failure].

@@ -1,9 +1,9 @@
 # jx_parser
 
-Le parseur de la syntaxe de classes JX CSS : `[variantes:]identifiant[:valeur][!]`, avec valeurs arbitraires entre crochets, valeurs négatives et importance.
+The JX CSS class syntax parser: `[variants:]utility[:value][!]`, with bracketed arbitrary values, negative values and `!important`.
 
-> Ce package fait partie de **JX CSS** (ZASPR Kit), un framework CSS utilitaire écrit en Dart.
-> Pour styler une application, installez plutôt [`jx_cli`](https://pub.dev/packages/jx_cli).
+> This package is part of **JX CSS** (ZASPR Kit), a utility-first CSS framework written in Dart.
+> To style an application, install [`jx_cli`](https://pub.dev/packages/jx_cli) instead.
 
 ## Installation
 
@@ -11,7 +11,7 @@ Le parseur de la syntaxe de classes JX CSS : `[variantes:]identifiant[:valeur][!
 dart pub add jx_parser
 ```
 
-## Utilisation
+## Usage
 
 ```dart
 import 'package:jx_parser/jx_parser.dart';
@@ -19,75 +19,76 @@ import 'package:jx_parser/jx_parser.dart';
 void main() {
   const parser = JxParser();
 
-  // Tokens des classes valides.
+  // Tokens of the valid classes.
   for (final token in parser.parse('md:hover:bg:blue! w:[calc(100%_-_2rem)] -mt:2')) {
     print('${token.variants} ${token.identifier} ${token.value}');
   }
 
-  // Diagnostic d'une classe refusée.
+  // Why a class was rejected.
   final outcome = parser.analyze('c:[red;}body{display:none]');
   print(outcome.isValid);          // false
   print(outcome.failure!.code);    // JxParseErrorCode.unsafeValue
-  print(outcome.failure);          // Classe "…" invalide : valeur refusée : caractère ";" interdit.
 }
 ```
 
-## Syntaxe
+## Syntax
 
-`[variantes:]identifiant[:valeur][!]`
+`[variants:]utility[:value][!]`
 
-| Élément | Exemples | Règle |
+| Part | Examples | Rule |
 | :--- | :--- | :--- |
-| Variantes | `md:`, `hover:`, `dark:`, `group-hover:` | 8 au plus, sans répétition |
-| Identifiant | `p`, `bg`, `inline-flex` | lettres, chiffres, tirets simples |
-| Valeur simple | `4`, `1.5`, `1/2`, `teal-700`, `#fff`, `50%` | mots séparés par `.`, `-` ou `/` |
-| Valeur arbitraire | `[calc(100%_-_2rem)]`, `[url(/img/a_b.png)]` | entre crochets, voir ci-dessous |
-| Négatif | `-mt:2`, `mt:-2` | une seule négation, avec une valeur |
-| Important | `p:4!`, `!p:4` | `!` en fin ou en début de classe |
+| Variants | `md:`, `hover:`, `dark:`, `group-hover:` | at most 8, no repetition |
+| Utility | `p`, `bg`, `inline-flex` | letters, digits, single dashes |
+| Plain value | `4`, `1.5`, `1/2`, `teal-700`, `#fff`, `50%` | words separated by `.`, `-` or `/` |
+| Arbitrary value | `[calc(100%_-_2rem)]`, `[url(/img/a_b.png)]` | in brackets, see below |
+| Negative | `-mt:2`, `mt:-2` | a single negation, with a value |
+| Important | `p:4!`, `!p:4` | `!` at the end or the start of the class |
 
-Dans une valeur arbitraire, `_` vaut une espace, `\_` un `_` littéral, et les `_` d'un `url(…)` sont conservés.
+In an arbitrary value, `_` is a space, `\_` a literal `_`, and the `_` inside `url(…)` are kept.
 
 ## Diagnostics
 
-| Méthode | Retour |
+| Method | Returns |
 | :--- | :--- |
-| `parseToken(raw)` | le token, ou `null` |
-| `parse(classes)` | les tokens valides |
-| `analyze(raw)` | `JxParseOutcome` : `token` ou `failure` (code + message) |
-| `analyzeAll(classes)` | `JxParseReport` : `tokens`, `failures`, `securityFailures` |
+| `parseToken(raw)` | the token, or `null` |
+| `parse(classes)` | the valid tokens |
+| `analyze(raw)` | `JxParseOutcome`: `token` or `failure` (code + message) |
+| `analyzeAll(classes)` | `JxParseReport`: `tokens`, `failures`, `securityFailures` |
 
-`JxParseErrorCode` distingue : `empty`, `tooLong`, `invalidCharacter`, `emptySegment`, `unbalancedBrackets`, `tooManyVariants`, `invalidVariant`, `duplicateVariant`, `invalidNegative`, `invalidIdentifier`, `invalidValue`, `unsafeValue`.
+`JxParseErrorCode` values: `empty`, `tooLong`, `invalidCharacter`, `emptySegment`, `unbalancedBrackets`, `tooManyVariants`, `invalidVariant`, `duplicateVariant`, `invalidNegative`, `invalidIdentifier`, `invalidValue`, `unsafeValue`.
 
-## Sécurité
+## Security
 
-Le parseur traite toute entrée comme non fiable.
+The parser treats every input as untrusted.
 
-- **Injection CSS** : une valeur arbitraire ne peut pas fermer sa déclaration ni en ouvrir une autre. `;`, `{`, `}`, `<`, `\`, `!`, les commentaires et les caractères de contrôle sont refusés hors chaîne entre guillemets, ainsi que les parenthèses ou guillemets non fermés.
-- **Chargement de code** : `javascript:`, `vbscript:`, `expression()`, `@import`, `-moz-binding` et les URL `data:` autres qu'image ou police sont refusés, quelle que soit la casse.
-- **Déni de service** : classe limitée à 512 caractères, valeur arbitraire à 512, 8 variantes au plus (`maxClassLength`, `maxVariants`). L'analyse et l'extraction sont linéaires ; l'extracteur Dart borne la profondeur des interpolations.
+- **CSS injection**: an arbitrary value cannot close its declaration or open another one. `;`, `{`, `}`, `<`, `\`, `!`, comments and control characters are rejected outside quoted strings, as are unclosed parentheses or quotes.
+- **Code loading**: `javascript:`, `vbscript:`, `expression()`, `@import`, `-moz-binding` and `data:` URLs other than images or fonts are rejected, regardless of case.
+- **Denial of service**: a class is limited to 512 characters, an arbitrary value to 512, and 8 variants at most (`maxClassLength`, `maxVariants`). Parsing and extraction are linear; the Dart extractor bounds interpolation depth.
 
-La validation est exposée par `JxCssValue.unsafeReason` (package `jx_core`) et appliquée une seconde fois par les règles de `jx_rules`, pour les tokens construits sans le parseur.
+Validation is exposed by `JxCssValue.unsafeReason` (package `jx_core`) and applied a second time by the rules in `jx_rules`, for tokens built without the parser.
 
-## Extraction depuis des sources
+## Extracting classes from sources
 
 ```dart
 const extractor = JxClassExtractor();
 extractor.extract('<div class="flex p:4">');            // HTML, Markdown…
-extractor.extractFromDart("div(classes: 'flex p:4')");  // littéraux de chaîne Dart
+extractor.extractFromDart("div(classes: 'flex p:4')");  // Dart string literals
 ```
 
-## La famille JX CSS
+## The JX CSS family
 
-| Package | Rôle |
+| Package | Role |
 | :--- | :--- |
-| [`jx_cli`](https://pub.dev/packages/jx_cli) | Ligne de commande : `jx init`, `jx build`. **Point d'entrée pour la plupart des projets.** |
-| [`jx_engine`](https://pub.dev/packages/jx_engine) | Moteur de compilation, utilisable comme bibliothèque. |
-| [`jx_rules`](https://pub.dev/packages/jx_rules) | Catalogue des utilitaires et registre de règles. |
-| [`jx_theme`](https://pub.dev/packages/jx_theme) | Tokens de design et thème par défaut. |
-| [`jx_parser`](https://pub.dev/packages/jx_parser) | Parseur de la syntaxe des classes. |
-| [`jx_generator`](https://pub.dev/packages/jx_generator) | Sérialisation du CSS et preflight. |
-| [`jx_core`](https://pub.dev/packages/jx_core) | Modèles, contrats et exceptions partagés. |
+| [`jx_cli`](https://pub.dev/packages/jx_cli) | Command line: `jx init`, `jx build`. **Entry point for most projects.** |
+| [`jx_engine`](https://pub.dev/packages/jx_engine) | Compilation engine, usable as a library. |
+| [`jx_rules`](https://pub.dev/packages/jx_rules) | Utility catalog and rule registry. |
+| [`jx_theme`](https://pub.dev/packages/jx_theme) | Design tokens and default theme. |
+| [`jx_parser`](https://pub.dev/packages/jx_parser) | Class syntax parser. |
+| [`jx_generator`](https://pub.dev/packages/jx_generator) | CSS serialization and preflight. |
+| [`jx_core`](https://pub.dev/packages/jx_core) | Shared models, contracts and exceptions. |
 
-## Licence
+Documentation: https://nathanaelzie.github.io/zaspr-kit/
+
+## License
 
 MIT.

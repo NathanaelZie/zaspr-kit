@@ -1,3 +1,8 @@
+## 0.2.1
+
+- Diagnostic messages (`JxParseFailure`) are now in English.
+- README and package description in English.
+
 ## 0.2.0
 
 - Variantes reconnues par défaut : `dark`, `motion-safe`, `motion-reduce`, `contrast-more`, `portrait`, `landscape`, `print`, `group-*` et `peer-*`.

@@ -214,7 +214,7 @@ void main() {
       );
       final result = engine.compile('placeholder:file:c:red');
       expect(result.rules, isEmpty);
-      expect(result.warnings.single, contains('Un seul pseudo-élément'));
+      expect(result.warnings.single, contains('Only one pseudo-element'));
     });
 
     test('champ complet compilé de bout en bout', () {

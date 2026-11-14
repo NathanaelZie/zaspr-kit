@@ -1,3 +1,8 @@
+## 0.2.1
+
+- `JxCssValue.unsafeReason` messages are now in English.
+- README and package description in English.
+
 ## 0.2.0
 
 - `JxCssRule.selectorPrefix` : préfixe de sélecteur (variantes `group-*`, `peer-*`, `dark:` en mode classe).

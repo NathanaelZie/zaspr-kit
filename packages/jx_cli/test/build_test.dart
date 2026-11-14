@@ -221,7 +221,7 @@ theme:
       final out = StringBuffer();
       final code = await runner(out, StringBuffer()).run(['build']);
       expect(code, 0);
-      expect(out.toString(), contains('1 fichier(s)'));
+      expect(out.toString(), contains('1 file(s)'));
       expect(readOutput('out/style.css'), '.ta\\:center{text-align:center;}\n');
     });
 
@@ -241,7 +241,7 @@ theme:
       final err = StringBuffer();
       final code = await runner(StringBuffer(), err).run(['build']);
       expect(code, 1);
-      expect(err.toString(), contains('Clé inconnue'));
+      expect(err.toString(), contains('Unknown key'));
     });
 
     test('init crée jx.yaml et refuse d\'écraser sans --force', () async {

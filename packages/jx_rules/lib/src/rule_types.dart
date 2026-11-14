@@ -22,7 +22,7 @@ final class JxStaticRule extends JxRule {
     final declarations = classes[token.identifier];
     if (declarations == null) {
       throw JxRuleException(
-        'Classe "${token.identifier}" inconnue pour "$id".',
+        'Unknown class "${token.identifier}" for "$id".',
       );
     }
     return [
@@ -119,14 +119,14 @@ final class JxValueRule extends JxRule {
     final props = properties[token.identifier];
     if (props == null) {
       throw JxRuleException(
-        'Identifiant "${token.identifier}" non pris en charge par "$id".',
+        'Utility "${token.identifier}" is not handled by "$id".',
       );
     }
 
     var value = resolveValue(token, theme);
     if (value == null || disallowed.contains(value)) {
       throw JxRuleException(
-        'Valeur "${token.value}" invalide pour "${token.identifier}".'
+        'Invalid value "${token.value}" for "${token.identifier}".'
         '${describeAccepted(token, theme)}',
       );
     }
@@ -183,16 +183,18 @@ final class JxValueRule extends JxRule {
     final raw = token.isArbitrary ? null : token.value;
     final closest = raw == null ? null : closestMatch(raw, candidates);
     if (closest != null) {
-      hints.add('vouliez-vous dire "${token.identifier}:$closest" ?');
+      hints.add('did you mean "${token.identifier}:$closest"?');
     }
     if (candidates.isNotEmpty) {
       final preview = candidates.take(12).join(', ');
       hints.add(
-        'valeurs possibles : $preview${candidates.length > 12 ? '…' : ''}',
+        'accepted values: $preview${candidates.length > 12 ? '…' : ''}',
       );
     }
-    if (allowArbitrary) hints.add('ou une valeur arbitraire entre crochets');
-    return hints.isEmpty ? '' : ' ${hints.join(' ; ')}.';
+    if (allowArbitrary) hints.add('or an arbitrary value in brackets');
+    if (hints.isEmpty) return '';
+    final text = hints.join('; ');
+    return ' ${text[0].toUpperCase()}${text.substring(1)}.';
   }
 
   static final RegExp _zero = RegExp(r'^0([a-z%]*)$');
@@ -205,7 +207,7 @@ final class JxValueRule extends JxRule {
       return 'calc(-1 * $value)';
     }
     throw JxRuleException(
-      'La valeur "$value" ne peut pas être négative (${token.raw}).',
+      'Value "$value" cannot be negative (${token.raw}).',
     );
   }
 }
@@ -237,7 +239,7 @@ final class JxKeywordRule extends JxRule {
     final declarations = values[token.value];
     if (declarations == null) {
       throw JxRuleException(
-        'Valeur "${token.value}" invalide pour "${token.identifier}".',
+        'Invalid value "${token.value}" for "${token.identifier}".',
       );
     }
     return [
@@ -307,7 +309,7 @@ final class JxDynamicRule extends JxRule {
     final declarations = build(value, token, theme);
     if (declarations == null || declarations.isEmpty) {
       throw JxRuleException(
-        'Valeur "${token.value}" invalide pour "${token.identifier}".',
+        'Invalid value "${token.value}" for "${token.identifier}".',
       );
     }
     return [
@@ -336,7 +338,7 @@ String checkedArbitraryValue(JxClassToken token) {
   final reason = JxCssValue.unsafeReason(value);
   if (reason != null) {
     throw JxRuleException(
-      'Valeur arbitraire refusée pour "${token.raw}" : $reason.',
+      'Arbitrary value rejected for "${token.raw}": $reason.',
     );
   }
   return value;

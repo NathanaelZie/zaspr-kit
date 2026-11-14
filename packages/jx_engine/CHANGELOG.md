@@ -1,3 +1,8 @@
+## 0.2.1
+
+- Warnings and suggestions are now in English (`Unknown class "pd:4": did you mean "p:4"?`).
+- README and package description in English.
+
 ## 0.2.0
 
 - Variantes `dark:` (préférence système ou classe `.dark` via `JxEngineConfig.darkSelector`), `motion-safe:`, `motion-reduce:`, `print:`, `contrast-more:`, `portrait:`, `landscape:`.

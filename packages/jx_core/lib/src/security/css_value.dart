@@ -56,8 +56,8 @@ abstract final class JxCssValue {
   /// Motifs refusés où qu'ils apparaissent (comparaison sans casse ni blancs).
   static const Map<String, String> _forbidden = {
     'expression(': 'la fonction expression() est interdite',
-    'javascript:': 'le schéma javascript: est interdit',
-    'vbscript:': 'le schéma vbscript: est interdit',
+    'javascript:': 'the javascript: scheme is not allowed',
+    'vbscript:': 'the vbscript: scheme is not allowed',
     '-moz-binding': '-moz-binding est interdit',
     'behavior:': 'behavior est interdit',
     '@import': '@import est interdit',
@@ -71,7 +71,7 @@ abstract final class JxCssValue {
   static String? unsafeReason(String value) {
     if (value.trim().isEmpty) return 'valeur vide';
     if (value.length > maxLength) {
-      return 'valeur trop longue (plus de $maxLength caractères)';
+      return 'value too long (more than $maxLength characters)';
     }
 
     int? quote;
@@ -81,9 +81,9 @@ abstract final class JxCssValue {
     var urlAt = -1;
     for (var i = 0; i < value.length; i++) {
       final code = value.codeUnitAt(i);
-      if (code < 0x20 || code == 0x7F) return 'caractère de contrôle interdit';
-      if (code == _backslash) return 'caractère "\\" interdit';
-      if (code == 0x3C) return 'caractère "<" interdit';
+      if (code < 0x20 || code == 0x7F) return 'control character not allowed';
+      if (code == _backslash) return 'character "\\" not allowed';
+      if (code == 0x3C) return 'character "<" not allowed';
       if (code == 0x2F &&
           i + 1 < value.length &&
           value.codeUnitAt(i + 1) == 0x2A) {
@@ -106,20 +106,20 @@ abstract final class JxCssValue {
           if (urlAt < 0 && i >= 3 && _startsUrl(value, i - 3)) urlAt = parens;
         case _closeParen:
           if (parens == urlAt) urlAt = -1;
-          if (--parens < 0) return 'parenthèses non équilibrées';
+          if (--parens < 0) return 'unbalanced parentheses';
         case 0x3B: // ;
-          if (urlAt < 0) return 'caractère ";" interdit';
+          if (urlAt < 0) return 'character ";" not allowed';
         case 0x7B || 0x7D: // { }
           return 'accolades interdites';
         case 0x21: // !
-          return 'caractère "!" interdit (utilisez le suffixe ! de la classe)';
+          return 'character "!" not allowed (use the class ! suffix)';
       }
     }
-    if (quote != null) return 'guillemets non fermés';
-    if (parens != 0) return 'parenthèses non équilibrées';
+    if (quote != null) return 'unclosed quotes';
+    if (parens != 0) return 'unbalanced parentheses';
 
     final compact = value.toLowerCase().replaceAll(RegExp(r'\s+'), '');
-    if (compact.startsWith('@')) return 'règle @ interdite';
+    if (compact.startsWith('@')) return '@ rule not allowed';
     for (final entry in _forbidden.entries) {
       if (compact.contains(entry.key)) return entry.value;
     }
@@ -128,7 +128,7 @@ abstract final class JxCssValue {
     while (index != -1) {
       final rest = compact.substring(index + 5);
       if (!rest.startsWith('image/') && !rest.startsWith('font/')) {
-        return 'seules les URL data: d\'image ou de police sont acceptées';
+        return 'only image or font data: URLs are allowed';
       }
       index = compact.indexOf('data:', index + 5);
     }

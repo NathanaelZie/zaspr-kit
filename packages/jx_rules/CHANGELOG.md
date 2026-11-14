@@ -1,3 +1,8 @@
+## 0.2.1
+
+- Rule error messages and value hints are now in English.
+- README and package description in English.
+
 ## 0.2.0
 
 - Transformations : `rot:`, `skx:`, `sky:`, `origin:` ; `tx:` et `ty:` se combinent désormais.

@@ -1,3 +1,8 @@
+## 0.2.1
+
+- CLI output, help, warnings and `jx.yaml` errors are now in English, as is the `jx init` template.
+- README and package description in English.
+
 ## 0.2.0
 
 - Clé `dark_mode: media|class` dans `jx.yaml` (et dans le modèle de `jx init`).

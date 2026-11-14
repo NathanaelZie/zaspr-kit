@@ -1,180 +1,132 @@
 # JX CSS
 
-> Moteur CSS Utility-First propriétaire moderne, haute performance et modulaire, entièrement écrit en Dart.
+> A utility-first CSS framework written entirely in Dart, built for [Jaspr](https://jaspr.site). No Node.js, no Tailwind binary, no JavaScript at runtime.
 
 [![Dart](https://img.shields.io/badge/Dart-3.10+-0175C2?logo=dart)](https://dart.dev)
-[![Melos](https://img.shields.io/badge/maintained%20with-melos-f7b900.svg)](https://melos.invertase.dev)
+[![pub](https://img.shields.io/pub/v/jx_cli.svg)](https://pub.dev/packages/jx_cli)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
----
+**Documentation:** https://nathanaelzie.github.io/zaspr-kit/ · [Version française](README.fr.md)
 
-## 1. Vision et objectifs
-
-**JX CSS** est un framework CSS Utility-First développé à 100 % en **Dart**, sans dépendance à Node.js ni à Tailwind CSS.
-
-- **Conçu en priorité pour Jaspr** : s'intègre nativement avec les composants Jaspr et l'écosystème web Dart.
-- **CSS standard agnostique** : produit des feuilles de style CSS standard compatibles avec le HTML classique, les templates serveur ou tout autre framework web.
-- **Syntaxe propriétaire** : syntaxe de classes utility propre (`[variante:]utilitaire[:valeur][!]`), indépendante et prévisible.
-- **Zéro runtime JavaScript obligatoire** : compilation en amont (AOT) ou JIT en Dart natif.
-- **Extensibilité modulaire** : architecture basée sur des contrats stricts, des plugins, des registres de règles et des thèmes tokenisés.
-
----
-
-## 2. Architecture du Monorepo
-
-Le projet est structuré sous forme de monorepo géré avec [Melos](https://melos.invertase.dev) dans le dossier `packages/` :
-
-```
-zaspr_kit/
-├── analysis_options.yaml       # Configuration unifiée de l'analyse statique Dart
-├── melos.yaml                  # Configuration de l'espace de travail Melos
-├── pubspec.yaml                # Racine de l'espace de travail
-├── README.md                   # Présentation générale du projet
-├── docs/
-│   └── architecture.md         # Documentation architecturale détaillée
-└── packages/
-    ├── jx_core/                # Modèles, interfaces, erreurs et contrats communs
-    ├── jx_theme/               # Tokens, variables CSS et gestion des thèmes
-    ├── jx_rules/               # Définition des règles CSS et registre
-    ├── jx_parser/              # Analyse et interprétation de la syntaxe des classes
-    ├── jx_generator/           # Génération, formatage et sérialisation du CSS
-    ├── jx_engine/              # Orchestration du moteur de compilation
-    └── jx_cli/                 # Interface en ligne de commande (CLI)
+```dart
+div(classes: 'flex ai:center gap:3 p:4 br:lg bg:white sh:md md:p:8', [
+  p(classes: 'fw:semibold c:gray-900 hover:c:blue', [.text('Hello JX')]),
+])
 ```
 
-### Rôle et responsabilités des packages
+`jx` scans your Dart files, finds the utility classes used in your components and writes a stylesheet that contains only those.
 
-| Package | Rôle principal | Dépendances internes |
-| :--- | :--- | :--- |
-| **`jx_core`** | Modèles fondamentaux (`JxCssRule`, `JxCssDeclaration`, `JxClassToken`), interfaces (`JxParserContract`, `JxThemeContract`, `JxRuleContract`, `JxGeneratorContract`, `JxEngineContract`) et exceptions. | *Aucune* |
-| **`jx_theme`** | Définition des tokens (`JxTokenValue`, `JxThemeData`), résolution de thème (`JxTheme`) et génération de variables CSS (`--jx-*`). | `jx_core` |
-| **`jx_rules`** | Registre de règles (`JxRuleRegistry`), classe de base `JxRule` et échappement des sélecteurs CSS. | `jx_core`, `jx_theme` |
-| **`jx_parser`** | Découpage lexical des chaînes de classes, parsing des variantes, identifiants, valeurs et drapeaux d'importance. | `jx_core` |
-| **`jx_generator`** | Formatage du CSS (standard ou minifié), regroupement des `@media` et injection du bloc `:root`. | `jx_core`, `jx_theme` |
-| **`jx_engine`** | Orchestrateur du pipeline : Parser -> Rules/Theme -> Generator -> `JxCompileResult`. | `jx_core`, `jx_parser`, `jx_theme`, `jx_rules`, `jx_generator` |
-| **`jx_cli`** | Interface en ligne de commande Dart (`bin/jx.dart`) pour la compilation et l'automatisation. | `jx_core`, `jx_engine` |
+## Why JX
 
----
+- **Pure Dart.** The whole toolchain is a Dart package: `dart pub add dev:jx_cli` and you are done.
+- **Made for Jaspr.** Only string literals in `.dart` files are scanned (interpolations included), so keywords like `static` or `final` never produce CSS.
+- **Readable syntax.** `[variants:]utility[:value][!]`: `md:hover:bg:blue`, `p:4!`, `w:[calc(100%_-_2rem)]`.
+- **Safe by default.** Arbitrary values are validated before reaching the stylesheet: no CSS injection, no `javascript:` URLs.
+- **Helpful errors.** A misspelled class is reported with a fix that is known to compile (`pd:4` → `p:4`).
+- **Runs anywhere Dart runs.** The engine works on the VM and in the browser, for runtime compilation.
 
-## 3. Dépendances entre packages
-
-Le graphe des dépendances est acyclique (DAG) avec `jx_core` comme socle commun :
-
-```mermaid
-graph TD
-    jx_cli["jx_cli"] --> jx_engine["jx_engine"]
-    jx_cli --> jx_core["jx_core"]
-    
-    jx_engine --> jx_parser["jx_parser"]
-    jx_engine --> jx_rules["jx_rules"]
-    jx_engine --> jx_generator["jx_generator"]
-    jx_engine --> jx_theme["jx_theme"]
-    jx_engine --> jx_core
-    
-    jx_rules --> jx_theme
-    jx_rules --> jx_core
-    
-    jx_generator --> jx_theme
-    jx_generator --> jx_core
-    
-    jx_parser --> jx_core
-    jx_theme --> jx_core
-```
-
----
-
-## 4. Guide de démarrage rapide
-
-### Prérequis
-
-- **Dart SDK** : `>= 3.10.7`
-- **Melos** : `^8.10.0` (installable globalement via `dart pub global activate melos`)
-
-### Initialisation du monorepo
+## Quick start
 
 ```bash
-# Résolution et liaison des packages du monorepo
-melos bootstrap
+dart pub add dev:jx_cli
+dart run jx_cli:jx init       # creates jx.yaml
+dart run jx_cli:jx build      # writes the stylesheet
+dart run jx_cli:jx build -w   # rebuilds on every change
+dart run jx_cli:jx build -m   # minified CSS for production
 ```
 
-### Commandes utiles
+Then link the stylesheet in your Jaspr `Document`:
 
-```bash
-# Vérification de l'analyse statique sur tous les packages
-melos run analyze
-
-# Exécution de l'ensemble de la suite de tests
-melos run test
-
-# Vérification du formatage du code
-melos run format
-
-# Formatage automatique
-melos run format:fix
+```dart
+Document(
+  head: [link(rel: 'stylesheet', href: '/jx.css')],
+  body: App(),
+)
 ```
 
-### Utiliser JX CSS dans un projet
-
-```bash
-# Crée un jx.yaml commenté à la racine du projet
-dart run jx_cli:jx init
-
-# Scanne lib/ et web/ (fichiers .dart et .html) et écrit build/jx.css
-dart run jx_cli:jx build
-
-# Reconstruit automatiquement à chaque modification
-dart run jx_cli:jx build --watch
-
-# Compile une expression et affiche le CSS (sans scan ni preflight)
-dart run jx_cli:jx build -i "flex p:4 hover:bg:blue md:p:8"
-```
-
-Options de `build` : `-c/--config`, `--content <dossier>` (répétable), `-o/--output`, `-m/--minify`, `--[no-]reset`, `-w/--watch`.
-
-Dans les fichiers `.dart`, seuls les littéraux de chaîne sont analysés (y compris les interpolations), afin que des mots-clés comme `static` ou `final` ne génèrent pas de CSS.
+## Configuration
 
 ```yaml
 # jx.yaml
-content: [lib, web]
+content: [lib, web]        # files or folders to scan
 extensions: [dart, html]
-exclude: [generated]        # en plus de build, .dart_tool, .git, node_modules
-output: build/jx.css
+exclude: [generated]       # on top of build, .dart_tool, .git, node_modules
+output: web/jx.css
 minify: false
-reset: true                 # feuille de réinitialisation (preflight)
+reset: true                # include the preflight reset
+dark_mode: media           # or class: dark: applies under .dark
+
 theme:
-  extend:                   # fusionné avec le thème par défaut
-    colors: { brand: '#0ea5e9' }
-    breakpoints: { 3xl: 1920px }
-  override:                 # remplace entièrement une catégorie
-    font-size: { sm: 0.875rem, base: 1rem }
+  extend:                  # merged with the default theme
+    colors:
+      brand: '#3B6CF0'
+    breakpoints:
+      3xl: 1920px
+  override:                # replaces a whole category
+    font-family:
+      sans: 'Inter, system-ui, sans-serif'
 ```
 
-### Syntaxe des classes
+## Class syntax
 
-`[variante1:variante2:]identifiant[:valeur][!]`
+`[variant1:variant2:]utility[:value][!]`
 
-| Classe | CSS |
+| Class | CSS |
 | --- | --- |
 | `flex` | `display: flex` |
-| `c:red` | `color: #ef4444` (thème) |
-| `p:4` | `padding: 1rem` (échelle d'espacement) |
+| `c:red` | `color: #ef4444` (theme token) |
+| `p:4` | `padding: 1rem` (spacing scale) |
 | `hover:bg:blue` | `.hover\:bg\:blue:hover { background-color: … }` |
 | `md:p:8` | `@media (min-width: 768px) { … padding: 2rem }` |
-| `c:[#ff0000]` | `color: #ff0000` (valeur arbitraire, `_` = espace) |
+| `dark:bg:gray-900` | dark mode, from the system preference or a `.dark` class |
+| `group-hover:c:blue` | state of a parent marked `group` (`peer-*` for siblings) |
+| `c:[#ff0000]` | `color: #ff0000` (arbitrary value, `_` = space) |
 | `m:-4` / `-m:4` | `margin: -1rem` |
 | `p:4!` | `padding: 1rem !important` |
 
-Utilitaires disponibles : display (`d:`, `flex`, `hidden`…), spacing (`p*:`, `m*:`), couleurs (`c:`, `bg:`), typographie (`fs:`, `fw:`, `lh:`, `ta:`), dimensions (`w:`, `h:`, `mw:`, `mh:`), bordures (`bw:`, `bwt:`/`bwr:`/`bwb:`/`bwl:`/`bwx:`/`bwy:`, `bc:`, `br:`), flexbox (`ai:`, `jc:`, `fd:`, `gap:`, `wrap`, `flw:`, `fl:`, `grow:`, `shrink:`, `as:`), grid (`cols:`, `rows:`, `span:`, `rspan:`, `gx:`, `gy:`), position (`pos:`, `relative`…, `top:`/`right:`/`bottom:`/`left:`/`inset:`, `z:`), overflow (`ov:`, `ovx:`, `ovy:`, `smt:`), opacité (`o:`), ombres (`sh:`), transitions (`tr:`, `dur:`, `ease:`), transformations (`tx:`, `ty:`, `sc:`), curseur (`cur:`).
+| Need | Classes |
+| :--- | :--- |
+| Layout | `flex`, `grid`, `cols:3`, `gap:4`, `ai:center`, `jc:between`, `pi:center`, `order:first` |
+| Spacing, sizing | `p:4`, `mx:auto`, `w:full`, `mw:[40rem]`, `ar:video`, `basis:1/2` |
+| Text | `fs:xl`, `fw:bold`, `c:gray-700`, `uppercase`, `truncate`, `clamp:3`, `tw:balance` |
+| Backgrounds, borders | `bg:white`, `grad:to-r from:blue to:teal`, `bw:1`, `bs:dashed`, `br:lg`, `sh:md` |
+| Effects | `o:50`, `blur:md`, `bri:110`, `bblur:lg` (frosted glass), `mix:multiply` |
+| Motion | `tr:all`, `dur:300`, `tx:2`, `rot:45`, `sc:105`, `anim:spin`, `anim:fade-in` |
+| Accessibility | `sr-only`, `focus-visible:ring:2`, `motion-reduce:anim:none` |
 
-Exemple : `grid cols:1 md:cols:3 gap:6`, `sticky top:0 z:50`, `sh:md hover:sh:xl tr:default hover:-ty:1`.
+Always write classes in full: a class built by interpolation cannot be detected.
 
----
+The full reference is on the [documentation site](https://nathanaelzie.github.io/zaspr-kit/docs/introduction).
 
-## 5. Conventions de nommage
+## Packages
 
-- **Fichiers et répertoires** : `snake_case` (ex. `css_declaration.dart`, `cli_runner.dart`).
-- **Classes, types et interfaces** : `PascalCase` avec préfixe `Jx` pour les types publics du framework (ex. `JxCssDeclaration`, `JxParserContract`).
-- **Méthodes et variables** : `camelCase` (ex. `resolveToken`, `generateRootVariables`).
-- **Constantes** : `camelCase` ou `SCREAMING_SNAKE_CASE` selon les recommandations officielles Dart.
-- **Classes CSS générées** : Syntaxe propriétaire JX avec modificateurs séparés par `:`, support des valeurs arbitraires et modificateur `!`.
+This repository is a [Melos](https://melos.invertase.dev) monorepo.
 
+| Package | Role | Depends on |
+| :--- | :--- | :--- |
+| [`jx_cli`](https://pub.dev/packages/jx_cli) | Command line: `jx init`, `jx build`. **Start here.** | `jx_core`, `jx_engine` |
+| [`jx_engine`](https://pub.dev/packages/jx_engine) | Compilation pipeline: parser → rules/theme → generator. | all below |
+| [`jx_rules`](https://pub.dev/packages/jx_rules) | Utility catalog and rule registry. | `jx_core`, `jx_theme` |
+| [`jx_theme`](https://pub.dev/packages/jx_theme) | Design tokens, default theme, `--jx-*` variables. | `jx_core` |
+| [`jx_parser`](https://pub.dev/packages/jx_parser) | Class syntax parser, diagnostics and source extraction. | `jx_core` |
+| [`jx_generator`](https://pub.dev/packages/jx_generator) | CSS serialization, media query grouping, preflight. | `jx_core`, `jx_theme` |
+| [`jx_core`](https://pub.dev/packages/jx_core) | Shared models, contracts, exceptions and value validation. | — |
+
+## Contributing
+
+Requirements: Dart SDK `>= 3.10.7` and Melos (`dart pub global activate melos`).
+
+```bash
+melos bootstrap        # resolve and link the packages
+melos run analyze      # static analysis
+melos run test         # test suite
+melos run format:fix   # format the code
+```
+
+Conventions: `snake_case` files, `PascalCase` types with a `Jx` prefix for public API, `camelCase` members.
+
+Security issues: see [SECURITY.md](SECURITY.md).
+
+## License
+
+MIT.

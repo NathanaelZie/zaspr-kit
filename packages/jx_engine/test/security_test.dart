@@ -24,7 +24,7 @@ void main() {
         expect(result.unmatchedTokens, hasLength(1), reason: attack);
         expect(
           result.warnings.single,
-          startsWith('Syntaxe de classe invalide :'),
+          startsWith('Invalid class syntax:'),
           reason: attack,
         );
       }
@@ -44,7 +44,7 @@ void main() {
   test('l\'avertissement donne la raison du refus', () {
     expect(
       engine.compile('hover:hover:c:red').warnings.single,
-      contains('répétée'),
+      contains('repeated'),
     );
     expect(engine.compile('c:').warnings.single, contains('segment vide'));
   });

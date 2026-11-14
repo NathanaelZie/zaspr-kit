@@ -16,7 +16,7 @@ import 'project_config.dart';
 /// - `jx build -i "flex p:4"` : compile une expression et l'affiche ;
 /// - `jx init` : crée un fichier `jx.yaml` commenté.
 final class JxCliRunner {
-  static const String version = '0.2.0';
+  static const String version = '0.2.1';
 
   final ArgParser argParser;
   final StringSink out;
@@ -51,53 +51,53 @@ final class JxCliRunner {
       'help',
       abbr: 'h',
       negatable: false,
-      help: 'Affiche ce message d\'aide.',
+      help: 'Shows this help message.',
     );
     argParser.addFlag(
       'version',
       abbr: 'v',
       negatable: false,
-      help: 'Affiche la version de JX CSS CLI.',
+      help: 'Shows the JX CSS CLI version.',
     );
 
     final buildParser = ArgParser()
       ..addOption(
         'config',
         abbr: 'c',
-        help: 'Fichier de configuration (défaut : ./jx.yaml s\'il existe).',
+        help: 'Configuration file (default: ./jx.yaml when it exists).',
       )
       ..addOption(
         'input',
         abbr: 'i',
         help:
-            'Expression de classes à compiler directement (sans scan). '
-            'Le CSS est affiché sauf si --output est fourni.',
+            'Class expression to compile directly (no scan). '
+            'The CSS is printed unless --output is given.',
       )
       ..addMultiOption(
         'content',
-        help: 'Fichiers ou dossiers à scanner (remplace "content" de jx.yaml).',
+        help: 'Files or folders to scan (replaces "content" from jx.yaml).',
       )
       ..addOption(
         'output',
         abbr: 'o',
-        help: 'Chemin du fichier CSS généré (défaut : build/jx.css).',
+        help: 'Path of the generated CSS file (default: build/jx.css).',
       )
       ..addFlag(
         'minify',
         abbr: 'm',
         negatable: false,
-        help: 'Minifie le CSS de sortie.',
+        help: 'Minifies the output CSS.',
       )
       ..addFlag(
         'reset',
         defaultsTo: null,
-        help: 'Inclut la feuille de réinitialisation (preflight).',
+        help: 'Includes the reset stylesheet (preflight).',
       )
       ..addFlag(
         'watch',
         abbr: 'w',
         negatable: false,
-        help: 'Reconstruit à chaque modification des sources.',
+        help: 'Rebuilds on every change to the sources.',
       );
     argParser.addCommand('build', buildParser);
 
@@ -107,7 +107,7 @@ final class JxCliRunner {
         'force',
         abbr: 'f',
         negatable: false,
-        help: 'Écrase un jx.yaml existant.',
+        help: 'Overwrites an existing jx.yaml.',
       ),
     );
   }
@@ -136,29 +136,29 @@ final class JxCliRunner {
       }
 
       err.writeln(
-        'Commande inconnue. Utilisez --help pour voir les commandes disponibles.',
+        'Unknown command. Use --help to see the available commands.',
       );
       return 1;
     } on FormatException catch (e) {
-      err.writeln('Erreur d\'arguments: ${e.message}');
+      err.writeln('Argument error: ${e.message}');
       return 1;
     } on JxException catch (e) {
-      err.writeln('Erreur: ${e.message}');
+      err.writeln('Error: ${e.message}');
       return 1;
     } catch (e) {
-      err.writeln('Erreur: $e');
+      err.writeln('Error: $e');
       return 1;
     }
   }
 
   void _printUsage() {
-    out.writeln('JX CSS - Framework CSS Utility-First en Dart\n');
-    out.writeln('Usage: jx <commande> [options]\n');
-    out.writeln('Commandes :');
-    out.writeln('  build   Scanne les sources et génère la feuille de style.');
-    out.writeln('  init    Crée un fichier jx.yaml.\n');
+    out.writeln('JX CSS - utility-first CSS framework for Dart\n');
+    out.writeln('Usage: jx <command> [options]\n');
+    out.writeln('Commands:');
+    out.writeln('  build   Scans the sources and generates the stylesheet.');
+    out.writeln('  init    Creates a jx.yaml file.\n');
     out.writeln(argParser.usage);
-    out.writeln('\nOptions de build :');
+    out.writeln('\nbuild options:');
     out.writeln(argParser.commands['build']!.usage);
   }
 
@@ -187,11 +187,11 @@ final class JxCliRunner {
     final builder = JxBuilder(root: root, config: config);
     if (command['watch'] as bool) {
       out.writeln(
-        'Surveillance de ${config.content.join(', ')}… (Ctrl+C pour quitter)',
+        'Watching ${config.content.join(', ')}… (Ctrl+C to quit)',
       );
       await builder.watch(
         onBuild: _report,
-        onError: (e) => err.writeln('Erreur: $e'),
+        onError: (e) => err.writeln('Error: $e'),
         until: watchUntil,
       );
       return 0;
@@ -213,7 +213,7 @@ final class JxCliRunner {
             .buildEngine();
     final result = engine.compile(input);
     for (final warning in result.warnings) {
-      err.writeln('Avertissement: $warning');
+      err.writeln('Warning: $warning');
     }
 
     if (command.wasParsed('output')) {
@@ -221,12 +221,12 @@ final class JxCliRunner {
       file.parent.createSync(recursive: true);
       file.writeAsStringSync(result.css.isEmpty ? '' : '${result.css}\n');
       out.writeln(
-        'Compilation réussie: ${result.ruleCount} règle(s) générée(s) -> ${file.path}',
+        'Build succeeded: ${result.ruleCount} rule(s) generated -> ${file.path}',
       );
     } else {
       if (result.hasOutput) out.writeln(result.css);
       out.writeln(
-        'Compilation réussie: ${result.ruleCount} règle(s) générée(s).',
+        'Build succeeded: ${result.ruleCount} rule(s) generated.',
       );
     }
     return 0;
@@ -235,57 +235,57 @@ final class JxCliRunner {
   void _report(JxBuildReport report) {
     final result = report.result;
     for (final warning in report.warnings) {
-      err.writeln('Avertissement: $warning');
+      err.writeln('Warning: $warning');
     }
     out.writeln(
-      'Compilation réussie: ${result.ruleCount} règle(s) générée(s) '
-      'depuis ${report.files.length} fichier(s) '
-      '[${result.matchedTokens.length} classe(s) utilisée(s)] '
-      'en ${result.duration.inMilliseconds} ms -> ${report.outputPath}',
+      'Build succeeded: ${result.ruleCount} rule(s) generated '
+      'from ${report.files.length} file(s) '
+      '[${result.matchedTokens.length} class(es) used] '
+      'in ${result.duration.inMilliseconds} ms -> ${report.outputPath}',
     );
   }
 
   int _init(ArgResults command) {
     final file = File(p.join(workingDirectory.path, JxProjectConfig.fileName));
     if (file.existsSync() && !(command['force'] as bool)) {
-      err.writeln('jx.yaml existe déjà (utilisez --force pour l\'écraser).');
+      err.writeln('jx.yaml already exists (use --force to overwrite it).');
       return 1;
     }
     file.writeAsStringSync(defaultConfigTemplate);
-    out.writeln('Fichier créé : ${file.path}');
+    out.writeln('Created: ${file.path}');
     return 0;
   }
 
   /// Contenu écrit par `jx init`.
   static const defaultConfigTemplate = '''
-# Configuration JX CSS
-# Fichiers ou dossiers scannés pour trouver les classes utilisées.
+# JX CSS configuration
+# Files or folders scanned to find the classes in use.
 content:
   - lib
   - web
 
-# Extensions prises en compte (.dart : seuls les littéraux de chaîne sont lus).
+# Extensions to read (.dart: only string literals are read).
 extensions: [dart, html]
 
-# Dossiers ignorés en plus de build, .dart_tool, .git et node_modules.
+# Folders ignored on top of build, .dart_tool, .git and node_modules.
 exclude: []
 
 output: build/jx.css
 minify: false
 
-# Feuille de réinitialisation (preflight) en tête du CSS.
+# Reset stylesheet (preflight) at the top of the CSS.
 reset: true
 
-# Variante dark: : "media" suit la préférence système, "class" s'active
-# quand un ancêtre (souvent <html>) porte la classe "dark".
+# dark: variant: "media" follows the system preference, "class" applies
+# when an ancestor (usually <html>) carries the "dark" class.
 dark_mode: media
 
 theme:
-  # Tokens ajoutés ou redéfinis par-dessus le thème par défaut.
+  # Tokens added or redefined on top of the default theme.
   extend:
     colors:
       brand: '#0ea5e9'
-  # Catégories remplacées entièrement (décommentez pour l'utiliser).
+  # Categories replaced entirely (uncomment to use).
   # override:
   #   font-size:
   #     sm: 0.875rem
