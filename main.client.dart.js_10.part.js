@@ -28,28 +28,28 @@ for(x=this.a,w=null,v=0;v<3;++v){u=C.t[v].c
 if(E.d.E(x.c,u))t=w==null||u.length>w.length
 else t=!1
 if(t)w=u}return w},
-D(d){var x,w,v,u,t,s,r,q=this,p=null,o="C:/Program Files/Git/zaspr-kit",n=q.gcM(),m=y.g,l=A.K(["aria-label","Navigation principale"],m,m),k=E.d.E("/","/")?"C:/Program Files/Git/zaspr-kit/":"/",j=A.K(["aria-hidden","true"],m,m),i=y.p
-k=F.fv(A.c([D.bl(A.c([new A.z("Z",p)],i),j,"flex ai:center jc:center shrink:0 c:white ff:code fw:extrabold bg:[linear-gradient(135deg,#3B6CF0,#2DD4BF)] w:8 h:8 br:lg fs:base"),new A.z("ZASPR Kit",p)],i),p,"flex ai:center gap:3 br:md fw:bold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4",k)
-j=A.c([],i)
+D(d){var x,w,v,u,t,s,r,q=this,p=null,o=q.gcM(),n=y.g,m=A.K(["aria-label","Navigation principale"],n,n),l=E.d.E("/","/")?"/zaspr-kit/":"/",k=A.K(["aria-hidden","true"],n,n),j=y.p
+l=F.fv(A.c([D.bl(A.c([new A.z("Z",p)],j),k,"flex ai:center jc:center shrink:0 c:white ff:code fw:extrabold bg:[linear-gradient(135deg,#3B6CF0,#2DD4BF)] w:8 h:8 br:lg fs:base"),new A.z("ZASPR Kit",p)],j),p,"flex ai:center gap:3 br:md fw:bold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4",l)
+k=A.c([],j)
 for(x=y.h,w=0;w<3;++w){v=C.t[w]
 u=v.a
-if(E.d.E(u,"/"))u=o+u
+if(E.d.E(u,"/"))u="/zaspr-kit"+u
 t=A.c(["px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4"],x)
-s=v.c===n
+s=v.c===o
 if(s)t.push("c:snow fw:semibold")
 else t.push("c:haze hover:c:snow")
 t=E.a.F(t," ")
-r=A.w(m,m)
+r=A.w(n,n)
 if(s)r.k(0,"aria-current","page")
-j.push(F.fv(A.c([new A.z(v.b,p)],i),r,t,u))}k=D.a7(A.c([k,D.a7(j,p,"hidden md:flex ai:center gap:1 fs:sm",p)],i),p,"flex ai:center gap:8",p)
-j=D.bl(A.c([new A.z("v0.2.0",p)],i),p,"hidden sm:inline ff:code fs:xs c:haze px:2 py:1 br:md bg:[rgba(255,255,255,0.06)]")
-m=A.K(["aria-expanded",""+q.d,"aria-controls","menu-principal"],m,m)
-m=A.c([H.lR(A.c([k,D.a7(A.c([j,G.k6(A.c([new A.z(q.d?"Fermer":"Menu",p)],i),m,"md:hidden px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold c:snow bg:[rgba(255,255,255,0.06)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4",new B.hH(q))],i),p,"flex ai:center gap:3",p)],i),l,"mw:[90rem] mx:auto px:5 md:px:8 flex ai:center jc:between gap:6 h:[4rem]")],i)
-if(q.d){l=A.c([],i)
+k.push(F.fv(A.c([new A.z(v.b,p)],j),r,t,u))}l=D.a7(A.c([l,D.a7(k,p,"hidden md:flex ai:center gap:1 fs:sm",p)],j),p,"flex ai:center gap:8",p)
+k=D.bl(A.c([new A.z("v0.2.0",p)],j),p,"hidden sm:inline ff:code fs:xs c:haze px:2 py:1 br:md bg:[rgba(255,255,255,0.06)]")
+n=A.K(["aria-expanded",""+q.d,"aria-controls","menu-principal"],n,n)
+n=A.c([H.lR(A.c([l,D.a7(A.c([k,G.k6(A.c([new A.z(q.d?"Fermer":"Menu",p)],j),n,"md:hidden px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold c:snow bg:[rgba(255,255,255,0.06)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4",new B.hH(q))],j),p,"flex ai:center gap:3",p)],j),m,"mw:[90rem] mx:auto px:5 md:px:8 flex ai:center jc:between gap:6 h:[4rem]")],j)
+if(q.d){m=A.c([],j)
 for(w=0;w<3;++w){v=C.t[w]
-k=v.a
-if(E.d.E(k,"/"))k=o+k
-l.push(F.fv(A.c([new A.z(v.b,p)],i),p,"py:3 bwt:1 bc:edge fw:semibold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4",k))}m.push(D.a7(l,p,"md:hidden flex fd:col px:5 pb:4","menu-principal"))}return new B.fB("sticky top:0 z:50 bg:[rgba(11,13,18,0.9)] bwb:1 bc:edge",m,p)}}
+l=v.a
+if(E.d.E(l,"/"))l="/zaspr-kit"+l
+m.push(F.fv(A.c([new A.z(v.b,p)],j),p,"py:3 bwt:1 bc:edge fw:semibold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4",l))}n.push(D.a7(m,p,"md:hidden flex fd:col px:5 pb:4","menu-principal"))}return new B.fB("sticky top:0 z:50 bg:[rgba(11,13,18,0.9)] bwb:1 bc:edge",n,p)}}
 var z=a.updateTypes([])
 B.hH.prototype={
 $0(){var x=this.a
@@ -69,5 +69,5 @@ C.lO=new A.bR("/docs/introduction","Documentation","/docs")
 C.lS=new A.bR("/docs/utilitaires","Utilitaires","/docs/utilitaires")
 C.lP=new A.bR("/bac-a-sable","Bac \xe0 sable","/bac-a-sable")
 C.t=x([C.lO,C.lS,C.lP],A.t("l<+href,label,prefix(a,a,a)>"))})()};
-(a=>{a["BoUqEEpUyfMzgbgpU89FermRJWg="]=a.current})($__dart_deferred_initializers__);
+(a=>{a["pN1WhT0cyDG+qnXChJ5W4ks4iBo="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_10.part.js.map

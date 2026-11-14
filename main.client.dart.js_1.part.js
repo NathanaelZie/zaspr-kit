@@ -27,7 +27,7 @@ s=A.c([new A.z(t.b,k)],h)
 r=A.c([],h)
 for(q=J.Y(t.a);q.i();){p=q.gl()
 o=p.a
-n=D.d.E(o,"/")?"C:/Program Files/Git/zaspr-kit"+o:o
+n=D.d.E(o,"/")?"/zaspr-kit"+o:o
 m=A.c(["block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4"],v)
 o=o===w
 if(o)m.push("c:snow fw:medium bg:[rgba(59,108,240,0.16)]")
@@ -75,5 +75,5 @@ p.push(new A.ad("/docs/utilitaires/"+u[2],t))}return A.c([new A.bu(r,"Premiers p
 x($,"r1","mz",()=>{var w,v,u=A.c([],A.t("l<+path,title(a,a)>"))
 for(w=$.kp(),v=0;v<4;++v)D.a.t(u,w[v].a)
 return u})})()};
-(a=>{a["ARTbwUNnnGxsqqNOS/v7fAtBhAY="]=a.current})($__dart_deferred_initializers__);
+(a=>{a["yxyYLQSf8xfvHqP8B5hg+J1f58E="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_1.part.js.map
