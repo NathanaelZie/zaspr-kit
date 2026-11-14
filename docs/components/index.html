@@ -479,6 +479,213 @@ JxAvatar(name: 'Grace Hopper', src: '/grace.jpg')  // picture, with alt text</co
                   </div>
                 </div>
               </div>
+              <h2 id="modal" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#modal">Modal</a>
+              </h2>
+              <div class="mb:6 p:6 br:xl bw:1 bc:edge bg:white dark:bg:gray-900 c:gray-900 dark:c:gray-100">
+                <div class="flex wrap ai:center gap:3">
+                  <button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:white bg:red-700 bc:red-700 hover:bg:red-900 hover:bc:red-900 active:sc:95 fs:sm px:4 py:2 mnh:[40px]" command="show-modal" commandfor="demo-delete" aria-haspopup="dialog" type="button">Delete project</button>
+                  <button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:gray-900 bg:transparent bc:gray-300 hover:bg:gray-100 active:sc:95 dark:c:gray-100 dark:bc:gray-500 dark:hover:bg:gray-700 fs:sm px:4 py:2 mnh:[40px]" command="show-modal" commandfor="demo-invite" aria-haspopup="dialog" type="button">Invite a teammate</button>
+                  <dialog id="demo-delete" class="m:auto w:[calc(100%_-_2rem)] mh:[85vh] p:0 br:xl bw:1 bc:gray-100 bg:white c:gray-900 sh:2xl ov:auto backdrop:bg:[rgba(15,23,42,0.6)] backdrop:bblur:sm open:anim:fade-in motion-reduce:anim:none dark:bg:gray-900 dark:bc:gray-700 dark:c:gray-100 mw:[24rem]" aria-labelledby="demo-delete-title" aria-describedby="demo-delete-description" closedby="any">
+                    <div class="flex fd:col gap:4 p:6">
+                      <div class="flex ai:start jc:between gap:4">
+                        <h2 id="demo-delete-title" class="fs:lg fw:semibold lh:tight">Delete this project?</h2>
+                        <button class="inline-flex ai:center jc:center shrink:0 w:8 h:8 -mt:1 -mr:2 br:md bw:0 bg:transparent c:gray-500 cur:pointer tr:colors hover:bg:gray-100 hover:c:gray-900 dark:hover:bg:gray-700 dark:hover:c:gray-100 focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2" command="close" commandfor="demo-delete" aria-label="Close" type="button">
+                          <svg class="w:5 h:5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+                        </button>
+                      </div>
+                      <p id="demo-delete-description" class="fs:sm lh:relaxed c:gray-500">The project, its pages and its deployments are removed. This cannot be undone.</p>
+                      <div class="flex wrap ai:center jc:end gap:2 pt:2">
+                        <button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:gray-900 bg:transparent bc:transparent hover:bg:gray-100 dark:c:gray-100 dark:hover:bg:gray-700 fs:sm px:4 py:2 mnh:[40px]" command="close" commandfor="demo-delete" type="button">Cancel</button>
+                        <button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:white bg:red-700 bc:red-700 hover:bg:red-900 hover:bc:red-900 active:sc:95 fs:sm px:4 py:2 mnh:[40px]" command="close" commandfor="demo-delete" type="button">Delete project</button>
+                      </div>
+                    </div>
+                  </dialog>
+                  <dialog id="demo-invite" class="m:auto w:[calc(100%_-_2rem)] mh:[85vh] p:0 br:xl bw:1 bc:gray-100 bg:white c:gray-900 sh:2xl ov:auto backdrop:bg:[rgba(15,23,42,0.6)] backdrop:bblur:sm open:anim:fade-in motion-reduce:anim:none dark:bg:gray-900 dark:bc:gray-700 dark:c:gray-100 mw:[32rem]" aria-labelledby="demo-invite-title" aria-describedby="demo-invite-description" closedby="any">
+                    <div class="flex fd:col gap:4 p:6">
+                      <div class="flex ai:start jc:between gap:4">
+                        <h2 id="demo-invite-title" class="fs:lg fw:semibold lh:tight">Invite a teammate</h2>
+                        <button class="inline-flex ai:center jc:center shrink:0 w:8 h:8 -mt:1 -mr:2 br:md bw:0 bg:transparent c:gray-500 cur:pointer tr:colors hover:bg:gray-100 hover:c:gray-900 dark:hover:bg:gray-700 dark:hover:c:gray-100 focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2" command="close" commandfor="demo-invite" aria-label="Close" type="button">
+                          <svg class="w:5 h:5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+                        </button>
+                      </div>
+                      <p id="demo-invite-description" class="fs:sm lh:relaxed c:gray-500">They get an email with a link to join this workspace.</p>
+                      <div class="flex fd:col gap:1">
+                        <label class="fs:sm fw:medium c:gray-900 dark:c:gray-100" for="demo-invite-email">Email</label>
+                        <input id="demo-invite-email" class="w:full px:3 py:2 mnh:[40px] br:lg bw:1 bc:gray-300 bg:white c:gray-900 fs:sm tr:colors placeholder:c:gray-500 focus:ol:none focus:bc:blue-500 focus:ring:2 focus:ringc:blue-300 disabled:o:50 disabled:cur:not-allowed dark:bg:gray-900 dark:bc:gray-700 dark:c:gray-100" type="email"/>
+                      </div>
+                      <div class="flex fd:col gap:1">
+                        <label class="fs:sm fw:medium c:gray-900 dark:c:gray-100" for="demo-invite-role">Role</label>
+                        <div class="relative">
+                          <select id="demo-invite-role" class="w:full px:3 py:2 mnh:[40px] br:lg bw:1 bc:gray-300 bg:white c:gray-900 fs:sm tr:colors placeholder:c:gray-500 focus:ol:none focus:bc:blue-500 focus:ring:2 focus:ringc:blue-300 disabled:o:50 disabled:cur:not-allowed dark:bg:gray-900 dark:bc:gray-700 dark:c:gray-100 app:none pr:10 cur:pointer"><option value="viewer">Viewer</option><option value="editor" selected>Editor</option></select>
+                          <span class="absolute top:0 right:0 flex ai:center h:full px:3 pe:none c:gray-500" aria-hidden="true"><svg class="w:4 h:4" fill="currentColor" viewBox="0 0 20 20"><path d="M5.2 7.2a.75.75 0 0 1 1.06 0L10 10.94l3.74-3.74a.75.75 0 1 1 1.06 1.06l-4.27 4.27a.75.75 0 0 1-1.06 0L5.2 8.26a.75.75 0 0 1 0-1.06z"></path></svg></span>
+                        </div>
+                      </div>
+                      <div class="flex wrap ai:center jc:end gap:2 pt:2">
+                        <button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:gray-900 bg:transparent bc:transparent hover:bg:gray-100 dark:c:gray-100 dark:hover:bg:gray-700 fs:sm px:4 py:2 mnh:[40px]" command="close" commandfor="demo-invite" type="button">Cancel</button>
+                        <button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:white bg:blue-700 bc:blue-700 hover:bg:blue-900 hover:bc:blue-900 active:sc:95 fs:sm px:4 py:2 mnh:[40px]" command="close" commandfor="demo-invite" type="button">Send invite</button>
+                      </div>
+                    </div>
+                  </dialog>
+                </div>
+              </div>
+              <p class="mb:5 lh:[1.75] c:[#C5CCD8]">
+                The modal is a native <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">&lt;dialog&gt;</code>, opened and closed by HTML command buttons: no JavaScript, not even on this static page. The browser moves the focus inside, keeps it there, closes on Escape and returns the focus to the trigger. A click on the backdrop closes it too, unless 
+                <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">dismissible: false</code>.
+              </p>
+              <pre class="ff:code fs:sm lh:relaxed p:5 br:xl ov:auto ws:pre bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] mb:6"><code>JxModalTrigger(target: 'delete', [.text('Delete project')])
+
+JxModal(
+  id: 'delete',
+  title: 'Delete this project?',
+  description: 'This cannot be undone.',
+  size: JxModalSize.sm,
+  actions: [
+    JxButton([.text('Cancel')], variant: JxButtonVariant.ghost,
+        attributes: JxModal.closeAttributes('delete')),
+    JxButton([.text('Delete')], variant: JxButtonVariant.danger, onClick: delete),
+  ],
+  [],
+)</code></pre>
+              <div class="mb:6 px:5 py:4 br:xl bwl:4 bc:brand bg:[rgba(59,108,240,0.08)]" role="note">
+                <p class="fw:semibold mb:1 c:beam">Note</p>
+                <p class="lh:relaxed c:[#C5CCD8]">
+                  Command buttons are supported in current Chrome, Edge, Firefox and Safari. Closing on a backdrop click relies on 
+                  <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">closedby</code>, not yet everywhere: Escape and the buttons always work. For older browsers, call 
+                  <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">showModal()</code>
+                   from a client component.
+                </p>
+              </div>
+              <h2 id="data-table" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#data-table">Data table and pagination</a>
+              </h2>
+              <div class="mb:6 p:6 br:xl bw:1 bc:edge bg:white dark:bg:gray-900 c:gray-900 dark:c:gray-100">
+                <div class="block">
+                  <!--@data_table_demo-->
+                  <div class="flex fd:col gap:4">
+                    <div class="w:full ovx:auto br:xl bw:1 bc:gray-100 bg:white dark:bg:gray-900 dark:bc:gray-700">
+                      <table class="w:full bcol:collapse fs:sm ta:left c:gray-900 dark:c:gray-100">
+                        <caption class="cap:top px:4 py:3 ta:left fs:sm fw:semibold c:gray-900 dark:c:gray-100">Invoices</caption>
+                        <thead class="bg:gray-100 dark:bg:gray-700">
+                          <tr>
+                            <th class="px:4 py:3 va:middle ws:nowrap px:4 py:3 fs:xs fw:semibold ws:nowrap c:gray-700 dark:c:gray-100" scope="col">
+                              <button class="inline-flex ai:center gap:1 p:0 bw:0 bg:transparent c:current fw:semibold cur:pointer br:sm hover:c:gray-900 dark:hover:c:white focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2" type="button">
+                                Client
+                                <svg class="w:3 h:3 o:50" fill="currentColor" aria-hidden="true" viewBox="0 0 16 16"><path d="M8 2 12 6H4zM8 14 4 10h8z"></path></svg>
+                              </button>
+                            </th>
+                            <th class="px:4 py:3 va:middle ws:nowrap px:4 py:3 fs:xs fw:semibold ws:nowrap c:gray-700 dark:c:gray-100" scope="col">
+                              <button class="inline-flex ai:center gap:1 p:0 bw:0 bg:transparent c:current fw:semibold cur:pointer br:sm hover:c:gray-900 dark:hover:c:white focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2" type="button">
+                                Status
+                                <svg class="w:3 h:3 o:50" fill="currentColor" aria-hidden="true" viewBox="0 0 16 16"><path d="M8 2 12 6H4zM8 14 4 10h8z"></path></svg>
+                              </button>
+                            </th>
+                            <th class="px:4 py:3 va:middle ws:nowrap px:4 py:3 fs:xs fw:semibold ws:nowrap c:gray-700 dark:c:gray-100 ta:right tabular-nums" scope="col" aria-sort="descending">
+                              <button class="inline-flex ai:center gap:1 p:0 bw:0 bg:transparent c:current fw:semibold cur:pointer br:sm hover:c:gray-900 dark:hover:c:white focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2" type="button">
+                                Amount
+                                <svg class="w:3 h:3" fill="currentColor" aria-hidden="true" viewBox="0 0 16 16"><path d="M8 12 3 6h10z"></path></svg>
+                              </button>
+                            </th>
+                            <th class="px:4 py:3 va:middle ws:nowrap px:4 py:3 fs:xs fw:semibold ws:nowrap c:gray-700 dark:c:gray-100" scope="col">
+                              <button class="inline-flex ai:center gap:1 p:0 bw:0 bg:transparent c:current fw:semibold cur:pointer br:sm hover:c:gray-900 dark:hover:c:white focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2" type="button">
+                                Due
+                                <svg class="w:3 h:3 o:50" fill="currentColor" aria-hidden="true" viewBox="0 0 16 16"><path d="M8 2 12 6H4zM8 14 4 10h8z"></path></svg>
+                              </button>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="bwt:1 bc:gray-100 dark:bc:gray-700 even:bg:gray-100 dark:even:bg:[rgba(255,255,255,0.04)] group">
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700"><span class="fw:medium">Stark</span></td>
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700">
+                              <span class="inline-flex as:start ai:center px:2 py:[2px] br:full fs:xs fw:medium lh:none ws:nowrap c:green-900 bg:green-100">Paid</span>
+                            </td>
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700 ta:right tabular-nums">$7,250</td>
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700">2026-08-30</td>
+                          </tr>
+                          <tr class="bwt:1 bc:gray-100 dark:bc:gray-700 even:bg:gray-100 dark:even:bg:[rgba(255,255,255,0.04)] group">
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700"><span class="fw:medium">Cyberdyne</span></td>
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700">
+                              <span class="inline-flex as:start ai:center px:2 py:[2px] br:full fs:xs fw:medium lh:none ws:nowrap c:green-900 bg:green-100">Paid</span>
+                            </td>
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700 ta:right tabular-nums">$5,120</td>
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700">2026-10-15</td>
+                          </tr>
+                          <tr class="bwt:1 bc:gray-100 dark:bc:gray-700 even:bg:gray-100 dark:even:bg:[rgba(255,255,255,0.04)] group">
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700"><span class="fw:medium">Hooli</span></td>
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700">
+                              <span class="inline-flex as:start ai:center px:2 py:[2px] br:full fs:xs fw:medium lh:none ws:nowrap c:yellow-900 bg:yellow-100">Pending</span>
+                            </td>
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700 ta:right tabular-nums">$3,990</td>
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700">2026-12-01</td>
+                          </tr>
+                          <tr class="bwt:1 bc:gray-100 dark:bc:gray-700 even:bg:gray-100 dark:even:bg:[rgba(255,255,255,0.04)] group">
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700"><span class="fw:medium">Tyrell</span></td>
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700">
+                              <span class="inline-flex as:start ai:center px:2 py:[2px] br:full fs:xs fw:medium lh:none ws:nowrap c:yellow-900 bg:yellow-100">Pending</span>
+                            </td>
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700 ta:right tabular-nums">$2,875</td>
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700">2026-11-29</td>
+                          </tr>
+                          <tr class="bwt:1 bc:gray-100 dark:bc:gray-700 even:bg:gray-100 dark:even:bg:[rgba(255,255,255,0.04)] group">
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700"><span class="fw:medium">Initech</span></td>
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700">
+                              <span class="inline-flex as:start ai:center px:2 py:[2px] br:full fs:xs fw:medium lh:none ws:nowrap c:yellow-900 bg:yellow-100">Pending</span>
+                            </td>
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700 ta:right tabular-nums">$2,310</td>
+                            <td class="px:4 py:3 va:middle ws:nowrap tr:colors group-hover:bg:blue-100 dark:group-hover:bg:gray-700">2026-11-20</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="flex wrap ai:center jc:between gap:3">
+                      <span class="fs:sm c:gray-400">Showing 1–5 of 12</span>
+                      <nav aria-label="Pagination">
+                        <ul class="flex wrap ai:center gap:1 fs:sm lst:none p:0 m:0">
+                          <li>
+                            <button class="inline-flex ai:center jc:center mnw:[36px] h:9 px:2 br:md bw:1 td:none cur:pointer tr:colors focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 bc:transparent c:gray-700 bg:transparent hover:bg:gray-100 dark:c:gray-100 dark:hover:bg:gray-700 o:50 pe:none" aria-disabled="true" disabled type="button">Previous</button>
+                          </li>
+                          <li>
+                            <button class="inline-flex ai:center jc:center mnw:[36px] h:9 px:2 br:md bw:1 td:none cur:pointer tr:colors focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:white bg:blue-700 bc:blue-700" aria-current="page" type="button">1</button>
+                          </li>
+                          <li>
+                            <button class="inline-flex ai:center jc:center mnw:[36px] h:9 px:2 br:md bw:1 td:none cur:pointer tr:colors focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 bc:transparent c:gray-700 bg:transparent hover:bg:gray-100 dark:c:gray-100 dark:hover:bg:gray-700" type="button">2</button>
+                          </li>
+                          <li>
+                            <button class="inline-flex ai:center jc:center mnw:[36px] h:9 px:2 br:md bw:1 td:none cur:pointer tr:colors focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 bc:transparent c:gray-700 bg:transparent hover:bg:gray-100 dark:c:gray-100 dark:hover:bg:gray-700" type="button">3</button>
+                          </li>
+                          <li>
+                            <button class="inline-flex ai:center jc:center mnw:[36px] h:9 px:2 br:md bw:1 td:none cur:pointer tr:colors focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 bc:transparent c:gray-700 bg:transparent hover:bg:gray-100 dark:c:gray-100 dark:hover:bg:gray-700" type="button">Next</button>
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+                  <!--/@data_table_demo-->
+                </div>
+              </div>
+              <p class="mb:5 lh:[1.75] c:[#C5CCD8]">
+                Headers are <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">&lt;th scope="col"&gt;</code>; the sorted one carries 
+                <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">aria-sort</code>. Numeric columns align right with tabular digits, rows are striped, and with 
+                <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">stickyHeader</code>
+                 the header stays visible while the table scrolls. On a narrow screen the table scrolls sideways inside its frame, never the page.
+              </p>
+              <pre class="ff:code fs:sm lh:relaxed p:5 br:xl ov:auto ws:pre bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] mb:6"><code>JxDataTable(
+  caption: 'Invoices',
+  columns: const [
+    JxColumn('Client', sortable: true),
+    JxColumn('Amount', numeric: true, sortable: true),
+  ],
+  rows: [
+    for (final i in invoices) [.text(i.client), .text(i.amount)],
+  ],
+  sortColumn: sortColumn,
+  sortAscending: ascending,
+  onSort: (column) =&gt; setState(() =&gt; sortColumn = column),
+)
+
+JxPagination(page: page, pageCount: 12, onChange: (p) =&gt; setState(() =&gt; page = p))
+JxPagination(page: page, pageCount: 12, href: (p) =&gt; '/invoices?page=$p')  // plain links</code></pre>
               <h2 id="customize" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
                 <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#customize">Customizing</a>
               </h2>
@@ -542,6 +749,12 @@ JxAvatar(name: 'Grace Hopper', src: '/grace.jpg')  // picture, with alt text</co
               </li>
               <li>
                 <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#empty-state">Empty state</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#modal">Modal</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#data-table">Data table and pagination</a>
               </li>
               <li>
                 <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#customize">Customizing</a>
