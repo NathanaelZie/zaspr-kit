@@ -64,16 +64,28 @@ final class JxEngine implements JxEngineContract {
   JxCompileResult compile(String classNames) {
     final stopwatch = Stopwatch()..start();
     final tokens = <JxClassToken>[];
-    final invalid = <String>[];
+    // Classe refusée -> raison (vide si le parseur n'en fournit pas).
+    final invalid = <String, String>{};
 
+    final parser = this.parser;
     final trimmed = classNames.trim();
     if (trimmed.isNotEmpty) {
-      for (final raw in trimmed.split(RegExp(r'\s+'))) {
-        final token = parser.parseToken(raw);
-        if (token == null) {
-          invalid.add(raw);
+      for (final raw in trimmed.split(_whitespace)) {
+        if (parser is JxParser) {
+          final outcome = parser.analyze(raw);
+          final token = outcome.token;
+          if (token != null) {
+            tokens.add(token);
+          } else {
+            invalid[outcome.failure!.raw] = outcome.failure!.message;
+          }
         } else {
-          tokens.add(token);
+          final token = parser.parseToken(raw);
+          if (token == null) {
+            invalid[raw] = '';
+          } else {
+            tokens.add(token);
+          }
         }
       }
     }
@@ -90,7 +102,7 @@ final class JxEngine implements JxEngineContract {
   JxCompileResult _compileTokensInternal(
     List<JxClassToken> tokens,
     Stopwatch stopwatch, {
-    List<String> invalid = const [],
+    Map<String, String> invalid = const {},
   }) {
     final matchedTokens = <JxClassToken>[];
     final unmatchedTokens = <String>[];
@@ -98,9 +110,13 @@ final class JxEngine implements JxEngineContract {
     final generatedRules = <JxCssRule>[];
     final seen = <String>{};
 
-    for (final raw in invalid) {
+    for (final MapEntry(key: raw, value: reason) in invalid.entries) {
       unmatchedTokens.add(raw);
-      warnings.add('Syntaxe de classe invalide : "$raw".');
+      warnings.add(
+        reason.isEmpty
+            ? 'Syntaxe de classe invalide : "$raw".'
+            : 'Syntaxe de classe invalide : "$raw" ($reason).',
+      );
     }
 
     for (final token in tokens) {
@@ -155,20 +171,41 @@ final class JxEngine implements JxEngineContract {
     );
   }
 
+  static final RegExp _whitespace = RegExp(r'\s+');
+
   bool get _minify => config.config.minify;
 
   /// Suggestion pour une classe dont l'identifiant est inconnu (`pd:4` ->
-  /// `p:4`). Seules les classes avec valeur ou variantes sont concernées, pour
-  /// ne pas signaler les mots ordinaires trouvés dans les sources.
+  /// `p:4`).
+  ///
+  /// Pour ne pas signaler les chaînes ordinaires trouvées dans les sources
+  /// (`dart:async`), seules les classes avec valeur ou variantes sont
+  /// concernées, et la correction n'est proposée que si elle compile.
   String? _suggest(JxClassToken token) {
     if (!token.hasValue && !token.hasVariants) return null;
-    final closest = closestMatch(token.identifier, registry.identifiers);
-    if (closest == null) return null;
-    final suggestion = [
-      ...token.variants,
-      '${token.isNegative ? '-' : ''}$closest',
-      if (token.hasValue) token.value!,
-    ].join(':');
+    String? suggestion;
+    for (final closest in closestMatches(
+      token.identifier,
+      registry.identifiers,
+    )) {
+      final fixed = token.copyWith(identifier: closest);
+      final rule = registry.findMatchingRule(fixed);
+      if (rule == null) continue;
+      try {
+        for (final cssRule in rule.generate(fixed, theme)) {
+          variantResolver.apply(cssRule, fixed.variants);
+        }
+      } on JxException {
+        continue;
+      }
+      suggestion = [
+        ...token.variants,
+        '${token.isNegative ? '-' : ''}$closest',
+        if (token.hasValue) token.value!,
+      ].join(':');
+      break;
+    }
+    if (suggestion == null) return null;
     return 'Classe "${token.raw}" inconnue : vouliez-vous dire "$suggestion${token.isImportant ? '!' : ''}" ?';
   }
 

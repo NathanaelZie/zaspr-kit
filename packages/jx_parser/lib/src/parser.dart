@@ -1,8 +1,10 @@
 import 'package:jx_core/jx_core.dart';
 
+import 'diagnostics.dart';
+
 /// Implémentation du parseur de syntaxe de classes pour le framework JX CSS.
 ///
-/// Analyse les classes utilitaires selon la syntaxe propriétaire de JX CSS :
+/// Analyse les classes utilitaires selon la syntaxe de JX CSS :
 /// `[variante1:variante2:]identifiant[:valeur][!]`
 ///
 /// Exemples :
@@ -10,12 +12,16 @@ import 'package:jx_core/jx_core.dart';
 /// - `c:red` -> id: `c`, value: `red`
 /// - `hover:bg:blue` -> variants: `['hover']`, id: `bg`, value: `blue`
 /// - `md:hidden` -> variants: `['md']`, id: `hidden`
-/// - `p:4!` -> id: `p`, value: `4`, important: true
+/// - `p:4!` ou `!p:4` -> id: `p`, value: `4`, important: true
 /// - `c:[#ff0000]` -> id: `c`, value: `[#ff0000]` (valeur arbitraire)
 /// - `m:-4` / `-m:4` -> id: `m`, value: `4`, negative: true
 ///
-/// Les classes syntaxiquement invalides (segment vide, crochets non
-/// équilibrés, identifiant invalide…) produisent `null`.
+/// [parseToken] retourne `null` pour une classe invalide ; [analyze] en donne
+/// la raison sous forme de [JxParseFailure].
+///
+/// Le parseur traite toute entrée comme non fiable : la longueur des classes
+/// et le nombre de variantes sont bornés, et une valeur arbitraire qui
+/// pourrait injecter du CSS est refusée (voir [JxCssValue.unsafeReason]).
 final class JxParser implements JxParserContract {
   /// Variantes connues par défaut (pseudo-classes, pseudo-éléments et
   /// breakpoints).
@@ -43,46 +49,127 @@ final class JxParser implements JxParserContract {
     'peer-required', 'peer-placeholder-shown', 'peer-user-invalid',
   };
 
+  /// Longueur maximale d'une classe par défaut.
+  static const int defaultMaxClassLength = 512;
+
+  /// Nombre maximal de variantes par classe par défaut.
+  static const int defaultMaxVariants = 8;
+
   /// Variantes reconnues. Elles permettent de lever l'ambiguïté entre
   /// `md:hidden` (variante + classe standalone) et `c:red` (identifiant + valeur).
   final Set<String> variants;
 
-  const JxParser({this.variants = defaultVariants});
+  /// Longueur maximale d'une classe ; au-delà, elle est refusée sans analyse.
+  final int maxClassLength;
 
-  static final RegExp _identifierPattern = RegExp(r'^[a-zA-Z][a-zA-Z0-9-]*$');
-  static final RegExp _variantPattern = RegExp(r'^[a-zA-Z0-9][a-zA-Z0-9-]*$');
-  static final RegExp _valuePattern = RegExp(r'^[a-zA-Z0-9.#%/-]+$');
+  /// Nombre maximal de variantes cumulées sur une classe.
+  final int maxVariants;
+
+  const JxParser({
+    this.variants = defaultVariants,
+    this.maxClassLength = defaultMaxClassLength,
+    this.maxVariants = defaultMaxVariants,
+  });
+
+  /// Identifiant : lettres, chiffres et tirets simples (`inline-flex`).
+  static final RegExp _identifierPattern = RegExp(
+    r'^[a-zA-Z][a-zA-Z0-9]*(?:-[a-zA-Z0-9]+)*$',
+  );
+
+  /// Variante : comme un identifiant, mais peut commencer par un chiffre (`2xl`).
+  static final RegExp _variantPattern = RegExp(
+    r'^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*$',
+  );
+
+  /// Valeur simple : couleur hexadécimale (`#fff`) ou mots séparés par `.`,
+  /// `-` ou `/` (`teal-700`, `1.5`, `1/2`), avec `%` final facultatif.
+  static final RegExp _valuePattern = RegExp(
+    r'^(?:#[0-9a-fA-F]{3,8}|[a-zA-Z0-9]+(?:[.\-/][a-zA-Z0-9]+)*%?)$',
+  );
+
+  static final RegExp _whitespace = RegExp(r'\s+');
 
   @override
-  List<JxClassToken> parse(String classNames) {
-    final trimmed = classNames.trim();
-    if (trimmed.isEmpty) return const [];
+  List<JxClassToken> parse(String classNames) => analyzeAll(classNames).tokens;
 
-    final results = <JxClassToken>[];
-    for (final raw in trimmed.split(RegExp(r'\s+'))) {
-      final token = parseToken(raw);
-      if (token != null) results.add(token);
+  @override
+  JxClassToken? parseToken(String rawClassName) => analyze(rawClassName).token;
+
+  /// Analyse une liste de classes séparées par des blancs et retourne les
+  /// tokens valides ainsi que le détail de chaque classe refusée.
+  JxParseReport analyzeAll(String classNames) {
+    final tokens = <JxClassToken>[];
+    final failures = <JxParseFailure>[];
+    final trimmed = classNames.trim();
+    if (trimmed.isNotEmpty) {
+      for (final raw in trimmed.split(_whitespace)) {
+        final outcome = analyze(raw);
+        final token = outcome.token;
+        if (token != null) {
+          tokens.add(token);
+        } else {
+          failures.add(outcome.failure!);
+        }
+      }
     }
-    return results;
+    return JxParseReport(
+      tokens: List.unmodifiable(tokens),
+      failures: List.unmodifiable(failures),
+    );
   }
 
-  @override
-  JxClassToken? parseToken(String rawClassName) {
+  /// Analyse une classe et retourne son token, ou la raison du refus.
+  JxParseOutcome analyze(String rawClassName) {
     final raw = rawClassName.trim();
-    if (raw.isEmpty) return null;
 
+    JxParseOutcome fail(JxParseErrorCode code, String message) =>
+        JxParseOutcome.failure(
+          JxParseFailure(raw: _preview(raw), code: code, message: message),
+        );
+
+    if (raw.isEmpty) return fail(JxParseErrorCode.empty, 'classe vide');
+    if (raw.length > maxClassLength) {
+      return fail(
+        JxParseErrorCode.tooLong,
+        'classe trop longue (plus de $maxClassLength caractères)',
+      );
+    }
+    for (var i = 0; i < raw.length; i++) {
+      final code = raw.codeUnitAt(i);
+      if (code <= 0x20 || code == 0x7F) {
+        return fail(
+          JxParseErrorCode.invalidCharacter,
+          'espace ou caractère de contrôle interdit',
+        );
+      }
+    }
+
+    // Modificateur d'importance : `!` final (`p:4!`) ou initial (`!p:4`).
     var working = raw;
     var isImportant = false;
-
-    // Modificateur d'importance (`!` final).
     if (working.endsWith('!')) {
       isImportant = true;
       working = working.substring(0, working.length - 1);
+    } else if (working.startsWith('!')) {
+      isImportant = true;
+      working = working.substring(1);
     }
-    if (working.isEmpty) return null;
+    if (working.isEmpty) {
+      return fail(JxParseErrorCode.empty, 'classe réduite à "!"');
+    }
 
-    final segments = _splitSegments(working);
-    if (segments == null || segments.any((s) => s.isEmpty)) return null;
+    final List<String> segments;
+    try {
+      segments = _splitSegments(working);
+    } on FormatException catch (e) {
+      return fail(JxParseErrorCode.unbalancedBrackets, e.message);
+    }
+    if (segments.any((s) => s.isEmpty)) {
+      return fail(
+        JxParseErrorCode.emptySegment,
+        'segment vide (":" en trop ou valeur manquante)',
+      );
+    }
 
     // Consommation des variantes connues en tête, en laissant au moins un
     // segment pour l'identifiant.
@@ -106,68 +193,140 @@ final class JxParser implements JxParserContract {
       value = rest.last;
     }
 
-    if (!variantList.every(_variantPattern.hasMatch)) return null;
+    if (variantList.length > maxVariants) {
+      return fail(
+        JxParseErrorCode.tooManyVariants,
+        'trop de variantes (maximum $maxVariants)',
+      );
+    }
+    final seen = <String>{};
+    for (final variant in variantList) {
+      if (!_variantPattern.hasMatch(variant)) {
+        return fail(
+          JxParseErrorCode.invalidVariant,
+          'variante "$variant" invalide',
+        );
+      }
+      if (!seen.add(variant)) {
+        return fail(
+          JxParseErrorCode.duplicateVariant,
+          'variante "$variant" répétée',
+        );
+      }
+    }
 
-    // Gestion des valeurs négatives : `-m:4` ou `m:-4`.
+    // Valeurs négatives : `-m:4` ou `m:-4`.
     var isNegative = false;
-    if (value != null && identifier.startsWith('-')) {
+    if (identifier.startsWith('-')) {
+      if (value == null) {
+        return fail(
+          JxParseErrorCode.invalidNegative,
+          'le signe "-" exige une valeur (ex. "-m:4")',
+        );
+      }
       isNegative = true;
       identifier = identifier.substring(1);
     }
     if (value != null && value.startsWith('-')) {
-      if (isNegative) return null; // Double négation (`-m:-4`) refusée.
+      if (isNegative) {
+        return fail(
+          JxParseErrorCode.invalidNegative,
+          'double négation ("-m:-4")',
+        );
+      }
       isNegative = true;
       value = value.substring(1);
-      if (value.isEmpty) return null;
+      if (value.isEmpty || value.startsWith('-')) {
+        return fail(
+          JxParseErrorCode.invalidNegative,
+          'valeur négative incomplète',
+        );
+      }
     }
 
-    if (!_identifierPattern.hasMatch(identifier)) return null;
-    if (value != null && !_isValidValue(value)) return null;
+    if (!_identifierPattern.hasMatch(identifier)) {
+      return fail(
+        JxParseErrorCode.invalidIdentifier,
+        identifier.contains('!')
+            ? 'le "!" se place au début ou à la fin de la classe'
+            : 'identifiant "$identifier" invalide',
+      );
+    }
 
-    return JxClassToken(
-      raw: raw,
-      identifier: identifier,
-      value: value,
-      variants: List.unmodifiable(variantList),
-      isImportant: isImportant,
-      isNegative: isNegative,
+    if (value != null) {
+      final problem = _checkValue(value);
+      if (problem != null) return fail(problem.$1, problem.$2);
+    }
+
+    return JxParseOutcome.success(
+      JxClassToken(
+        raw: raw,
+        identifier: identifier,
+        value: value,
+        variants: List.unmodifiable(variantList),
+        isImportant: isImportant,
+        isNegative: isNegative,
+      ),
     );
   }
 
   /// Découpe la classe sur `:` en ignorant les `:` situés entre crochets.
-  /// Retourne `null` si les crochets ne sont pas équilibrés.
-  List<String>? _splitSegments(String input) {
+  /// Lève une [FormatException] si les crochets ne sont pas équilibrés.
+  static List<String> _splitSegments(String input) {
     final segments = <String>[];
-    final buffer = StringBuffer();
     var depth = 0;
+    var start = 0;
 
-    for (final char in input.split('')) {
-      if (char == '[') {
+    for (var i = 0; i < input.length; i++) {
+      final code = input.codeUnitAt(i);
+      if (code == 0x5B) {
         depth++;
-      } else if (char == ']') {
-        depth--;
-        if (depth < 0) return null;
-      }
-
-      if (char == ':' && depth == 0) {
-        segments.add(buffer.toString());
-        buffer.clear();
-      } else {
-        buffer.write(char);
+      } else if (code == 0x5D) {
+        if (--depth < 0) {
+          throw const FormatException('crochet "]" sans "[" correspondant');
+        }
+      } else if (code == 0x3A && depth == 0) {
+        segments.add(input.substring(start, i));
+        start = i + 1;
       }
     }
 
-    if (depth != 0) return null;
-    segments.add(buffer.toString());
+    if (depth != 0) throw const FormatException('crochet "[" non fermé');
+    segments.add(input.substring(start));
     return segments;
   }
 
-  bool _isValidValue(String value) {
-    if (value.startsWith('[')) {
-      // Valeur arbitraire : crochets englobants, contenu non vide, sans
-      // crochets imbriqués non équilibrés (déjà vérifiés au découpage).
-      return value.length > 2 && value.endsWith(']');
+  /// Retourne le problème de [value], ou `null` si elle est valide.
+  static (JxParseErrorCode, String)? _checkValue(String value) {
+    if (!value.startsWith('[')) {
+      if (_valuePattern.hasMatch(value)) return null;
+      return (
+        JxParseErrorCode.invalidValue,
+        value.contains('!')
+            ? 'le "!" se place au début ou à la fin de la classe'
+            : 'valeur "${_preview(value)}" invalide '
+                  '(pour une valeur libre, utilisez des crochets)',
+      );
     }
-    return _valuePattern.hasMatch(value);
+    if (!value.endsWith(']')) {
+      return (
+        JxParseErrorCode.invalidValue,
+        'une valeur arbitraire se termine par "]"',
+      );
+    }
+    final inner = value.substring(1, value.length - 1);
+    final decoded = JxCssValue.decodeArbitrary(inner);
+    if (decoded.trim().isEmpty) {
+      return (JxParseErrorCode.invalidValue, 'valeur arbitraire vide');
+    }
+    final reason = JxCssValue.unsafeReason(decoded);
+    if (reason != null) {
+      return (JxParseErrorCode.unsafeValue, 'valeur refusée : $reason');
+    }
+    return null;
   }
+
+  /// Version courte d'une entrée, pour les messages.
+  static String _preview(String text) =>
+      text.length <= 80 ? text : '${text.substring(0, 77)}…';
 }

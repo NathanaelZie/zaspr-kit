@@ -159,8 +159,7 @@ final class JxValueRule extends JxRule {
   String? resolveValue(JxClassToken token, JxThemeContract theme) {
     if (token.isArbitrary) {
       if (!allowArbitrary) return null;
-      final arbitrary = token.arbitraryValue!.trim();
-      return arbitrary.isEmpty ? null : arbitrary;
+      return checkedArbitraryValue(token);
     }
     final raw = token.value!;
     final category = themeCategory;
@@ -303,7 +302,7 @@ final class JxDynamicRule extends JxRule {
   @override
   List<JxCssRule> generate(JxClassToken token, JxThemeContract theme) {
     final value = token.isArbitrary
-        ? token.arbitraryValue!.trim()
+        ? checkedArbitraryValue(token)
         : token.value;
     final declarations = build(value, token, theme);
     if (declarations == null || declarations.isEmpty) {
@@ -327,24 +326,47 @@ final class JxDynamicRule extends JxRule {
   }
 }
 
+/// Valeur arbitraire décodée de [token], après contrôle de sécurité.
+///
+/// Lève une [JxRuleException] si la valeur pourrait sortir de sa déclaration
+/// CSS (`;`, `{`, `}`, `<`…) ou charger du code (`javascript:`…). Ce contrôle
+/// double celui du parseur : il protège aussi les tokens construits à la main.
+String checkedArbitraryValue(JxClassToken token) {
+  final value = token.arbitraryValue!.trim();
+  final reason = JxCssValue.unsafeReason(value);
+  if (reason != null) {
+    throw JxRuleException(
+      'Valeur arbitraire refusée pour "${token.raw}" : $reason.',
+    );
+  }
+  return value;
+}
+
 /// Retourne le candidat le plus proche de [input] (distance de Levenshtein
 /// d'au plus 2, et inférieure à la longueur de [input]), ou `null`.
 ///
 /// À distance égale, un candidat commençant par la même lettre l'emporte.
-String? closestMatch(String input, Iterable<String> candidates) {
-  String? best;
-  var bestScore = 1 << 30;
+String? closestMatch(String input, Iterable<String> candidates) =>
+    closestMatches(input, candidates).firstOrNull;
+
+/// Candidats proches de [input], du plus au moins ressemblant (mêmes
+/// critères que [closestMatch]).
+List<String> closestMatches(String input, Iterable<String> candidates) {
+  if (input.isEmpty) return const [];
+  final scored = <(int, String)>[];
   for (final candidate in candidates) {
     if (candidate == input || candidate.isEmpty) continue;
     final d = _levenshtein(input, candidate);
     if (d > 2 || d >= input.length) continue;
-    final score = d * 2 + (candidate[0] == input[0] ? 0 : 1);
-    if (score < bestScore) {
-      best = candidate;
-      bestScore = score;
-    }
+    scored.add((d * 2 + (candidate[0] == input[0] ? 0 : 1), candidate));
   }
-  return best;
+  // Tri stable : à score égal, l'ordre des candidats est conservé.
+  final indexed = [for (var i = 0; i < scored.length; i++) (scored[i], i)];
+  indexed.sort((a, b) {
+    final byScore = a.$1.$1.compareTo(b.$1.$1);
+    return byScore != 0 ? byScore : a.$2.compareTo(b.$2);
+  });
+  return [for (final entry in indexed) entry.$1.$2];
 }
 
 int _levenshtein(String a, String b) {

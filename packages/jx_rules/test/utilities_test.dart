@@ -125,7 +125,8 @@ void main() {
 
     test('couleur inconnue', () {
       expect(() => css('c:nope'), throwsRule);
-      expect(() => css('c:#ggg'), throwsRule);
+      // Refusée dès l'analyse : ce n'est pas une couleur hexadécimale.
+      expect(_parser.parseToken('c:#ggg'), isNull);
     });
   });
 

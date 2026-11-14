@@ -1,3 +1,5 @@
+import '../security/css_value.dart';
+
 /// Représentation intermédiaire (token) d'une classe utility analysée.
 final class JxClassToken {
   /// Nom brut d'origine de la classe (ex. `hover:c:primary!`, `m:4`).
@@ -44,13 +46,36 @@ final class JxClassToken {
       value!.startsWith('[') &&
       value!.endsWith(']');
 
-  /// Valeur arbitraire décodée (sans crochets, `_` remplacés par des espaces),
-  /// ou `null` si la valeur n'est pas arbitraire.
+  /// Valeur arbitraire décodée (sans crochets), ou `null` si la valeur n'est
+  /// pas arbitraire. Voir [JxCssValue.decodeArbitrary] : `_` devient une
+  /// espace, `\_` un `_` littéral, et les `_` d'un `url(…)` sont conservés.
   ///
   /// Exemple : `[calc(100%_-_1rem)]` -> `calc(100% - 1rem)`.
+  ///
+  /// La valeur n'est pas validée ici : utilisez [JxCssValue.unsafeReason]
+  /// avant de l'écrire dans une feuille de style.
   String? get arbitraryValue {
     if (!isArbitrary) return null;
-    return value!.substring(1, value!.length - 1).replaceAll('_', ' ');
+    return JxCssValue.decodeArbitrary(value!.substring(1, value!.length - 1));
+  }
+
+  /// Copie le token en surchargeant les champs spécifiés.
+  JxClassToken copyWith({
+    String? raw,
+    String? identifier,
+    String? value,
+    List<String>? variants,
+    bool? isImportant,
+    bool? isNegative,
+  }) {
+    return JxClassToken(
+      raw: raw ?? this.raw,
+      identifier: identifier ?? this.identifier,
+      value: value ?? this.value,
+      variants: variants ?? this.variants,
+      isImportant: isImportant ?? this.isImportant,
+      isNegative: isNegative ?? this.isNegative,
+    );
   }
 
   @override

@@ -11,47 +11,73 @@
 /// Exemple : `div(classes: 'flex p:4 hover:bg:blue', [...])`
 /// -> `div(classes:`, `flex`, `p:4`, `hover:bg:blue`, `[...])` ; seules les
 /// trois classes valides seront retenues en aval.
+///
+/// L'extracteur traite les sources comme une entrée non fiable : son temps
+/// d'exécution est linéaire, les candidats trop longs sont écartés et la
+/// profondeur des interpolations Dart analysées est bornée.
 final class JxClassExtractor {
-  const JxClassExtractor();
+  /// Longueur maximale d'un candidat par défaut.
+  static const int defaultMaxCandidateLength = 512;
 
-  /// Délimiteurs hors crochets.
-  static final RegExp _delimiter = RegExp(r'''[\s"'`<>={};,]''');
+  /// Longueur au-delà de laquelle un candidat est écarté.
+  final int maxCandidateLength;
+
+  const JxClassExtractor({this.maxCandidateLength = defaultMaxCandidateLength});
+
+  /// Blanc ou guillemet : ferme toujours un candidat.
+  static bool _isHardBreak(int code) =>
+      code <= 0x20 ||
+      code == 0xA0 ||
+      code == 0x22 ||
+      code == 0x27 ||
+      code == 0x60;
+
+  /// Délimiteurs supplémentaires hors crochets : `< > = { } ; ,`.
+  static bool _isSoftBreak(int code) =>
+      code == 0x3C ||
+      code == 0x3E ||
+      code == 0x3D ||
+      code == 0x7B ||
+      code == 0x7D ||
+      code == 0x3B ||
+      code == 0x2C;
 
   /// Retourne les candidats uniques, dans l'ordre de première apparition.
   List<String> extract(String content) {
     final seen = <String>{};
-    final buffer = StringBuffer();
     var depth = 0;
+    var start = -1; // Début du candidat en cours, ou -1.
 
-    void flush() {
-      if (buffer.isEmpty) return;
-      final candidate = _trim(buffer.toString());
-      buffer.clear();
-      if (candidate.isNotEmpty) seen.add(candidate);
+    void flush(int end) {
+      if (start < 0) return;
+      // Un candidat trop long n'est jamais une classe : inutile de le copier.
+      if (end - start <= maxCandidateLength) {
+        final candidate = _trim(content.substring(start, end));
+        if (candidate.isNotEmpty) seen.add(candidate);
+      }
+      start = -1;
     }
 
     for (var i = 0; i < content.length; i++) {
-      final char = content[i];
-      if (char == '[') {
+      final code = content.codeUnitAt(i);
+      if (code == 0x5B) {
         depth++;
-      } else if (char == ']' && depth > 0) {
+      } else if (code == 0x5D && depth > 0) {
         depth--;
       }
 
       // Dans des crochets, seuls les blancs et guillemets ferment le candidat
       // (les virgules, `=` ou `;` restent permis : `[rgb(0,0,0)]`).
-      final isBreak = depth > 0
-          ? RegExp(r'''[\s"'`]''').hasMatch(char)
-          : _delimiter.hasMatch(char);
+      final isBreak = _isHardBreak(code) || (depth == 0 && _isSoftBreak(code));
 
       if (isBreak) {
-        flush();
+        flush(i);
         depth = 0;
-      } else {
-        buffer.write(char);
+      } else if (start < 0) {
+        start = i;
       }
     }
-    flush();
+    flush(content.length);
 
     return seen.toList();
   }
@@ -73,21 +99,34 @@ final class JxClassExtractor {
   /// (`flex.` en fin de phrase, `Text(flex)`), sauf après une valeur
   /// arbitraire `[...]`.
   static String _trim(String candidate) {
-    var result = candidate;
-    while (result.isNotEmpty &&
-        '.)'.contains(result[result.length - 1]) &&
-        !result.endsWith(']')) {
-      result = result.substring(0, result.length - 1);
+    var end = candidate.length;
+    while (end > 0) {
+      final code = candidate.codeUnitAt(end - 1);
+      if (code != 0x2E && code != 0x29) break; // `.` ou `)`
+      end--;
     }
-    return result;
+    return end == candidate.length ? candidate : candidate.substring(0, end);
   }
 }
 
 /// Collecteur des littéraux de chaîne d'un source Dart.
 final class _DartStringCollector {
+  /// Profondeur maximale d'interpolations imbriquées analysées. Au-delà, le
+  /// reste est lu comme du texte : aucune source réelle n'approche cette
+  /// limite, et elle évite un dépassement de pile sur une entrée hostile.
+  static const int _maxDepth = 32;
+
   final String source;
   final List<String> _strings = [];
   int _i = 0;
+  int _depth = 0;
+
+  static bool _isIdentifierChar(int code) =>
+      (code >= 0x30 && code <= 0x39) ||
+      (code >= 0x41 && code <= 0x5A) ||
+      (code >= 0x61 && code <= 0x7A) ||
+      code == 0x5F ||
+      code == 0x24;
 
   _DartStringCollector(this.source);
 
@@ -114,7 +153,7 @@ final class _DartStringCollector {
         final isRaw =
             _i > 0 &&
             source[_i - 1] == 'r' &&
-            (_i < 2 || !RegExp(r'[A-Za-z0-9_$]').hasMatch(source[_i - 2]));
+            (_i < 2 || !_isIdentifierChar(source.codeUnitAt(_i - 2)));
         _scanString(raw: isRaw);
       } else if (nested && char == '{') {
         depth++;
@@ -149,15 +188,18 @@ final class _DartStringCollector {
       if (!raw && char == r'\') {
         _i += 2;
         buffer.write(' ');
-      } else if (!raw && _startsWith(r'${')) {
+      } else if (!raw && _startsWith(r'${') && _depth < _maxDepth) {
         _i += 2;
         buffer.write(' ');
+        _depth++;
         _scanCode(nested: true);
+        _depth--;
       } else if (!raw && char == r'$') {
         // Interpolation simple `$name` : séparateur.
         _i++;
         while (_i < source.length &&
-            RegExp(r'[A-Za-z0-9_]').hasMatch(source[_i])) {
+            _isIdentifierChar(source.codeUnitAt(_i)) &&
+            source.codeUnitAt(_i) != 0x24) {
           _i++;
         }
         buffer.write(' ');
