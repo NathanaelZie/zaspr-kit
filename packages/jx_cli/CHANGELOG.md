@@ -7,6 +7,11 @@
 - `packages:` in `jx.yaml` accepts a package folder: `packages: [jx_cli/ui]`. `jx_ui` still works and points there when the old package is not installed.
 - The build_runner builder (`jx_cli:jx_css`) is opt-in: enable it in `build.yaml`. This keeps projects that write `web/jx.css` with `jx build` working.
 - The history of the former packages is in `doc/history/`.
+- Components:
+  - new `JxAccordion` (`<details>`, optionally exclusive) and `JxDrawer` (side panel on `<dialog>`), with the `slide-in-left` and `slide-in-right` animations;
+  - `JxCard(titleLevel:)` picks the heading level of the title;
+  - a disabled or loading `JxButton(href:)` no longer navigates (`aria-disabled`, no `href`);
+  - focus ring, strong text and surface borders are shared tokens, so every component focuses the same way.
 
 ## 0.0.2
 

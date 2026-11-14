@@ -354,6 +354,12 @@ const Map<String, Map<String, Map<String, String>>> jxKeyframes = {
   'jx-zoom-in': {
     'from': {'opacity': '0', 'scale': '0.95'},
   },
+  'jx-slide-in-right': {
+    'from': {'translate': '100% 0'},
+  },
+  'jx-slide-in-left': {
+    'from': {'translate': '-100% 0'},
+  },
 };
 
 const _enter = 'cubic-bezier(0.16, 1, 0.3, 1)';
@@ -377,6 +383,8 @@ const List<JxRuleContract> jxAnimationRules = [
       'slide-up': 'jx-slide-up 0.4s $_enter both',
       'slide-down': 'jx-slide-down 0.4s $_enter both',
       'zoom-in': 'jx-zoom-in 0.3s $_enter both',
+      'slide-in-right': 'jx-slide-in-right 0.35s $_enter both',
+      'slide-in-left': 'jx-slide-in-left 0.35s $_enter both',
     },
   ),
   JxValueRule(

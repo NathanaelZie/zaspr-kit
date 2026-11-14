@@ -18,11 +18,14 @@ void main() {
   test('every class in the styles compiles with the default theme', () {
     // Every string literal of styles.dart, map keys excepted.
     final source = File('lib/src/ui/styles.dart').readAsStringSync();
+    // `$token` interpolations are skipped: each token is a literal itself.
     final classes = {
       for (final match in RegExp(r"'([^'\n]*)'(\s*:)?").allMatches(source))
-        if (match[2] == null) ...match[1]!.split(' '),
+        if (match[2] == null)
+          ...match[1]!.split(' ').where((c) => !c.startsWith(r'$')),
     }..remove('');
     expect(classes, contains(s.buttonFullWidth));
+    expect(s.buttonBase, contains('focus-visible:olc:blue-500'));
     // Marker classes produce no CSS on their own.
     const markers = {'group', 'peer'};
     final engine = JxEngine();

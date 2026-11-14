@@ -2,11 +2,9 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import 'feedback.dart';
+import 'field.dart';
 import 'styles.dart' as s;
 import 'utils.dart';
-
-// `JxTextField.label` shadows the element inside the class.
-const _labelElement = label.new;
 
 const _join = jxJoin;
 
@@ -71,6 +69,16 @@ class JxButton extends StatelessComponent {
     ];
     final attrs = {...?attributes, if (loading) 'aria-busy': 'true'};
     if (href case final href?) {
+      // A link cannot be disabled: drop the href so it no longer navigates,
+      // and say so to assistive technology.
+      if (disabled || loading) {
+        return Component.element(
+          tag: 'a',
+          classes: _join([classNames, s.buttonInactiveLink]),
+          attributes: {...attrs, 'role': 'link', 'aria-disabled': 'true'},
+          children: content,
+        );
+      }
       return a(
         content,
         href: href,
@@ -98,12 +106,16 @@ class JxCard extends StatelessComponent {
     this.title,
     this.description,
     this.footer,
+    this.titleLevel = 3,
     this.classes,
     super.key,
   });
 
   final List<Component> children;
   final String? title;
+
+  /// Heading level of [title], 2 to 6, to fit the outline of the page.
+  final int titleLevel;
   final String? description;
 
   /// Shown under a separator, aligned to the end.
@@ -113,7 +125,12 @@ class JxCard extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     return div(classes: _join([s.card, classes]), [
-      if (title case final title?) h3(classes: s.cardTitle, [.text(title)]),
+      if (title case final title?)
+        Component.element(
+          tag: 'h${titleLevel.clamp(2, 6)}',
+          classes: s.cardTitle,
+          children: [.text(title)],
+        ),
       if (description case final description?)
         p(classes: s.cardDescription, [.text(description)]),
       ...children,
@@ -215,29 +232,27 @@ class JxTextField extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final message = error ?? hint;
-    final messageId = message == null ? null : '$id-message';
-    return div(classes: _join([s.fieldWrapper, classes]), [
-      _labelElement(htmlFor: id, classes: s.fieldLabel, [.text(label)]),
-      input(
+    final onInput = this.onInput;
+    return jxField(
+      id: id,
+      label: label,
+      hint: hint,
+      error: error,
+      classes: classes,
+      control: (aria) => input(
         id: id,
         type: type,
         name: name,
         value: value,
         disabled: disabled,
-        onInput: onInput == null ? null : (v) => onInput!('$v'),
+        onInput: onInput == null ? null : (v) => onInput('$v'),
         classes: _join([s.fieldInput, if (error != null) s.fieldInputInvalid]),
         attributes: {
           'placeholder': ?placeholder,
           if (required) 'required': '',
-          if (error != null) 'aria-invalid': 'true',
-          'aria-describedby': ?messageId,
+          ...aria,
         },
       ),
-      if (message != null)
-        p(id: messageId, classes: error != null ? s.fieldError : s.fieldHint, [
-          .text(message),
-        ]),
-    ]);
+    );
   }
 }
