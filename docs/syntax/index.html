@@ -39,7 +39,7 @@
             </div>
           </div>
           <div class="flex ai:center gap:3">
-            <span class="hidden sm:inline ff:code fs:xs c:haze px:2 py:1 br:md bg:[rgba(255,255,255,0.06)]">v0.2.1</span>
+            <span class="hidden sm:inline ff:code fs:xs c:haze px:2 py:1 br:md bg:[rgba(255,255,255,0.06)]">v0.3.0</span>
             <button class="md:hidden px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold c:snow bg:[rgba(255,255,255,0.06)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" aria-expanded="false" aria-controls="main-menu">Menu</button>
           </div>
         </nav>
@@ -65,6 +65,15 @@
                 </li>
                 <li>
                   <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/jaspr">Using with Jaspr</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/builder">Automatic builds</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components">Components</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/migrate">Coming from Tailwind</a>
                 </li>
               </ul>
             </div>
@@ -461,13 +470,13 @@
                       <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
                         <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">c:</code>
                       </td>
-                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Invalid class syntax: "c:" (segment vide (":" en trop ou valeur manquante)).</td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Invalid class syntax: "c:" (empty segment (extra ":" or missing value)).</td>
                     </tr>
                     <tr class="bwt:1 bc:edge">
                       <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
                         <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">hover:</code>
                       </td>
-                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Invalid class syntax: "hover:" (segment vide (":" en trop ou valeur manquante)).</td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Invalid class syntax: "hover:" (empty segment (extra ":" or missing value)).</td>
                     </tr>
                   </tbody>
                 </table>
@@ -475,7 +484,10 @@
             </div>
           </article>
           <nav class="mw:[48rem] grid cols:1 sm:cols:2 gap:4 mt:16 pt:8 bwt:1 bc:edge" aria-label="Previous and next pages">
-            <a class="flex fd:col gap:1 p:5 br:xl bw:1 bc:edge tr:all hover:bc:[rgba(126,162,255,0.5)] hover:bg:deep focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/jaspr"><span class="fs:sm c:haze">Previous</span><span class="fw:semibold c:beam">Using with Jaspr</span></a>
+            <a class="flex fd:col gap:1 p:5 br:xl bw:1 bc:edge tr:all hover:bc:[rgba(126,162,255,0.5)] hover:bg:deep focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/migrate">
+              <span class="fs:sm c:haze">Previous</span>
+              <span class="fw:semibold c:beam">Coming from Tailwind</span>
+            </a>
             <a class="flex fd:col gap:1 p:5 br:xl bw:1 bc:edge tr:all hover:bc:[rgba(126,162,255,0.5)] hover:bg:deep focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 ai:end ta:right" href="/zaspr-kit/docs/variants"><span class="fs:sm c:haze">Next</span><span class="fw:semibold c:beam">Variants</span></a>
           </nav>
         </main>
@@ -516,7 +528,7 @@
             <p class="fs:sm lh:relaxed c:haze">
               This site is built with Jaspr and styled only with <code class="inline-flex wrap ff:code fs:sm"><span class="c:ident">jx</span><span class="c:haze">:</span><span class="c:value">css</span></code>.
             </p>
-            <p class="ff:code fs:xs c:haze">Version 0.2.1</p>
+            <p class="ff:code fs:xs c:haze">Version 0.3.0</p>
           </div>
           <div>
             <h2 class="fs:sm fw:semibold c:snow mb:4">Getting started</h2>
@@ -535,6 +547,15 @@
               </li>
               <li>
                 <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/jaspr">Using with Jaspr</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/builder">Automatic builds</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components">Components</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/migrate">Coming from Tailwind</a>
               </li>
             </ul>
           </div>

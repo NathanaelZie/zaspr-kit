@@ -11,9 +11,9 @@
     <meta property="og:description" content="ZASPR Kit compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components. A parser, a theme and a CLI, all in Dart. No Node.js required."/>
     <meta property="og:locale" content="en_US"/>
     <!--$-->
-    <title>What's new in 0.2: ZASPR Kit docs</title>
+    <title>What's new: ZASPR Kit docs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="Dark mode, groups, filters, gradients, animations, and a parser that refuses any value able to inject CSS."/>
+    <meta name="description" content="0.3 builds the stylesheet inside jaspr serve, adds components and converts Tailwind. 0.2 brought dark mode, groups, filters, gradients and animations."/>
     <meta name="theme-color" content="#0B0D12"/>
     <meta name="color-scheme" content="dark"/>
     <meta name="twitter:card" content="summary"/>
@@ -39,7 +39,7 @@
             </div>
           </div>
           <div class="flex ai:center gap:3">
-            <span class="hidden sm:inline ff:code fs:xs c:haze px:2 py:1 br:md bg:[rgba(255,255,255,0.06)]">v0.2.1</span>
+            <span class="hidden sm:inline ff:code fs:xs c:haze px:2 py:1 br:md bg:[rgba(255,255,255,0.06)]">v0.3.0</span>
             <button class="md:hidden px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold c:snow bg:[rgba(255,255,255,0.06)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" aria-expanded="false" aria-controls="main-menu">Menu</button>
           </div>
         </nav>
@@ -65,6 +65,15 @@
                 </li>
                 <li>
                   <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/jaspr">Using with Jaspr</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/builder">Automatic builds</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/components">Components</a>
+                </li>
+                <li>
+                  <a class="block px:3 py:[0.4rem] br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.04)]" href="/zaspr-kit/docs/migrate">Coming from Tailwind</a>
                 </li>
               </ul>
             </div>
@@ -164,11 +173,65 @@
           </div>
           <article class="mw:[48rem]">
             <p class="fs:sm fw:semibold c:beam mb:3">Going further</p>
-            <h1 class="fs:[clamp(2rem,4vw,2.75rem)] fw:extrabold lh:[1.1] ls:tight c:snow">What's new in 0.2</h1>
+            <h1 class="fs:[clamp(2rem,4vw,2.75rem)] fw:extrabold lh:[1.1] ls:tight c:snow">What's new</h1>
             <p class="mt:4 fs:lg md:fs:xl lh:relaxed c:haze">
-              Dark mode, groups, filters, gradients, animations, and a parser that refuses any value able to inject CSS.
+              0.3 builds the stylesheet inside jaspr serve, adds components and converts Tailwind. 0.2 brought dark mode, groups, filters, gradients and animations.
             </p>
             <div class="mt:10">
+              <h2 id="v03" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new#v03">Version 0.3</a>
+              </h2>
+              <div class="mb:8 br:xl bw:1 bc:edge ovx:auto">
+                <table class="w:full fs:sm">
+                  <thead class="bg:shelf">
+                    <tr>
+                      <th class="px:4 py:3 ta:left fw:semibold c:snow ws:nowrap">Package</th>
+                      <th class="px:4 py:3 ta:left fw:semibold c:snow ws:nowrap">What it does</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <a class="c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 ff:code" href="/zaspr-kit/docs/builder">jx_builder</a>
+                      </td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">jaspr serve and jaspr build generate jx.css. No second terminal.</td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <a class="c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 ff:code" href="/zaspr-kit/docs/components">jx_ui</a>
+                      </td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Button, card, badge, alert and text field, accessible and themable.</td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <a class="c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 ff:code" href="/zaspr-kit/docs/migrate">jx migrate</a>
+                      </td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">Converts Tailwind classes in a project, with a report of approximations.</td>
+                    </tr>
+                    <tr class="bwt:1 bc:edge">
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">
+                        <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">packages:</code>
+                      </td>
+                      <td class="px:4 py:3 va:top c:[#C5CCD8] lh:relaxed">jx.yaml key: scans the lib/ folder of component libraries.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <h2 id="upgrade-03" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new#upgrade-03">Upgrading to 0.3</a>
+              </h2>
+              <ul class="mb:6 flex fd:col gap:2 pl:5 lst:disc c:[#C5CCD8]">
+                <li class="lh:[1.7] pl:1">
+                  Raise every <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">jx_*</code>
+                   constraint to <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">^0.3.0</code>. No class changes its output.
+                </li>
+                <li class="lh:[1.7] pl:1">
+                  To use <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">jx_builder</code>, delete the 
+                  <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">web/jx.css</code>
+                   written by the CLI first.
+                </li>
+              </ul>
+              <h3 class="smt:[5.5rem] mt:10 mb:3 fs:lg fw:semibold c:snow">In 0.2</h3>
               <h2 id="variants" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
                 <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new#variants">New variants</a>
               </h2>
@@ -425,6 +488,12 @@ Warning: "c:bleu" ignored: Invalid value "bleu" for "c". Did you mean "c:blue"?;
             <p class="fs:sm fw:semibold c:snow mb:3">On this page</p>
             <ul class="flex fd:col gap:2 bwl:1 bc:edge">
               <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new#v03">Version 0.3</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new#upgrade-03">Upgrading to 0.3</a>
+              </li>
+              <li>
                 <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new#variants">New variants</a>
               </li>
               <li>
@@ -454,7 +523,7 @@ Warning: "c:bleu" ignored: Invalid value "bleu" for "c". Did you mean "c:blue"?;
             <p class="fs:sm lh:relaxed c:haze">
               This site is built with Jaspr and styled only with <code class="inline-flex wrap ff:code fs:sm"><span class="c:ident">jx</span><span class="c:haze">:</span><span class="c:value">css</span></code>.
             </p>
-            <p class="ff:code fs:xs c:haze">Version 0.2.1</p>
+            <p class="ff:code fs:xs c:haze">Version 0.3.0</p>
           </div>
           <div>
             <h2 class="fs:sm fw:semibold c:snow mb:4">Getting started</h2>
@@ -473,6 +542,15 @@ Warning: "c:bleu" ignored: Invalid value "bleu" for "c". Did you mean "c:blue"?;
               </li>
               <li>
                 <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/jaspr">Using with Jaspr</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/builder">Automatic builds</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components">Components</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/migrate">Coming from Tailwind</a>
               </li>
             </ul>
           </div>
