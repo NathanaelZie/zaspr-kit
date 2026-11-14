@@ -167,7 +167,7 @@ final class JxParser implements JxParserContract {
     if (segments.any((s) => s.isEmpty)) {
       return fail(
         JxParseErrorCode.emptySegment,
-        'segment vide (":" en trop ou valeur manquante)',
+        'empty segment (extra ":" or missing value)',
       );
     }
 
@@ -196,7 +196,7 @@ final class JxParser implements JxParserContract {
     if (variantList.length > maxVariants) {
       return fail(
         JxParseErrorCode.tooManyVariants,
-        'trop de variantes (maximum $maxVariants)',
+        'too many variants (maximum $maxVariants)',
       );
     }
     final seen = <String>{};
@@ -221,7 +221,7 @@ final class JxParser implements JxParserContract {
       if (value == null) {
         return fail(
           JxParseErrorCode.invalidNegative,
-          'le signe "-" exige une valeur (ex. "-m:4")',
+          'the "-" sign needs a value (for example "-m:4")',
         );
       }
       isNegative = true;
@@ -311,13 +311,13 @@ final class JxParser implements JxParserContract {
     if (!value.endsWith(']')) {
       return (
         JxParseErrorCode.invalidValue,
-        'une valeur arbitraire se termine par "]"',
+        'an arbitrary value ends with "]"',
       );
     }
     final inner = value.substring(1, value.length - 1);
     final decoded = JxCssValue.decodeArbitrary(inner);
     if (decoded.trim().isEmpty) {
-      return (JxParseErrorCode.invalidValue, 'valeur arbitraire vide');
+      return (JxParseErrorCode.invalidValue, 'empty arbitrary value');
     }
     final reason = JxCssValue.unsafeReason(decoded);
     if (reason != null) {

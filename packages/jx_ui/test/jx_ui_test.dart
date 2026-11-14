@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:jaspr/dom.dart';
 import 'package:jaspr/server.dart';
 import 'package:jx_engine/jx_engine.dart';
 import 'package:jx_ui/jx_ui.dart';

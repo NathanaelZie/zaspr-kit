@@ -46,7 +46,7 @@ void main() {
       engine.compile('hover:hover:c:red').warnings.single,
       contains('repeated'),
     );
-    expect(engine.compile('c:').warnings.single, contains('segment vide'));
+    expect(engine.compile('c:').warnings.single, contains('empty segment'));
   });
 
   test('valeurs arbitraires légitimes inchangées', () {
