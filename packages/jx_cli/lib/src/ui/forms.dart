@@ -1,6 +1,7 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
+import 'field.dart';
 import 'styles.dart' as s;
 import 'utils.dart';
 
@@ -10,30 +11,6 @@ const _legendElement = legend.new;
 
 /// One choice of a [JxSelect] or a [JxRadioGroup].
 typedef JxOption = ({String value, String label});
-
-/// Label, control and hint or error, linked for assistive technology.
-Component _field({
-  required String id,
-  required String label,
-  required String? hint,
-  required String? error,
-  required String? classes,
-  required Component Function(Map<String, String> aria) control,
-}) {
-  final message = error ?? hint;
-  final messageId = message == null ? null : '$id-message';
-  return div(classes: jxJoin([s.fieldWrapper, classes]), [
-    _labelElement(htmlFor: id, classes: s.fieldLabel, [.text(label)]),
-    control({
-      if (error != null) 'aria-invalid': 'true',
-      'aria-describedby': ?messageId,
-    }),
-    if (message != null)
-      p(id: messageId, classes: error != null ? s.fieldError : s.fieldHint, [
-        .text(message),
-      ]),
-  ]);
-}
 
 /// A labelled multi-line text input.
 class JxTextArea extends StatelessComponent {
@@ -68,7 +45,7 @@ class JxTextArea extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    return _field(
+    return jxField(
       id: id,
       label: label,
       hint: hint,
@@ -132,7 +109,7 @@ class JxSelect extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     final onChange = this.onChange;
-    return _field(
+    return jxField(
       id: id,
       label: label,
       hint: hint,

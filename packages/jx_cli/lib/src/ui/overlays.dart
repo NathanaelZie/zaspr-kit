@@ -85,25 +85,7 @@ class JxModal extends StatelessComponent {
         div(classes: s.modalBody, [
           div(classes: s.modalHeader, [
             h2(id: titleId, classes: s.modalTitle, [.text(title)]),
-            button(
-              type: ButtonType.button,
-              classes: s.modalClose,
-              attributes: {...closeAttributes(id), 'aria-label': closeLabel},
-              [
-                const svg(
-                  viewBox: '0 0 24 24',
-                  classes: 'w:5 h:5',
-                  attributes: {
-                    'fill': 'none',
-                    'stroke': 'currentColor',
-                    'stroke-width': '2',
-                    'stroke-linecap': 'round',
-                    'aria-hidden': 'true',
-                  },
-                  [path(d: 'M18 6 6 18M6 6l12 12', [])],
-                ),
-              ],
-            ),
+            _closeButton(id, closeLabel),
           ]),
           if (description case final description?)
             p(id: descriptionId, classes: s.modalDescription, [
@@ -118,7 +100,8 @@ class JxModal extends StatelessComponent {
   }
 }
 
-/// A [JxButton] that opens the [JxModal] whose id is [target].
+/// A [JxButton] that opens the [JxModal] or [JxDrawer] whose id is
+/// [target].
 class JxModalTrigger extends StatelessComponent {
   const JxModalTrigger(
     this.children, {
@@ -149,4 +132,94 @@ class JxModalTrigger extends StatelessComponent {
       },
     );
   }
+}
+
+/// Edge of the screen a [JxDrawer] slides from.
+enum JxDrawerSide { left, right }
+
+/// A panel that slides in from the side of the screen, built on the native
+/// `<dialog>` like [JxModal]: focus is kept inside, Escape closes it and
+/// the page behind is inert. Open it with a [JxModalTrigger] whose target
+/// is the drawer [id].
+class JxDrawer extends StatelessComponent {
+  const JxDrawer(
+    this.children, {
+    required this.id,
+    required this.title,
+    this.description,
+    this.actions,
+    this.side = JxDrawerSide.right,
+    this.dismissible = true,
+    this.closeLabel = 'Close',
+    this.classes,
+    super.key,
+  });
+
+  final String id;
+  final String title;
+  final String? description;
+  final List<Component> children;
+
+  /// Buttons pinned to the bottom of the panel.
+  final List<Component>? actions;
+  final JxDrawerSide side;
+
+  /// Closes on a click on the backdrop (`closedby="any"`).
+  final bool dismissible;
+  final String closeLabel;
+  final String? classes;
+
+  @override
+  Component build(BuildContext context) {
+    final titleId = '$id-title';
+    final descriptionId = description == null ? null : '$id-description';
+    return Component.element(
+      tag: 'dialog',
+      id: id,
+      classes: jxJoin([s.drawer, s.drawerSides[side.name], classes]),
+      attributes: {
+        'aria-labelledby': titleId,
+        'aria-describedby': ?descriptionId,
+        'closedby': dismissible ? 'any' : 'closerequest',
+      },
+      children: [
+        div(classes: s.drawerBody, [
+          div(classes: s.modalHeader, [
+            h2(id: titleId, classes: s.modalTitle, [.text(title)]),
+            _closeButton(id, closeLabel),
+          ]),
+          if (description case final description?)
+            p(id: descriptionId, classes: s.modalDescription, [
+              .text(description),
+            ]),
+          ...children,
+          if (actions case final actions? when actions.isNotEmpty)
+            div(classes: s.drawerFooter, actions),
+        ]),
+      ],
+    );
+  }
+}
+
+/// The × button in the corner of a dialog.
+Component _closeButton(String id, String label) {
+  return button(
+    type: ButtonType.button,
+    classes: s.modalClose,
+    attributes: {...JxModal.closeAttributes(id), 'aria-label': label},
+    [
+      const svg(
+        viewBox: '0 0 24 24',
+        classes: 'w:5 h:5',
+        attributes: {
+          'fill': 'none',
+          'stroke': 'currentColor',
+          'stroke-width': '2',
+          'stroke-linecap': 'round',
+          'aria-hidden': 'true',
+        },
+        [path(d: 'M18 6 6 18M6 6l12 12', [])],
+      ),
+    ],
+  );
 }
