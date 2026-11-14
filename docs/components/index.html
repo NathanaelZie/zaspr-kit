@@ -179,7 +179,7 @@
               <h2 id="install" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
                 <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#install">Installation</a>
               </h2>
-              <pre class="ff:code fs:sm lh:relaxed p:5 br:xl ov:auto ws:pre bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] mb:6"><code>dart pub add jx_ui</code></pre>
+              <pre class="ff:code fs:sm lh:relaxed p:5 br:xl ov:auto ws:pre bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] mb:6"><code>dart pub add jx_ui:^0.0.2</code></pre>
               <p class="mb:5 lh:[1.75] c:[#C5CCD8]">
                 The components are plain JX classes, compiled into your own stylesheet. List the package in <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">jx.yaml</code>
                  so the CLI or <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">jx_builder</code>
@@ -189,6 +189,12 @@
                 <figcaption class="px:5 py:2 ff:code fs:xs c:haze bg:shelf bwb:1 bc:edge">jx.yaml</figcaption>
                 <pre class="ff:code fs:sm lh:relaxed p:5 ov:auto ws:pre bg:[#07090D] c:[#C9D1DE]"><code>packages: [jx_ui]</code></pre>
               </figure>
+              <div class="mb:6 px:5 py:4 br:xl bwl:4 bc:brand bg:[rgba(59,108,240,0.08)]" role="note">
+                <p class="fw:semibold mb:1 c:beam">Note</p>
+                <p class="lh:relaxed c:[#C5CCD8]">
+                  Every demo on this page is the real component, rendered on the server with no JavaScript. The switch, checkboxes and radios work as they are.
+                </p>
+              </div>
               <h2 id="button" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
                 <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#button">Button</a>
               </h2>
@@ -207,15 +213,53 @@
                   <button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:white bg:blue-700 bc:blue-700 hover:bg:blue-900 hover:bc:blue-900 active:sc:95 fs:sm px:3 py:1 mnh:[32px]" type="button">Small</button>
                   <button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:white bg:blue-700 bc:blue-700 hover:bg:blue-900 hover:bc:blue-900 active:sc:95 fs:sm px:4 py:2 mnh:[40px]" type="button">Medium</button>
                   <button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:white bg:blue-700 bc:blue-700 hover:bg:blue-900 hover:bc:blue-900 active:sc:95 fs:base px:6 py:3 mnh:[48px]" type="button">Large</button>
+                  <button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:white bg:blue-700 bc:blue-700 hover:bg:blue-900 hover:bc:blue-900 active:sc:95 fs:sm px:4 py:2 mnh:[40px]" aria-busy="true" disabled type="button">
+                    <svg class="inline-block shrink:0 anim:spin motion-reduce:anim:none w:4 h:4" fill="none" aria-hidden="true" viewBox="0 0 24 24">
+                      <circle stroke="currentColor" opacity="0.25" cx="12" cy="12" r="10" stroke-width="4"></circle>
+                      <path stroke="currentColor" stroke-width="4" stroke-linecap="round" d="M22 12a10 10 0 0 0-10-10"></path>
+                    </svg>
+                    Saving
+                  </button>
                 </div>
               </div>
               <pre class="ff:code fs:sm lh:relaxed p:5 br:xl ov:auto ws:pre bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] mb:6"><code>JxButton([.text('Save')], onClick: save)
-JxButton([.text('Delete')], variant: JxButtonVariant.danger)
+JxButton([.text('Saving')], loading: saving)       // spinner, disabled, aria-busy
+JxButton([.text('Continue')], fullWidth: true)
 JxButton([.text('Docs')], href: '/docs', variant: JxButtonVariant.outline)</code></pre>
               <p class="mb:5 lh:[1.75] c:[#C5CCD8]">
                 With <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">href</code>, the button renders an 
                 <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">&lt;a&gt;</code>: links stay links for assistive technology.
               </p>
+              <h2 id="card" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#card">Card</a>
+              </h2>
+              <div class="mb:6 p:6 br:xl bw:1 bc:edge bg:white dark:bg:gray-900 c:gray-900 dark:c:gray-100">
+                <div class="grid cols:1 md:cols:2 gap:4">
+                  <div class="flex fd:col gap:3 p:6 br:xl bw:1 bc:gray-100 bg:white sh:sm c:gray-900 dark:bg:gray-900 dark:bc:gray-700 dark:c:gray-100">
+                    <h3 class="fs:lg fw:semibold lh:tight">Pro plan</h3>
+                    <p class="fs:sm lh:relaxed c:gray-500">For teams shipping every week.</p>
+                    <span class="inline-flex as:start ai:center px:2 py:[2px] br:full fs:xs fw:medium lh:none ws:nowrap c:blue-900 bg:blue-100">Most popular</span>
+                    <div class="flex wrap ai:center jc:end gap:2 pt:4 mt:1 bwt:1 bc:gray-100 dark:bc:gray-700">
+                      <button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:gray-900 bg:transparent bc:transparent hover:bg:gray-100 dark:c:gray-100 dark:hover:bg:gray-700 fs:sm px:3 py:1 mnh:[32px]" type="button">Compare</button>
+                      <button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:white bg:blue-700 bc:blue-700 hover:bg:blue-900 hover:bc:blue-900 active:sc:95 fs:sm px:3 py:1 mnh:[32px]" type="button">Upgrade</button>
+                    </div>
+                  </div>
+                  <div class="flex fd:col gap:3 p:6 br:xl bw:1 bc:gray-100 bg:white sh:sm c:gray-900 dark:bg:gray-900 dark:bc:gray-700 dark:c:gray-100">
+                    <h3 class="fs:lg fw:semibold lh:tight">Newsletter</h3>
+                    <div class="flex fd:col gap:1">
+                      <label class="fs:sm fw:medium c:gray-900 dark:c:gray-100" for="demo-card-email">Email</label>
+                      <input id="demo-card-email" class="w:full px:3 py:2 mnh:[40px] br:lg bw:1 bc:gray-300 bg:white c:gray-900 fs:sm tr:colors placeholder:c:gray-500 focus:ol:none focus:bc:blue-500 focus:ring:2 focus:ringc:blue-300 disabled:o:50 disabled:cur:not-allowed dark:bg:gray-900 dark:bc:gray-700 dark:c:gray-100" type="email"/>
+                    </div>
+                    <button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:white bg:blue-700 bc:blue-700 hover:bg:blue-900 hover:bc:blue-900 active:sc:95 fs:sm px:4 py:2 mnh:[40px] w:full" type="button">Subscribe</button>
+                  </div>
+                </div>
+              </div>
+              <pre class="ff:code fs:sm lh:relaxed p:5 br:xl ov:auto ws:pre bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] mb:6"><code>JxCard(
+  title: 'Pro plan',
+  description: 'For teams shipping every week.',
+  footer: [JxButton([.text('Upgrade')])],
+  [JxBadge('Most popular', tone: JxTone.info)],
+)</code></pre>
               <h2 id="badge" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
                 <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#badge">Badge</a>
               </h2>
@@ -228,7 +272,6 @@ JxButton([.text('Docs')], href: '/docs', variant: JxButtonVariant.outline)</code
                   <span class="inline-flex as:start ai:center px:2 py:[2px] br:full fs:xs fw:medium lh:none ws:nowrap c:red-900 bg:red-100">Danger</span>
                 </div>
               </div>
-              <pre class="ff:code fs:sm lh:relaxed p:5 br:xl ov:auto ws:pre bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] mb:6"><code>const JxBadge('Beta', tone: JxTone.info)</code></pre>
               <h2 id="alert" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
                 <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#alert">Alert</a>
               </h2>
@@ -245,7 +288,7 @@ JxButton([.text('Docs')], href: '/docs', variant: JxButtonVariant.outline)</code
                  and are read immediately; the others carry <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">role="status"</code>.
               </p>
               <h2 id="text-field" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
-                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#text-field">Text field</a>
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#text-field">Text field and text area</a>
               </h2>
               <div class="mb:6 p:6 br:xl bw:1 bc:edge bg:white dark:bg:gray-900 c:gray-900 dark:c:gray-100">
                 <div class="grid cols:1 md:cols:2 gap:5">
@@ -259,32 +302,180 @@ JxButton([.text('Docs')], href: '/docs', variant: JxButtonVariant.outline)</code
                     <input id="demo-email" class="w:full px:3 py:2 mnh:[40px] br:lg bw:1 bc:gray-300 bg:white c:gray-900 fs:sm tr:colors placeholder:c:gray-500 focus:ol:none focus:bc:blue-500 focus:ring:2 focus:ringc:blue-300 disabled:o:50 disabled:cur:not-allowed dark:bg:gray-900 dark:bc:gray-700 dark:c:gray-100 bc:red-500 focus:bc:red-500 focus:ringc:red-300" aria-invalid="true" aria-describedby="demo-email-message" type="email" value="ada@"/>
                     <p id="demo-email-message" class="fs:xs c:red-700">Enter a complete email address.</p>
                   </div>
+                  <div class="flex fd:col gap:1 md:span:2">
+                    <label class="fs:sm fw:medium c:gray-900 dark:c:gray-100" for="demo-bio">Bio</label>
+                    <textarea id="demo-bio" class="w:full px:3 py:2 mnh:[40px] br:lg bw:1 bc:gray-300 bg:white c:gray-900 fs:sm tr:colors placeholder:c:gray-500 focus:ol:none focus:bc:blue-500 focus:ring:2 focus:ringc:blue-300 disabled:o:50 disabled:cur:not-allowed dark:bg:gray-900 dark:bc:gray-700 dark:c:gray-100 rsz:y mnh:[96px] lh:relaxed" aria-describedby="demo-bio-message" placeholder="A few words about you" rows="4"></textarea>
+                    <p id="demo-bio-message" class="fs:xs c:gray-500">Up to 280 characters.</p>
+                  </div>
                 </div>
               </div>
               <p class="mb:5 lh:[1.75] c:[#C5CCD8]">
-                The label, the hint and the error are linked to the input with <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">for</code>, 
+                The label, the hint and the error are linked to the control with <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">for</code>, 
                 <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">aria-describedby</code>
                  and <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">aria-invalid</code>.
               </p>
-              <pre class="ff:code fs:sm lh:relaxed p:5 br:xl ov:auto ws:pre bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] mb:6"><code>const JxTextField(
-  id: 'email',
-  label: 'Email',
-  type: InputType.email,
-  error: 'Enter a complete email address.',
+              <h2 id="select" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#select">Select</a>
+              </h2>
+              <div class="mb:6 p:6 br:xl bw:1 bc:edge bg:white dark:bg:gray-900 c:gray-900 dark:c:gray-100">
+                <div class="grid cols:1 md:cols:2 gap:5">
+                  <div class="flex fd:col gap:1">
+                    <label class="fs:sm fw:medium c:gray-900 dark:c:gray-100" for="demo-plan">Plan</label>
+                    <div class="relative">
+                      <select id="demo-plan" class="w:full px:3 py:2 mnh:[40px] br:lg bw:1 bc:gray-300 bg:white c:gray-900 fs:sm tr:colors placeholder:c:gray-500 focus:ol:none focus:bc:blue-500 focus:ring:2 focus:ringc:blue-300 disabled:o:50 disabled:cur:not-allowed dark:bg:gray-900 dark:bc:gray-700 dark:c:gray-100 app:none pr:10 cur:pointer">
+                        <option value selected>Choose a plan</option>
+                        <option value="free">Free</option>
+                        <option value="pro">Pro</option>
+                        <option value="team">Team</option>
+                      </select>
+                      <span class="absolute top:0 right:0 flex ai:center h:full px:3 pe:none c:gray-500" aria-hidden="true"><svg class="w:4 h:4" fill="currentColor" viewBox="0 0 20 20"><path d="M5.2 7.2a.75.75 0 0 1 1.06 0L10 10.94l3.74-3.74a.75.75 0 1 1 1.06 1.06l-4.27 4.27a.75.75 0 0 1-1.06 0L5.2 8.26a.75.75 0 0 1 0-1.06z"></path></svg></span>
+                    </div>
+                  </div>
+                  <div class="flex fd:col gap:1">
+                    <label class="fs:sm fw:medium c:gray-900 dark:c:gray-100" for="demo-region">Region</label>
+                    <div class="relative">
+                      <select id="demo-region" class="w:full px:3 py:2 mnh:[40px] br:lg bw:1 bc:gray-300 bg:white c:gray-900 fs:sm tr:colors placeholder:c:gray-500 focus:ol:none focus:bc:blue-500 focus:ring:2 focus:ringc:blue-300 disabled:o:50 disabled:cur:not-allowed dark:bg:gray-900 dark:bc:gray-700 dark:c:gray-100 app:none pr:10 cur:pointer" aria-describedby="demo-region-message"><option value="eu" selected>Europe</option><option value="us">United States</option></select>
+                      <span class="absolute top:0 right:0 flex ai:center h:full px:3 pe:none c:gray-500" aria-hidden="true"><svg class="w:4 h:4" fill="currentColor" viewBox="0 0 20 20"><path d="M5.2 7.2a.75.75 0 0 1 1.06 0L10 10.94l3.74-3.74a.75.75 0 1 1 1.06 1.06l-4.27 4.27a.75.75 0 0 1-1.06 0L5.2 8.26a.75.75 0 0 1 0-1.06z"></path></svg></span>
+                    </div>
+                    <p id="demo-region-message" class="fs:xs c:gray-500">Where your data is stored.</p>
+                  </div>
+                </div>
+              </div>
+              <pre class="ff:code fs:sm lh:relaxed p:5 br:xl ov:auto ws:pre bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] mb:6"><code>JxSelect(
+  id: 'plan',
+  label: 'Plan',
+  value: plan,
+  options: [(value: 'free', label: 'Free'), (value: 'pro', label: 'Pro')],
+  onChange: (value) =&gt; setState(() =&gt; plan = value),
 )</code></pre>
-              <h2 id="card" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
-                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#card">Card</a>
+              <h2 id="choices" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#choices">Checkbox, switch and radio</a>
+              </h2>
+              <div class="mb:6 p:6 br:xl bw:1 bc:edge bg:white dark:bg:gray-900 c:gray-900 dark:c:gray-100">
+                <div class="grid cols:1 md:cols:3 gap:6">
+                  <div class="flex fd:col gap:3">
+                    <label class="flex ai:start gap:3 cur:pointer fs:sm c:gray-900 dark:c:gray-100" for="demo-terms">
+                      <input id="demo-terms" class="shrink:0 w:4 h:4 mt:[2px] accent:blue-700 cur:pointer disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2" aria-describedby="demo-terms-description" type="checkbox"/><span class="flex fd:col gap:[2px]"><span>I accept the terms</span><span id="demo-terms-description" class="fs:xs c:gray-500">Required to create an account.</span></span>
+                    </label>
+                    <label class="flex ai:start gap:3 cur:pointer fs:sm c:gray-900 dark:c:gray-100" for="demo-news">
+                      <input id="demo-news" class="shrink:0 w:4 h:4 mt:[2px] accent:blue-700 cur:pointer disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2" type="checkbox" checked/><span class="flex fd:col gap:[2px]"><span>Send me product news</span></span>
+                    </label>
+                  </div>
+                  <div class="flex fd:col gap:3">
+                    <label class="inline-flex ai:center gap:3 cur:pointer fs:sm c:gray-900 dark:c:gray-100" for="demo-wifi">
+                      <span class="relative inline-flex shrink:0 w:11 h:6"><input id="demo-wifi" class="peer sr-only" role="switch" type="checkbox" checked/><span class="absolute inset:0 br:full bg:gray-300 tr:colors dur:200 peer-checked:bg:blue-700 peer-disabled:o:50 peer-focus-visible:ol:2 peer-focus-visible:olc:blue-500 peer-focus-visible:olo:2 dark:bg:gray-700" aria-hidden="true"></span><span class="absolute top:[2px] left:[2px] w:5 h:5 br:full bg:white sh:sm pe:none tr:all dur:200 peer-checked:tx:5 motion-reduce:tr:none" aria-hidden="true"></span></span><span>Wi-Fi</span>
+                    </label>
+                    <label class="inline-flex ai:center gap:3 cur:pointer fs:sm c:gray-900 dark:c:gray-100" for="demo-bt">
+                      <span class="relative inline-flex shrink:0 w:11 h:6"><input id="demo-bt" class="peer sr-only" role="switch" type="checkbox"/><span class="absolute inset:0 br:full bg:gray-300 tr:colors dur:200 peer-checked:bg:blue-700 peer-disabled:o:50 peer-focus-visible:ol:2 peer-focus-visible:olc:blue-500 peer-focus-visible:olo:2 dark:bg:gray-700" aria-hidden="true"></span><span class="absolute top:[2px] left:[2px] w:5 h:5 br:full bg:white sh:sm pe:none tr:all dur:200 peer-checked:tx:5 motion-reduce:tr:none" aria-hidden="true"></span></span><span>Bluetooth</span>
+                    </label>
+                    <label class="inline-flex ai:center gap:3 cur:pointer fs:sm c:gray-900 dark:c:gray-100" for="demo-air">
+                      <span class="relative inline-flex shrink:0 w:11 h:6"><input id="demo-air" class="peer sr-only" role="switch" type="checkbox" disabled/><span class="absolute inset:0 br:full bg:gray-300 tr:colors dur:200 peer-checked:bg:blue-700 peer-disabled:o:50 peer-focus-visible:ol:2 peer-focus-visible:olc:blue-500 peer-focus-visible:olo:2 dark:bg:gray-700" aria-hidden="true"></span><span class="absolute top:[2px] left:[2px] w:5 h:5 br:full bg:white sh:sm pe:none tr:all dur:200 peer-checked:tx:5 motion-reduce:tr:none" aria-hidden="true"></span></span><span>Airplane mode</span>
+                    </label>
+                  </div>
+                  <fieldset class="flex fd:col gap:3 bw:0 p:0 m:0">
+                    <legend class="mb:1 fs:sm fw:medium c:gray-900 dark:c:gray-100">Size</legend>
+                    <label class="flex ai:start gap:3 cur:pointer fs:sm c:gray-900 dark:c:gray-100" for="demo-size-s">
+                      <input id="demo-size-s" class="shrink:0 w:4 h:4 mt:[2px] accent:blue-700 cur:pointer disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2" type="radio" name="demo-size" value="s"/><span class="flex fd:col gap:[2px]"><span>Small</span></span>
+                    </label>
+                    <label class="flex ai:start gap:3 cur:pointer fs:sm c:gray-900 dark:c:gray-100" for="demo-size-m">
+                      <input id="demo-size-m" class="shrink:0 w:4 h:4 mt:[2px] accent:blue-700 cur:pointer disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2" type="radio" name="demo-size" value="m" checked/><span class="flex fd:col gap:[2px]"><span>Medium</span></span>
+                    </label>
+                    <label class="flex ai:start gap:3 cur:pointer fs:sm c:gray-900 dark:c:gray-100" for="demo-size-l">
+                      <input id="demo-size-l" class="shrink:0 w:4 h:4 mt:[2px] accent:blue-700 cur:pointer disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2" type="radio" name="demo-size" value="l"/><span class="flex fd:col gap:[2px]"><span>Large</span></span>
+                    </label>
+                  </fieldset>
+                </div>
+              </div>
+              <p class="mb:5 lh:[1.75] c:[#C5CCD8]">
+                The switch is a checkbox with <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">role="switch"</code>: it is focusable, toggled with the space key, and its track and thumb are drawn with 
+                <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">peer-checked:</code>
+                 classes, without JavaScript.
+              </p>
+              <h2 id="loading" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#loading">Spinner, progress and skeleton</a>
+              </h2>
+              <div class="mb:6 p:6 br:xl bw:1 bc:edge bg:white dark:bg:gray-900 c:gray-900 dark:c:gray-100">
+                <div class="grid cols:1 md:cols:3 gap:6 ai:center">
+                  <div class="flex ai:center gap:4 c:blue-700">
+                    <span class="inline-flex" role="status"><svg class="inline-block shrink:0 anim:spin motion-reduce:anim:none w:4 h:4" fill="none" aria-hidden="true" viewBox="0 0 24 24"><circle stroke="currentColor" opacity="0.25" cx="12" cy="12" r="10" stroke-width="4"></circle><path stroke="currentColor" stroke-width="4" stroke-linecap="round" d="M22 12a10 10 0 0 0-10-10"></path></svg><span class="sr-only">Loading</span></span>
+                    <span class="inline-flex" role="status"><svg class="inline-block shrink:0 anim:spin motion-reduce:anim:none w:5 h:5" fill="none" aria-hidden="true" viewBox="0 0 24 24"><circle stroke="currentColor" opacity="0.25" cx="12" cy="12" r="10" stroke-width="4"></circle><path stroke="currentColor" stroke-width="4" stroke-linecap="round" d="M22 12a10 10 0 0 0-10-10"></path></svg><span class="sr-only">Loading</span></span>
+                    <span class="inline-flex" role="status"><svg class="inline-block shrink:0 anim:spin motion-reduce:anim:none w:8 h:8" fill="none" aria-hidden="true" viewBox="0 0 24 24"><circle stroke="currentColor" opacity="0.25" cx="12" cy="12" r="10" stroke-width="4"></circle><path stroke="currentColor" stroke-width="4" stroke-linecap="round" d="M22 12a10 10 0 0 0-10-10"></path></svg><span class="sr-only">Loading</span></span>
+                  </div>
+                  <div class="flex fd:col gap:1 w:full">
+                    <div class="flex jc:between fs:sm fw:medium c:gray-900 dark:c:gray-100"><span>Upload</span><span>64%</span></div>
+                    <div class="w:full h:2 br:full bg:gray-100 ov:hidden dark:bg:gray-700" role="progressbar" aria-label="Upload" aria-valuemin="0" aria-valuemax="100" aria-valuenow="64"><div class="h:full br:full bg:blue-700 tr:all dur:300" style="width: 64%"></div></div>
+                  </div>
+                  <div class="flex ai:center gap:3">
+                    <span class="block br:md bg:gray-100 anim:pulse motion-reduce:anim:none dark:bg:gray-700 w:10 h:10 br:full shrink:0" aria-hidden="true"></span>
+                    <div class="flex fd:col gap:2 grow:1">
+                      <span class="block br:md bg:gray-100 anim:pulse motion-reduce:anim:none dark:bg:gray-700 h:3 w:3/4" aria-hidden="true"></span>
+                      <span class="block br:md bg:gray-100 anim:pulse motion-reduce:anim:none dark:bg:gray-700 h:3 w:1/2" aria-hidden="true"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="mb:5 lh:[1.75] c:[#C5CCD8]">
+                Spinners and skeletons stop moving when the system asks for reduced motion. <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">JxProgress</code>
+                 exposes <code class="ff:code fs:[0.875em] px:[0.4em] py:[0.15em] br:md c:snow bg:[rgba(255,255,255,0.08)]">role="progressbar"</code>
+                 with its current value.
+              </p>
+              <h2 id="avatar" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#avatar">Avatar</a>
+              </h2>
+              <div class="mb:6 p:6 br:xl bw:1 bc:edge bg:white dark:bg:gray-900 c:gray-900 dark:c:gray-100">
+                <div class="flex wrap ai:center gap:3">
+                  <span class="inline-flex ai:center jc:center shrink:0 br:full ov:hidden fw:semibold us:none c:blue-900 bg:blue-100 w:8 h:8 fs:xs" role="img" aria-label="Ada Lovelace"><span aria-hidden="true">AL</span></span>
+                  <span class="inline-flex ai:center jc:center shrink:0 br:full ov:hidden fw:semibold us:none c:blue-900 bg:blue-100 w:10 h:10 fs:sm" role="img" aria-label="Grace Hopper"><span aria-hidden="true">GH</span></span>
+                  <span class="inline-flex ai:center jc:center shrink:0 br:full ov:hidden fw:semibold us:none c:blue-900 bg:blue-100 w:14 h:14 fs:lg" role="img" aria-label="Alan Turing"><span aria-hidden="true">AT</span></span>
+                </div>
+              </div>
+              <pre class="ff:code fs:sm lh:relaxed p:5 br:xl ov:auto ws:pre bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] mb:6"><code>JxAvatar(name: 'Grace Hopper')                    // initials: GH
+JxAvatar(name: 'Grace Hopper', src: '/grace.jpg')  // picture, with alt text</code></pre>
+              <h2 id="tooltip" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#tooltip">Tooltip and keys</a>
+              </h2>
+              <div class="mb:6 p:6 br:xl bw:1 bc:edge bg:white dark:bg:gray-900 c:gray-900 dark:c:gray-100">
+                <div class="flex wrap ai:center gap:6 pt:8">
+                  <span class="group relative inline-flex"><button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:gray-900 bg:transparent bc:gray-300 hover:bg:gray-100 active:sc:95 dark:c:gray-100 dark:bc:gray-500 dark:hover:bg:gray-700 fs:sm px:4 py:2 mnh:[40px]" type="button">Hover or focus me</button><span class="absolute bottom:full left:1/2 -tx:1/2 mb:2 z:10 px:2 py:1 br:md fs:xs fw:medium ws:nowrap c:white bg:gray-900 sh:md pe:none invisible o:0 tr:all dur:150 group-hover:visible group-hover:o:100 group-focus-within:visible group-focus-within:o:100 dark:bg:gray-700" role="tooltip">Copied to the clipboard</span></span>
+                  <span class="inline-flex ai:center gap:1 fs:sm">Search with <kbd class="inline-flex ai:center px:2 py:[1px] br:md bw:1 bwb:2 bc:gray-300 bg:gray-100 ff:mono fs:xs fw:medium c:gray-900 dark:bg:gray-700 dark:bc:gray-500 dark:c:gray-100">Ctrl</kbd><kbd class="inline-flex ai:center px:2 py:[1px] br:md bw:1 bwb:2 bc:gray-300 bg:gray-100 ff:mono fs:xs fw:medium c:gray-900 dark:bg:gray-700 dark:bc:gray-500 dark:c:gray-100">K</kbd></span>
+                </div>
+              </div>
+              <p class="mb:5 lh:[1.75] c:[#C5CCD8]">The tooltip appears on hover and on keyboard focus, and stays readable by screen readers.</p>
+              <h2 id="navigation" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#navigation">Breadcrumbs and divider</a>
+              </h2>
+              <div class="mb:6 p:6 br:xl bw:1 bc:edge bg:white dark:bg:gray-900 c:gray-900 dark:c:gray-100">
+                <div class="flex fd:col gap:5">
+                  <nav aria-label="Breadcrumb">
+                    <ol class="flex wrap ai:center gap:2 fs:sm lst:none p:0 m:0">
+                      <li class="inline-flex ai:center gap:2">
+                        <a class="c:gray-500 td:none br:sm hover:c:gray-900 hover:td:underline dark:hover:c:gray-100 focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2" href="#">Home</a>
+                      </li>
+                      <li class="inline-flex ai:center gap:2">
+                        <span class="c:gray-300 dark:c:gray-500" aria-hidden="true">/</span><a class="c:gray-500 td:none br:sm hover:c:gray-900 hover:td:underline dark:hover:c:gray-100 focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2" href="#">Docs</a>
+                      </li>
+                      <li class="inline-flex ai:center gap:2">
+                        <span class="c:gray-300 dark:c:gray-500" aria-hidden="true">/</span><span class="fw:medium c:gray-900 dark:c:gray-100" aria-current="page">Components</span>
+                      </li>
+                    </ol>
+                  </nav>
+                  <hr class="w:full h:px bw:0 m:0 bg:gray-100 dark:bg:gray-700"/>
+                  <div class="flex ai:center gap:3 fs:xs fw:medium c:gray-500" role="separator">
+                    <span class="grow:1 h:px bg:gray-100 dark:bg:gray-700" aria-hidden="true"></span>
+                    <span>or</span>
+                    <span class="grow:1 h:px bg:gray-100 dark:bg:gray-700" aria-hidden="true"></span>
+                  </div>
+                </div>
+              </div>
+              <h2 id="empty-state" class="smt:[5.5rem] mt:14 mb:5 pt:2 fs:2xl fw:bold ls:tight c:snow">
+                <a class="br:sm hover:td:underline tdt:1 tuo:4 tdc:[rgba(255,255,255,0.3)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#empty-state">Empty state</a>
               </h2>
               <div class="mb:6 p:6 br:xl bw:1 bc:edge bg:white dark:bg:gray-900 c:gray-900 dark:c:gray-100">
                 <div class="block">
-                  <div class="flex fd:col gap:3 p:6 br:xl bw:1 bc:gray-100 bg:white sh:sm c:gray-900 dark:bg:gray-900 dark:bc:gray-700 dark:c:gray-100 mw:[24rem]">
-                    <h3 class="fs:lg fw:semibold lh:tight">Newsletter</h3>
-                    <span class="inline-flex as:start ai:center px:2 py:[2px] br:full fs:xs fw:medium lh:none ws:nowrap c:blue-900 bg:blue-100">Monthly</span>
-                    <div class="flex fd:col gap:1">
-                      <label class="fs:sm fw:medium c:gray-900 dark:c:gray-100" for="demo-card-email">Email</label>
-                      <input id="demo-card-email" class="w:full px:3 py:2 mnh:[40px] br:lg bw:1 bc:gray-300 bg:white c:gray-900 fs:sm tr:colors placeholder:c:gray-500 focus:ol:none focus:bc:blue-500 focus:ring:2 focus:ringc:blue-300 disabled:o:50 disabled:cur:not-allowed dark:bg:gray-900 dark:bc:gray-700 dark:c:gray-100" type="email"/>
-                    </div>
-                    <button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:white bg:blue-700 bc:blue-700 hover:bg:blue-900 hover:bc:blue-900 active:sc:95 fs:sm px:4 py:2 mnh:[40px]" type="button">Subscribe</button>
+                  <div class="flex fd:col ai:center ta:center gap:3 px:6 py:10 br:xl bw:1 bs:dashed bc:gray-300 dark:bc:gray-700">
+                    <p class="fs:base fw:semibold c:gray-900 dark:c:gray-100">No projects yet</p>
+                    <p class="fs:sm lh:relaxed c:gray-500 mw:[28rem]">Projects you create appear here. Start with a template or an empty project.</p>
+                    <button class="inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 c:white bg:blue-700 bc:blue-700 hover:bg:blue-900 hover:bc:blue-900 active:sc:95 fs:sm px:4 py:2 mnh:[40px]" type="button">New project</button>
                   </div>
                 </div>
               </div>
@@ -320,16 +511,37 @@ JxButton([.text('Docs')], href: '/docs', variant: JxButtonVariant.outline)</code
                 <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#button">Button</a>
               </li>
               <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#card">Card</a>
+              </li>
+              <li>
                 <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#badge">Badge</a>
               </li>
               <li>
                 <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#alert">Alert</a>
               </li>
               <li>
-                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#text-field">Text field</a>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#text-field">Text field and text area</a>
               </li>
               <li>
-                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#card">Card</a>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#select">Select</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#choices">Checkbox, switch and radio</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#loading">Spinner, progress and skeleton</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#avatar">Avatar</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#tooltip">Tooltip and keys</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#navigation">Breadcrumbs and divider</a>
+              </li>
+              <li>
+                <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#empty-state">Empty state</a>
               </li>
               <li>
                 <a class="block pl:4 -ml:px bwl:1 bc:transparent fs:sm c:haze tr:colors hover:c:snow hover:bc:haze focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components#customize">Customizing</a>
