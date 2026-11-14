@@ -20,3 +20,6 @@ export 'src/models/compile_result.dart';
 export 'src/models/config.dart';
 export 'src/models/css_declaration.dart';
 export 'src/models/css_rule.dart';
+
+// Security
+export 'src/security/css_value.dart';

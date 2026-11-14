@@ -3,6 +3,7 @@
 - Clé `dark_mode: media|class` dans `jx.yaml` (et dans le modèle de `jx init`).
 - Plus de 40 nouveaux utilitaires et les variantes `dark:`, `group-*`, `peer-*`, `motion-*`, `print:` (voir `jx_rules` et `jx_engine`).
 - Messages d'avertissement avec suggestions.
+- **Sécurité** : une valeur arbitraire dangereuse trouvée dans les sources n'est jamais écrite dans le CSS et produit un avertissement.
 
 ## 0.1.0
 

@@ -113,9 +113,22 @@ final class JxBuilder {
 
     // Seuls les candidats syntaxiquement valides sont transmis au moteur ;
     // les mots ordinaires non reconnus par une règle sont ignorés en silence.
-    final tokens = [
-      for (final candidate in candidates) ?engine.parser.parseToken(candidate),
-    ];
+    // Exception : une valeur arbitraire refusée pour raison de sécurité est
+    // signalée, car elle ressemble trop à une classe pour être un hasard.
+    final parser = engine.parser;
+    final tokens = <JxClassToken>[];
+    for (final candidate in candidates) {
+      if (parser is JxParser) {
+        final outcome = parser.analyze(candidate);
+        if (outcome.token case final token?) {
+          tokens.add(token);
+        } else if (outcome.failure!.isSecurityRelated) {
+          scanWarnings.add('${outcome.failure}');
+        }
+      } else if (parser.parseToken(candidate) case final token?) {
+        tokens.add(token);
+      }
+    }
     final result = engine.compileTokens(tokens);
 
     final output = File(outputPath);

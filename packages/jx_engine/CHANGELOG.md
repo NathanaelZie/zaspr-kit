@@ -4,6 +4,7 @@
 - Variantes `group-*` et `peer-*` pour toutes les pseudo-classes (`group-hover:`, `peer-checked:`…).
 - Émission automatique des `@keyframes` utilisées et de `@property` pour les variables `--jx-*` (non héritées).
 - Suggestion de correction pour les identifiants inconnus (`pd:4` -> `p:4`).
+- Les avertissements de syntaxe donnent la raison du refus : `Syntaxe de classe invalide : "c:" (segment vide…)`.
 
 ## 0.1.0
 

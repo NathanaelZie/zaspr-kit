@@ -2,4 +2,5 @@
 library;
 
 export 'src/class_extractor.dart';
+export 'src/diagnostics.dart';
 export 'src/parser.dart';

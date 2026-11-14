@@ -116,6 +116,23 @@ class App {
       expect(css, isNot(contains('.grid')));
     });
 
+    test('valeur arbitraire dangereuse : rien de généré, avertissement', () {
+      write(
+        'web/index.html',
+        '<p class="p:4 c:[red;}body{display:none] bg:[url(javascript:x)]">',
+      );
+      final report = JxBuilder(
+        root: root,
+        config: const JxProjectConfig(reset: false),
+      ).build();
+
+      expect(report.result.matchedTokens.map((t) => t.raw), ['p:4']);
+      expect(report.warnings, hasLength(2));
+      expect(report.warnings.first, contains('c:[red;}body{display:none]'));
+      expect(report.warnings.last, contains('javascript'));
+      expect(readOutput().trim(), '.p\\:4 {\n  padding: 1rem;\n}');
+    });
+
     test('preflight inclus par défaut, avant les utilitaires', () {
       write('web/index.html', '<div class="flex">');
       JxBuilder(root: root, config: const JxProjectConfig()).build();

@@ -9,6 +9,7 @@
 - Texte : `uppercase`, `lowercase`, `capitalize`, `italic`, `truncate`, `sr-only`, `visible`, `invisible`, `antialiased`, `tabular-nums`, `tw:balance`, `wb:`, `clamp:3`…
 - Nouveau type de règle `JxDynamicRule`, option `extra` de `JxValueRule`, `JxRuleRegistry.identifiers` et `closestMatch`.
 - Les erreurs de valeur suggèrent la valeur la plus proche et listent les valeurs possibles.
+- **Sécurité** : toute valeur arbitraire est revalidée avant génération (`checkedArbitraryValue`), y compris pour les tokens construits sans le parseur.
 
 ## 0.1.0
 
