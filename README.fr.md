@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/zaspr-kit-logo.png" alt="ZASPR Kit logo" width="120"></p>
+
 # JX CSS
 
 > Un framework CSS utility-first écrit entièrement en Dart, conçu pour [Jaspr](https://jaspr.site). Pas de Node.js, pas de binaire Tailwind, pas de JavaScript à l'exécution.
@@ -28,12 +30,12 @@ div(classes: 'flex ai:center gap:3 p:4 br:lg bg:white sh:md md:p:8', [
 | `package:jx_cli/engine.dart` | Pipeline de compilation et convertisseur Tailwind, sur la VM ou dans le navigateur. |
 | `package:jx_cli/rules.dart`, `theme.dart`, `parser.dart`, `generator.dart`, `core.dart` | Règles, thème, parseur, générateur et modèles partagés. |
 
-Les anciens packages `jx_ui`, `jx_builder`, `jx_engine`, `jx_rules`, `jx_theme`, `jx_parser`, `jx_generator` et `jx_core` sont remplacés par `jx_cli` ; leurs versions publiées continuent de fonctionner.
+Les anciens packages `jx_ui`, `jx_builder`, `jx_engine`, `jx_rules`, `jx_theme`, `jx_parser`, `jx_generator` et `jx_core` sont remplacés par `jx_cli` et marqués « discontinued » sur pub.dev ; les projets qui verrouillent déjà une de leurs versions continuent de compiler.
 
 ## Démarrage rapide
 
 ```bash
-dart pub add jx_cli:^0.0.3
+dart pub add jx_cli
 dart run jx_cli:jx init       # crée jx.yaml
 dart run jx_cli:jx build      # écrit la feuille de style
 dart run jx_cli:jx build -w   # reconstruit à chaque modification

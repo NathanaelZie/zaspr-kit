@@ -1,3 +1,5 @@
+<p align="center"><img src="https://nathanaelzie.github.io/zaspr-kit/logo.png" alt="ZASPR Kit logo" width="120"></p>
+
 # JX CSS
 
 > A utility-first CSS framework written entirely in Dart, built for [Jaspr](https://jaspr.site). No Node.js, no Tailwind binary, no JavaScript at runtime.
