@@ -42,7 +42,7 @@ t=E.a.B(t," ")
 r=A.z(n,n)
 if(s)r.k(0,"aria-current","page")
 k.push(F.fF(A.a([new A.w(v.b,p)],j),r,t,u))}l=D.W(A.a([l,D.W(k,p,"hidden md:flex ai:center gap:1 fs:sm",p)],j),p,"flex ai:center gap:8",p)
-k=D.aS(A.a([new A.w("v0.3.0",p)],j),p,"hidden sm:inline ff:code fs:xs c:haze px:2 py:1 br:md bg:[rgba(255,255,255,0.06)]")
+k=D.aS(A.a([new A.w("v0.0.1",p)],j),p,"hidden sm:inline ff:code fs:xs c:haze px:2 py:1 br:md bg:[rgba(255,255,255,0.06)]")
 n=A.M(["aria-expanded",""+q.d,"aria-controls","main-menu"],n,n)
 n=A.a([H.nw(A.a([l,D.W(A.a([k,G.lF(A.a([new A.w(q.d?"Close":"Menu",p)],j),n,"md:hidden px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold c:snow bg:[rgba(255,255,255,0.06)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4",new B.jf(q))],j),p,"flex ai:center gap:3",p)],j),m,"mw:[90rem] mx:auto px:5 md:px:8 flex ai:center jc:between gap:6 h:[4rem]")],j)
 if(q.d){m=A.a([],j)
@@ -69,5 +69,5 @@ C.mh=new A.c0("/docs/introduction","Documentation","/docs")
 C.mg=new A.c0("/docs/utilities","Utilities","/docs/utilities")
 C.mf=new A.c0("/playground","Playground","/playground")
 C.u=x([C.mh,C.mg,C.mf],A.o("m<+href,label,prefix(b,b,b)>"))})()};
-(a=>{a["HIx0v6yK/w05aokBrh1pTvRwF94="]=a.current})($__dart_deferred_initializers__);
+(a=>{a["WsQaSHJrfK3LZECAP/p1aecvX8Q="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_11.part.js.map
