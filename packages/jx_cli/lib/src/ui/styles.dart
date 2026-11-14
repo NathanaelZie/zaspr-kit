@@ -311,11 +311,21 @@ const drawerFooter = 'flex wrap ai:center jc:end gap:2 mt:auto pt:4';
 
 const tabs = 'flex fd:col gap:4';
 
-const tabList =
-    'flex ai:end gap:1 bwb:1 bc:gray-100 ovx:auto dark:bc:gray-700';
+/// Vertical tabs: the list on the side on wide screens, on top on phones.
+const tabsVertical = 'flex fd:col md:fd:row gap:4 md:gap:6';
+
+const tabList = 'flex ai:end gap:1 bwb:1 bc:gray-100 ovx:auto dark:bc:gray-700';
+
+const tabListVertical =
+    'flex fd:col ai:stretch gap:1 shrink:0 bwr:1 bc:gray-100 md:mnw:[10rem] dark:bc:gray-700';
 
 const tabBase =
-    '$focusRing inline-flex ai:center gap:2 shrink:0 px:4 py:2 mnh:[40px] -mb:px bw:0 bwb:2 bg:transparent fs:sm fw:medium ws:nowrap cur:pointer tr:colors disabled:o:50 disabled:cur:not-allowed';
+    '$focusRing inline-flex ai:center gap:2 shrink:0 px:4 py:2 mnh:[40px] bw:0 bg:transparent fs:sm fw:medium ws:nowrap cur:pointer tr:colors disabled:o:50 disabled:cur:not-allowed';
+
+/// Border side of a tab: one of [tabHorizontal] or [tabVertical].
+const tabHorizontal = '-mb:px bwb:2';
+
+const tabVertical = '-mr:px bwr:2 jc:start ta:left';
 
 /// Tab colors: one of [tabIdle] or [tabSelected], never both.
 const tabIdle =
@@ -326,6 +336,9 @@ const tabSelected = 'bc:blue-700 c:blue-700 dark:c:blue-300 dark:bc:blue-300';
 const tabPanel = '$focusRing br:md fs:sm lh:relaxed';
 
 const menu = 'group relative inline-block';
+
+/// Panel of a vertical [tabs] layout.
+const tabPanelVertical = 'grow:1 mnw:0';
 
 const menuSummary = 'lst:none';
 
@@ -370,3 +383,76 @@ const toastBody = 'flex fd:col gap:1 grow:1 mnw:0';
 const toastTitle = 'fw:semibold';
 
 const toastText = 'lh:relaxed c:gray-700 dark:c:gray-300';
+
+const stepsList =
+    'flex fd:col md:fd:row md:ai:center gap:4 md:gap:3 lst:none p:0 m:0';
+
+const stepItem = 'flex ai:center gap:3 md:grow:1 last:grow:0';
+
+const stepMarker =
+    'inline-flex ai:center jc:center shrink:0 w:8 h:8 br:full bw:2 fs:sm fw:semibold';
+
+/// Marker colors by status, exclusive.
+const stepMarkerStates = {
+  'complete': 'bc:blue-700 bg:blue-700 c:white',
+  'current':
+      'bc:blue-700 bg:white c:blue-700 dark:bg:gray-900 dark:bc:blue-300 dark:c:blue-300',
+  'upcoming': 'bc:gray-300 bg:transparent c:gray-500 dark:bc:gray-700',
+};
+
+const stepText = 'flex fd:col gap:[2px] mnw:0';
+
+const stepLabelStates = {
+  'complete': '$textStrong fs:sm fw:semibold',
+  'current': '$textStrong fs:sm fw:semibold',
+  'upcoming': 'fs:sm fw:medium c:gray-500',
+};
+
+const stepDescription = 'fs:xs c:gray-500';
+
+/// Line between two steps, on wide screens; done or idle, exclusive.
+const stepConnectorDone =
+    'hidden md:block grow:1 mnw:[1rem] h:[2px] br:full bg:blue-700';
+
+const stepConnectorIdle =
+    'hidden md:block grow:1 mnw:[1rem] h:[2px] br:full bg:gray-300 dark:bg:gray-700';
+
+const stat =
+    '$surfaceBorder flex fd:col gap:1 p:5 br:xl bg:white m:0 dark:bg:gray-900';
+
+const statLabel = 'fs:sm fw:medium c:gray-500';
+
+const statValue =
+    '$textStrong m:0 fs:3xl fw:bold ls:tight lh:tight tabular-nums';
+
+const statChange = 'inline-flex ai:center gap:1 m:0 fs:sm fw:medium';
+
+const statTrends = {
+  'up': 'c:green-700 dark:c:green-300',
+  'down': 'c:red-700 dark:c:red-300',
+  'neutral': 'c:gray-500',
+};
+
+const statDescription = 'm:0 fs:xs c:gray-500';
+
+const segmentedTrack =
+    'inline-flex wrap gap:1 p:1 br:lg bg:gray-100 dark:bg:gray-700';
+
+const segmentLabel = 'relative inline-flex';
+
+const segmentInput = 'peer sr-only';
+
+const segmentText =
+    'inline-flex ai:center jc:center px:3 mnh:[32px] br:md fs:sm fw:medium c:gray-700 cur:pointer us:none tr:colors hover:c:gray-900 peer-checked:bg:white peer-checked:c:gray-900 peer-checked:sh:sm peer-focus-visible:ol:2 peer-focus-visible:olc:blue-500 peer-focus-visible:olo:2 peer-disabled:o:50 peer-disabled:cur:not-allowed dark:c:gray-300 dark:hover:c:gray-100 dark:peer-checked:bg:gray-900 dark:peer-checked:c:gray-100';
+
+const sliderHeader = 'flex ai:baseline jc:between gap:3';
+
+const sliderInput =
+    '$focusRing w:full h:6 m:0 cur:pointer accent:blue-700 disabled:o:50 disabled:cur:not-allowed';
+
+const sliderValue = 'fs:sm fw:medium tabular-nums c:gray-700 dark:c:gray-300';
+
+const sliderBounds = 'flex jc:between fs:xs c:gray-500 tabular-nums';
+
+/// Native date and time pickers follow the page theme.
+const dateInput = 'scheme:light dark:scheme:dark';

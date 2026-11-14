@@ -11,7 +11,7 @@ Status labels used below:
 
 ## Inventory
 
-28 components. Each one has its own documentation page at
+33 components. Each one has its own documentation page at
 `/docs/components/<slug>` with a live preview, visual states, a minimal and a
 complete example, the property table, events, customization, responsive
 behavior, accessibility notes and limitations.
@@ -29,6 +29,9 @@ behavior, accessibility notes and limitations.
 | `JxCheckbox` | Forms | Available | 0.0.2 | `<input type=checkbox>` |
 | `JxSwitch` | Forms | Available | 0.0.2 | checkbox with `role=switch` |
 | `JxRadioGroup` | Forms | Available | 0.0.2 | `<fieldset>` + radios |
+| `JxSegmentedControl` | Forms | In development | 0.0.3 | `<fieldset>` + visually hidden radios |
+| `JxSlider` | Forms | In development | 0.0.3 | `<input type=range>` + `<output>` |
+| `JxDateField` | Forms | In development | 0.0.3 | `<input type=date/time/datetime-local/month/week>` |
 | `JxAlert` | Feedback | Available | 0.0.1 | `role=alert` / `role=status` |
 | `JxBadge` | Feedback | Available | 0.0.1 | `<span>` |
 | `JxSpinner` | Feedback | Available | 0.0.2 | `role=status` |
@@ -40,9 +43,11 @@ behavior, accessibility notes and limitations.
 | `JxTooltip` | Data display | Available | 0.0.2 | `role=tooltip` |
 | `JxKbd` | Data display | Available | 0.0.2 | `<kbd>` |
 | `JxDataTable` | Data display | Available | 0.0.2 | `<table>` with `aria-sort` |
+| `JxStat` | Data display | In development | 0.0.3 | `<dl>` / `<dt>` / `<dd>` |
 | `JxBreadcrumbs` | Navigation | Available | 0.0.2 | `<nav>` + `<ol>` |
 | `JxPagination` | Navigation | Available | 0.0.2 | `<nav>`, links or buttons |
 | `JxTabs` | Navigation | In development | 0.0.3 | `tablist` / `tab` / `tabpanel` |
+| `JxSteps` | Navigation | In development | 0.0.3 | `<ol>` with `aria-current=step` |
 | `JxModal` + `JxModalTrigger` | Overlays | Available | 0.0.2 | `<dialog>` + command buttons |
 | `JxDrawer` | Overlays | In development | 0.0.3 | `<dialog>` + command buttons |
 | `JxDropdownMenu` | Overlays | In development | 0.0.3 | `<details>` / `<summary>` |
@@ -64,12 +69,20 @@ Fixed on this branch:
 | No indeterminate progress. | `JxProgress` without `value`: sliding bar, `aria-busy`, no value announced. |
 | The tooltip was not linked to its element. | `JxTooltip(id:)` and `JxTooltip.describedBy(id)`. |
 | Missing tabs, menu, toast and combobox. | `JxTabs`, `JxDropdownMenu`, `JxToast` with `JxToastRegion`, `JxCombobox`. |
+| The tooltip could not be dismissed (WCAG 1.4.13). | In the browser, Escape hides it until the pointer or focus leaves. |
+| The dropdown menu stayed open on a click outside. | One shared `pointerdown` listener closes open menus that do not contain the target. |
+| Tabs were horizontal only. | `orientation: JxTabsOrientation.vertical`: Up and Down keys, `aria-orientation`, beside the panel from `md`. |
+| Native date pickers stayed light in dark mode. | New `scheme:` utility (`color-scheme`), `dark:scheme:dark` on date fields. |
+| Missing steps, stat, segmented control, slider and date field. | `JxSteps`, `JxStat`, `JxSegmentedControl`, `JxSlider`, `JxDateField`. |
 
 Still open (documented as limitations on each page):
 
-- `JxTooltip` is CSS only: Escape does not dismiss it.
-- `JxDropdownMenu` does not close on a click outside, and is a disclosure, not an ARIA menu.
-- `JxTabs` needs to run in the browser (`@client`) to switch panels.
+- `JxTabs`, and the Escape and click-outside handling of `JxTooltip` and
+  `JxDropdownMenu`, need to run in the browser (`@client`).
+- `JxDropdownMenu` is a disclosure, not an ARIA menu: no arrow keys between entries.
+- Date, time and suggestion pickers are the browser's own and cannot be styled;
+  Firefox has no `month` and `week` pickers.
+- `JxSlider` has a single thumb.
 - Modals and drawers depend on Invoker Commands (`command`, `commandfor`) and
   `closedby`, available in current browsers only.
 
@@ -85,11 +98,12 @@ Still open (documented as limitations on each page):
 ## Roadmap
 
 1. **0.0.3** (this branch): single package; accordion, drawer, tabs, dropdown
-   menu, toast and combobox; dark tones, required markers, errors on choices,
-   indeterminate progress, linked tooltips; documentation per component,
-   gallery and playground.
-2. **Next**: Escape for tooltips, click-outside for the dropdown menu, vertical
-   tabs.
+   menu, toast, combobox, steps, stat, segmented control, slider and date
+   field; dark tones, required markers, errors on choices, indeterminate
+   progress, linked tooltips dismissed with Escape, menus closed on a click
+   outside, vertical tabs; documentation per component, gallery and
+   playground.
+2. **Next**: arrow keys in the dropdown menu, a range slider with two thumbs.
 3. **Later**: date picker, command palette, popover menu, custom listbox.
 
 ## Quality checks
@@ -102,5 +116,7 @@ Still open (documented as limitations on each page):
 - `packages/jx_cli/test/ui/roadmap_test.dart`: dark tones, required markers,
   errors on choices, indeterminate progress, tooltip link, tabs, dropdown
   menu, toasts and combobox.
+- `packages/jx_cli/test/ui/enrich_test.dart`: `scheme:`, vertical tabs, the
+  menu marker, steps, stat, segmented control, slider and date field.
 - The documentation site renders every preview with the real components, so a
   broken component breaks the site build.

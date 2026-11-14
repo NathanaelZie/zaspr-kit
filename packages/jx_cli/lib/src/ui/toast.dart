@@ -101,7 +101,11 @@ class JxToastRegion extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     return section(
-      classes: jxJoin([s.toastRegion, s.toastPositions[position.name], classes]),
+      classes: jxJoin([
+        s.toastRegion,
+        s.toastPositions[position.name],
+        classes,
+      ]),
       attributes: {'aria-label': label},
       toasts,
     );

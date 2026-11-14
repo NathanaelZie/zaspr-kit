@@ -7,9 +7,13 @@
 - `packages:` in `jx.yaml` accepts a package folder: `packages: [jx_cli/ui]`. `jx_ui` still works and points there when the old package is not installed.
 - The build_runner builder (`jx_cli:jx_css`) is opt-in: enable it in `build.yaml`. This keeps projects that write `web/jx.css` with `jx build` working.
 - The history of the former packages is in `doc/history/`.
+- New `scheme:` utility (`color-scheme`: `normal`, `light`, `dark`, `light-dark`), so native pickers follow dark mode with `dark:scheme:dark`.
+- Depends on `universal_web` for the browser-side behavior of components.
 - Components:
   - new `JxAccordion` (`<details>`, optionally exclusive) and `JxDrawer` (side panel on `<dialog>`), with the `slide-in-left` and `slide-in-right` animations;
-  - new `JxTabs` (ARIA tabs with arrow keys), `JxDropdownMenu` (`<details>`, Escape closes it), `JxToast` with `JxToastRegion`, and `JxCombobox` (`<input list>`);
+  - new `JxTabs` (ARIA tabs with arrow keys, horizontal or vertical), `JxDropdownMenu` (`<details>`, closed by Escape or a click outside), `JxToast` with `JxToastRegion`, and `JxCombobox` (`<input list>`);
+  - new `JxSteps` (progress through a flow), `JxStat` (key figure with a spoken trend), `JxSegmentedControl` (radios drawn as one control), `JxSlider` (range with `<output>`) and `JxDateField` (native date, time, month and week pickers);
+  - in the browser, Escape hides a `JxTooltip`;
   - `JxProgress` without `value` is indeterminate (new `anim:indeterminate`);
   - `JxCheckbox(error:, required:)` and `JxRadioGroup(hint:, error:, required:)`;
   - required fields show a decorative asterisk;

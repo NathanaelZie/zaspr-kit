@@ -1,10 +1,25 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:universal_web/js_interop.dart';
 import 'package:universal_web/web.dart' as web;
 
 import 'components.dart';
 import 'styles.dart' as s;
 import 'utils.dart';
+
+/// Whether the page-wide listener that closes menus on an outside click is
+/// installed. One listener serves every [JxDropdownMenu].
+bool _outsideListener = false;
+
+/// Closes every open menu that does not contain the pressed element.
+void _closeOutside(web.Event event) {
+  final target = event.target as web.Node?;
+  final open = web.document.querySelectorAll('details[data-jx-menu][open]');
+  for (var i = 0; i < open.length; i++) {
+    final details = open.item(i) as web.HTMLDetailsElement;
+    if (target == null || !details.contains(target)) details.open = false;
+  }
+}
 
 /// Side of the trigger the menu lines up with.
 enum JxMenuAlign { start, end }
@@ -42,8 +57,9 @@ class JxMenuItem {
 /// A button that reveals a list of links and actions, built on
 /// `<details>` and `<summary>`.
 ///
-/// It opens and closes without JavaScript. In the browser, Escape closes it
-/// and choosing an action closes it and gives the focus back to the button.
+/// It opens and closes without JavaScript. In the browser, Escape, a click
+/// outside and choosing an action close it; Escape and actions give the
+/// focus back to the button.
 /// It is a disclosure, not an ARIA `menu`: Tab moves through the entries.
 class JxDropdownMenu extends StatelessComponent {
   const JxDropdownMenu({
@@ -85,13 +101,20 @@ class JxDropdownMenu extends StatelessComponent {
     }
   }
 
+  void _onToggle(web.Event event) {
+    if (_outsideListener) return;
+    _outsideListener = true;
+    web.document.addEventListener('pointerdown', _closeOutside.toJS);
+  }
+
   @override
   Component build(BuildContext context) {
     return Component.element(
       tag: 'details',
       id: id,
       classes: jxJoin([s.menu, classes]),
-      events: {'keydown': _onKeyDown},
+      attributes: const {'data-jx-menu': ''},
+      events: {'keydown': _onKeyDown, 'toggle': _onToggle},
       children: [
         Component.element(
           tag: 'summary',
@@ -121,7 +144,11 @@ class JxDropdownMenu extends StatelessComponent {
         ul(classes: jxJoin([s.menuList, s.menuAlign[align.name]]), [
           for (final item in items)
             if (item.separator)
-              const li(classes: s.menuSeparator, attributes: {'role': 'separator'}, [])
+              const li(
+                classes: s.menuSeparator,
+                attributes: {'role': 'separator'},
+                [],
+              )
             else
               li([_entry(item)]),
         ]),
