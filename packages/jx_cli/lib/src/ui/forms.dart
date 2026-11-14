@@ -340,9 +340,11 @@ class JxRadioGroup extends StatelessComponent {
                   },
           ),
         if (message != null)
-          p(id: messageId, classes: error != null ? s.fieldError : s.fieldHint, [
-            .text(message),
-          ]),
+          p(
+            id: messageId,
+            classes: error != null ? s.fieldError : s.fieldHint,
+            [.text(message)],
+          ),
       ],
     );
   }
@@ -450,7 +452,10 @@ class JxCombobox extends StatelessComponent {
           value: value,
           disabled: disabled,
           onInput: onInput == null ? null : (v) => onInput('$v'),
-          classes: jxJoin([s.fieldInput, if (error != null) s.fieldInputInvalid]),
+          classes: jxJoin([
+            s.fieldInput,
+            if (error != null) s.fieldInputInvalid,
+          ]),
           attributes: {
             'list': listId,
             'autocomplete': 'off',

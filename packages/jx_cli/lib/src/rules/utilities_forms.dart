@@ -59,6 +59,19 @@ const List<JxRuleContract> jxFormRules = [
     fallback: _hexColorFallback,
   ),
   JxValueRule(
+    'color-scheme',
+    properties: {
+      'scheme': ['color-scheme'],
+    },
+    keywords: {
+      'normal': 'normal',
+      'light': 'light',
+      'dark': 'dark',
+      'light-dark': 'light dark',
+    },
+    allowArbitrary: false,
+  ),
+  JxValueRule(
     'resize',
     properties: {
       'rsz': ['resize'],
