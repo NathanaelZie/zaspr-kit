@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:jx_cli/core.dart';
 import 'package:jx_cli/jx_cli.dart';
-import 'package:jx_core/jx_core.dart';
 import 'package:path/path.dart' as p;
 import 'package:test/test.dart';
 

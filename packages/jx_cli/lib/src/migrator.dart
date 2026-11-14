@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:jx_engine/jx_engine.dart';
+import 'package:jx_cli/engine.dart';
 import 'package:path/path.dart' as p;
 
 /// One class attribute rewritten by [JxMigrator].
