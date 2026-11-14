@@ -22,7 +22,7 @@ void main() {
 }
 ```
 
-Trois types de règles servent à définir vos propres utilitaires : `JxStaticRule` (classes sans valeur), `JxValueRule` (valeur du thème, mot-clé ou arbitraire) et `JxKeywordRule`.
+Trois types de règles servent à définir vos propres utilitaires : `JxStaticRule` (classes sans valeur), `JxValueRule` (valeur du thème, mot-clé ou arbitraire) `JxKeywordRule` (mots-clés à plusieurs déclarations) et `JxDynamicRule` (déclarations calculées).
 
 ## La famille JX CSS
 

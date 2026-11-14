@@ -89,10 +89,11 @@ void main() {
 
   group('Transformations', () {
     test('translate et scale', () {
-      expect(css('ty:1'), {'translate': '0 0.25rem'});
-      expect(css('-ty:1'), {'translate': '0 -0.25rem'});
-      expect(css('tx:full'), {'translate': '100% 0'});
-      expect(css('ty:[3px]'), {'translate': '0 3px'});
+      const translate = 'var(--jx-tx, 0) var(--jx-ty, 0)';
+      expect(css('ty:1'), {'--jx-ty': '0.25rem', 'translate': translate});
+      expect(css('-ty:1'), {'--jx-ty': '-0.25rem', 'translate': translate});
+      expect(css('tx:full'), {'--jx-tx': '100%', 'translate': translate});
+      expect(css('ty:[3px]'), {'--jx-ty': '3px', 'translate': translate});
       expect(css('sc:105'), {'scale': '1.05'});
     });
   });

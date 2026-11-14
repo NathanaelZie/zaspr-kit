@@ -1,3 +1,9 @@
+## 0.2.0
+
+- Clé `dark_mode: media|class` dans `jx.yaml` (et dans le modèle de `jx init`).
+- Plus de 40 nouveaux utilitaires et les variantes `dark:`, `group-*`, `peer-*`, `motion-*`, `print:` (voir `jx_rules` et `jx_engine`).
+- Messages d'avertissement avec suggestions.
+
 ## 0.1.0
 
 Première version publiée.

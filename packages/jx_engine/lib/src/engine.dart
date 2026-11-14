@@ -49,8 +49,8 @@ final class JxEngine implements JxEngineContract {
     final resolver =
         variantResolver ??
         (theme is JxTheme
-            ? JxVariantResolver.forTheme(theme)
-            : JxVariantResolver(theme: theme));
+            ? JxVariantResolver.forTheme(theme, darkSelector: cfg.darkSelector)
+            : JxVariantResolver(theme: theme, darkSelector: cfg.darkSelector));
     return JxEngine._(
       cfg,
       parser ?? JxParser(variants: resolver.knownVariants),
@@ -110,6 +110,8 @@ final class JxEngine implements JxEngineContract {
       final rule = registry.findMatchingRule(token);
       if (rule == null) {
         unmatchedTokens.add(token.raw);
+        final hint = _suggest(token);
+        if (hint != null) warnings.add(hint);
         continue;
       }
 
@@ -131,10 +133,16 @@ final class JxEngine implements JxEngineContract {
 
     final orderedRules = _sortByMedia(generatedRules);
     // Le preflight précède les utilitaires mais n'apparaît pas dans `rules`.
-    final cssOutput = generator.generate([
+    final utilities = generator.generate([
       if (config.config.includeReset) ...JxPreflight.rules,
       ...orderedRules,
     ]);
+    final atRules = _atRules(orderedRules);
+    final cssOutput = atRules.isEmpty
+        ? utilities
+        : utilities.isEmpty
+        ? atRules
+        : '$utilities${_minify ? '' : '\n\n'}$atRules';
     stopwatch.stop();
 
     return JxCompileResult(
@@ -145,6 +153,67 @@ final class JxEngine implements JxEngineContract {
       warnings: List.unmodifiable(warnings),
       duration: stopwatch.elapsed,
     );
+  }
+
+  bool get _minify => config.config.minify;
+
+  /// Suggestion pour une classe dont l'identifiant est inconnu (`pd:4` ->
+  /// `p:4`). Seules les classes avec valeur ou variantes sont concernées, pour
+  /// ne pas signaler les mots ordinaires trouvés dans les sources.
+  String? _suggest(JxClassToken token) {
+    if (!token.hasValue && !token.hasVariants) return null;
+    final closest = closestMatch(token.identifier, registry.identifiers);
+    if (closest == null) return null;
+    final suggestion = [
+      ...token.variants,
+      '${token.isNegative ? '-' : ''}$closest',
+      if (token.hasValue) token.value!,
+    ].join(':');
+    return 'Classe "${token.raw}" inconnue : vouliez-vous dire "$suggestion${token.isImportant ? '!' : ''}" ?';
+  }
+
+  /// Règles `@property` (variables `--jx-*` non héritées) et `@keyframes`
+  /// des animations prédéfinies utilisées par les règles générées.
+  String _atRules(List<JxCssRule> rules) {
+    final properties = <String>{};
+    final keyframes = <String>{};
+    final animation = RegExp(r'jx-[a-z-]+');
+    for (final rule in rules) {
+      for (final declaration in rule.declarations) {
+        if (declaration.property.startsWith('--jx-')) {
+          properties.add(declaration.property);
+        }
+        if (declaration.property == 'animation') {
+          for (final match in animation.allMatches(declaration.value)) {
+            if (jxKeyframes.containsKey(match.group(0))) {
+              keyframes.add(match.group(0)!);
+            }
+          }
+        }
+      }
+    }
+    if (properties.isEmpty && keyframes.isEmpty) return '';
+
+    final nl = _minify ? '' : '\n';
+    final sp = _minify ? '' : ' ';
+    final indent = _minify ? '' : '  ';
+    final blocks = <String>[
+      for (final property in properties)
+        '@property $property$sp{$nl${indent}syntax:$sp"*";$nl'
+            '${indent}inherits:${sp}false;$nl}',
+      for (final name in keyframes)
+        [
+          '@keyframes $name$sp{',
+          for (final step in jxKeyframes[name]!.entries) ...[
+            '$indent${step.key}$sp{',
+            for (final d in step.value.entries)
+              '$indent$indent${d.key}:$sp${d.value};',
+            '$indent}',
+          ],
+          '}',
+        ].join(nl),
+    ];
+    return blocks.join(_minify ? '' : '\n');
   }
 
   /// Tri stable : règles sans media query d'abord, puis par breakpoint croissant.

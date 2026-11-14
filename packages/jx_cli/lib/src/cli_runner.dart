@@ -16,7 +16,7 @@ import 'project_config.dart';
 /// - `jx build -i "flex p:4"` : compile une expression et l'affiche ;
 /// - `jx init` : crée un fichier `jx.yaml` commenté.
 final class JxCliRunner {
-  static const String version = '0.1.0';
+  static const String version = '0.2.0';
 
   final ArgParser argParser;
   final StringSink out;
@@ -275,6 +275,10 @@ minify: false
 
 # Feuille de réinitialisation (preflight) en tête du CSS.
 reset: true
+
+# Variante dark: : "media" suit la préférence système, "class" s'active
+# quand un ancêtre (souvent <html>) porte la classe "dark".
+dark_mode: media
 
 theme:
   # Tokens ajoutés ou redéfinis par-dessus le thème par défaut.

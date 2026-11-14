@@ -1,3 +1,7 @@
+## 0.2.0
+
+- `JxCssRule.selectorPrefix` : préfixe de sélecteur (variantes `group-*`, `peer-*`, `dark:` en mode classe).
+
 ## 0.1.0
 
 Première version publiée.

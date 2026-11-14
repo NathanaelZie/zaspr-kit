@@ -10,7 +10,7 @@ void main() {
 
       final code = await runner.run(['--version']);
       expect(code, equals(0));
-      expect(out.toString(), contains('JX CSS CLI version 0.1.0'));
+      expect(out.toString(), contains('JX CSS CLI version ${JxCliRunner.version}'));
     });
 
     test('affiche l\'aide avec --help', () async {

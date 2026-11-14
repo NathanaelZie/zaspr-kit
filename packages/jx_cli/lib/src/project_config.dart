@@ -14,6 +14,7 @@ import 'package:yaml/yaml.dart';
 /// output: build/jx.css
 /// minify: false
 /// reset: true                  # inclut le preflight
+/// dark_mode: media             # ou `class` : `dark:` actif sous `.dark`
 /// theme:
 ///   extend:                    # fusionné avec le thème par défaut
 ///     colors:
@@ -51,6 +52,10 @@ final class JxProjectConfig {
   /// Inclut la feuille de réinitialisation (preflight).
   final bool reset;
 
+  /// Mode de la variante `dark:` : `media` (préférence système) ou `class`
+  /// (classe `dark` sur un ancêtre, typiquement `<html>`).
+  final String darkMode;
+
   /// Tokens fusionnés avec le thème par défaut (`catégorie -> clé -> valeur`).
   final Map<String, Map<String, String>> themeExtend;
 
@@ -64,6 +69,7 @@ final class JxProjectConfig {
     this.output = defaultOutput,
     this.minify = false,
     this.reset = true,
+    this.darkMode = 'media',
     this.themeExtend = const {},
     this.themeOverride = const {},
   });
@@ -75,6 +81,7 @@ final class JxProjectConfig {
     'output',
     'minify',
     'reset',
+    'dark_mode',
     'theme',
   };
 
@@ -127,6 +134,7 @@ final class JxProjectConfig {
       output: _string(document, 'output') ?? defaultOutput,
       minify: _bool(document, 'minify') ?? false,
       reset: _bool(document, 'reset') ?? true,
+      darkMode: _darkMode(_string(document, 'dark_mode')),
       themeExtend: _tokens(theme is YamlMap ? theme['extend'] : null, 'extend'),
       themeOverride: _tokens(
         theme is YamlMap ? theme['override'] : null,
@@ -166,6 +174,7 @@ final class JxProjectConfig {
       output: output ?? this.output,
       minify: minify ?? this.minify,
       reset: reset ?? this.reset,
+      darkMode: darkMode,
       themeExtend: themeExtend,
       themeOverride: themeOverride,
     );
@@ -194,6 +203,7 @@ final class JxProjectConfig {
           outputPath: output,
         ),
         theme: buildTheme(),
+        darkSelector: darkMode == 'class' ? '.dark' : null,
       ),
     );
   }
@@ -213,6 +223,14 @@ final class JxProjectConfig {
     if (value == null) return null;
     if (value is String) return value;
     throw JxConfigException('"$key" doit être une chaîne.');
+  }
+
+  static String _darkMode(String? value) {
+    if (value == null) return 'media';
+    if (value == 'media' || value == 'class') return value;
+    throw JxConfigException(
+      '"dark_mode" doit valoir "media" ou "class" (reçu : "$value").',
+    );
   }
 
   static bool? _bool(YamlMap map, String key) {

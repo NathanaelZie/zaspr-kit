@@ -1,6 +1,7 @@
 import 'package:jx_core/jx_core.dart';
 
 import 'preset.dart';
+import 'rule_types.dart';
 
 /// Registre central conservant et interrogeant les règles CSS utilitaires enregistrées.
 final class JxRuleRegistry {
@@ -66,6 +67,19 @@ final class JxRuleRegistry {
 
   /// Liste de toutes les règles enregistrées.
   List<JxRuleContract> get allRules => List.unmodifiable(_rules);
+
+  /// Identifiants de classe reconnus par les règles enregistrées (`p`, `flex`,
+  /// `bg`…), utilisés pour suggérer une correction.
+  Set<String> get identifiers => {
+    for (final rule in _rules)
+      ...switch (rule) {
+        JxStaticRule(:final classes) => classes.keys,
+        JxValueRule(:final properties) => properties.keys,
+        JxKeywordRule(:final identifiers) => identifiers,
+        JxDynamicRule(:final identifiers) => identifiers,
+        _ => const <String>[],
+      },
+  };
 
   /// Nombre total de règles enregistrées.
   int get count => _rules.length;

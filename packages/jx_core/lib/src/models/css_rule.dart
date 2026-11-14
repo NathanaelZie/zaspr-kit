@@ -14,11 +14,16 @@ final class JxCssRule {
   /// Pseudo-classe ou pseudo-élément optionnel (ex. `:hover`, `::after`).
   final String? pseudoSelector;
 
+  /// Préfixe optionnel placé avant le sélecteur, combinateur inclus
+  /// (ex. `.group:hover ` ou `.peer:checked ~ `).
+  final String? selectorPrefix;
+
   const JxCssRule({
     required this.selector,
     required this.declarations,
     this.mediaQuery,
     this.pseudoSelector,
+    this.selectorPrefix,
   });
 
   /// Indique si la règle est conditionnée par une media query.
@@ -33,7 +38,8 @@ final class JxCssRule {
 
   /// Sélecteur complet tel qu'il doit être écrit dans la feuille de style
   /// (sélecteur de base suivi de la pseudo-classe éventuelle).
-  String get fullSelector => '$selector${pseudoSelector ?? ''}';
+  String get fullSelector =>
+      '${selectorPrefix ?? ''}$selector${pseudoSelector ?? ''}';
 
   /// Copie la règle en surchargeant les champs spécifiés.
   JxCssRule copyWith({
@@ -41,12 +47,14 @@ final class JxCssRule {
     List<JxCssDeclaration>? declarations,
     String? mediaQuery,
     String? pseudoSelector,
+    String? selectorPrefix,
   }) {
     return JxCssRule(
       selector: selector ?? this.selector,
       declarations: declarations ?? this.declarations,
       mediaQuery: mediaQuery ?? this.mediaQuery,
       pseudoSelector: pseudoSelector ?? this.pseudoSelector,
+      selectorPrefix: selectorPrefix ?? this.selectorPrefix,
     );
   }
 
@@ -58,6 +66,7 @@ final class JxCssRule {
           selector == other.selector &&
           mediaQuery == other.mediaQuery &&
           pseudoSelector == other.pseudoSelector &&
+          selectorPrefix == other.selectorPrefix &&
           _listEquals(declarations, other.declarations);
 
   @override
@@ -65,6 +74,7 @@ final class JxCssRule {
     selector,
     mediaQuery,
     pseudoSelector,
+    selectorPrefix,
     Object.hashAll(declarations),
   );
 
