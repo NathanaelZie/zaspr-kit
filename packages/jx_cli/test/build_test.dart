@@ -15,7 +15,7 @@ void main() {
     file.writeAsStringSync(content);
   }
 
-  String readOutput([String relative = 'build/jx.css']) =>
+  String readOutput([String relative = 'web/jx.css']) =>
       File(p.join(root.path, relative)).readAsStringSync();
 
   setUp(() => root = Directory.systemTemp.createTempSync('jx_build_test'));
@@ -25,7 +25,7 @@ void main() {
     test('valeurs par défaut sans fichier', () {
       final config = JxProjectConfig.loadFrom(root);
       expect(config.content, ['lib', 'web']);
-      expect(config.output, 'build/jx.css');
+      expect(config.output, 'web/jx.css');
       expect(config.reset, isTrue);
     });
 
@@ -209,7 +209,7 @@ theme:
       expect(code, 0);
       expect(out.toString(), contains('.flex {'));
       expect(out.toString(), isNot(contains('box-sizing')));
-      expect(File(p.join(root.path, 'build/jx.css')).existsSync(), isFalse);
+      expect(File(p.join(root.path, 'web/jx.css')).existsSync(), isFalse);
     });
 
     test('build scanne le projet avec jx.yaml', () async {

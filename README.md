@@ -68,7 +68,7 @@ import 'package:jx_cli/ui.dart';
 
 JxCard(title: 'Newsletter', [
   const JxTextField(id: 'email', label: 'Email', type: InputType.email),
-  JxButton([.text('Subscribe')], onClick: subscribe),
+  JxButton(onClick: subscribe, [.text('Subscribe')]),
 ])
 ```
 

@@ -88,7 +88,45 @@ void main() {
     });
 
     test('un point-virgule entre guillemets est accepté', () {
-      expect(JxCssValue.unsafeReason('"a;b{c}"'), isNull);
+      expect(JxCssValue.unsafeReason('"a;b"'), isNull);
+    });
+
+    test('accolades et ! refusés même entre guillemets', () {
+      for (final value in ['"a{b"', "'}'", '"!"']) {
+        expect(JxCssValue.unsafeReason(value), isNotNull, reason: value);
+      }
+    });
+
+    // Dans un `url(` sans guillemets, un guillemet ou une `(` rendent l'URL
+    // invalide : le navigateur la coupe à la première `)` et la suite
+    // sortait de la déclaration, voire de la règle.
+    test('url() sans guillemets : sortie par une URL invalide refusée', () {
+      for (final value in [
+        "url(a'b)c;}body{display:none}x{e')",
+        "url(a'b)c;background-image:url(https://evil.test/y);e')",
+        'url(a"b)c;position:fixed;e")',
+        'url(a(b);background-image:url(https://evil.test/x);x:y)',
+        'url(a b)',
+        'url(a;b',
+      ]) {
+        expect(JxCssValue.unsafeReason(value), isNotNull, reason: value);
+      }
+    });
+
+    test('url() : formes légitimes acceptées', () {
+      for (final value in [
+        'URL(/a.png)',
+        "url('/a b.png')",
+        'url("a(b).png")',
+        'url(/a.png), url(/b.png)',
+        'image-set(url(/a.png) 1x, url(/b.png) 2x)',
+      ]) {
+        expect(JxCssValue.unsafeReason(value), isNull, reason: value);
+      }
+    });
+
+    test('un ; reste refusé dans une fonction qui finit par url', () {
+      expect(JxCssValue.unsafeReason('my-url(a;b)'), isNotNull);
     });
 
     test('valeur vide ou trop longue', () {

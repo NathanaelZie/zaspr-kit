@@ -20,7 +20,7 @@ class SignUpCard extends StatelessComponent {
       ),
       div(classes: 'flex gap:2', [
         JxButton([Component.text('Subscribe')]),
-        JxButton([Component.text('Later')], variant: JxButtonVariant.ghost),
+        JxButton(variant: JxButtonVariant.ghost, [Component.text('Later')]),
       ]),
     ]);
   }

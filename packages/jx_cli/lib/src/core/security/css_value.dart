@@ -53,6 +53,22 @@ abstract final class JxCssValue {
   static bool _startsUrl(String s, int i) =>
       i + 4 <= s.length && s.substring(i, i + 4).toLowerCase() == 'url(';
 
+  /// Indique si la `(` en position [paren] ouvre la fonction `url(` (et non
+  /// `my-url(`).
+  static bool _isUrlFunction(String s, int paren) {
+    if (paren < 3 || !_startsUrl(s, paren - 3)) return false;
+    if (paren == 3) return true;
+    final before = s.codeUnitAt(paren - 4);
+    final isIdent =
+        (before >= 0x30 && before <= 0x39) ||
+        (before >= 0x41 && before <= 0x5A) ||
+        (before >= 0x61 && before <= 0x7A) ||
+        before == 0x2D ||
+        before == _underscore ||
+        before >= 0x80;
+    return !isIdent;
+  }
+
   /// Motifs refusés où qu'ils apparaissent (comparaison sans casse ni blancs).
   static const Map<String, String> _forbidden = {
     'expression(': 'the expression() function is not allowed',
@@ -76,14 +92,23 @@ abstract final class JxCssValue {
 
     int? quote;
     var parens = 0;
-    // Profondeur de parenthèses à laquelle un `url(` est ouvert, ou -1. Un
-    // `;` y est permis : il fait partie de l'URL (`data:image/png;base64,…`).
-    var urlAt = -1;
+    // `true` dans un `url(` sans guillemets. Le navigateur y lit un seul
+    // token qui finit à la première `)`. Un `;` y est permis : il fait
+    // partie de l'URL (`data:image/png;base64,…`). Un guillemet, une `(` ou
+    // une espace rendent l'URL invalide : le navigateur la coupe alors à la
+    // première `)`, et la suite sortirait de la déclaration.
+    var rawUrl = false;
     for (var i = 0; i < value.length; i++) {
       final code = value.codeUnitAt(i);
       if (code < 0x20 || code == 0x7F) return 'control character not allowed';
       if (code == _backslash) return 'character "\\" not allowed';
       if (code == 0x3C) return 'character "<" not allowed';
+      // Refusées partout, même entre guillemets : une accolade qui
+      // échapperait à l'analyse fermerait la règle.
+      if (code == 0x7B || code == 0x7D) return 'braces are not allowed';
+      if (code == 0x21) {
+        return 'character "!" not allowed (use the class ! suffix)';
+      }
       if (code == 0x2F &&
           i + 1 < value.length &&
           value.codeUnitAt(i + 1) == 0x2A) {
@@ -94,6 +119,18 @@ abstract final class JxCssValue {
           value.codeUnitAt(i + 1) == 0x2F) {
         return 'CSS comments are not allowed';
       }
+      if (rawUrl) {
+        if (code == _closeParen) {
+          rawUrl = false;
+          parens--;
+        } else if (code == _doubleQuote ||
+            code == _singleQuote ||
+            code == _openParen ||
+            code == 0x20) {
+          return 'quotes, "(" and spaces are not allowed in an unquoted url()';
+        }
+        continue;
+      }
       if (quote != null) {
         if (code == quote) quote = null;
         continue;
@@ -103,18 +140,17 @@ abstract final class JxCssValue {
           quote = code;
         case _openParen:
           parens++;
-          if (urlAt < 0 && i >= 3 && _startsUrl(value, i - 3)) urlAt = parens;
+          if (_isUrlFunction(value, i)) {
+            final next = i + 1 < value.length ? value.codeUnitAt(i + 1) : -1;
+            rawUrl = next != _doubleQuote && next != _singleQuote;
+          }
         case _closeParen:
-          if (parens == urlAt) urlAt = -1;
           if (--parens < 0) return 'unbalanced parentheses';
         case 0x3B: // ;
-          if (urlAt < 0) return 'character ";" not allowed';
-        case 0x7B || 0x7D: // { }
-          return 'braces are not allowed';
-        case 0x21: // !
-          return 'character "!" not allowed (use the class ! suffix)';
+          return 'character ";" not allowed';
       }
     }
+    if (rawUrl) return 'unbalanced parentheses';
     if (quote != null) return 'unclosed quotes';
     if (parens != 0) return 'unbalanced parentheses';
 

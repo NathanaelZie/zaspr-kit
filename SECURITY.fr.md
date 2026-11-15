@@ -17,12 +17,12 @@ JX CSS lit des fichiers sources et écrit une feuille de style. Les classes peuv
 
 | Risque | Protection |
 | :--- | :--- |
-| Injection CSS par une valeur arbitraire (`c:[red;}body{…]`) | `;`, `{`, `}`, `<`, `\`, `!`, commentaires et caractères de contrôle refusés ; parenthèses et guillemets équilibrés exigés |
+| Injection CSS par une valeur arbitraire (`c:[red;}body{…]`) | `;`, `{`, `}`, `<`, `\`, `!`, commentaires et caractères de contrôle refusés (accolades, `<` et `!` même entre guillemets) ; parenthèses et guillemets équilibrés exigés ; un `url()` sans guillemets ne peut contenir ni guillemet, ni `(`, ni espace, qui le termineraient plus tôt dans le navigateur |
 | Chargement de code (`url(javascript:…)`, `expression()`, `@import`) | motifs refusés sans tenir compte de la casse ; `data:` limité aux images et polices |
 | Sortie d'une balise `<style>` | `<` refusé dans toute valeur |
 | Sélecteur malformé | tout caractère hors `[a-zA-Z0-9_-]` est échappé |
 | Déni de service (entrée géante ou très imbriquée) | longueurs et nombre de variantes bornés, analyse linéaire, profondeur d'interpolation bornée |
 
-La validation est faite deux fois : par le parseur (`jx_parser`), puis par les règles (`jx_rules`) au moment de générer le CSS.
+La validation est faite deux fois : par le parseur (`package:jx_cli/parser.dart`), puis par les règles (`package:jx_cli/rules.dart`) au moment de générer le CSS.
 
 Hors périmètre : le contenu de `jx.yaml` (thème, breakpoints) est considéré comme fiable, car il est écrit par le développeur du projet.

@@ -23,10 +23,10 @@ enum JxModalSize { sm, md, lg }
 ///   id: 'delete',
 ///   title: 'Delete this project?',
 ///   actions: [
-///     JxButton([.text('Cancel')], variant: JxButtonVariant.ghost,
-///         attributes: JxModal.closeAttributes('delete')),
-///     JxButton([.text('Delete')], variant: JxButtonVariant.danger,
-///         onClick: delete),
+///     JxButton(variant: JxButtonVariant.ghost,
+///         attributes: JxModal.closeAttributes('delete'), [.text('Cancel')]),
+///     JxButton(variant: JxButtonVariant.danger,
+///         onClick: delete, [.text('Delete')]),
 ///   ],
 ///   [p([.text('This cannot be undone.')])],
 /// )

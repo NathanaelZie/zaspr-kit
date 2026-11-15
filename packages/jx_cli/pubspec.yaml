@@ -1,6 +1,6 @@
 name: jx_cli
 description: "JX CSS for Jaspr in one package: utility-first CSS compiler, CLI with watch mode, build_runner builder, Tailwind migration and accessible UI components."
-version: 0.0.3
+version: 0.0.5
 repository: https://github.com/NathanaelZie/zaspr-kit/tree/main/packages/jx_cli
 issue_tracker: https://github.com/NathanaelZie/zaspr-kit/issues
 topics:
@@ -19,7 +19,7 @@ dependencies:
   args: ^2.5.0
   build: ^4.0.0
   glob: ^2.1.1
-  jaspr: ^0.22.4
+  jaspr: ">=0.22.4 <0.24.0"
   path: ^1.9.0
   universal_web: ^1.1.0
   yaml: ^3.1.4

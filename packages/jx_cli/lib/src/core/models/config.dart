@@ -16,7 +16,7 @@ final class JxConfig {
     this.prefix = '',
     this.minify = false,
     this.includeReset = false,
-    this.outputPath = 'build/jx.css',
+    this.outputPath = 'web/jx.css',
   });
 
   /// Copie la configuration en surchargeant les champs spécifiés.

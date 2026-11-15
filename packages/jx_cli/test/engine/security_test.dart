@@ -14,6 +14,11 @@ void main() {
       'grad:[45deg,red);}body{x:(y]',
       'anim:[x;}@import_url(evil)]',
       'hover:w:[1px;position:fixed]',
+      // URL sans guillemets rendue invalide : le navigateur la coupe à la
+      // première `)` (voir JxCssValue.unsafeReason).
+      "bg:[url(a'b)c;}body{display:none}x{e')]",
+      'bg:[url(a(b);background-image:url(https://evil.test/x);x:y)]',
+      'bg:[url(a"b)c;position:fixed;e")]',
     ];
 
     test('aucune règle générée, et un avertissement explicite', () {

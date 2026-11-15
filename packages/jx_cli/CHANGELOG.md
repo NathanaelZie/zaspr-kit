@@ -1,3 +1,13 @@
+## 0.0.5
+
+- **Security:** an arbitrary value could escape its rule through an unquoted `url()` made invalid by a quote or a `(` (for example `bg:[url(a'b)c;}body{display:none}x{e')]`): browsers end such a URL at the first `)`, so the rest of the value was read as new declarations or rules. Inside an unquoted `url()`, quotes, `(` and spaces are now rejected, and braces and `!` are rejected even inside quotes. This only matters when classes come from untrusted input.
+- `jx init` and `jx build` now write the stylesheet to `web/jx.css` by default (was `build/jx.css`), so `jaspr serve` and `jaspr build` serve it at `/jx.css` as the quick start shows.
+- Docs: `JxButton` examples pass the children last, as Jaspr's `sort_children_last` lint expects.
+
+## 0.0.4
+
+- Supports Jaspr 0.23: the `jaspr` constraint is now `>=0.22.4 <0.24.0`, so `dart pub add jx_cli` works in projects created with the latest `jaspr create`.
+
 ## 0.0.3
 
 - **One package.** `jx_cli` now contains the whole of JX CSS, so `dart pub add jx_cli` installs everything. Each part has its own import:

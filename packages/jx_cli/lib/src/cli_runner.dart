@@ -18,7 +18,7 @@ import 'project_config.dart';
 /// - `jx init` : crée un fichier `jx.yaml` commenté ;
 /// - `jx migrate` : convertit des classes Tailwind en classes JX.
 final class JxCliRunner {
-  static const String version = '0.0.3';
+  static const String version = '0.0.5';
 
   final ArgParser argParser;
   final StringSink out;
@@ -82,7 +82,7 @@ final class JxCliRunner {
       ..addOption(
         'output',
         abbr: 'o',
-        help: 'Path of the generated CSS file (default: build/jx.css).',
+        help: 'Path of the generated CSS file (default: web/jx.css).',
       )
       ..addFlag(
         'minify',
@@ -353,7 +353,7 @@ exclude: []
 # of one. jx_cli/ui holds the JX UI components.
 # packages: [jx_cli/ui]
 
-output: build/jx.css
+output: web/jx.css
 minify: false
 
 # Reset stylesheet (preflight) at the top of the CSS.

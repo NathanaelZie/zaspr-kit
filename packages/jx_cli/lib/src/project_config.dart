@@ -12,7 +12,7 @@ import 'package:yaml/yaml.dart';
 /// extensions: [dart, html]     # extensions prises en compte
 /// exclude: [generated]         # noms de dossiers ignorés (en plus des défauts)
 /// packages: [jx_cli/ui]       # packages, or package folders, scanned too
-/// output: build/jx.css
+/// output: web/jx.css
 /// minify: false
 /// reset: true                  # inclut le preflight
 /// dark_mode: media             # ou `class` : `dark:` actif sous `.dark`
@@ -33,7 +33,7 @@ final class JxProjectConfig {
   static const defaultContent = ['lib', 'web'];
   static const defaultExtensions = ['dart', 'html'];
   static const defaultExclude = ['build', '.dart_tool', '.git', 'node_modules'];
-  static const defaultOutput = 'build/jx.css';
+  static const defaultOutput = 'web/jx.css';
 
   /// Fichiers ou dossiers à scanner, relatifs à la racine du projet.
   final List<String> content;
