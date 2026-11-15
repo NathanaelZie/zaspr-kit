@@ -31,27 +31,70 @@
   </head>
   <body>
     <div class="ff:text c:snow bg:abyss mnh:[100vh]">
-      <!--@nav_bar data={"current":"/docs/utilities/gradients"}-->
-      <header class="sticky top:0 z:50 bg:[rgba(11,13,18,0.9)] bwb:1 bc:edge">
-        <nav class="mw:[90rem] mx:auto px:5 md:px:8 flex ai:center jc:between gap:6 h:[4rem]" aria-label="Main navigation">
-          <div class="flex ai:center gap:8">
+      <header class="sticky top:0 z:50 bg:[rgba(11,13,18,0.82)] bblur:md bwb:1 bc:edge">
+        <nav class="mw:[90rem] mx:auto px:5 md:px:8 flex ai:center jc:between gap:4 h:[4rem]" aria-label="Main navigation">
+          <div class="flex ai:center gap:8 mnw:0">
             <a class="flex ai:center gap:3 br:md fw:bold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/">
               <img class="block shrink:0 obf:contain w:8 h:8" alt width="512" height="512" src="/zaspr-kit/logo.png"/>
-              ZASPR Kit
+              <span class="ws:nowrap">ZASPR Kit</span>
             </a>
             <div class="hidden md:flex ai:center gap:1 fs:sm">
-              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/docs/introduction">Documentation</a>
-              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:snow fw:semibold" aria-current="page" href="/zaspr-kit/docs/utilities">Utilities</a>
+              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/docs/introduction">Docs</a>
+              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:snow fw:medium" aria-current="page" href="/zaspr-kit/docs/utilities">Utilities</a>
+              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/docs/components">Components</a>
               <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/playground">Playground</a>
             </div>
           </div>
-          <div class="flex ai:center gap:3">
-            <span class="hidden sm:inline ff:code fs:xs c:haze px:2 py:1 br:md bg:[rgba(255,255,255,0.06)]">v0.0.3</span>
-            <button class="md:hidden px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold c:snow bg:[rgba(255,255,255,0.06)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" aria-expanded="false" aria-controls="main-menu">Menu</button>
+          <div class="flex ai:center gap:2">
+            <!--@search_palette data={"index":"Getting started\tIntroduction\t/docs/introduction\t\nGetting started\tInstallation\t/docs/installation\t\nGetting started\tConfiguration\t/docs/configuration\t\nGetting started\tCommand line\t/docs/cli\t\nGetting started\tUsing with Jaspr\t/docs/jaspr\t\nGetting started\tAutomatic builds\t/docs/builder\tbuild_runner jaspr serve automatic\nGetting started\tComing from Tailwind\t/docs/migrate\ttailwind convert migrate\nCore concepts\tClass syntax\t/docs/syntax\t\nCore concepts\tVariants\t/docs/variants\thover focus dark breakpoints md lg group peer\nCore concepts\tTheme\t/docs/theme\ttokens colors palette jx.yaml extend override\nUtilities\tOverview\t/docs/utilities\t\nUtilities\tDisplay\t/docs/utilities/display\tBox type, visibility and overflow of elements. display display-standalone\nUtilities\tSpacing\t/docs/utilities/spacing\tPadding and margin, on the theme spacing scale. padding margin\nUtilities\tColors\t/docs/utilities/colors\tText, background and border colors, from the theme palette. color background-color background-size\nUtilities\tTypography\t/docs/utilities/typography\tFamilies, sizes, weights, line height, decorations, case, truncation and screen-reader-only text. font-size font-weight line-height text-align vertical-align list-style-type list-style-position font-family letter-spacing text-decoration-line text-decoration-color text-decoration-thickness text-underline-offset white-space font-stretch outline outline-color outline-offset text-standalone text-wrap word-break line-clamp\nUtilities\tSizing\t/docs/utilities/sizing\tWidths and heights, minimum and maximum. width height max-width max-height min-width min-height\nUtilities\tBorders\t/docs/utilities/borders\tBorder width, color, style and radius. border-width border-color border-radius\nUtilities\tFlexbox\t/docs/utilities/flexbox\tDirection, alignment, order, wrapping and sizing of flex items. align-items justify-content flex-direction gap flex-wrap-standalone flex-wrap flex flex-grow-shrink align-self align-content place-content justify-items justify-self order flex-basis\nUtilities\tGrid\t/docs/utilities/grid\tColumns, rows, placement and gaps of CSS grids. grid-template-columns grid-template-rows grid-column grid-row gap-axis\nUtilities\tPosition and layers\t/docs/utilities/position\tPositioning, offsets, stacking and scrolling. position position-standalone z-index inset scroll-margin-top overflow\nUtilities\tEffects and transitions\t/docs/utilities/effects\tOpacity, shadows, transitions, translation, scale, rotation and skew. opacity box-shadow transition transition-duration transition-timing-function cursor translate-x translate-y scale rotate skew transform-origin\nUtilities\tFilters\t/docs/utilities/filters\tBlur, brightness, contrast and saturation, on the element or on what lies behind it. Filters compose with each other. blur brightness contrast grayscale hue-rotate saturate drop-shadow filter-standalone backdrop-blur backdrop-brightness backdrop-contrast backdrop-grayscale backdrop-saturate\nUtilities\tGradients\t/docs/utilities/gradients\tGradient direction or angle, then its start, middle and end colors. linear-gradient gradient-standalone gradient-stops gradient-via\nUtilities\tAnimations\t/docs/utilities/animations\tReady-made animations, duration and delay. Keyframes are only written for the animations you use. animation animation-timing transition-delay\nUtilities\tMedia and backgrounds\t/docs/utilities/media\tAspect ratio, image fit, background position and repeat, border style. aspect-ratio object-fit object-position background-position background-repeat mix-blend-mode border-style\nUtilities\tForms\t/docs/utilities/forms\tNative appearance, cursor, resizing, selection and focus ring. appearance accent-color caret-color color-scheme resize field-sizing pointer-events user-select ring ring-color\nComponents\tAll components\t/docs/components\t\nComponents\tGetting started\t/docs/components/getting-started\t\nComponents\tPlayground\t/docs/components/playground\t\nComponents\tStatus and roadmap\t/docs/components/roadmap\t\nActions\tButton\t/docs/components/button\tJxButton A button in five variants and three sizes, with a loading state. With `href` it renders a link styled as a button.\nLayout\tCard\t/docs/components/card\tJxCard A surface that groups related content, with a title, a description and a footer for actions.\nLayout\tDivider\t/docs/components/divider\tJxDivider A horizontal separator, plain or with a centered label such as \"or\".\nLayout\tAccordion\t/docs/components/accordion\tJxAccordion Sections that expand and collapse, built on `&lt;details&gt;` and `&lt;summary&gt;`. Works without JavaScript; can keep a single section open.\nForms\tText field\t/docs/components/text-field\tJxTextField A labelled single-line input with a hint and an error message, wired with `aria-describedby`.\nForms\tText area\t/docs/components/text-area\tJxTextArea A labelled multi-line input that the user can resize vertically.\nForms\tSelect\t/docs/components/select\tJxSelect A labelled native drop-down list, with a placeholder option, a hint and an error.\nForms\tCheckbox\t/docs/components/checkbox\tJxCheckbox A checkbox with its label and an optional description.\nForms\tSwitch\t/docs/components/switch\tJxSwitch An on/off toggle that takes effect immediately. A checkbox with `role=\"switch\"`, drawn in CSS.\nForms\tRadio group\t/docs/components/radio-group\tJxRadioGroup A set of mutually exclusive options in a `&lt;fieldset&gt;`, with a visible legend.\nForms\tCombobox\t/docs/components/combobox\tJxCombobox A text field with suggestions, on the native `&lt;input list&gt;` and `&lt;datalist&gt;`. The browser filters the suggestions as the user types; any other value stays accepted.\nForms\tSegmented control\t/docs/components/segmented-control\tJxSegmentedControl A row of mutually exclusive options drawn as one control, on native radios in a `&lt;fieldset&gt;`.\nForms\tSlider\t/docs/components/slider\tJxSlider A labelled range input with its current value in an `&lt;output&gt;` and optional bounds.\nForms\tDate field\t/docs/components/date-field\tJxDateField A labelled date or time input on the native picker: keyboard, screen readers and phones are handled by the browser and the system.\nFeedback\tAlert\t/docs/components/alert\tJxAlert A message banner in four tones. Urgent tones are announced immediately.\nFeedback\tBadge\t/docs/components/badge\tJxBadge A short status label in five tones.\nFeedback\tSpinner\t/docs/components/spinner\tJxSpinner A spinning loading indicator that takes the current text color.\nFeedback\tProgress bar\t/docs/components/progress\tJxProgress A progress bar with its label and percentage, or a sliding bar when the progress is unknown.\nFeedback\tSkeleton\t/docs/components/skeleton\tJxSkeleton A pulsing placeholder with the shape of the content being loaded.\nFeedback\tEmpty state\t/docs/components/empty-state\tJxEmptyState What to show when a list or a search has no result: a title, an explanation and an action.\nFeedback\tToast\t/docs/components/toast\tJxToast Short notifications stacked in a corner of the screen by `JxToastRegion`. You own the queue: add a toast to your state, remove it on dismiss or after a delay.\nData display\tAvatar\t/docs/components/avatar\tJxAvatar A round picture of a person, or their initials when there is no image.\nData display\tTooltip\t/docs/components/tooltip\tJxTooltip A short hint shown above an element on hover and on keyboard focus. CSS for showing it; in the browser, Escape hides it.\nData display\tKeyboard key\t/docs/components/kbd\tJxKbd A keyboard key, such as `Ctrl` or `K`, in a native `&lt;kbd&gt;`.\nData display\tData table\t/docs/components/data-table\tJxDataTable A table with a caption, sortable headers, numeric columns, striped rows, a sticky header and an empty state. You own the data: it reports clicks on headers.\nData display\tStat\t/docs/components/stat\tJxStat A key figure with its label, an optional change and a trend that is read aloud, not shown by color alone.\nNavigation\tBreadcrumbs\t/docs/components/breadcrumbs\tJxBreadcrumbs The path to the current page, in a `&lt;nav aria-label=\"Breadcrumb\"&gt;`.\nNavigation\tPagination\t/docs/components/pagination\tJxPagination Previous, numbered pages around the current one, and next. Links or buttons.\nNavigation\tTabs\t/docs/components/tabs\tJxTabs Panels of related content, one visible at a time, following the ARIA tabs pattern with arrow-key navigation.\nNavigation\tSteps\t/docs/components/steps\tJxSteps Where the user is in a flow of several steps: complete steps get a check mark, the current one is announced with `aria-current=\"step\"`.\nOverlays\tModal\t/docs/components/modal\tJxModal A modal dialog on the native `&lt;dialog&gt;`, opened and closed by HTML command buttons, with no JavaScript. `JxModalTrigger` opens it.\nOverlays\tDrawer\t/docs/components/drawer\tJxDrawer A panel that slides in from the side of the screen. Same native dialog behavior as the modal.\nOverlays\tDropdown menu\t/docs/components/dropdown-menu\tJxDropdownMenu A button that reveals a list of links and actions, built on `&lt;details&gt;`. It opens without JavaScript; in the browser, Escape, a click outside and a chosen action close it.\nGoing further\tArchitecture\t/docs/architecture\t\nGoing further\tSecurity\t/docs/security\t\nGoing further\tWhat's new\t/docs/whats-new\t\nTools\tPlayground\t/playground\ttry live editor compile"}-->
+            <div class="flex ai:center">
+              <button class="flex ai:center gap:3 h:10 px:3 lg:pr:2 br:lg fs:sm c:haze bw:1 bc:edge bg:[rgba(255,255,255,0.03)] tr:all hover:c:snow hover:bc:[rgba(255,255,255,0.18)] lg:w:[15rem] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" type="button" aria-haspopup="dialog" aria-controls="site-search" aria-keyshortcuts="Control+K Meta+K /">
+                <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"></path><path d="M21 21l-4.3-4.3"></path></svg>
+                <span class="sr-only lg:not-sr-only grow:1 ta:left">Search the docs</span>
+                <kbd class="hidden lg:inline-flex ai:center px:2 py:[0.1rem] br:md ff:code fs:xs c:haze bg:[rgba(255,255,255,0.06)] bw:1 bc:edge">Ctrl K</kbd>
+              </button>
+              <dialog id="site-search" class="m:auto mt:[12vh] w:[calc(100%_-_2rem)] mw:[40rem] p:0 br:2xl c:snow bg:deep bw:1 bc:[rgba(255,255,255,0.12)] sh:2xl ov:hidden backdrop:bg:[rgba(5,7,10,0.72)] backdrop:bblur:sm open:anim:fade-in motion-reduce:anim:none" aria-label="Search the documentation">
+                <div class="flex ai:center gap:3 px:5 bwb:1 bc:edge">
+                  <span class="c:haze"><svg class="shrink:0 w:5 h:5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"></path><path d="M21 21l-4.3-4.3"></path></svg></span>
+                  <input id="site-search-input" class="grow:1 mnw:0 h:[3.5rem] bg:transparent c:snow fs:base caret:beam placeholder:c:[#6B7385] focus:ol:none app:none" placeholder="Search pages, utilities, components…" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="site-search-results" aria-autocomplete="list" aria-activedescendant="site-search-option-0" type="text"/>
+                  <button class="shrink:0 px:2 py:1 br:md ff:code fs:xs c:haze bw:1 bc:edge hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" type="button" aria-label="Close the search">Esc</button>
+                </div>
+                <p class="px:5 pt:4 pb:1 fs:xs fw:semibold c:haze">Suggested</p>
+                <ul id="site-search-results" class="mh:[min(24rem,60vh)] ovy:auto p:2" role="listbox" aria-label="Pages">
+                  <li id="site-search-option-0" class="flex ai:center jc:between gap:4 px:3 py:3 br:lg cur:pointer bg:[rgba(59,108,240,0.18)]" role="option" aria-selected="true">
+                    <span class="flex fd:col mnw:0"><span class="fw:medium c:snow truncate">Installation</span><span class="fs:xs c:haze truncate">Getting started</span></span><span class="shrink:0 c:beam"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></span>
+                  </li>
+                  <li id="site-search-option-1" class="flex ai:center jc:between gap:4 px:3 py:3 br:lg cur:pointer" role="option" aria-selected="false">
+                    <span class="flex fd:col mnw:0"><span class="fw:medium c:snow truncate">Class syntax</span><span class="fs:xs c:haze truncate">Core concepts</span></span>
+                  </li>
+                  <li id="site-search-option-2" class="flex ai:center jc:between gap:4 px:3 py:3 br:lg cur:pointer" role="option" aria-selected="false">
+                    <span class="flex fd:col mnw:0"><span class="fw:medium c:snow truncate">Overview</span><span class="fs:xs c:haze truncate">Utilities</span></span>
+                  </li>
+                  <li id="site-search-option-3" class="flex ai:center jc:between gap:4 px:3 py:3 br:lg cur:pointer" role="option" aria-selected="false">
+                    <span class="flex fd:col mnw:0"><span class="fw:medium c:snow truncate">All components</span><span class="fs:xs c:haze truncate">Components</span></span>
+                  </li>
+                  <li id="site-search-option-4" class="flex ai:center jc:between gap:4 px:3 py:3 br:lg cur:pointer" role="option" aria-selected="false">
+                    <span class="flex fd:col mnw:0"><span class="fw:medium c:snow truncate">Playground</span><span class="fs:xs c:haze truncate">Tools</span></span>
+                  </li>
+                </ul>
+                <div class="flex ai:center gap:5 px:5 py:3 bwt:1 bc:edge fs:xs c:haze" aria-hidden="true"><span>↑ ↓ to move</span><span>Enter to open</span><span>Esc to close</span></div>
+              </dialog>
+            </div>
+            <!--/@search_palette-->
+            <a class="hidden sm:inline-flex ai:center h:10 px:3 br:lg ff:code fs:xs c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" title="What's new in 0.0.5" href="/zaspr-kit/docs/whats-new">v0.0.5</a>
+            <a class="hidden sm:flex ai:center jc:center w:10 h:10 br:lg c:haze tr:colors hover:c:snow hover:bg:[rgba(255,255,255,0.06)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" aria-label="ZASPR Kit on GitHub" rel="noopener" href="https://github.com/NathanaelZie/zaspr-kit">
+              <svg class="shrink:0 w:5 h:5" fill="currentColor" aria-hidden="true" viewBox="0 0 16 16">
+                <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+              </svg>
+            </a>
+            <!--@nav_bar data={"active":"/docs/utilities"}-->
+            <div class="md:hidden">
+              <button class="flex ai:center px:4 h:10 br:lg fs:sm fw:semibold c:snow bg:[rgba(255,255,255,0.06)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" type="button" aria-expanded="false" aria-controls="main-menu">Menu</button>
+            </div>
+            <!--/@nav_bar-->
           </div>
         </nav>
       </header>
-      <!--/@nav_bar-->
       <div class="mw:[90rem] mx:auto px:5 md:px:8 grid cols:1 lg:cols:[15rem_minmax(0,1fr)] xl:cols:[15rem_minmax(0,1fr)_13rem] gap:10">
         <aside class="hidden lg:block sticky top:[4rem] h:[calc(100vh_-_4rem)] ovy:auto py:10 pr:2">
           <nav aria-label="Documentation">
@@ -618,7 +661,7 @@
         </aside>
       </div>
       <footer class="bwt:1 bc:edge bg:[#090B0F]">
-        <div class="mw:[90rem] mx:auto px:5 md:px:8 grid cols:1 sm:cols:2 lg:cols:[2fr_1fr_1fr_1fr] gap:10 py:16">
+        <div class="mw:[90rem] mx:auto px:5 md:px:8 grid cols:1 sm:cols:2 lg:cols:[2fr_1fr_1fr_1fr_1fr] gap:10 py:16">
           <div class="flex fd:col gap:4 mw:[22rem]">
             <a class="inline-flex ai:center gap:3 fw:bold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/">
               <img class="block shrink:0 obf:contain w:8 h:8" alt width="512" height="512" src="/zaspr-kit/logo.png"/>
@@ -628,7 +671,7 @@
             <p class="fs:sm lh:relaxed c:haze">
               This site is built with Jaspr and styled only with <code class="inline-flex wrap ff:code fs:sm"><span class="c:ident">jx</span><span class="c:haze">:</span><span class="c:value">css</span></code>.
             </p>
-            <p class="ff:code fs:xs c:haze">Version 0.0.3</p>
+            <p class="ff:code fs:xs c:haze">jx_cli 0.0.5, MIT license</p>
           </div>
           <div>
             <h2 class="fs:sm fw:semibold c:snow mb:4">Getting started</h2>
@@ -693,6 +736,23 @@
               </li>
               <li>
                 <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/theme">Default theme</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="fs:sm fw:semibold c:snow mb:4">Project</h2>
+            <ul class="flex fd:col gap:3 fs:sm">
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" rel="noopener" href="https://github.com/NathanaelZie/zaspr-kit">GitHub</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" rel="noopener" href="https://pub.dev/packages/jx_cli">pub.dev</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" rel="noopener" href="https://pub.dev/packages/jx_cli/changelog">Changelog</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" rel="noopener" href="https://github.com/NathanaelZie/zaspr-kit/issues">Report an issue</a>
               </li>
             </ul>
           </div>
