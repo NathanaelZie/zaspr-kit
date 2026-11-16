@@ -92,6 +92,8 @@ La référence complète est sur le [site de documentation](https://nathanaelzie
 
 ## Contribuer
 
+Les contributions sont les bienvenues : lisez [CONTRIBUTING.fr.md](CONTRIBUTING.fr.md) et le [code de conduite](CODE_OF_CONDUCT.fr.md).
+
 ```bash
 dart pub get
 cd packages/jx_cli
@@ -101,4 +103,4 @@ dart test
 
 ## Licence
 
-MIT.
+[MIT](LICENSE), copyright (c) 2026 Nathanael ZIE. Utilisation commerciale et personnelle libre.

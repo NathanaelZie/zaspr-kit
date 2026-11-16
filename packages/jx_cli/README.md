@@ -158,6 +158,8 @@ The former `jx_ui`, `jx_builder`, `jx_engine`, `jx_rules`, `jx_theme`, `jx_parse
 
 ## Contributing
 
+Contributions are welcome: read [CONTRIBUTING.md](https://github.com/NathanaelZie/zaspr-kit/blob/main/CONTRIBUTING.md) and the [code of conduct](https://github.com/NathanaelZie/zaspr-kit/blob/main/CODE_OF_CONDUCT.md).
+
 Requirements: Dart SDK `>= 3.10.7`.
 
 ```bash
@@ -174,4 +176,4 @@ Security issues: see [SECURITY.md](https://github.com/NathanaelZie/zaspr-kit/blo
 
 ## License
 
-MIT.
+[MIT](https://github.com/NathanaelZie/zaspr-kit/blob/main/LICENSE), copyright (c) 2026 Nathanael ZIE. Free for commercial and personal use.
