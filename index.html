@@ -1,8 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <base href="/zaspr-kit/"/>
     <meta charset="utf-8"/>
+    <script>
+      try{var t=localStorage.getItem('zk-theme');document.documentElement.classList.toggle('dark',t!=='light')}catch(e){}
+    </script>
+    <style>
+      :root{--zk-abyss:#FFFFFF;--zk-deep:#F6F8FB;--zk-shelf:#EDF1F7;--zk-ink:#F1F5F9;--zk-glass:rgba(255,255,255,0.82);--zk-sunken:rgba(15,23,42,0.035);--zk-tint:rgba(15,23,42,0.045);--zk-tint-strong:rgba(15,23,42,0.08);--zk-edge:rgba(15,23,42,0.1);--zk-edge-strong:rgba(15,23,42,0.2);--zk-snow:#0B1220;--zk-soft:#334155;--zk-haze:#526178;--zk-faint:#8391A7;--zk-brand:#0369A1;--zk-brand-hover:#075985;--zk-on-brand:#FFFFFF;--zk-beam:#0369A1;--zk-brand-soft:rgba(3,105,161,0.09);--zk-brand-line:rgba(3,105,161,0.45);--zk-accent:#6D28D9;--zk-accent-soft:rgba(109,40,217,0.08);--zk-success:#047857;--zk-variant:#B45309;--zk-ident:#0F766E;--zk-value:#0369A1;--zk-bang:#BE123C;--zk-str:#15803D;--zk-fn:#6D28D9;--zk-variant-soft:rgba(180,83,9,0.07);--zk-ident-soft:rgba(15,118,110,0.08);color-scheme:light}:root.dark{--zk-abyss:#090D18;--zk-deep:#111827;--zk-shelf:#1A2234;--zk-ink:#060A14;--zk-glass:rgba(9,13,24,0.78);--zk-sunken:rgba(0,0,0,0.24);--zk-tint:rgba(255,255,255,0.05);--zk-tint-strong:rgba(255,255,255,0.1);--zk-edge:rgba(148,163,184,0.16);--zk-edge-strong:rgba(148,163,184,0.34);--zk-snow:#F8FAFC;--zk-soft:#CBD5E1;--zk-haze:#94A3B8;--zk-faint:#64748B;--zk-brand:#38BDF8;--zk-brand-hover:#7DD3FC;--zk-on-brand:#04121F;--zk-beam:#7DD3FC;--zk-brand-soft:rgba(56,189,248,0.14);--zk-brand-line:rgba(56,189,248,0.5);--zk-accent:#A78BFA;--zk-accent-soft:rgba(167,139,250,0.16);--zk-success:#34D399;--zk-variant:#FBBF24;--zk-ident:#2DD4BF;--zk-value:#7DD3FC;--zk-bang:#FB7185;--zk-str:#86EFAC;--zk-fn:#C4B5FD;--zk-variant-soft:rgba(251,191,36,0.1);--zk-ident-soft:rgba(45,212,191,0.12);color-scheme:dark}
+    </style>
     <link sizes="48x48" href="/zaspr-kit/favicon.ico" rel="icon"/>
     <link href="/zaspr-kit/favicon.png" rel="icon" type="image/png"/>
     <link href="/zaspr-kit/apple-touch-icon.png" rel="apple-touch-icon"/>
@@ -20,8 +26,8 @@
     <title>ZASPR Kit : A complete styling ecosystem for Jaspr.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="JX CSS compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components, and ships accessible components built with them. One Dart package, no Node.js."/>
-    <meta name="theme-color" content="#0B0D12"/>
-    <meta name="color-scheme" content="dark"/>
+    <meta name="theme-color" content="#090D18"/>
+    <meta name="color-scheme" content="dark light"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="ZASPR Kit : A complete styling ecosystem for Jaspr."/>
     <meta name="twitter:description" content="JX CSS compiles classes like md:hover:bg:blue into CSS, straight from your Jaspr components, and ships accessible components built with them. One Dart package, no Node.js."/>
@@ -31,44 +37,45 @@
   </head>
   <body>
     <div class="ff:text c:snow bg:abyss">
-      <header class="sticky top:0 z:50 bg:[rgba(11,13,18,0.82)] bblur:md bwb:1 bc:edge">
+      <header class="sticky top:0 z:50 bg:glass bblur:md bwb:1 bc:edge">
         <nav class="mw:[90rem] mx:auto px:5 md:px:8 flex ai:center jc:between gap:4 h:[4rem]" aria-label="Main navigation">
           <div class="flex ai:center gap:8 mnw:0">
             <a class="flex ai:center gap:3 br:md fw:bold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/">
               <img class="block shrink:0 obf:contain w:8 h:8" alt width="512" height="512" src="/zaspr-kit/logo.png"/>
               <span class="ws:nowrap">ZASPR Kit</span>
             </a>
-            <div class="hidden md:flex ai:center gap:1 fs:sm">
-              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/docs/introduction">Docs</a>
-              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/docs/utilities">Utilities</a>
-              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/docs/components">Components</a>
-              <a class="px:3 py:2 br:md tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/playground">Playground</a>
+            <div class="hidden lg:flex ai:center gap:1 fs:sm">
+              <a class="px:3 py:2 br:md ws:nowrap tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/docs/introduction">Docs</a>
+              <a class="px:3 py:2 br:md ws:nowrap tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/docs/utilities">Utilities</a>
+              <a class="px:3 py:2 br:md ws:nowrap tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/docs/components">Components</a>
+              <a class="px:3 py:2 br:md ws:nowrap tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/playground">Playground</a>
+              <a class="px:3 py:2 br:md ws:nowrap tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" href="/zaspr-kit/theme-studio">Theme Studio</a>
             </div>
           </div>
           <div class="flex ai:center gap:2">
-            <!--@search_palette data={"index":"Getting started\tIntroduction\t/docs/introduction\t\nGetting started\tInstallation\t/docs/installation\t\nGetting started\tConfiguration\t/docs/configuration\t\nGetting started\tCommand line\t/docs/cli\t\nGetting started\tUsing with Jaspr\t/docs/jaspr\t\nGetting started\tAutomatic builds\t/docs/builder\tbuild_runner jaspr serve automatic\nGetting started\tComing from Tailwind\t/docs/migrate\ttailwind convert migrate\nCore concepts\tClass syntax\t/docs/syntax\t\nCore concepts\tVariants\t/docs/variants\thover focus dark breakpoints md lg group peer\nCore concepts\tTheme\t/docs/theme\ttokens colors palette jx.yaml extend override\nUtilities\tOverview\t/docs/utilities\t\nUtilities\tDisplay\t/docs/utilities/display\tBox type, visibility and overflow of elements. display display-standalone\nUtilities\tSpacing\t/docs/utilities/spacing\tPadding and margin, on the theme spacing scale. padding margin\nUtilities\tColors\t/docs/utilities/colors\tText, background and border colors, from the theme palette. color background-color background-size\nUtilities\tTypography\t/docs/utilities/typography\tFamilies, sizes, weights, line height, decorations, case, truncation and screen-reader-only text. font-size font-weight line-height text-align vertical-align list-style-type list-style-position font-family letter-spacing text-decoration-line text-decoration-color text-decoration-thickness text-underline-offset white-space font-stretch outline outline-color outline-offset text-standalone text-wrap word-break line-clamp\nUtilities\tSizing\t/docs/utilities/sizing\tWidths and heights, minimum and maximum. width height max-width max-height min-width min-height\nUtilities\tBorders\t/docs/utilities/borders\tBorder width, color, style and radius. border-width border-color border-radius\nUtilities\tFlexbox\t/docs/utilities/flexbox\tDirection, alignment, order, wrapping and sizing of flex items. align-items justify-content flex-direction gap flex-wrap-standalone flex-wrap flex flex-grow-shrink align-self align-content place-content justify-items justify-self order flex-basis\nUtilities\tGrid\t/docs/utilities/grid\tColumns, rows, placement and gaps of CSS grids. grid-template-columns grid-template-rows grid-column grid-row gap-axis\nUtilities\tPosition and layers\t/docs/utilities/position\tPositioning, offsets, stacking and scrolling. position position-standalone z-index inset scroll-margin-top overflow\nUtilities\tEffects and transitions\t/docs/utilities/effects\tOpacity, shadows, transitions, translation, scale, rotation and skew. opacity box-shadow transition transition-duration transition-timing-function cursor translate-x translate-y scale rotate skew transform-origin\nUtilities\tFilters\t/docs/utilities/filters\tBlur, brightness, contrast and saturation, on the element or on what lies behind it. Filters compose with each other. blur brightness contrast grayscale hue-rotate saturate drop-shadow filter-standalone backdrop-blur backdrop-brightness backdrop-contrast backdrop-grayscale backdrop-saturate\nUtilities\tGradients\t/docs/utilities/gradients\tGradient direction or angle, then its start, middle and end colors. linear-gradient gradient-standalone gradient-stops gradient-via\nUtilities\tAnimations\t/docs/utilities/animations\tReady-made animations, duration and delay. Keyframes are only written for the animations you use. animation animation-timing transition-delay\nUtilities\tMedia and backgrounds\t/docs/utilities/media\tAspect ratio, image fit, background position and repeat, border style. aspect-ratio object-fit object-position background-position background-repeat mix-blend-mode border-style\nUtilities\tForms\t/docs/utilities/forms\tNative appearance, cursor, resizing, selection and focus ring. appearance accent-color caret-color color-scheme resize field-sizing pointer-events user-select ring ring-color\nComponents\tAll components\t/docs/components\t\nComponents\tGetting started\t/docs/components/getting-started\t\nComponents\tPlayground\t/docs/components/playground\t\nComponents\tStatus and roadmap\t/docs/components/roadmap\t\nActions\tButton\t/docs/components/button\tJxButton A button in five variants and three sizes, with a loading state. With `href` it renders a link styled as a button.\nLayout\tCard\t/docs/components/card\tJxCard A surface that groups related content, with a title, a description and a footer for actions.\nLayout\tDivider\t/docs/components/divider\tJxDivider A horizontal separator, plain or with a centered label such as \"or\".\nLayout\tAccordion\t/docs/components/accordion\tJxAccordion Sections that expand and collapse, built on `&lt;details&gt;` and `&lt;summary&gt;`. Works without JavaScript; can keep a single section open.\nForms\tText field\t/docs/components/text-field\tJxTextField A labelled single-line input with a hint and an error message, wired with `aria-describedby`.\nForms\tText area\t/docs/components/text-area\tJxTextArea A labelled multi-line input that the user can resize vertically.\nForms\tSelect\t/docs/components/select\tJxSelect A labelled native drop-down list, with a placeholder option, a hint and an error.\nForms\tCheckbox\t/docs/components/checkbox\tJxCheckbox A checkbox with its label and an optional description.\nForms\tSwitch\t/docs/components/switch\tJxSwitch An on/off toggle that takes effect immediately. A checkbox with `role=\"switch\"`, drawn in CSS.\nForms\tRadio group\t/docs/components/radio-group\tJxRadioGroup A set of mutually exclusive options in a `&lt;fieldset&gt;`, with a visible legend.\nForms\tCombobox\t/docs/components/combobox\tJxCombobox A text field with suggestions, on the native `&lt;input list&gt;` and `&lt;datalist&gt;`. The browser filters the suggestions as the user types; any other value stays accepted.\nForms\tSegmented control\t/docs/components/segmented-control\tJxSegmentedControl A row of mutually exclusive options drawn as one control, on native radios in a `&lt;fieldset&gt;`.\nForms\tSlider\t/docs/components/slider\tJxSlider A labelled range input with its current value in an `&lt;output&gt;` and optional bounds.\nForms\tDate field\t/docs/components/date-field\tJxDateField A labelled date or time input on the native picker: keyboard, screen readers and phones are handled by the browser and the system.\nFeedback\tAlert\t/docs/components/alert\tJxAlert A message banner in four tones. Urgent tones are announced immediately.\nFeedback\tBadge\t/docs/components/badge\tJxBadge A short status label in five tones.\nFeedback\tSpinner\t/docs/components/spinner\tJxSpinner A spinning loading indicator that takes the current text color.\nFeedback\tProgress bar\t/docs/components/progress\tJxProgress A progress bar with its label and percentage, or a sliding bar when the progress is unknown.\nFeedback\tSkeleton\t/docs/components/skeleton\tJxSkeleton A pulsing placeholder with the shape of the content being loaded.\nFeedback\tEmpty state\t/docs/components/empty-state\tJxEmptyState What to show when a list or a search has no result: a title, an explanation and an action.\nFeedback\tToast\t/docs/components/toast\tJxToast Short notifications stacked in a corner of the screen by `JxToastRegion`. You own the queue: add a toast to your state, remove it on dismiss or after a delay.\nData display\tAvatar\t/docs/components/avatar\tJxAvatar A round picture of a person, or their initials when there is no image.\nData display\tTooltip\t/docs/components/tooltip\tJxTooltip A short hint shown above an element on hover and on keyboard focus. CSS for showing it; in the browser, Escape hides it.\nData display\tKeyboard key\t/docs/components/kbd\tJxKbd A keyboard key, such as `Ctrl` or `K`, in a native `&lt;kbd&gt;`.\nData display\tData table\t/docs/components/data-table\tJxDataTable A table with a caption, sortable headers, numeric columns, striped rows, a sticky header and an empty state. You own the data: it reports clicks on headers.\nData display\tStat\t/docs/components/stat\tJxStat A key figure with its label, an optional change and a trend that is read aloud, not shown by color alone.\nNavigation\tBreadcrumbs\t/docs/components/breadcrumbs\tJxBreadcrumbs The path to the current page, in a `&lt;nav aria-label=\"Breadcrumb\"&gt;`.\nNavigation\tPagination\t/docs/components/pagination\tJxPagination Previous, numbered pages around the current one, and next. Links or buttons.\nNavigation\tTabs\t/docs/components/tabs\tJxTabs Panels of related content, one visible at a time, following the ARIA tabs pattern with arrow-key navigation.\nNavigation\tSteps\t/docs/components/steps\tJxSteps Where the user is in a flow of several steps: complete steps get a check mark, the current one is announced with `aria-current=\"step\"`.\nOverlays\tModal\t/docs/components/modal\tJxModal A modal dialog on the native `&lt;dialog&gt;`, opened and closed by HTML command buttons, with no JavaScript. `JxModalTrigger` opens it.\nOverlays\tDrawer\t/docs/components/drawer\tJxDrawer A panel that slides in from the side of the screen. Same native dialog behavior as the modal.\nOverlays\tDropdown menu\t/docs/components/dropdown-menu\tJxDropdownMenu A button that reveals a list of links and actions, built on `&lt;details&gt;`. It opens without JavaScript; in the browser, Escape, a click outside and a chosen action close it.\nGoing further\tArchitecture\t/docs/architecture\t\nGoing further\tSecurity\t/docs/security\t\nGoing further\tWhat's new\t/docs/whats-new\t\nTools\tPlayground\t/playground\ttry live editor compile"}-->
+            <!--@search_palette data={"index":"Getting started\tIntroduction\t/docs/introduction\t\nGetting started\tInstallation\t/docs/installation\t\nGetting started\tConfiguration\t/docs/configuration\t\nGetting started\tYour first project\t/docs/first-project\t\nGetting started\tUsing with Jaspr\t/docs/jaspr\t\nCore concepts\tClass syntax\t/docs/syntax\t\nCore concepts\tVariants\t/docs/variants\thover focus dark breakpoints md lg group peer\nCore concepts\tTheme\t/docs/theme\ttokens colors palette jx.yaml extend override\nCore concepts\tResponsive design\t/docs/responsive\t\nCore concepts\tDark mode\t/docs/dark-mode\t\nEngine and CLI\tCommand line\t/docs/cli\t\nEngine and CLI\tBuild and watch mode\t/docs/build\t\nEngine and CLI\tAutomatic builds\t/docs/builder\tbuild_runner jaspr serve automatic\nEngine and CLI\tComing from Tailwind\t/docs/migrate\ttailwind convert migrate\nEngine and CLI\tArchitecture\t/docs/architecture\t\nComponents\tAll components\t/docs/components\t\nComponents\tInstallation\t/docs/components/getting-started\t\nComponents\tComponent API\t/docs/components/api\t\nComponents\tAccessibility\t/docs/components/accessibility\t\nComponents\tCustomization\t/docs/components/customization\t\nComponents\tPlayground\t/docs/components/playground\t\nComponents\tStatus and roadmap\t/docs/components/roadmap\t\nActions\tButton\t/docs/components/button\tJxButton A button in five variants and three sizes, with a loading state. With `href` it renders a link styled as a button.\nLayout\tCard\t/docs/components/card\tJxCard A surface that groups related content, with a title, a description and a footer for actions.\nLayout\tDivider\t/docs/components/divider\tJxDivider A horizontal separator, plain or with a centered label such as \"or\".\nLayout\tAccordion\t/docs/components/accordion\tJxAccordion Sections that expand and collapse, built on `&lt;details&gt;` and `&lt;summary&gt;`. Works without JavaScript; can keep a single section open.\nForms\tText field\t/docs/components/text-field\tJxTextField A labelled single-line input with a hint and an error message, wired with `aria-describedby`.\nForms\tText area\t/docs/components/text-area\tJxTextArea A labelled multi-line input that the user can resize vertically.\nForms\tSelect\t/docs/components/select\tJxSelect A labelled native drop-down list, with a placeholder option, a hint and an error.\nForms\tCheckbox\t/docs/components/checkbox\tJxCheckbox A checkbox with its label and an optional description.\nForms\tSwitch\t/docs/components/switch\tJxSwitch An on/off toggle that takes effect immediately. A checkbox with `role=\"switch\"`, drawn in CSS.\nForms\tRadio group\t/docs/components/radio-group\tJxRadioGroup A set of mutually exclusive options in a `&lt;fieldset&gt;`, with a visible legend.\nForms\tCombobox\t/docs/components/combobox\tJxCombobox A text field with suggestions, on the native `&lt;input list&gt;` and `&lt;datalist&gt;`. The browser filters the suggestions as the user types; any other value stays accepted.\nForms\tSegmented control\t/docs/components/segmented-control\tJxSegmentedControl A row of mutually exclusive options drawn as one control, on native radios in a `&lt;fieldset&gt;`.\nForms\tSlider\t/docs/components/slider\tJxSlider A labelled range input with its current value in an `&lt;output&gt;` and optional bounds.\nForms\tDate field\t/docs/components/date-field\tJxDateField A labelled date or time input on the native picker: keyboard, screen readers and phones are handled by the browser and the system.\nFeedback\tAlert\t/docs/components/alert\tJxAlert A message banner in four tones. Urgent tones are announced immediately.\nFeedback\tBadge\t/docs/components/badge\tJxBadge A short status label in five tones.\nFeedback\tSpinner\t/docs/components/spinner\tJxSpinner A spinning loading indicator that takes the current text color.\nFeedback\tProgress bar\t/docs/components/progress\tJxProgress A progress bar with its label and percentage, or a sliding bar when the progress is unknown.\nFeedback\tSkeleton\t/docs/components/skeleton\tJxSkeleton A pulsing placeholder with the shape of the content being loaded.\nFeedback\tEmpty state\t/docs/components/empty-state\tJxEmptyState What to show when a list or a search has no result: a title, an explanation and an action.\nFeedback\tToast\t/docs/components/toast\tJxToast Short notifications stacked in a corner of the screen by `JxToastRegion`. You own the queue: add a toast to your state, remove it on dismiss or after a delay.\nData display\tAvatar\t/docs/components/avatar\tJxAvatar A round picture of a person, or their initials when there is no image.\nData display\tTooltip\t/docs/components/tooltip\tJxTooltip A short hint shown above an element on hover and on keyboard focus. CSS for showing it; in the browser, Escape hides it.\nData display\tKeyboard key\t/docs/components/kbd\tJxKbd A keyboard key, such as `Ctrl` or `K`, in a native `&lt;kbd&gt;`.\nData display\tData table\t/docs/components/data-table\tJxDataTable A table with a caption, sortable headers, numeric columns, striped rows, a sticky header and an empty state. You own the data: it reports clicks on headers.\nData display\tStat\t/docs/components/stat\tJxStat A key figure with its label, an optional change and a trend that is read aloud, not shown by color alone.\nNavigation\tBreadcrumbs\t/docs/components/breadcrumbs\tJxBreadcrumbs The path to the current page, in a `&lt;nav aria-label=\"Breadcrumb\"&gt;`.\nNavigation\tPagination\t/docs/components/pagination\tJxPagination Previous, numbered pages around the current one, and next. Links or buttons.\nNavigation\tTabs\t/docs/components/tabs\tJxTabs Panels of related content, one visible at a time, following the ARIA tabs pattern with arrow-key navigation.\nNavigation\tSteps\t/docs/components/steps\tJxSteps Where the user is in a flow of several steps: complete steps get a check mark, the current one is announced with `aria-current=\"step\"`.\nOverlays\tModal\t/docs/components/modal\tJxModal A modal dialog on the native `&lt;dialog&gt;`, opened and closed by HTML command buttons, with no JavaScript. `JxModalTrigger` opens it.\nOverlays\tDrawer\t/docs/components/drawer\tJxDrawer A panel that slides in from the side of the screen. Same native dialog behavior as the modal.\nOverlays\tDropdown menu\t/docs/components/dropdown-menu\tJxDropdownMenu A button that reveals a list of links and actions, built on `&lt;details&gt;`. It opens without JavaScript; in the browser, Escape, a click outside and a chosen action close it.\nReference\tCSS utilities\t/docs/utilities\t\nReference\tTheme tokens\t/docs/reference/tokens\t\nReference\tBreakpoints\t/docs/reference/breakpoints\t\nReference\tSecurity\t/docs/security\t\nReference\tWhat's new\t/docs/whats-new\t\nUtility families\tDisplay\t/docs/utilities/display\tBox type, visibility and overflow of elements. display display-standalone\nUtility families\tSpacing\t/docs/utilities/spacing\tPadding and margin, on the theme spacing scale. padding margin\nUtility families\tColors\t/docs/utilities/colors\tText, background and border colors, from the theme palette. color background-color background-size\nUtility families\tTypography\t/docs/utilities/typography\tFamilies, sizes, weights, line height, decorations, case, truncation and screen-reader-only text. font-size font-weight line-height text-align vertical-align list-style-type list-style-position font-family letter-spacing text-decoration-line text-decoration-color text-decoration-thickness text-underline-offset white-space font-stretch outline outline-color outline-offset text-standalone text-wrap word-break line-clamp\nUtility families\tSizing\t/docs/utilities/sizing\tWidths and heights, minimum and maximum. width height max-width max-height min-width min-height\nUtility families\tBorders\t/docs/utilities/borders\tBorder width, color, style and radius. border-width border-color border-radius\nUtility families\tFlexbox\t/docs/utilities/flexbox\tDirection, alignment, order, wrapping and sizing of flex items. align-items justify-content flex-direction gap flex-wrap-standalone flex-wrap flex flex-grow-shrink align-self align-content place-content justify-items justify-self order flex-basis\nUtility families\tGrid\t/docs/utilities/grid\tColumns, rows, placement and gaps of CSS grids. grid-template-columns grid-template-rows grid-column grid-row gap-axis\nUtility families\tPosition and layers\t/docs/utilities/position\tPositioning, offsets, stacking and scrolling. position position-standalone z-index inset scroll-margin-top overflow\nUtility families\tEffects and transitions\t/docs/utilities/effects\tOpacity, shadows, transitions, translation, scale, rotation and skew. opacity box-shadow transition transition-duration transition-timing-function cursor translate-x translate-y scale rotate skew transform-origin\nUtility families\tFilters\t/docs/utilities/filters\tBlur, brightness, contrast and saturation, on the element or on what lies behind it. Filters compose with each other. blur brightness contrast grayscale hue-rotate saturate drop-shadow filter-standalone backdrop-blur backdrop-brightness backdrop-contrast backdrop-grayscale backdrop-saturate\nUtility families\tGradients\t/docs/utilities/gradients\tGradient direction or angle, then its start, middle and end colors. linear-gradient gradient-standalone gradient-stops gradient-via\nUtility families\tAnimations\t/docs/utilities/animations\tReady-made animations, duration and delay. Keyframes are only written for the animations you use. animation animation-timing transition-delay\nUtility families\tMedia and backgrounds\t/docs/utilities/media\tAspect ratio, image fit, background position and repeat, border style. aspect-ratio object-fit object-position background-position background-repeat mix-blend-mode border-style\nUtility families\tForms\t/docs/utilities/forms\tNative appearance, cursor, resizing, selection and focus ring. appearance accent-color caret-color color-scheme resize field-sizing pointer-events user-select ring ring-color\nTools\tPlayground\t/playground\ttry live editor compile\nTools\tTheme Studio\t/theme-studio\ttheme colors fonts radius shadows breakpoints jx.yaml generator customize"}-->
             <div class="flex ai:center">
-              <button class="flex ai:center gap:3 h:10 px:3 lg:pr:2 br:lg fs:sm c:haze bw:1 bc:edge bg:[rgba(255,255,255,0.03)] tr:all hover:c:snow hover:bc:[rgba(255,255,255,0.18)] lg:w:[15rem] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" type="button" aria-haspopup="dialog" aria-controls="site-search" aria-keyshortcuts="Control+K Meta+K /">
+              <button class="flex ai:center gap:3 h:10 px:3 xl:pr:2 br:lg fs:sm c:haze bw:1 bc:edge bg:tint tr:all hover:c:snow hover:bc:edge-strong xl:w:[15rem] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" type="button" aria-haspopup="dialog" aria-controls="site-search" aria-keyshortcuts="Control+K Meta+K /">
                 <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"></path><path d="M21 21l-4.3-4.3"></path></svg>
-                <span class="sr-only lg:not-sr-only grow:1 ta:left">Search the docs</span>
-                <kbd class="hidden lg:inline-flex ai:center px:2 py:[0.1rem] br:md ff:code fs:xs c:haze bg:[rgba(255,255,255,0.06)] bw:1 bc:edge">Ctrl K</kbd>
+                <span class="sr-only xl:not-sr-only grow:1 ta:left">Search the docs</span>
+                <kbd class="hidden xl:inline-flex ai:center px:2 py:[0.1rem] br:md ff:code fs:xs c:haze bg:tint bw:1 bc:edge">Ctrl K</kbd>
               </button>
-              <dialog id="site-search" class="m:auto mt:[12vh] w:[calc(100%_-_2rem)] mw:[40rem] p:0 br:2xl c:snow bg:deep bw:1 bc:[rgba(255,255,255,0.12)] sh:2xl ov:hidden backdrop:bg:[rgba(5,7,10,0.72)] backdrop:bblur:sm open:anim:fade-in motion-reduce:anim:none" aria-label="Search the documentation">
+              <dialog id="site-search" class="m:auto mt:[12vh] w:[calc(100%_-_2rem)] mw:[40rem] p:0 br:2xl c:snow bg:deep bw:1 bc:edge-strong sh:2xl ov:hidden backdrop:bg:[rgba(5,7,10,0.72)] backdrop:bblur:sm open:anim:fade-in motion-reduce:anim:none" aria-label="Search the documentation">
                 <div class="flex ai:center gap:3 px:5 bwb:1 bc:edge">
                   <span class="c:haze"><svg class="shrink:0 w:5 h:5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"></path><path d="M21 21l-4.3-4.3"></path></svg></span>
-                  <input id="site-search-input" class="grow:1 mnw:0 h:[3.5rem] bg:transparent c:snow fs:base caret:beam placeholder:c:[#6B7385] focus:ol:none app:none" placeholder="Search pages, utilities, components…" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="site-search-results" aria-autocomplete="list" aria-activedescendant="site-search-option-0" type="text"/>
+                  <input id="site-search-input" class="grow:1 mnw:0 h:[3.5rem] bg:transparent c:snow fs:base caret:beam placeholder:c:faint focus:ol:none app:none" placeholder="Search pages, utilities, components…" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="site-search-results" aria-autocomplete="list" aria-activedescendant="site-search-option-0" type="text"/>
                   <button class="shrink:0 px:2 py:1 br:md ff:code fs:xs c:haze bw:1 bc:edge hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" type="button" aria-label="Close the search">Esc</button>
                 </div>
                 <p class="px:5 pt:4 pb:1 fs:xs fw:semibold c:haze">Suggested</p>
                 <ul id="site-search-results" class="mh:[min(24rem,60vh)] ovy:auto p:2" role="listbox" aria-label="Pages">
-                  <li id="site-search-option-0" class="flex ai:center jc:between gap:4 px:3 py:3 br:lg cur:pointer bg:[rgba(59,108,240,0.18)]" role="option" aria-selected="true">
+                  <li id="site-search-option-0" class="flex ai:center jc:between gap:4 px:3 py:3 br:lg cur:pointer bg:brand-soft" role="option" aria-selected="true">
                     <span class="flex fd:col mnw:0"><span class="fw:medium c:snow truncate">Installation</span><span class="fs:xs c:haze truncate">Getting started</span></span><span class="shrink:0 c:beam"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></span>
                   </li>
                   <li id="site-search-option-1" class="flex ai:center jc:between gap:4 px:3 py:3 br:lg cur:pointer" role="option" aria-selected="false">
                     <span class="flex fd:col mnw:0"><span class="fw:medium c:snow truncate">Class syntax</span><span class="fs:xs c:haze truncate">Core concepts</span></span>
                   </li>
                   <li id="site-search-option-2" class="flex ai:center jc:between gap:4 px:3 py:3 br:lg cur:pointer" role="option" aria-selected="false">
-                    <span class="flex fd:col mnw:0"><span class="fw:medium c:snow truncate">Overview</span><span class="fs:xs c:haze truncate">Utilities</span></span>
+                    <span class="flex fd:col mnw:0"><span class="fw:medium c:snow truncate">CSS utilities</span><span class="fs:xs c:haze truncate">Reference</span></span>
                   </li>
                   <li id="site-search-option-3" class="flex ai:center jc:between gap:4 px:3 py:3 br:lg cur:pointer" role="option" aria-selected="false">
                     <span class="flex fd:col mnw:0"><span class="fw:medium c:snow truncate">All components</span><span class="fs:xs c:haze truncate">Components</span></span>
@@ -82,14 +89,20 @@
             </div>
             <!--/@search_palette-->
             <a class="hidden sm:inline-flex ai:center h:10 px:3 br:lg ff:code fs:xs c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" title="What's new in 0.0.5" href="/zaspr-kit/docs/whats-new">v0.0.5</a>
-            <a class="hidden sm:flex ai:center jc:center w:10 h:10 br:lg c:haze tr:colors hover:c:snow hover:bg:[rgba(255,255,255,0.06)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" aria-label="ZASPR Kit on GitHub" rel="noopener" href="https://github.com/NathanaelZie/zaspr-kit">
+            <a class="hidden sm:flex ai:center jc:center w:10 h:10 br:lg c:haze tr:colors hover:c:snow hover:bg:tint focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" aria-label="ZASPR Kit on GitHub" rel="noopener" href="https://github.com/NathanaelZie/zaspr-kit">
               <svg class="shrink:0 w:5 h:5" fill="currentColor" aria-hidden="true" viewBox="0 0 16 16">
                 <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
               </svg>
             </a>
+            <!--@theme_toggle-->
+            <button class="flex ai:center jc:center w:10 h:10 br:lg c:haze tr:colors hover:c:snow hover:bg:tint focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" type="button" aria-label="Dark theme" aria-pressed="true" title="Switch to the light theme">
+              <span class="hidden dark:inline-flex"><svg class="shrink:0 w:5 h:5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></span>
+              <span class="inline-flex dark:hidden"><svg class="shrink:0 w:5 h:5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10z"></path><path d="M12 1v2"></path><path d="M12 21v2"></path><path d="M4.2 4.2l1.4 1.4"></path><path d="M18.4 18.4l1.4 1.4"></path><path d="M1 12h2"></path><path d="M21 12h2"></path><path d="M4.2 19.8l1.4-1.4"></path><path d="M18.4 5.6l1.4-1.4"></path></svg></span>
+            </button>
+            <!--/@theme_toggle-->
             <!--@nav_bar data={"active":""}-->
-            <div class="md:hidden">
-              <button class="flex ai:center px:4 h:10 br:lg fs:sm fw:semibold c:snow bg:[rgba(255,255,255,0.06)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" type="button" aria-expanded="false" aria-controls="main-menu">Menu</button>
+            <div class="lg:hidden">
+              <button class="flex ai:center px:4 h:10 br:lg fs:sm fw:semibold c:snow bg:tint focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" type="button" aria-expanded="false" aria-controls="main-menu">Menu</button>
             </div>
             <!--/@nav_bar-->
           </div>
@@ -97,30 +110,38 @@
       </header>
       <main>
         <section id="top" class="relative ov:hidden">
-          <div class="absolute inset:0 z:0 bg:[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bgs:[64px_64px]" aria-hidden="true"></div>
-          <div class="absolute inset:0 z:0 bg:[radial-gradient(40rem_28rem_at_8%_-4%,rgba(59,108,240,0.34),transparent_70%),radial-gradient(36rem_26rem_at_88%_10%,rgba(45,212,191,0.16),transparent_70%)]" aria-hidden="true"></div>
-          <div class="absolute inset:0 z:0 bg:[linear-gradient(to_bottom,transparent_60%,#0B0D12)]" aria-hidden="true"></div>
+          <div class="absolute inset:0 z:0 bg:[linear-gradient(var(--zk-tint)_1px,transparent_1px),linear-gradient(90deg,var(--zk-tint)_1px,transparent_1px)] bgs:[64px_64px]" aria-hidden="true"></div>
+          <div class="absolute inset:0 z:0 bg:[radial-gradient(40rem_28rem_at_8%_-4%,var(--zk-brand-soft),transparent_70%),radial-gradient(36rem_26rem_at_88%_10%,var(--zk-accent-soft),transparent_70%)]" aria-hidden="true"></div>
+          <div class="absolute inset:0 z:0 bg:[linear-gradient(to_bottom,transparent_60%,var(--zk-abyss))]" aria-hidden="true"></div>
           <div class="mw:[76rem] mx:auto px:5 md:px:8 relative z:10 grid cols:1 lg:cols:[minmax(0,1fr)_minmax(0,1.2fr)] gap:12 lg:gap:16 ai:center pt:14 md:pt:[5rem] lg:pt:[6rem]">
             <div class="flex fd:col ai:start">
-              <a class="inline-flex ai:center gap:2 px:3 py:1 br:full fs:sm c:snow bg:[rgba(255,255,255,0.05)] bw:1 bc:edge tr:all hover:bc:[rgba(255,255,255,0.2)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new">
+              <a class="inline-flex ai:center gap:2 px:3 py:1 br:full fs:sm c:snow bg:tint bw:1 bc:edge tr:all hover:bc:edge-strong focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new">
                 <span class="px:2 py:[0.1rem] br:full fs:xs fw:semibold c:abyss bg:ident">New</span>
                 jx_cli 0.0.5 supports Jaspr 0.23
                 <svg class="shrink:0 w:4 h:4 c:haze" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
               </a>
-              <h1 class="mt:7 fs:[clamp(2.5rem,5.4vw,4.25rem)] fw:extrabold lh:[1.04] ls:tighter c:snow tw:balance">Utility-first CSS for Jaspr, written in Dart</h1>
+              <h1 class="mt:7 fs:[clamp(2.6rem,5.6vw,4.5rem)] fw:extrabold lh:[1.02] ls:tighter c:snow tw:balance">
+                <span class="block">Build beautiful interfaces.</span><span class="block c:brand">The Dart way.</span>
+              </h1>
               <p class="mt:6 fs:lg md:fs:xl lh:relaxed c:haze mw:[36rem]">
-                Write classes like <code class="inline-flex wrap ff:code fs:[0.95em]"><span class="c:variant">md</span><span class="c:haze">:</span><span class="c:variant">hover</span><span class="c:haze">:</span><span class="c:ident">bg</span><span class="c:haze">:</span><span class="c:value">blue</span></code>
-                 in your Jaspr components. JX compiles only the ones you use into a stylesheet, and ships accessible components built with them. One Dart package, no Node.js.
+                A complete utility-first styling ecosystem for Jaspr. Write expressive classes, build accessible components, and ship faster, powered entirely by Dart.
+              </p>
+              <p class="mt:4 fs:base lh:relaxed c:haze mw:[36rem]">
+                Classes like <code class="inline-flex wrap ff:code fs:[0.95em]"><span class="c:variant">md</span><span class="c:haze">:</span><span class="c:variant">hover</span><span class="c:haze">:</span><span class="c:ident">bg</span><span class="c:haze">:</span><span class="c:value">blue</span></code>
+                 compile to a stylesheet that holds only what you use. No Node.js.
               </p>
               <div class="flex fd:col sm:fd:row ai:stretch gap:3 mt:9 w:full sm:w:auto">
-                <a class="inline-flex ai:center jc:center gap:2 px:6 py:3 mnh:[48px] br:lg fw:semibold c:white bg:brand sh:lg tr:all hover:bg:[#4E7CF5] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/installation">
+                <a class="inline-flex ai:center jc:center gap:2 px:6 py:3 mnh:[48px] br:lg fw:semibold c:on-brand bg:brand sh:lg tr:all hover:bg:brand-hover hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/installation">
                   Get started
                   <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
                 </a>
+                <a class="inline-flex ai:center jc:center gap:2 px:6 py:3 mnh:[48px] br:lg fw:semibold c:snow bg:tint bw:1 bc:edge tr:all hover:bg:tint-strong hover:bc:edge-strong focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components">Explore components</a>
+              </div>
+              <div class="mt:4 w:full sm:w:[22rem]">
                 <!--@ui data={"command":"dart pub add jx_cli"}-->
-                <div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left">
+                <div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:ink bw:1 bc:edge ff:code fs:sm c:snow ta:left">
                   <code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart pub add jx_cli</code>
-                  <button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copy the command" title="Copy">
+                  <button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:tint" type="button" aria-label="Copy the command" title="Copy">
                     <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg>
                   </button>
                 </div>
@@ -128,7 +149,7 @@
               </div>
               <ul class="flex wrap gx:6 gy:2 mt:8 fs:sm c:haze">
                 <li class="flex ai:center gap:2">
-                  <span class="c:ident"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span>Dart 3.10 or newer
+                  <span class="c:ident"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span>Dart 3.10.7 or newer
                 </li>
                 <li class="flex ai:center gap:2">
                   <span class="c:ident"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span>Jaspr 0.22 and 0.23
@@ -138,21 +159,21 @@
                 </li>
               </ul>
             </div>
-            <figure class="relative mnw:0 br:2xl bw:1 bc:[rgba(255,255,255,0.1)] bg:[#07090D] sh:2xl ov:hidden">
+            <figure class="relative mnw:0 br:2xl bw:1 bc:edge-strong bg:ink sh:2xl ov:hidden">
               <div class="flex ai:center jc:between gap:3 px:4 h:[2.75rem] bwb:1 bc:edge bg:deep">
                 <figcaption class="flex ai:center gap:2 ff:code fs:xs c:snow"><span class="w:2 h:2 br:full bg:ident" aria-hidden="true"></span>profile_row.dart</figcaption>
                 <span class="hidden sm:inline fs:xs c:haze">Jaspr component</span>
               </div>
-              <pre class="ff:code fs:xs sm:fs:sm lg:fs:xs lh:[1.85] px:4 py:5 ovx:auto ws:pre c:[#C9D1DE]"><code><span class="inline-block w:5 mr:3 ta:right c:[#4B5263] us:none">1</span><span class="c:[#C792EA]">div</span><span class="c:haze">(classes: </span><span class="c:[#A5D6A7]">'</span><code class="inline-flex wrap ff:code "><span class="c:ident">flex</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">ai</span><span class="c:haze">:</span><span class="c:value">center</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">gap</span><span class="c:haze">:</span><span class="c:value">4</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">p</span><span class="c:haze">:</span><span class="c:value">5</span></code> <code class="inline-flex wrap ff:code "><span class="c:variant">md</span><span class="c:haze">:</span><span class="c:ident">p</span><span class="c:haze">:</span><span class="c:value">6</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">br</span><span class="c:haze">:</span><span class="c:value">xl</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">bg</span><span class="c:haze">:</span><span class="c:value">white</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">sh</span><span class="c:haze">:</span><span class="c:value">lg</span></code><span class="c:[#A5D6A7]">'</span><span class="c:haze">, [</span>
-<span class="inline-block w:5 mr:3 ta:right c:[#4B5263] us:none">2</span>  <span class="c:value">JxAvatar</span><span class="c:haze">(name: 'Ada Lovelace'),</span>
-<span class="inline-block w:5 mr:3 ta:right c:[#4B5263] us:none">3</span>  <span class="c:[#C792EA]">div</span><span class="c:haze">([</span>
-<span class="inline-block w:5 mr:3 ta:right c:[#4B5263] us:none">4</span>    <span class="c:[#C792EA]">p</span><span class="c:haze">(classes: </span><span class="c:[#A5D6A7]">'</span><code class="inline-flex wrap ff:code "><span class="c:ident">fw</span><span class="c:haze">:</span><span class="c:value">semibold</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">c</span><span class="c:haze">:</span><span class="c:value">gray-900</span></code><span class="c:[#A5D6A7]">'</span><span class="c:haze">, [.text('Ada Lovelace')]),</span>
-<span class="inline-block w:5 mr:3 ta:right c:[#4B5263] us:none">5</span>    <span class="c:[#C792EA]">p</span><span class="c:haze">(classes: </span><span class="c:[#A5D6A7]">'</span><code class="inline-flex wrap ff:code "><span class="c:ident">fs</span><span class="c:haze">:</span><span class="c:value">sm</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">c</span><span class="c:haze">:</span><span class="c:value">gray-500</span></code><span class="c:[#A5D6A7]">'</span><span class="c:haze">, [.text('Analyst')]),</span>
-<span class="inline-block w:5 mr:3 ta:right c:[#4B5263] us:none">6</span>  <span class="c:haze">]),</span>
-<span class="inline-block w:5 mr:3 ta:right c:[#4B5263] us:none">7</span>  <span class="c:[#C792EA]">span</span><span class="c:haze">(classes: </span><span class="c:[#A5D6A7]">'</span><code class="inline-flex wrap ff:code "><span class="c:ident">ml</span><span class="c:haze">:</span><span class="c:value">auto</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">px</span><span class="c:haze">:</span><span class="c:value">2</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">br</span><span class="c:haze">:</span><span class="c:value">full</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">fs</span><span class="c:haze">:</span><span class="c:value">xs</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">c</span><span class="c:haze">:</span><span class="c:value">teal-700</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">bg</span><span class="c:haze">:</span><span class="c:value">teal-100</span></code><span class="c:[#A5D6A7]">'</span><span class="c:haze">, [</span>
-<span class="inline-block w:5 mr:3 ta:right c:[#4B5263] us:none">8</span>    <span class="c:haze">.text('Online'),</span>
-<span class="inline-block w:5 mr:3 ta:right c:[#4B5263] us:none">9</span>  <span class="c:haze">]),</span>
-<span class="inline-block w:5 mr:3 ta:right c:[#4B5263] us:none">10</span><span class="c:haze">])</span>
+              <pre class="ff:code fs:xs sm:fs:sm lg:fs:xs lh:[1.85] px:4 py:5 ovx:auto ws:pre c:soft"><code><span class="inline-block w:5 mr:3 ta:right c:faint us:none">1</span><span class="c:fn">div</span><span class="c:haze">(classes: </span><span class="c:str">'</span><code class="inline-flex wrap ff:code "><span class="c:ident">flex</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">ai</span><span class="c:haze">:</span><span class="c:value">center</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">gap</span><span class="c:haze">:</span><span class="c:value">4</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">p</span><span class="c:haze">:</span><span class="c:value">5</span></code> <code class="inline-flex wrap ff:code "><span class="c:variant">md</span><span class="c:haze">:</span><span class="c:ident">p</span><span class="c:haze">:</span><span class="c:value">6</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">br</span><span class="c:haze">:</span><span class="c:value">xl</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">bg</span><span class="c:haze">:</span><span class="c:value">white</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">sh</span><span class="c:haze">:</span><span class="c:value">lg</span></code><span class="c:str">'</span><span class="c:haze">, [</span>
+<span class="inline-block w:5 mr:3 ta:right c:faint us:none">2</span>  <span class="c:value">JxAvatar</span><span class="c:haze">(name: 'Ada Lovelace'),</span>
+<span class="inline-block w:5 mr:3 ta:right c:faint us:none">3</span>  <span class="c:fn">div</span><span class="c:haze">([</span>
+<span class="inline-block w:5 mr:3 ta:right c:faint us:none">4</span>    <span class="c:fn">p</span><span class="c:haze">(classes: </span><span class="c:str">'</span><code class="inline-flex wrap ff:code "><span class="c:ident">fw</span><span class="c:haze">:</span><span class="c:value">semibold</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">c</span><span class="c:haze">:</span><span class="c:value">gray-900</span></code><span class="c:str">'</span><span class="c:haze">, [.text('Ada Lovelace')]),</span>
+<span class="inline-block w:5 mr:3 ta:right c:faint us:none">5</span>    <span class="c:fn">p</span><span class="c:haze">(classes: </span><span class="c:str">'</span><code class="inline-flex wrap ff:code "><span class="c:ident">fs</span><span class="c:haze">:</span><span class="c:value">sm</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">c</span><span class="c:haze">:</span><span class="c:value">gray-500</span></code><span class="c:str">'</span><span class="c:haze">, [.text('Analyst')]),</span>
+<span class="inline-block w:5 mr:3 ta:right c:faint us:none">6</span>  <span class="c:haze">]),</span>
+<span class="inline-block w:5 mr:3 ta:right c:faint us:none">7</span>  <span class="c:fn">span</span><span class="c:haze">(classes: </span><span class="c:str">'</span><code class="inline-flex wrap ff:code "><span class="c:ident">ml</span><span class="c:haze">:</span><span class="c:value">auto</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">px</span><span class="c:haze">:</span><span class="c:value">2</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">br</span><span class="c:haze">:</span><span class="c:value">full</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">fs</span><span class="c:haze">:</span><span class="c:value">xs</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">c</span><span class="c:haze">:</span><span class="c:value">teal-700</span></code> <code class="inline-flex wrap ff:code "><span class="c:ident">bg</span><span class="c:haze">:</span><span class="c:value">teal-100</span></code><span class="c:str">'</span><span class="c:haze">, [</span>
+<span class="inline-block w:5 mr:3 ta:right c:faint us:none">8</span>    <span class="c:haze">.text('Online'),</span>
+<span class="inline-block w:5 mr:3 ta:right c:faint us:none">9</span>  <span class="c:haze">]),</span>
+<span class="inline-block w:5 mr:3 ta:right c:faint us:none">10</span><span class="c:haze">])</span>
 </code></pre>
               <div class="bwt:1 bc:edge">
                 <div class="flex ai:center jc:between px:4 h:10 fs:xs c:haze bg:deep bwb:1 bc:edge"><span>Result</span><span class="ff:code">web/jx.css</span></div>
@@ -199,15 +220,46 @@
                   <p class="mt:2 fs:sm lh:relaxed c:haze">Optional: adds !important to the declaration.</p>
                 </div>
               </div>
-              <div class="p:5 md:px:10 md:py:8 bg:[rgba(0,0,0,0.22)] bwt:1 bc:edge">
+              <div class="p:5 md:px:10 md:py:8 bg:sunken bwt:1 bc:edge">
                 <p class="fs:sm fw:semibold c:haze mb:3">CSS produced by the engine</p>
-                <pre class="ff:code fs:sm lh:relaxed ov:auto ws:pre c:[#C9D1DE]"><code>@media (min-width: 768px) {
+                <pre class="ff:code fs:sm lh:relaxed ov:auto ws:pre c:soft"><code>@media (min-width: 768px) {
   .md\:hover\:bg\:blue\!:hover {
     background-color: #3b82f6 !important;
   }
 }</code></pre>
               </div>
             </div>
+          </div>
+        </section>
+        <section class="relative z:10" aria-label="Project in numbers">
+          <div class="mw:[76rem] mx:auto px:5 md:px:8">
+            <dl class="grid cols:2 lg:cols:4 br:2xl bw:1 bc:edge bg:deep ov:hidden">
+              <div class="flex fd:col-reverse gap:1 p:5 md:p:7">
+                <dt class="fs:sm c:haze">
+                  <a class="br:sm hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities">utility rules</a>
+                </dt>
+                <dd class="fs:[clamp(1.75rem,3vw,2.5rem)] fw:extrabold ls:tight c:snow">113</dd>
+              </div>
+              <div class="flex fd:col-reverse gap:1 p:5 md:p:7 bwl:1 bc:edge">
+                <dt class="fs:sm c:haze">
+                  <a class="br:sm hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities">utility families</a>
+                </dt>
+                <dd class="fs:[clamp(1.75rem,3vw,2.5rem)] fw:extrabold ls:tight c:snow">15</dd>
+              </div>
+              <div class="flex fd:col-reverse gap:1 p:5 md:p:7 bwt:1 lg:bwt:0 bc:edge lg:bwl:1">
+                <dt class="fs:sm c:haze">
+                  <a class="br:sm hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components">accessible components</a>
+                </dt>
+                <dd class="fs:[clamp(1.75rem,3vw,2.5rem)] fw:extrabold ls:tight c:snow">33</dd>
+              </div>
+              <div class="flex fd:col-reverse gap:1 p:5 md:p:7 bwl:1 bc:edge bwt:1 lg:bwt:0 bc:edge">
+                <dt class="fs:sm c:haze">
+                  <a class="br:sm hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components">component categories</a>
+                </dt>
+                <dd class="fs:[clamp(1.75rem,3vw,2.5rem)] fw:extrabold ls:tight c:snow">7</dd>
+              </div>
+            </dl>
+            <p class="mt:3 fs:xs c:faint">Counted from the rule registry and the component catalog of jx_cli 0.0.5.</p>
           </div>
         </section>
         <section id="ecosystem" class="smt:16 py:[4.5rem] md:py:[6rem] ">
@@ -224,8 +276,8 @@
                 <p class="lh:relaxed c:haze grow:1">
                   Utility classes with a readable syntax: variants, utility, value, importance. 113 rules in 15 families, on a theme you extend.
                 </p>
-                <code class="block ff:code fs:xs lh:relaxed px:4 py:3 br:lg bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] wb:anywhere">div(classes: 'flex gap:4 p:6 md:p:8')</code>
-                <a class="inline-flex ai:center gap:2 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/syntax">
+                <code class="block ff:code fs:xs lh:relaxed px:4 py:3 br:lg bg:ink bw:1 bc:edge c:soft wb:anywhere">div(classes: 'flex gap:4 p:6 md:p:8')</code>
+                <a class="inline-flex ai:center gap:2 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:brand-line tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/syntax">
                   Class syntax
                   <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
                 </a>
@@ -235,8 +287,8 @@
                 <p class="lh:relaxed c:haze grow:1">
                   The compiler, a watch mode, a build_runner builder and a Tailwind migration. Only the classes found in your sources reach the stylesheet.
                 </p>
-                <code class="block ff:code fs:xs lh:relaxed px:4 py:3 br:lg bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] wb:anywhere">dart run jx_cli:jx build -w</code>
-                <a class="inline-flex ai:center gap:2 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/cli">
+                <code class="block ff:code fs:xs lh:relaxed px:4 py:3 br:lg bg:ink bw:1 bc:edge c:soft wb:anywhere">dart run jx_cli:jx build -w</code>
+                <a class="inline-flex ai:center gap:2 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:brand-line tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/cli">
                   Command line
                   <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
                 </a>
@@ -246,38 +298,13 @@
                 <p class="lh:relaxed c:haze grow:1">
                   33 accessible components: buttons, fields, dialogs, drawers, accordions, data tables. Styled with JX, themed by your tokens.
                 </p>
-                <code class="block ff:code fs:xs lh:relaxed px:4 py:3 br:lg bg:[#07090D] bw:1 bc:edge c:[#C9D1DE] wb:anywhere">JxButton(onClick: save, [.text('Save')])</code>
-                <a class="inline-flex ai:center gap:2 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components">
+                <code class="block ff:code fs:xs lh:relaxed px:4 py:3 br:lg bg:ink bw:1 bc:edge c:soft wb:anywhere">JxButton(onClick: save, [.text('Save')])</code>
+                <a class="inline-flex ai:center gap:2 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:brand-line tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components">
                   Browse the components
                   <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
                 </a>
               </div>
             </div>
-          </div>
-        </section>
-        <section id="get-started" class="smt:16 py:[4.5rem] md:py:[6rem] ">
-          <div class="mw:[76rem] mx:auto px:5 md:px:8">
-            <div class="mb:12 mw:[48rem]">
-              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">Get started in three steps</h2>
-              <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
-                Add the CLI, generate the configuration, start the build. The stylesheet only contains the classes found in your sources.
-              </p>
-              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/installation">
-                Read the installation guide
-                <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
-              </a>
-            </div>
-            <ol class="grid cols:1 lg:cols:3 gap:6">
-              <li class="flex fd:col gap:4 mnw:0">
-                <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:[rgba(59,108,240,0.16)]">1</span><h3 class="fs:lg fw:bold c:snow">Add the dependency</h3></div><!--@ui data={"command":"dart pub add jx_cli"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart pub add jx_cli</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copy the command" title="Copy"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
-              </li>
-              <li class="flex fd:col gap:4 mnw:0">
-                <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:[rgba(59,108,240,0.16)]">2</span><h3 class="fs:lg fw:bold c:snow">Create the configuration</h3></div><!--@ui data={"command":"dart run jx_cli:jx init"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart run jx_cli:jx init</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copy the command" title="Copy"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
-              </li>
-              <li class="flex fd:col gap:4 mnw:0">
-                <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:[rgba(59,108,240,0.16)]">3</span><h3 class="fs:lg fw:bold c:snow">Build in watch mode</h3></div><!--@ui data={"command":"dart run jx_cli:jx build -w"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:[#07090D] bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart run jx_cli:jx build -w</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:[rgba(255,255,255,0.08)]" type="button" aria-label="Copy the command" title="Copy"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
-              </li>
-            </ol>
           </div>
         </section>
         <section id="syntax" class="smt:16 py:[4.5rem] md:py:[6rem] ">
@@ -287,7 +314,7 @@
               <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
                 Variants, utility, value and importance: every class reads from left to right. The CSS below is compiled by the engine when this page is rendered.
               </p>
-              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/syntax">
+              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:brand-line tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/syntax">
                 Learn the syntax
                 <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
               </a>
@@ -297,7 +324,7 @@
                 <div>
                   <code class="inline-flex wrap ff:code fs:sm fw:semibold"><span class="c:ident">p</span><span class="c:haze">:</span><span class="c:value">4</span></code>
                 </div>
-                <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:[#C9D1DE] ov:auto ws:pre"><code>.p\:4 {
+                <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:soft ov:auto ws:pre"><code>.p\:4 {
   padding: 1rem;
 }</code></pre>
               </div>
@@ -311,7 +338,7 @@
                     <span class="c:value">3</span>
                   </code>
                 </div>
-                <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:[#C9D1DE] ov:auto ws:pre"><code>@media (min-width: 768px) {
+                <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:soft ov:auto ws:pre"><code>@media (min-width: 768px) {
   .md\:cols\:3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -327,7 +354,7 @@
                     <span class="c:value">blue-700</span>
                   </code>
                 </div>
-                <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:[#C9D1DE] ov:auto ws:pre"><code>.hover\:bg\:blue-700:hover {
+                <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:soft ov:auto ws:pre"><code>.hover\:bg\:blue-700:hover {
   background-color: #1d4ed8;
 }</code></pre>
               </div>
@@ -339,7 +366,7 @@
                     <span class="c:value">[calc(100%_-_2rem)]</span>
                   </code>
                 </div>
-                <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:[#C9D1DE] ov:auto ws:pre"><code>.w\:\[calc\(100\%_-_2rem\)\] {
+                <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:soft ov:auto ws:pre"><code>.w\:\[calc\(100\%_-_2rem\)\] {
   width: calc(100% - 2rem);
 }</code></pre>
               </div>
@@ -353,7 +380,7 @@
                     <span class="c:value">2</span>
                   </code>
                 </div>
-                <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:[#C9D1DE] ov:auto ws:pre"><code>.focus-visible\:ring\:2:focus-visible {
+                <pre class="ff:code fs:xs md:fs:sm lh:relaxed c:soft ov:auto ws:pre"><code>.focus-visible\:ring\:2:focus-visible {
   box-shadow: 0 0 0 2px var(--jx-ring-color, currentColor);
 }</code></pre>
               </div>
@@ -367,15 +394,15 @@
               <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
                 The stylesheet rebuilds inside jaspr serve, the components are ready to use, and jx migrate brings your Tailwind classes along.
               </p>
-              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new">
+              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:brand-line tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/whats-new">
                 See everything new
                 <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
               </a>
             </div>
             <div class="grid cols:1 lg:cols:3 gap:4 mb:4">
               <div class="flex fd:col br:2xl bw:1 bc:edge bg:deep ov:hidden">
-                <div class="flex ai:center mnh:[8.5rem] p:5 bg:[#07090D] bwb:1 bc:edge" aria-hidden="true">
-                  <pre class="ff:code fs:xs lh:relaxed c:[#C9D1DE] ws:pre"><code><span class="c:haze">$ </span>dart pub add jx_cli
+                <div class="flex ai:center mnh:[8.5rem] p:5 bg:ink bwb:1 bc:edge" aria-hidden="true">
+                  <pre class="ff:code fs:xs lh:relaxed c:soft ws:pre"><code><span class="c:haze">$ </span>dart pub add jx_cli
 <span class="c:haze">$ </span>jaspr serve
 <span class="c:ident">web/jx.css rebuilt on save</span></code></pre>
                 </div>
@@ -387,7 +414,7 @@
                 </div>
               </div>
               <div class="flex fd:col br:2xl bw:1 bc:edge bg:deep ov:hidden">
-                <div class="flex ai:center mnh:[8.5rem] p:5 bg:[#07090D] bwb:1 bc:edge" aria-hidden="true">
+                <div class="flex ai:center mnh:[8.5rem] p:5 bg:ink bwb:1 bc:edge" aria-hidden="true">
                   <div class="flex wrap ai:center gap:2 p:4 br:lg bg:white dark:bg:gray-900">
                     <button class="focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed c:white bg:blue-700 bc:blue-700 hover:bg:blue-900 hover:bc:blue-900 active:sc:95 fs:sm px:3 py:1 mnh:[32px]" tabindex="-1" type="button">Save</button>
                     <button class="focus-visible:ol:2 focus-visible:olc:blue-500 focus-visible:olo:2 inline-flex ai:center jc:center gap:2 fw:semibold br:lg bw:1 cur:pointer us:none tr:all dur:150 td:none disabled:o:50 disabled:cur:not-allowed c:gray-900 bg:transparent bc:gray-300 hover:bg:gray-100 active:sc:95 dark:c:gray-100 dark:bc:gray-500 dark:hover:bg:gray-700 fs:sm px:3 py:1 mnh:[32px]" tabindex="-1" type="button">Cancel</button>
@@ -402,7 +429,7 @@
                 </div>
               </div>
               <div class="flex fd:col br:2xl bw:1 bc:edge bg:deep ov:hidden">
-                <div class="flex ai:center mnh:[8.5rem] p:5 bg:[#07090D] bwb:1 bc:edge" aria-hidden="true">
+                <div class="flex ai:center mnh:[8.5rem] p:5 bg:ink bwb:1 bc:edge" aria-hidden="true">
                   <pre class="ff:code fs:xs lh:relaxed ws:pre-wrap"><code><span class="block"><span class="c:haze">items-center</span><span class="c:haze">  -&gt;  </span><span class="c:ident">ai:center</span></span><span class="block"><span class="c:haze">px-4</span><span class="c:haze">  -&gt;  </span><span class="c:ident">px:4</span></span><span class="block"><span class="c:haze">hover:bg-blue-500</span><span class="c:haze">  -&gt;  </span><span class="c:ident">hover:bg:blue-500</span></span></code></pre>
                 </div>
                 <div class="flex fd:col gap:2 px:5 py:4">
@@ -435,7 +462,7 @@
               <div class="flex fd:col br:2xl bw:1 bc:edge bg:deep ov:hidden">
                 <div class="h:[9rem] p:4">
                   <div class="flex ai:center jc:center w:full h:full">
-                    <div class="w:10 h:10 br:full bw:4 bc:[rgba(255,255,255,0.12)] bs:solid anim:spin motion-reduce:anim:none bc:[#2DD4BF_rgba(255,255,255,0.12)_rgba(255,255,255,0.12)]" role="img" aria-label="Animated loading indicator"></div>
+                    <div class="w:10 h:10 br:full bw:4 bc:edge-strong bs:solid anim:spin motion-reduce:anim:none bc:[#2DD4BF_rgba(255,255,255,0.12)_rgba(255,255,255,0.12)]" role="img" aria-label="Animated loading indicator"></div>
                   </div>
                 </div>
                 <div class="px:5 py:4 bwt:1 bc:edge">
@@ -465,7 +492,7 @@
               <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
                 A settings screen built only with JX Components and a few layout classes. Nothing below is a picture: the fields, the switches and the accordion work.
               </p>
-              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/playground">
+              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:brand-line tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/playground">
                 Try them in the playground
                 <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
               </a>
@@ -544,8 +571,245 @@
               </div>
             </div>
             <div class="flex wrap gap:3 mt:6">
-              <a class="inline-flex ai:center jc:center gap:2 px:6 py:3 mnh:[48px] br:lg fw:semibold c:snow bg:[rgba(255,255,255,0.06)] tr:all hover:bg:[rgba(255,255,255,0.12)] focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components">See all 33 components</a>
+              <a class="inline-flex ai:center jc:center gap:2 px:6 py:3 mnh:[48px] br:lg fw:semibold c:snow bg:tint bw:1 bc:edge tr:all hover:bg:tint-strong hover:bc:edge-strong focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components">See all 33 components</a>
             </div>
+          </div>
+        </section>
+        <section id="playground" class="smt:16 py:[4.5rem] md:py:[6rem] ">
+          <div class="mw:[76rem] mx:auto px:5 md:px:8">
+            <div class="mb:12 mw:[48rem]">
+              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">The engine runs in your browser</h2>
+              <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
+                The same engine as the CLI, compiled to JavaScript by Jaspr. Pick an example or type classes: the preview and the CSS update on every keystroke.
+              </p>
+              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:brand-line tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/playground">
+                Open the full playground
+                <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+            <!--@playground_section-->
+            <div>
+              <div class="flex wrap gap:2 mb:5" role="group" aria-label="Examples">
+                <button class="px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:on-brand bg:brand" aria-pressed="true">Button</button>
+                <button class="px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze bg:tint hover:c:snow hover:bg:tint-strong" aria-pressed="false">Card</button>
+                <button class="px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze bg:tint hover:c:snow hover:bg:tint-strong" aria-pressed="false">Input</button>
+                <button class="px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze bg:tint hover:c:snow hover:bg:tint-strong" aria-pressed="false">Gradient</button>
+                <button class="px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze bg:tint hover:c:snow hover:bg:tint-strong" aria-pressed="false">Glass</button>
+                <button class="px:4 py:2 mnh:[44px] br:md fs:sm fw:semibold tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze bg:tint hover:c:snow hover:bg:tint-strong" aria-pressed="false">Heading</button>
+              </div>
+              <div class="grid cols:1 lg:cols:2 br:2xl bw:1 bc:edge bg:deep ov:hidden">
+                <div class="flex fd:col gap:5 p:5 md:p:6">
+                  <label class="flex fd:col gap:2">
+                    <span class="fs:sm fw:semibold c:snow">Classes</span><textarea class="w:full px:4 py:3 br:lg c:snow bg:ink bw:1 bc:edge app:none caret:beam placeholder:c:faint tr:all focus:ol:none focus:bc:brand focus:ring:4 ringc:brand-soft ff:code fs:sm fsz:content rsz:none mnh:[6rem] mh:[12rem]" rows="3" spellcheck="false">px:6 py:3 br:lg bg:teal c:white fw:semibold hover:bg:teal-700 focus-visible:ring:2</textarea>
+                  </label>
+                  <div class="flex fd:col gap:2">
+                    <div class="flex ai:center jc:between gap:3 fs:sm">
+                      <span class="fw:semibold c:snow">Generated CSS</span>
+                      <div class="flex ai:center gap:2">
+                        <span class="c:haze">8 rules</span>
+                        <button class="inline-flex ai:center gap:2 h:9 px:3 br:md fs:xs fw:medium tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:tint" type="button" aria-live="polite">
+                          <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg>
+                          Copy
+                        </button>
+                      </div>
+                    </div>
+                    <pre class="ff:code fs:sm lh:relaxed p:5 br:xl ov:auto ws:pre bg:ink bw:1 bc:edge c:soft mh:[18rem]"><code>.px\:6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.py\:3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.br\:lg {
+  border-radius: 0.5rem;
+}
+.bg\:teal {
+  background-color: #14b8a6;
+}
+.c\:white {
+  color: #ffffff;
+}
+.fw\:semibold {
+  font-weight: 600;
+}
+.hover\:bg\:teal-700:hover {
+  background-color: #0f766e;
+}
+.focus-visible\:ring\:2:focus-visible {
+  box-shadow: 0 0 0 2px var(--jx-ring-color, currentColor);
+}</code></pre>
+                  </div>
+                </div>
+                <div class="flex fd:col gap:3 p:5 md:p:6 bwt:1 lg:bwt:0 lg:bwl:1 bc:edge mnw:0">
+                  <div class="flex wrap ai:center jc:between gap:3">
+                    <span class="fs:sm fw:semibold c:snow">Preview</span>
+                    <div class="inline-flex gap:1 p:1 br:lg bg:tint bw:1 bc:edge" role="group" aria-label="Preview width">
+                      <button class="flex ai:center gap:2 px:3 h:9 br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" type="button" aria-pressed="false" title="375 px">
+                        <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 2h8v20H8z"></path><path d="M11 18h2"></path></svg>
+                        <span class="hidden sm:inline">Mobile</span>
+                      </button>
+                      <button class="flex ai:center gap:2 px:3 h:9 br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow" type="button" aria-pressed="false" title="768 px">
+                        <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 2h12v20H6z"></path><path d="M11 18h2"></path></svg>
+                        <span class="hidden sm:inline">Tablet</span>
+                      </button>
+                      <button class="flex ai:center gap:2 px:3 h:9 br:md fs:sm tr:colors focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:snow bg:deep sh:sm" type="button" aria-pressed="true" title="Full width">
+                        <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 4h18v12H3z"></path><path d="M8 20h8"></path><path d="M12 16v4"></path></svg>
+                        <span class="hidden sm:inline">Desktop</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="ovx:auto br:xl bw:1 bc:edge bg:sunken p:3">
+                    <iframe class="block mx:auto br:lg bg:white bw:1 bc:edge tr:all" title="Preview of the classes" sandbox srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;&lt;style&gt;*, ::before, ::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: currentColor;
+}
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+  font-family: ui-sans-serif, system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, sans-serif;
+}
+body {
+  margin: 0;
+  line-height: inherit;
+}
+h1, h2, h3, h4, h5, h6, p, blockquote, figure, pre, hr, dl, dd {
+  margin: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+ol, ul, menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+img, svg, video, canvas, audio, iframe, embed, object {
+  display: block;
+  vertical-align: middle;
+}
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+button, input, optgroup, select, textarea {
+  font: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+button, [role=&quot;button&quot;] {
+  cursor: pointer;
+}
+button, select {
+  text-transform: none;
+}
+button, [type=&quot;button&quot;], [type=&quot;reset&quot;], [type=&quot;submit&quot;] {
+  -webkit-appearance: button;
+  background-image: none;
+}
+input::placeholder, textarea::placeholder {
+  opacity: 1;
+  color: #9ca3af;
+}
+textarea {
+  resize: vertical;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+legend {
+  padding: 0;
+}
+[type=&quot;search&quot;] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+  height: auto;
+}
+:disabled {
+  cursor: default;
+}
+table {
+  border-collapse: collapse;
+  text-indent: 0;
+}
+[hidden] {
+  display: none;
+}
+.flex {
+  display: flex;
+}
+.ai\:center {
+  align-items: center;
+}
+.jc\:center {
+  justify-content: center;
+}
+.mnh\:\[100vh\] {
+  min-height: 100vh;
+}
+.m\:0 {
+  margin: 0px;
+}
+.p\:6 {
+  padding: 1.5rem;
+}
+.bg\:gray-100 {
+  background-color: #f3f4f6;
+}
+.ff\:sans {
+  font-family: ui-sans-serif, system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, sans-serif;
+}
+.px\:6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.py\:3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.br\:lg {
+  border-radius: 0.5rem;
+}
+.bg\:teal {
+  background-color: #14b8a6;
+}
+.c\:white {
+  color: #ffffff;
+}
+.fw\:semibold {
+  font-weight: 600;
+}
+.hover\:bg\:teal-700:hover {
+  background-color: #0f766e;
+}
+.focus-visible\:ring\:2:focus-visible {
+  box-shadow: 0 0 0 2px var(--jx-ring-color, currentColor);
+}&lt;/style&gt;&lt;/head&gt;&lt;body class=&quot;flex ai:center jc:center mnh:[100vh] m:0 p:6 bg:gray-100 ff:sans&quot;&gt;&lt;div class=&quot;px:6 py:3 br:lg bg:teal c:white fw:semibold hover:bg:teal-700 focus-visible:ring:2&quot;&gt;Confirm&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;" style="width: 100%; height: 20rem; max-width: none"></iframe>
+                  </div>
+                  <p class="fs:xs c:haze">
+                    Rendered in an isolated frame with the default theme: hover:, focus: and breakpoint variants apply at the chosen width.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--/@playground_section-->
           </div>
         </section>
         <section id="theme" class="smt:16 py:[4.5rem] md:py:[6rem] ">
@@ -555,15 +819,15 @@
               <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
                 Colors, spacing, typography and breakpoints are tokens. Extend them in jx.yaml without redefining anything, or replace a whole category.
               </p>
-              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/theme">
-                Explore the theme
+              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:brand-line tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/theme-studio">
+                Open the Theme Studio
                 <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
               </a>
             </div>
             <div class="grid cols:1 lg:cols:2 gap:6 ai:start">
               <figure class="mb:6 br:xl bw:1 bc:edge ov:hidden">
                 <figcaption class="px:5 py:2 ff:code fs:xs c:haze bg:shelf bwb:1 bc:edge">jx.yaml</figcaption>
-                <pre class="ff:code fs:sm lh:relaxed p:5 ov:auto ws:pre bg:[#07090D] c:[#C9D1DE]"><code># jx.yaml
+                <pre class="ff:code fs:sm lh:relaxed p:5 ov:auto ws:pre bg:ink c:soft"><code># jx.yaml
 content:
   - lib
 extensions: [dart]
@@ -617,108 +881,152 @@ theme:
             </div>
           </div>
         </section>
-        <section class="py:[3rem]">
+        <section id="get-started" class="smt:16 py:[4.5rem] md:py:[6rem] ">
           <div class="mw:[76rem] mx:auto px:5 md:px:8">
-            <div class="flex fd:col md:fd:row md:ai:center jc:between gap:8 p:8 md:p:12 br:3xl bg:[linear-gradient(135deg,rgba(59,108,240,0.28),rgba(45,212,191,0.14))] bw:1 bc:edge">
-              <div class="mw:[36rem]">
-                <h2 class="fs:[clamp(1.75rem,3.5vw,2.5rem)] fw:extrabold lh:[1.1] ls:tight c:snow">The engine runs in your browser</h2>
-                <p class="mt:4 fs:lg lh:relaxed c:[#D3DAE6]">
-                  The same engine as the CLI, compiled to JavaScript by Jaspr. Type classes and read the generated CSS, with nothing to install.
-                </p>
-              </div>
-              <a class="inline-flex ai:center jc:center gap:2 px:6 py:3 mnh:[48px] br:lg fw:semibold c:white bg:brand sh:lg tr:all hover:bg:[#4E7CF5] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 shrink:0" href="/zaspr-kit/playground">
-                Open the playground
+            <div class="mb:12 mw:[48rem]">
+              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">Get started in three steps</h2>
+              <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
+                Add the CLI, generate the configuration, start the build. The stylesheet only contains the classes found in your sources.
+              </p>
+              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:brand-line tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/installation">
+                Read the installation guide
                 <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
               </a>
+            </div>
+            <ol class="grid cols:1 lg:cols:3 gap:6">
+              <li class="flex fd:col gap:4 mnw:0">
+                <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:brand-soft">1</span><h3 class="fs:lg fw:bold c:snow">Add the dependency</h3></div><!--@ui data={"command":"dart pub add jx_cli"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:ink bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart pub add jx_cli</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:tint" type="button" aria-label="Copy the command" title="Copy"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
+              </li>
+              <li class="flex fd:col gap:4 mnw:0">
+                <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:brand-soft">2</span><h3 class="fs:lg fw:bold c:snow">Create the configuration</h3></div><!--@ui data={"command":"dart run jx_cli:jx init"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:ink bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart run jx_cli:jx init</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:tint" type="button" aria-label="Copy the command" title="Copy"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
+              </li>
+              <li class="flex fd:col gap:4 mnw:0">
+                <div class="flex ai:center gap:3"><span class="flex ai:center jc:center w:8 h:8 br:full fs:sm fw:bold c:beam bg:brand-soft">3</span><h3 class="fs:lg fw:bold c:snow">Build in watch mode</h3></div><!--@ui data={"command":"dart run jx_cli:jx build -w"}--><div class="flex ai:center jc:between gap:3 pl:5 pr:1 py:1 mnh:[48px] br:lg bg:ink bw:1 bc:edge ff:code fs:sm c:snow ta:left"><code class="mnw:0 ws:nowrap ovx:auto"><span class="c:haze" aria-hidden="true">$ </span>dart run jx_cli:jx build -w</code><button class="flex ai:center jc:center w:10 h:10 br:md tr:all focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4 c:haze hover:c:snow hover:bg:tint" type="button" aria-label="Copy the command" title="Copy"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9h11v11H9z"></path><path d="M5 15H4V4h11v1"></path></svg></button></div><!--/@ui-->
+              </li>
+            </ol>
+          </div>
+        </section>
+        <section id="workflow" class="smt:16 py:[4.5rem] md:py:[6rem] ">
+          <div class="mw:[76rem] mx:auto px:5 md:px:8">
+            <div class="mb:12 mw:[48rem]">
+              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">What changes in your workflow</h2>
+              <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">Styling stays in your components and in Dart. Here is what JX takes off your plate.</p>
+            </div>
+            <div class="br:2xl bw:1 bc:edge bg:deep ovx:auto">
+              <table class="w:full mnw:[40rem] fs:sm">
+                <thead>
+                  <tr>
+                    <td class="px:5 py:4 ta:left fw:semibold w:[20%]"></td>
+                    <th class="px:5 py:4 ta:left fw:semibold c:haze" scope="col">Without JX</th>
+                    <th class="px:5 py:4 ta:left fw:semibold c:brand" scope="col">With ZASPR Kit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bwt:1 bc:edge">
+                    <th class="px:5 py:4 ta:left fw:semibold va:top c:snow" scope="row">Toolchain</th>
+                    <td class="px:5 py:4 va:top lh:relaxed c:haze">A separate toolchain to install and keep up to date next to the Dart SDK.</td>
+                    <td class="px:5 py:4 va:top lh:relaxed c:soft">
+                      <span class="flex gap:2 ai:start"><span class="c:success pt:[0.2rem]"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span><span>One dev dependency: dart pub add jx_cli. The compiler is Dart.</span></span>
+                    </td>
+                  </tr>
+                  <tr class="bwt:1 bc:edge">
+                    <th class="px:5 py:4 ta:left fw:semibold va:top c:snow" scope="row">Stylesheet size</th>
+                    <td class="px:5 py:4 va:top lh:relaxed c:haze">Hand-written or framework CSS tends to grow with every page.</td>
+                    <td class="px:5 py:4 va:top lh:relaxed c:soft">
+                      <span class="flex gap:2 ai:start"><span class="c:success pt:[0.2rem]"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span><span>Only the classes found in your sources are compiled.</span></span>
+                    </td>
+                  </tr>
+                  <tr class="bwt:1 bc:edge">
+                    <th class="px:5 py:4 ta:left fw:semibold va:top c:snow" scope="row">Typos</th>
+                    <td class="px:5 py:4 va:top lh:relaxed c:haze">A misspelled class silently does nothing.</td>
+                    <td class="px:5 py:4 va:top lh:relaxed c:soft">
+                      <span class="flex gap:2 ai:start"><span class="c:success pt:[0.2rem]"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span><span>The build warns about unknown classes and suggests the closest one.</span></span>
+                    </td>
+                  </tr>
+                  <tr class="bwt:1 bc:edge">
+                    <th class="px:5 py:4 ta:left fw:semibold va:top c:snow" scope="row">Rebuilds</th>
+                    <td class="px:5 py:4 va:top lh:relaxed c:haze">A second terminal running a watcher.</td>
+                    <td class="px:5 py:4 va:top lh:relaxed c:soft">
+                      <span class="flex gap:2 ai:start"><span class="c:success pt:[0.2rem]"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span><span>jx build -w, or the builder inside jaspr serve.</span></span>
+                    </td>
+                  </tr>
+                  <tr class="bwt:1 bc:edge">
+                    <th class="px:5 py:4 ta:left fw:semibold va:top c:snow" scope="row">Components</th>
+                    <td class="px:5 py:4 va:top lh:relaxed c:haze">Build and style each control, then add the ARIA wiring.</td>
+                    <td class="px:5 py:4 va:top lh:relaxed c:soft">
+                      <span class="flex gap:2 ai:start"><span class="c:success pt:[0.2rem]"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span><span>Accessible components, styled with the same classes and theme.</span></span>
+                    </td>
+                  </tr>
+                  <tr class="bwt:1 bc:edge">
+                    <th class="px:5 py:4 ta:left fw:semibold va:top c:snow" scope="row">Migration</th>
+                    <td class="px:5 py:4 va:top lh:relaxed c:haze">Rewrite every class by hand.</td>
+                    <td class="px:5 py:4 va:top lh:relaxed c:soft">
+                      <span class="flex gap:2 ai:start"><span class="c:success pt:[0.2rem]"><svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span><span>jx migrate converts Tailwind classes and reports approximations.</span></span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </section>
-        <section id="utilities" class="smt:16 py:[4.5rem] md:py:[6rem] ">
+        <section id="community" class="smt:16 py:[4.5rem] md:py:[6rem] ">
           <div class="mw:[76rem] mx:auto px:5 md:px:8">
             <div class="mb:12 mw:[48rem]">
-              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">113 rules, 15 families</h2>
+              <h2 class="fs:[clamp(2rem,4.2vw,3rem)] fw:extrabold lh:[1.1] ls:tight c:snow">Open source, built in the open</h2>
               <p class="mt:5 fs:lg md:fs:xl lh:relaxed c:haze">
-                Every family has its own page: produced properties, accepted values and compiled examples. The reference is generated from the rule registry.
+                ZASPR Kit is MIT licensed. Questions, issues, ideas and pull requests are welcome, and the roadmap says what is planned and not available yet.
               </p>
-              <a class="inline-flex ai:center gap:2 mt:6 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:[rgba(126,162,255,0.4)] tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities">
-                Browse the reference
-                <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
-              </a>
             </div>
-            <div class="grid cols:1 sm:cols:2 lg:cols:3 gap:4">
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/display">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Display</h3><span class="ff:code fs:xs c:haze">2 rules</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Box type, visibility and overflow of elements.</p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/spacing">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Spacing</h3><span class="ff:code fs:xs c:haze">2 rules</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Padding and margin, on the theme spacing scale.</p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/colors">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Colors</h3><span class="ff:code fs:xs c:haze">3 rules</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Text, background and border colors, from the theme palette.</p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/typography">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Typography</h3><span class="ff:code fs:xs c:haze">22 rules</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Families, sizes, weights, line height, decorations, case, truncation and screen-reader-only text.</p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/sizing">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Sizing</h3><span class="ff:code fs:xs c:haze">6 rules</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Widths and heights, minimum and maximum.</p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/borders">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Borders</h3><span class="ff:code fs:xs c:haze">3 rules</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Border width, color, style and radius.</p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/flexbox">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Flexbox</h3><span class="ff:code fs:xs c:haze">15 rules</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Direction, alignment, order, wrapping and sizing of flex items.</p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/grid">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Grid</h3><span class="ff:code fs:xs c:haze">5 rules</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Columns, rows, placement and gaps of CSS grids.</p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/position">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Position and layers</h3><span class="ff:code fs:xs c:haze">6 rules</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Positioning, offsets, stacking and scrolling.</p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/effects">
-                <div class="flex ai:baseline jc:between gap:3">
-                  <h3 class="fw:bold c:snow">Effects and transitions</h3>
-                  <span class="ff:code fs:xs c:haze">12 rules</span>
-                </div>
-                <p class="fs:sm lh:relaxed c:haze">Opacity, shadows, transitions, translation, scale, rotation and skew.</p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/filters">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Filters</h3><span class="ff:code fs:xs c:haze">13 rules</span></div>
-                <p class="fs:sm lh:relaxed c:haze">
-                  Blur, brightness, contrast and saturation, on the element or on what lies behind it. Filters compose with each other.
-                </p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/gradients">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Gradients</h3><span class="ff:code fs:xs c:haze">4 rules</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Gradient direction or angle, then its start, middle and end colors.</p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/animations">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Animations</h3><span class="ff:code fs:xs c:haze">3 rules</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Ready-made animations, duration and delay. Keyframes are only written for the animations you use.</p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/media">
-                <div class="flex ai:baseline jc:between gap:3">
-                  <h3 class="fw:bold c:snow">Media and backgrounds</h3>
-                  <span class="ff:code fs:xs c:haze">7 rules</span>
-                </div>
-                <p class="fs:sm lh:relaxed c:haze">Aspect ratio, image fit, background position and repeat, border style.</p>
-              </a>
-              <a class="flex fd:col gap:2 p:6 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:[rgba(126,162,255,0.5)] hover:-ty:1 focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/utilities/forms">
-                <div class="flex ai:baseline jc:between gap:3"><h3 class="fw:bold c:snow">Forms</h3><span class="ff:code fs:xs c:haze">10 rules</span></div>
-                <p class="fs:sm lh:relaxed c:haze">Native appearance, cursor, resizing, selection and focus ring.</p>
-              </a>
+            <div class="grid cols:1 lg:cols:[minmax(0,1.3fr)_minmax(0,1fr)] gap:6">
+              <div class="br:2xl bw:1 bc:edge bg:deep p:6 md:p:8">
+                <h3 class="fs:lg fw:bold c:snow">On the roadmap</h3>
+                <p class="mt:2 fs:sm lh:relaxed c:haze">Planned, not available yet. Follow or discuss them on GitHub.</p>
+                <ul class="mt:5 flex fd:col">
+                  <li class="flex fd:col gap:1 py:4 bwt:1 bc:edge">
+                    <div class="flex wrap ai:center gap:3"><span class="fw:semibold c:snow">Date picker</span><span class="px:2 py:[0.1rem] br:full fs:xs c:accent bg:accent-soft">Planned, Forms</span></div><p class="fs:sm lh:relaxed c:haze">A calendar grid with full keyboard support: needs its own client component.</p>
+                  </li>
+                  <li class="flex fd:col gap:1 py:4 bwt:1 bc:edge">
+                    <div class="flex wrap ai:center gap:3"><span class="fw:semibold c:snow">Command palette</span><span class="px:2 py:[0.1rem] br:full fs:xs c:accent bg:accent-soft">Planned, Overlays</span></div><p class="fs:sm lh:relaxed c:haze">Search across actions, on top of the combobox and the modal.</p>
+                  </li>
+                  <li class="flex fd:col gap:1 py:4 bwt:1 bc:edge">
+                    <div class="flex wrap ai:center gap:3"><span class="fw:semibold c:snow">Popover menu</span><span class="px:2 py:[0.1rem] br:full fs:xs c:accent bg:accent-soft">Planned, Overlays</span></div><p class="fs:sm lh:relaxed c:haze">The dropdown on the Popover API, once CSS anchor positioning is in every browser.</p>
+                  </li>
+                  <li class="flex fd:col gap:1 py:4 bwt:1 bc:edge">
+                    <div class="flex wrap ai:center gap:3"><span class="fw:semibold c:snow">Custom listbox</span><span class="px:2 py:[0.1rem] br:full fs:xs c:accent bg:accent-soft">Planned, Forms</span></div><p class="fs:sm lh:relaxed c:haze">A combobox with a styled list and active-option keyboard handling.</p>
+                  </li>
+                </ul>
+                <a class="inline-flex ai:center gap:2 mt:4 fw:semibold c:beam td:underline tdt:1 tuo:4 tdc:brand-line tr:colors hover:c:snow hover:tdc:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/roadmap">
+                  Status and roadmap
+                  <svg class="shrink:0 w:4 h:4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                </a>
+              </div>
+              <div class="grid cols:1 gap:4 ai:start">
+                <a class="flex ai:start gap:4 p:5 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:brand-line focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" rel="noopener" href="https://github.com/NathanaelZie/zaspr-kit/discussions/categories/q-a">
+                  <span class="flex ai:center jc:center w:10 h:10 br:lg c:brand bg:brand-soft shrink:0"><svg class="shrink:0 w:5 h:5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12z"></path><path d="M8.5 12h.01"></path><path d="M12 12h.01"></path><path d="M15.5 12h.01"></path></svg></span>
+                  <span class="flex fd:col gap:1"><span class="fw:semibold c:snow">Ask a question</span><span class="fs:sm lh:relaxed c:haze">How to do something with JX CSS, the CLI or the components. Answers stay public.</span></span>
+                </a>
+                <a class="flex ai:start gap:4 p:5 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:brand-line focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" rel="noopener" href="https://github.com/NathanaelZie/zaspr-kit/issues/new/choose">
+                  <span class="flex ai:center jc:center w:10 h:10 br:lg c:brand bg:brand-soft shrink:0"><svg class="shrink:0 w:5 h:5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+                  <span class="flex fd:col gap:1"><span class="fw:semibold c:snow">Report a bug</span><span class="fs:sm lh:relaxed c:haze">Or ask for a utility, a variant or a component.</span></span>
+                </a>
+                <a class="flex ai:start gap:4 p:5 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:brand-line focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" rel="noopener" href="https://pub.dev/packages/jx_cli">
+                  <span class="flex ai:center jc:center w:10 h:10 br:lg c:brand bg:brand-soft shrink:0"><svg class="shrink:0 w:5 h:5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><path d="M3.3 7 12 12l8.7-5"></path><path d="M12 22V12"></path></svg></span>
+                  <span class="flex fd:col gap:1"><span class="fw:semibold c:snow">pub.dev</span><span class="fs:sm lh:relaxed c:haze">The jx_cli package, its versions and its changelog.</span></span>
+                </a>
+                <a class="flex ai:start gap:4 p:5 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:brand-line focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" rel="noopener" href="https://github.com/NathanaelZie/zaspr-kit/blob/main/CONTRIBUTING.md">
+                  <span class="flex ai:center jc:center w:10 h:10 br:lg c:brand bg:brand-soft shrink:0"><svg class="shrink:0 w:5 h:5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span>
+                  <span class="flex fd:col gap:1"><span class="fw:semibold c:snow">Contribute</span><span class="fs:sm lh:relaxed c:haze">Set up the project, run the checks, open a pull request.</span></span>
+                </a>
+                <a class="flex ai:start gap:4 p:5 br:xl bw:1 bc:edge bg:deep tr:all hover:bc:brand-line focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" rel="noopener" href="https://github.com/NathanaelZie/zaspr-kit/security/advisories/new">
+                  <span class="flex ai:center jc:center w:10 h:10 br:lg c:brand bg:brand-soft shrink:0"><svg class="shrink:0 w:5 h:5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path></svg></span>
+                  <span class="flex fd:col gap:1"><span class="fw:semibold c:snow">Report a vulnerability</span><span class="fs:sm lh:relaxed c:haze">Privately, through GitHub security advisories.</span></span>
+                </a>
+              </div>
             </div>
           </div>
         </section>
       </main>
-      <footer class="bwt:1 bc:edge bg:[#090B0F]">
+      <footer class="bwt:1 bc:edge bg:ink">
         <div class="mw:[90rem] mx:auto px:5 md:px:8 grid cols:1 sm:cols:2 lg:cols:[2fr_1fr_1fr_1fr_1fr] gap:10 py:16">
           <div class="flex fd:col gap:4 mw:[22rem]">
             <a class="inline-flex ai:center gap:3 fw:bold c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/">
@@ -744,16 +1052,10 @@ theme:
                 <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/configuration">Configuration</a>
               </li>
               <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/cli">Command line</a>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/first-project">Your first project</a>
               </li>
               <li>
                 <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/jaspr">Using with Jaspr</a>
-              </li>
-              <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/builder">Automatic builds</a>
-              </li>
-              <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/migrate">Coming from Tailwind</a>
               </li>
             </ul>
           </div>
@@ -770,10 +1072,25 @@ theme:
                 <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/theme">Theme</a>
               </li>
               <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/responsive">Responsive design</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/dark-mode">Dark mode</a>
+              </li>
+              <li>
                 <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components">All components</a>
               </li>
               <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/getting-started">Getting started</a>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/getting-started">Installation</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/api">Component API</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/accessibility">Accessibility</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/customization">Customization</a>
               </li>
               <li>
                 <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" href="/zaspr-kit/docs/components/playground">Playground</a>
@@ -810,7 +1127,13 @@ theme:
                 <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" rel="noopener" href="https://pub.dev/packages/jx_cli/changelog">Changelog</a>
               </li>
               <li>
-                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" rel="noopener" href="https://github.com/NathanaelZie/zaspr-kit/issues">Report an issue</a>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" rel="noopener" href="https://github.com/NathanaelZie/zaspr-kit/discussions/categories/q-a">Ask a question</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" rel="noopener" href="https://github.com/NathanaelZie/zaspr-kit/issues/new/choose">Report an issue</a>
+              </li>
+              <li>
+                <a class="c:haze tr:colors hover:c:snow focus-visible:ol:2 focus-visible:olc:beam focus-visible:olo:4" rel="noopener" href="https://github.com/NathanaelZie/zaspr-kit/blob/main/SUPPORT.md">Get help</a>
               </li>
             </ul>
           </div>
