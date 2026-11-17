@@ -156,6 +156,10 @@ Everything ships in one package, [`jx_cli`](https://pub.dev/packages/jx_cli). Ea
 
 The former `jx_ui`, `jx_builder`, `jx_engine`, `jx_rules`, `jx_theme`, `jx_parser`, `jx_generator` and `jx_core` packages are replaced by `jx_cli` and discontinued on pub.dev. Projects that already lock one of their versions keep building.
 
+## Getting help
+
+Questions go to [GitHub Discussions](https://github.com/NathanaelZie/zaspr-kit/discussions/categories/q-a), bugs and feature requests to [issues](https://github.com/NathanaelZie/zaspr-kit/issues/new/choose). [SUPPORT.md](SUPPORT.md) says where to ask what.
+
 ## Contributing
 
 Contributions are welcome: read [CONTRIBUTING.md](CONTRIBUTING.md) and the [code of conduct](CODE_OF_CONDUCT.md).

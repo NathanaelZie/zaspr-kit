@@ -1,0 +1,29 @@
+name: Feature request
+description: A utility, a variant, a component or a CLI option that is missing.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Check the [roadmap](https://nathanaelzie.github.io/zaspr-kit/docs/components/roadmap/) first: it may already be planned.
+        To discuss an idea before it is ready, open a thread in [Discussions](https://github.com/NathanaelZie/zaspr-kit/discussions/categories/ideas).
+  - type: textarea
+    id: problem
+    attributes:
+      label: What you are trying to do
+      description: The interface or the workflow you are building, and what gets in the way today.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you would like
+      description: The class syntax, the option or the component API you have in mind.
+      render: dart
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What you do instead today
+      description: Arbitrary values, custom CSS, another package…

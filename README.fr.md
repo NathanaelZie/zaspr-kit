@@ -90,6 +90,10 @@ dart run jx_cli:jx migrate --write
 
 La référence complète est sur le [site de documentation](https://nathanaelzie.github.io/zaspr-kit/docs/introduction).
 
+## Obtenir de l'aide
+
+Les questions vont dans les [Discussions GitHub](https://github.com/NathanaelZie/zaspr-kit/discussions/categories/q-a), les bugs et demandes de fonctionnalités dans les [issues](https://github.com/NathanaelZie/zaspr-kit/issues/new/choose). [SUPPORT.fr.md](SUPPORT.fr.md) indique où poser quelle question.
+
 ## Contribuer
 
 Les contributions sont les bienvenues : lisez [CONTRIBUTING.fr.md](CONTRIBUTING.fr.md) et le [code de conduite](CODE_OF_CONDUCT.fr.md).

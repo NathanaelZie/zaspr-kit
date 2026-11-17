@@ -8,6 +8,8 @@ En participant, vous acceptez de respecter le [code de conduite](CODE_OF_CONDUCT
 
 ## Signaler un bug ou proposer une fonctionnalité
 
+Pour une question sur la façon de faire quelque chose, utilisez plutôt les [Discussions](https://github.com/NathanaelZie/zaspr-kit/discussions/categories/q-a) : voir [SUPPORT.fr.md](SUPPORT.fr.md).
+
 Ouvrez une [issue](https://github.com/NathanaelZie/zaspr-kit/issues) et indiquez :
 
 - la version de `jx_cli`, celle de Dart (`dart --version`) et celle de Jaspr ;

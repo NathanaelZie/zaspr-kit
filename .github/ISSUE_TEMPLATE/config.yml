@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a question
+    url: https://github.com/NathanaelZie/zaspr-kit/discussions/categories/q-a
+    about: How to use JX CSS, the CLI or the components. Answers stay searchable for everyone.
+  - name: Read the documentation
+    url: https://nathanaelzie.github.io/zaspr-kit/docs/introduction/
+    about: Installation, class syntax, theme, CLI and components.
+  - name: Report a vulnerability
+    url: https://github.com/NathanaelZie/zaspr-kit/security/advisories/new
+    about: Privately, through a GitHub security advisory. Never in a public issue.

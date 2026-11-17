@@ -1,0 +1,46 @@
+name: Bug report
+description: A class compiles wrong, the CLI fails, or a component misbehaves.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this.
+        For a question about how to do something, use [Discussions](https://github.com/NathanaelZie/zaspr-kit/discussions/categories/q-a) instead.
+        **Never report a security issue here:** follow [SECURITY.md](https://github.com/NathanaelZie/zaspr-kit/blob/main/SECURITY.md).
+  - type: input
+    id: version
+    attributes:
+      label: jx_cli version
+      description: The version in your pubspec.lock, or the output of `dart run jx_cli:jx --version`.
+      placeholder: 0.0.5
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Dart and Jaspr versions, operating system
+      placeholder: Dart 3.13.0, Jaspr 0.23.5, Windows 11
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce
+      description: The classes, the jx.yaml section or the command that triggers the problem. The smaller, the better.
+      render: dart
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead
+      description: The generated CSS, the warning or the full error message.
+    validations:
+      required: true
