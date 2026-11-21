@@ -14,6 +14,7 @@ ZASPR Kit est développé publiquement. Posez vos questions en public dès que p
 | Signaler un bug | Une [nouvelle issue](https://github.com/NathanaelZie/zaspr-kit/issues/new/choose), avec le modèle « Bug report » |
 | Demander un utilitaire, une variante ou un composant | Une [nouvelle issue](https://github.com/NathanaelZie/zaspr-kit/issues/new/choose), avec le modèle « Feature request » |
 | Signaler une faille de sécurité | En privé, comme expliqué dans [SECURITY.fr.md](SECURITY.fr.md). Jamais dans une issue publique |
+| Contacter l'auteur (projet, mission, question privée) | Un e-mail à [nathanzie16@gmail.com](mailto:nathanzie16@gmail.com) |
 
 ## Bien poser sa question
 

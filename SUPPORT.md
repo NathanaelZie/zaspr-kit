@@ -14,6 +14,7 @@ ZASPR Kit is maintained in the open. Ask in public whenever you can: the answer 
 | Report a bug | A [new issue](https://github.com/NathanaelZie/zaspr-kit/issues/new/choose), using the bug template |
 | Ask for a utility, a variant or a component | A [new issue](https://github.com/NathanaelZie/zaspr-kit/issues/new/choose), using the feature template |
 | Report a vulnerability | Privately, as described in [SECURITY.md](SECURITY.md). Never in a public issue |
+| Contact the author (a project, a mission, a private question) | An email to [nathanzie16@gmail.com](mailto:nathanzie16@gmail.com) |
 
 ## Ask a good question
 
