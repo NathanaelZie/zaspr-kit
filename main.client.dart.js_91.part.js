@@ -110,17 +110,17 @@ x(B.bW,N.p)})()
 A.J(b.typeUniverse,JSON.parse('{"cf":{"I":[],"h":[]},"hz":{"ap":[]},"eL":{"H":["cf"],"H.T":"cf"},"bW":{"p":[],"h":[]}}'))
 var y={F:A.j("l<h>"),d:A.j("l<bh>"),l:A.j("l<b?>"),m:A.j("bh"),w:A.j("b"),a:A.j("~(C)")};(function constants(){var x=a.makeConstList
 C.f2=new E.b1("tabs-demo-name","Display name",P.t,"Grace Hopper",null,null,null,!1,!1,null,null)
-C.lj=x([C.f2],y.F)
-C.eP=new B.bh("Profile",C.lj,!1)
+C.lk=x([C.f2],y.F)
+C.eP=new B.bh("Profile",C.lk,!1)
 C.eR=new B.bh("Audit log",O.q,!0)
-C.y3=new A.e("Your plan renews on 1 December.",null)
-C.kR=x([C.y3],y.F)
-C.cJ=new E.bs(C.kR,K.A,null,null)
+C.y4=new A.e("Your plan renews on 1 December.",null)
+C.kS=x([C.y4],y.F)
+C.cJ=new E.bs(C.kS,K.A,null,null)
 C.kJ=x([C.cJ],y.F)
 C.eT=new B.bh("Billing",C.kJ,!1)
 C.eL=new E.bw("tabs-demo-email","Email notifications",!0,!1,null,null)
 C.kl=x([C.eL],y.F)
 C.eV=new B.bh("Notifications",C.kl,!1)
-C.zn=new B.hz(0,"horizontal")})()};
-(a=>{a["MUzJSiArdb/Ct03Xw6k3i2IZntk="]=a.current})($__dart_deferred_initializers__);
+C.zo=new B.hz(0,"horizontal")})()};
+(a=>{a["IE39VyuL5Z/IsAlWCL7MertUcWY="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_91.part.js.map

@@ -50,11 +50,11 @@ x(B.hH,F.H)
 w(A.ad,[B.mA,B.mz])})()
 A.J(b.typeUniverse,JSON.parse('{"ck":{"I":[],"h":[]},"hH":{"H":["ck"],"H.T":"ck"}}'))
 var y={p:A.j("l<h>"),h:A.j("l<b>"),g:A.j("b")};(function constants(){var x=a.makeConstList
-C.uV=new A.cy("/docs/introduction","Docs","/docs")
-C.uM=new A.cy("/docs/utilities","Utilities","/docs/utilities")
-C.uK=new A.cy("/docs/components","Components","/docs/components")
-C.uJ=new A.cy("/playground","Playground","/playground")
-C.uN=new A.cy("/theme-studio","Theme Studio","/theme-studio")
-C.hM=x([C.uV,C.uM,C.uK,C.uJ,C.uN],A.j("l<+href,label,prefix(b,b,b)>"))})()};
-(a=>{a["9IwuuvLNhq8Emb6uoucFwrsQ8D8="]=a.current})($__dart_deferred_initializers__);
+C.uW=new A.cy("/docs/introduction","Docs","/docs")
+C.uN=new A.cy("/docs/utilities","Utilities","/docs/utilities")
+C.uL=new A.cy("/docs/components","Components","/docs/components")
+C.uK=new A.cy("/playground","Playground","/playground")
+C.uO=new A.cy("/theme-studio","Theme Studio","/theme-studio")
+C.hM=x([C.uW,C.uN,C.uL,C.uK,C.uO],A.j("l<+href,label,prefix(b,b,b)>"))})()};
+(a=>{a["ZCa1KYdNhLeB84nBsLTprBbYmyE="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_121.part.js.map

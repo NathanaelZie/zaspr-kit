@@ -46,9 +46,9 @@ $S:1};(function inheritance(){var x=a.inherit
 x(C.qX,A.ad)})()
 var y={p:A.j("l<h>"),h:A.j("l<b>"),e:A.j("+icon,label,width(b,b,d?)"),g:A.j("b")};(function constants(){var x=a.makeConstList
 B.aH=new G.hq(!0)
-B.v_=new A.dw("phone","Mobile",375)
-B.v7=new A.dw("tablet","Tablet",768)
-B.v2=new A.dw("monitor","Desktop",null)
-B.ac=x([B.v_,B.v7,B.v2],A.j("l<+icon,label,width(b,b,d?)>"))})()};
-(a=>{a["IM5WWij1I3vxK9uj3fShqivd9gI="]=a.current})($__dart_deferred_initializers__);
+B.v0=new A.dw("phone","Mobile",375)
+B.v8=new A.dw("tablet","Tablet",768)
+B.v3=new A.dw("monitor","Desktop",null)
+B.ac=x([B.v0,B.v8,B.v3],A.j("l<+icon,label,width(b,b,d?)>"))})()};
+(a=>{a["qD6dJMwFLSEPvy44w8wdMRNBeZA="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_124.part.js.map

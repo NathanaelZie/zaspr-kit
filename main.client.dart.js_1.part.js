@@ -282,7 +282,7 @@ if(u===q.d)t.push("c:on-brand bg:brand")
 else t.push("c:haze bg:tint hover:c:snow hover:bg:tint-strong")
 t=F.a.v(t," ")
 s=B.r(["type","button","aria-pressed",""+(u===q.d)],x,x)
-r=C.o7.k(0,u)
+r=C.o8.k(0,u)
 r.toString
 n.push(new R.cA(!1,p,new A.jS(q,u),p,t,s,p,B.a([new B.e(r,p)],o),p))}n=E.t(n,C.na,"flex wrap gap:2",p,p)
 x=q.d
@@ -447,11 +447,11 @@ C.ak=new A.b4(5,"progress")
 C.al=new A.b4(6,"avatar")
 C.Z=new A.b4(7,"spinner")
 C.kq=x([C.L,C.bR,C.Y,C.aj,C.bS,C.ak,C.al,C.Z],B.j("l<b4>"))
-C.q5={"aria-label":0,role:1}
-C.mV=new B.c(C.q5,["Preview","region"],y.w)
+C.q6={"aria-label":0,role:1}
+C.mV=new B.c(C.q6,["Preview","region"],y.w)
 C.bv={role:0,"aria-label":1}
 C.na=new B.c(C.bv,["group","Component"],y.w)
 C.nb=new B.c(C.bv,["group","Properties"],y.w)
-C.o7=new B.bo([C.L,"Button",C.bR,"Badge",C.Y,"Alert",C.aj,"Text field",C.bS,"Switch",C.ak,"Progress",C.al,"Avatar",C.Z,"Spinner"],B.j("bo<b4,b>"))})()};
-(a=>{a["kChAohWPiHr0QvnbXHfFPUyWuzA="]=a.current})($__dart_deferred_initializers__);
+C.o8=new B.bo([C.L,"Button",C.bR,"Badge",C.Y,"Alert",C.aj,"Text field",C.bS,"Switch",C.ak,"Progress",C.al,"Avatar",C.Z,"Spinner"],B.j("bo<b4,b>"))})()};
+(a=>{a["p0sQa7KI7+jMKqNJvy19KJsHoeE="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_1.part.js.map

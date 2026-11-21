@@ -111,14 +111,14 @@ w(A.ad,[B.mH,B.mG,B.mF,B.mE])
 w(A.a8,[B.mI,B.mJ])})()
 A.J(b.typeUniverse,JSON.parse('{"cm":{"I":[],"h":[]},"hT":{"H":["cm"],"H.T":"cm"}}'))
 var y={p:A.j("l<h>"),h:A.j("l<b>"),m:A.j("+classes,label,preview(b,b,b)"),g:A.j("b"),o:A.j("dm<d>")};(function constants(){var x=a.makeConstList
-C.va=new A.bY("px:6 py:3 br:lg bg:teal c:white fw:semibold hover:bg:teal-700 focus-visible:ring:2","Button","Confirm")
-C.v5=new A.bY("p:6 br:xl bg:white c:gray-900 sh:xl mw:[16rem] lh:relaxed","Card","A card compiled by JX")
-C.uQ=new A.bY("px:4 py:3 br:md bw:1 bc:gray-300 bg:white c:gray-700 w:[16rem] focus:ring:4 ringc:blue-300","Input","Your email")
-C.uW=new A.bY("px:6 py:3 br:full fw:bold c:white grad:to-r from:blue via:teal to:teal-300","Gradient","New")
-C.vb=new A.bY("p:6 br:2xl c:white bg:[rgba(255,255,255,0.12)] bblur:lg bw:1 bc:[rgba(255,255,255,0.3)]","Glass","Frosted glass")
-C.uH=new A.bY("fs:4xl fw:extrabold ls:tight c:teal-300 md:fs:6xl","Heading","Hello JX")
-C.S=x([C.va,C.v5,C.uQ,C.uW,C.vb,C.uH],A.j("l<+classes,label,preview(b,b,b)>"))})();(function lazyInitializers(){var x=a.lazyFinal
+C.vb=new A.bY("px:6 py:3 br:lg bg:teal c:white fw:semibold hover:bg:teal-700 focus-visible:ring:2","Button","Confirm")
+C.v6=new A.bY("p:6 br:xl bg:white c:gray-900 sh:xl mw:[16rem] lh:relaxed","Card","A card compiled by JX")
+C.uR=new A.bY("px:4 py:3 br:md bw:1 bc:gray-300 bg:white c:gray-700 w:[16rem] focus:ring:4 ringc:blue-300","Input","Your email")
+C.uX=new A.bY("px:6 py:3 br:full fw:bold c:white grad:to-r from:blue via:teal to:teal-300","Gradient","New")
+C.vc=new A.bY("p:6 br:2xl c:white bg:[rgba(255,255,255,0.12)] bblur:lg bw:1 bc:[rgba(255,255,255,0.3)]","Glass","Frosted glass")
+C.uI=new A.bY("fs:4xl fw:extrabold ls:tight c:teal-300 md:fs:6xl","Heading","Hello JX")
+C.S=x([C.vb,C.v6,C.uR,C.uX,C.vc,C.uI],A.j("l<+classes,label,preview(b,b,b)>"))})();(function lazyInitializers(){var x=a.lazyFinal
 x($,"At","vd",()=>G.kG(null))
 x($,"Au","ve",()=>G.kG(G.rb(N.aH,null)))})()};
-(a=>{a["v/pljEZ28b28zmr4W/bfGAyoaoI="]=a.current})($__dart_deferred_initializers__);
+(a=>{a["CXLO7A7Y0UYcPNbbkjdXbIDQRxs="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_123.part.js.map

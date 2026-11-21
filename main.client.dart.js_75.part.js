@@ -190,7 +190,7 @@ x=y.i
 w=B.a([G.uL(B.a([q.cv(n-1,"Previous",n<=1)],x),p,p,p,p)],x)
 for(v=A.wC(n,o),u=v.length,t=0;t<v.length;v.length===u||(0,B.L)(v),++t){s=v[t]
 r=B.a([],x)
-if(s==null)r.push(C.zc)
+if(s==null)r.push(C.zd)
 else r.push(q.e3(s,B.z(s),s===n))
 w.push(new G.aQ(p,p,p,p,r,p))}w.push(G.uL(B.a([q.cv(n+1,"Next",n>=o)],x),p,p,p,p))
 return A.rR(B.a([G.jd(w,p,"flex wrap ai:center gap:1 fs:sm lst:none p:0 m:0",p)],x),m,p)},
@@ -226,7 +226,7 @@ r=t[3]
 q=$.w8.k(0,r)
 q.toString
 i.push(B.a([new H.W(o,"fw:medium",o,o,s,o),new O.b_(r,q,o),new B.e(A.w7(t[0]),o),new B.e(t[2],o)],v))}x=(p.f-1)*5
-return I.t(B.a([new A.c9(C.l1,i,"Invoices",!0,!1,k,j,new A.k1(p),"No data",o),I.t(B.a([H.O(B.a([new B.e("Showing "+(x+1)+"\u2013"+(x+l.gq(0))+" of "+n.length,o)],v),o,"fs:sm c:haze",o,o),A.kN(o,new A.k2(p),p.f,m)],v),o,"flex wrap ai:center jc:between gap:3",o,o)],v),o,"flex fd:col gap:4",o,o)}}
+return I.t(B.a([new A.c9(C.l2,i,"Invoices",!0,!1,k,j,new A.k1(p),"No data",o),I.t(B.a([H.O(B.a([new B.e("Showing "+(x+1)+"\u2013"+(x+l.gq(0))+" of "+n.length,o)],v),o,"fs:sm c:haze",o,o),A.kN(o,new A.k2(p),p.f,m)],v),o,"flex wrap ai:center jc:between gap:3",o,o)],v),o,"flex fd:col gap:4",o,o)}}
 var z=a.updateTypes([])
 A.kB.prototype={
 $0(){return this.a.$1(this.b)},
@@ -283,26 +283,26 @@ x(B.bb,[A.jZ,A.jY])})()
 B.J(b.typeUniverse,JSON.parse('{"j1":{"p":[],"h":[]},"j8":{"p":[],"h":[]},"jb":{"p":[],"h":[]},"j9":{"p":[],"h":[]},"ja":{"p":[],"h":[]},"fW":{"p":[],"h":[]},"fV":{"p":[],"h":[]},"c9":{"p":[],"h":[]},"dT":{"p":[],"h":[]},"bc":{"I":[],"h":[]},"hc":{"H":["bc"],"H.T":"bc"}}'))
 var y=(function rtii(){var x=B.j
 return{F:x("h"),i:x("l<h>"),j:x("l<m<h>>"),m:x("l<b?>"),Z:x("l<d?>"),l:x("aS"),W:x("+amount,client,due,status(d,b,b,b)"),N:x("b"),L:x("b(aT)"),S:x("d"),A:x("b(aT)?")}})();(function constants(){var x=a.makeConstList
-C.wS=new B.aK([1240,"Northwind","2026-10-02","Paid"])
-C.vQ=new B.aK([860,"Globex","2026-09-14","Overdue"])
-C.vY=new B.aK([2310,"Initech","2026-11-20","Pending"])
-C.xB=new B.aK([415,"Umbrella","2026-10-28","Paid"])
-C.wp=new B.aK([3990,"Hooli","2026-12-01","Pending"])
-C.vU=new B.aK([7250,"Stark","2026-08-30","Paid"])
-C.vR=new B.aK([1575,"Wayne","2026-09-02","Overdue"])
-C.wf=new B.aK([980,"Acme","2026-11-05","Paid"])
-C.wt=new B.aK([640,"Soylent","2026-12-12","Pending"])
-C.w8=new B.aK([5120,"Cyberdyne","2026-10-15","Paid"])
-C.vs=new B.aK([2875,"Tyrell","2026-11-29","Pending"])
-C.vw=new B.aK([330,"Vandelay","2026-08-21","Overdue"])
-C.ig=x([C.wS,C.vQ,C.vY,C.xB,C.wp,C.vU,C.vR,C.wf,C.wt,C.w8,C.vs,C.vw],B.j("l<+amount,client,due,status(d,b,b,b)>"))
+C.wT=new B.aK([1240,"Northwind","2026-10-02","Paid"])
+C.vR=new B.aK([860,"Globex","2026-09-14","Overdue"])
+C.vZ=new B.aK([2310,"Initech","2026-11-20","Pending"])
+C.xC=new B.aK([415,"Umbrella","2026-10-28","Paid"])
+C.wq=new B.aK([3990,"Hooli","2026-12-01","Pending"])
+C.vV=new B.aK([7250,"Stark","2026-08-30","Paid"])
+C.vS=new B.aK([1575,"Wayne","2026-09-02","Overdue"])
+C.wg=new B.aK([980,"Acme","2026-11-05","Paid"])
+C.wu=new B.aK([640,"Soylent","2026-12-12","Pending"])
+C.w9=new B.aK([5120,"Cyberdyne","2026-10-15","Paid"])
+C.vt=new B.aK([2875,"Tyrell","2026-11-29","Pending"])
+C.vx=new B.aK([330,"Vandelay","2026-08-21","Overdue"])
+C.ig=x([C.wT,C.vR,C.vZ,C.xC,C.wq,C.vV,C.vS,C.wg,C.wu,C.w9,C.vt,C.vx],B.j("l<+amount,client,due,status(d,b,b,b)>"))
 C.dp=new A.aS("Client",!1,!0)
 C.dt=new A.aS("Status",!1,!0)
 C.dn=new A.aS("Amount",!0,!0)
 C.dq=new A.aS("Due",!1,!0)
-C.l1=x([C.dp,C.dt,C.dn,C.dq],B.j("l<aS>"))
-C.y4=new B.e("\u2026",null)
-C.kn=x([C.y4],y.i)
-C.zc=new H.W(null,"inline-flex ai:center jc:center mnw:[36px] h:9 c:gray-500",S.r,null,C.kn,null)})();(function staticFields(){$.w8=B.r(["Paid",V.x,"Pending",N.B,"Overdue",N.w],y.N,B.j("ai"))})()};
-(a=>{a["SyfaiB7fz7mOBotVCzKLWOZX36Y="]=a.current})($__dart_deferred_initializers__);
+C.l2=x([C.dp,C.dt,C.dn,C.dq],B.j("l<aS>"))
+C.y5=new B.e("\u2026",null)
+C.kn=x([C.y5],y.i)
+C.zd=new H.W(null,"inline-flex ai:center jc:center mnw:[36px] h:9 c:gray-500",S.r,null,C.kn,null)})();(function staticFields(){$.w8=B.r(["Paid",V.x,"Pending",N.B,"Overdue",N.w],y.N,B.j("ai"))})()};
+(a=>{a["pDpqA+tmUN28zZhyjDlVTgj7LgY="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_75.part.js.map
